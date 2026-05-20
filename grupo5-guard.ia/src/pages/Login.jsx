@@ -1,44 +1,56 @@
 import "./Login.css";
+import mascot from "../assets/mascot.png";
 
 export default function Login() {
+  function handleLogin(event) {
+    event.preventDefault();
+    alert("Login enviado!");
+  }
+
+  function handleVisitorAccess() {
+    alert("Acessando como visitante...");
+  }
+
   return (
     <div className="login-page">
-      <header className="login-header">
-        <h1>GUARD.IA</h1>
-        <nav>
-          <a href="/">Sobre o Sistema</a>
-          <a href="/dashboard">Dashboard</a>
-          <a href="/proposicoes">Proposições</a>
-          <a href="/ranking">Ranking</a>
-          <a href="/mapa">Mapa</a>
-        </nav>
-      </header>
-
-      <main className="login-container">
-        <section className="login-text">
-          <h2>MONITORAMENTO<br />LEGISLATIVO</h2>
-          <p>
-            Acesse sua conta para acompanhar proposições relacionadas à proteção
-            de crianças e adolescentes no ambiente digital.
-          </p>
-        </section>
-
+      <main className="login-shell">
         <section className="login-card">
-          <h3>Entrar</h3>
+          <h2>Fazer login</h2>
+          <p className="login-subtitle">Entre para continuar</p>
 
-          <form>
-            <label>Email</label>
-            <input type="email" placeholder="Digite seu email" />
+          <form onSubmit={handleLogin}>
+            <input type="email" placeholder="E-mail" required />
+            <input type="password" placeholder="Senha" required />
 
-            <label>Senha</label>
-            <input type="password" placeholder="Digite sua senha" />
 
             <button type="submit">Entrar</button>
           </form>
 
+          <div className="login-divider">
+            <span></span>
+            <p>ou</p>
+            <span></span>
+          </div>
+
+          <button
+            type="button"
+            className="visitor-button"
+            onClick={handleVisitorAccess}
+          >
+            Acessar como visitante
+          </button>
+
           <p className="register-text">
-            Ainda não tem conta? <a href="/cadastro">Cadastre-se</a>
+            Não possui conta? <a href="/cadastro">Cadastre-se</a>
           </p>
+        </section>
+
+        <section className="login-mascot">
+          <img src={mascot} alt="Mascote Guard.IA" />
+        </section>
+
+        <section className="login-brand">
+          <h1>GUARD.IA</h1>
         </section>
       </main>
     </div>
