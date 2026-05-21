@@ -1,11 +1,10 @@
 import json
 import re
 import unicodedata
+import time
 from pathlib import Path
 
 # Configuração de caminhos dinâmicos
-# Estamos em grupo5-guard.ia-backend/app/filtro/
-# BASE_DIR deve ser grupo5-guard.ia-backend/
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = BASE_DIR / "data"
 DADOS_BRUTOS_FILE = DATA_DIR / "dados_brutos.json"
@@ -23,79 +22,90 @@ def normalizar(texto: str) -> str:
     """
     Normalização padrão Guard.IA: minúsculas + remoção de acentos.
     """
-    if not texto:
+    if not texto or not isinstance(texto, str):
         return ""
-    # 1. Minúsculas
-    texto = texto.lower()
-    # 2. Decompor caracteres acentuados (NFD)
-    texto = unicodedata.normalize("NFD", texto)
-    # 3. Filtrar apenas caracteres que não sejam marcas de acentuação (Mn)
+    # 1. Minúsculas e Decomposição NFD
+    texto = unicodedata.normalize("NFD", texto.lower())
+    # 2. Filtrar apenas caracteres que não sejam marcas de acentuação
     texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
     return texto
 
-# Pré-processamento Sênior: 
-# 1. Normalizamos as palavras-chave uma única vez no carregamento do módulo.
-PALAVRAS_CHAVE_NORM = [normalizar(p) for p in PALAVRAS_CHAVE]
-
-# 2. Criamos um Regex compilado com bordas de palavra (\b) para evitar falsos positivos.
-# Ex: "menor" não deve casar com "pormenorizado".
+# Pré-processamento Sênior das Palavras-Chave
+PALAVRAS_CHAVE_NORM = sorted([normalizar(p) for p in PALAVRAS_CHAVE], key=len, reverse=True)
+# Regex com bordas de palavra para evitar casamentos parciais (ex: "menor" vs "pormenorizado")
 REGEX_FILTRO = re.compile(r"\b(" + "|".join(re.escape(p) for p in PALAVRAS_CHAVE_NORM) + r")\b")
 
-def contem_palavra_chave(ementa: str) -> bool:
+def analisar_relevancia(ementa: str):
     """
-    Verifica se a ementa contém alguma palavra-chave usando Regex otimizado.
+    Analisa a ementa e retorna (bool: relevante, list: termos_encontrados).
     """
     if not ementa:
-        return False
+        return False, []
+    
     ementa_norm = normalizar(ementa)
-    return bool(REGEX_FILTRO.search(ementa_norm))
+    matches = REGEX_FILTRO.findall(ementa_norm)
+    
+    return len(matches) > 0, list(set(matches))
 
 def filtrar_proposicoes(proposicoes: list[dict]) -> list[dict]:
     """
-    Filtra a lista de dicionários baseada na ementa.
+    Filtra a lista de dicionários e enriquece com metadados de filtragem.
     """
-    if not proposicoes:
-        return []
-    
-    return [p for p in proposicoes if contem_palavra_chave(p.get("ementa", ""))]
+    filtrados = []
+    for p in proposicoes:
+        ementa = p.get("ementa", "")
+        relevante, termos = analisar_relevancia(ementa)
+        
+        if relevante:
+            # Mantemos a imutabilidade do dado original, mas adicionamos metadados de auditoria
+            p_filtrada = p.copy()
+            p_filtrada["termos_chave"] = termos
+            filtrados.append(p_filtrada)
+            
+    return filtrados
 
 def iniciar_filtragem():
     """
-    Orquestra a leitura, filtragem e persistência.
-    Garante que a etapa de Filtro seja independente (Pipes and Filters).
+    Orquestra a etapa de Filtro seguindo a arquitetura Pipes and Filters.
     """
-    print(f"🔍 Iniciando etapa de Filtro...")
-    print(f"📂 Lendo dados brutos de: {DADOS_BRUTOS_FILE}")
-
+    start_time = time.time()
+    print(f"--- 🔍 Módulo de Filtro: Iniciando Processamento ---")
+    
     if not DADOS_BRUTOS_FILE.exists():
-        print(f"❌ Erro: Arquivo de dados brutos não encontrado em {DADOS_BRUTOS_FILE}")
-        return
+        print(f"⚠️ Erro: Fonte de dados brutos não encontrada: {DADOS_BRUTOS_FILE}")
+        return False
 
     try:
         with open(DADOS_BRUTOS_FILE, "r", encoding="utf-8") as f:
             proposicoes = json.load(f)
+    except json.JSONDecodeError:
+        print(f"❌ Erro: Arquivo {DADOS_BRUTOS_FILE} corrompido.")
+        return False
     except Exception as e:
-        print(f"❌ Erro ao carregar dados brutos: {e}")
-        return
+        print(f"❌ Erro inesperado ao carregar dados: {e}")
+        return False
 
-    total_inicial = len(proposicoes)
-    print(f"📊 Total de registros para processar: {total_inicial}")
+    total_brutos = len(proposicoes)
+    print(f"📊 Processando {total_brutos} registros...")
 
-    # Processamento
-    filtrados = filtrar_proposicoes(proposicoes)
-    total_final = len(filtrados)
+    # Aplicação do Filtro
+    dados_filtrados = filtrar_proposicoes(proposicoes)
+    total_filtrados = len(dados_filtrados)
 
     # Persistência
     try:
         DATA_DIR.mkdir(parents=True, exist_ok=True)
         with open(DADOS_FILTRADOS_FILE, "w", encoding="utf-8") as f:
-            json.dump(filtrados, f, ensure_ascii=False, indent=4)
+            json.dump(dados_filtrados, f, ensure_ascii=False, indent=4)
         
-        print(f"✅ Filtro concluído com sucesso!")
-        print(f"🎯 Relevantes: {total_final} de {total_inicial} ({round(total_final/total_inicial*100, 2)}%)")
-        print(f"💾 Salvo em: {DADOS_FILTRADOS_FILE}")
+        duration = round(time.time() - start_time, 2)
+        print(f"✅ Filtro Finalizado em {duration}s")
+        print(f"🎯 Relevantes: {total_filtrados} | Descartados: {total_brutos - total_filtrados}")
+        print(f"💾 Resultado em: {DADOS_FILTRADOS_FILE}")
+        return True
     except Exception as e:
-        print(f"❌ Erro ao salvar dados filtrados: {e}")
+        print(f"❌ Erro ao persistir dados filtrados: {e}")
+        return False
 
 if __name__ == "__main__":
     iniciar_filtragem()
