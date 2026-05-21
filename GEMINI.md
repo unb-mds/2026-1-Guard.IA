@@ -91,9 +91,13 @@ Este é o schema padrão que todas as etapas devem respeitar. Nunca altere os no
   "partido": "A pesquisar",
   "estado": "A pesquisar",
   "casa": "Câmara",
-  "data_apresentacao": "2023-01-15"
+  "data_apresentacao": "2023-01-15",
+  "termos_chave": ["internet", "crianca"]
 }
 ```
+
+**Campos Adicionais (Auditoria):**
+- `termos_chave`: (Opcional) Lista de termos que causaram a captura no Filtro.
 
 **Prefixos obrigatórios do `id_externo`:**
 - Câmara: `CAMARA-{id}`
