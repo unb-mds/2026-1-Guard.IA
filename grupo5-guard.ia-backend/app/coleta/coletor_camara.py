@@ -1,9 +1,7 @@
 import requests
 import json
 import time
-import os
 from pathlib import Path
-from datetime import datetime
 
 # Configurações e Caminhos
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -22,13 +20,17 @@ def load_checkpoint():
             with open(CHECKPOINT_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception as e:
-            print(f"Erro ao carregar checkpoint: {e}")
+            print(f"❌ Erro ao carregar checkpoint: {e}")
     return {"last_date": START_DATE, "last_page": 1}
 
 def save_checkpoint(date, page):
     checkpoint = {"last_date": date, "last_page": page}
-    with open(CHECKPOINT_FILE, "w", encoding="utf-8") as f:
-        json.dump(checkpoint, f, indent=4)
+    try:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        with open(CHECKPOINT_FILE, "w", encoding="utf-8") as f:
+            json.dump(checkpoint, f, indent=4)
+    except Exception as e:
+        print(f"❌ Erro ao salvar checkpoint: {e}")
 
 def load_existing_ids():
     """Carrega apenas os IDs existentes para economizar memória."""
@@ -39,7 +41,7 @@ def load_existing_ids():
             dados = json.load(f)
             return {p["id_externo"] for p in dados}
     except Exception as e:
-        print(f"Erro ao carregar IDs existentes: {e}")
+        print(f"❌ Erro ao carregar IDs existentes: {e}")
     return set()
 
 def save_data(novas_proposicoes):
@@ -54,8 +56,12 @@ def save_data(novas_proposicoes):
     
     dados_completos.extend(novas_proposicoes)
     
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(dados_completos, f, ensure_ascii=False, indent=4)
+    try:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        with open(DATA_FILE, "w", encoding="utf-8") as f:
+            json.dump(dados_completos, f, ensure_ascii=False, indent=4)
+    except Exception as e:
+        print(f"❌ Erro ao salvar dados brutos: {e}")
 
 def format_proposicao(prop, detalhes):
     return {

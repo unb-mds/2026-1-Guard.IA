@@ -33,13 +33,15 @@ O sistema é focado em cidadãos, pesquisadores, jornalistas e profissionais int
 10. O arquivo `dados_filtrados.json` é de responsabilidade exclusiva da etapa de Filtro.
 11. O banco de dados PostgreSQL é de responsabilidade exclusiva da etapa de Armazenamento.
 12. Nenhuma etapa deve ler ou escrever no arquivo de outra etapa diretamente.
+13. **SQLite é proibido no projeto.** O banco oficial é PostgreSQL. Todo código que usar SQLite deve ser adaptado.
 
 ### Acesso e Autenticação
 
-15. Usuários não cadastrados podem visualizar apenas um preview da página inicial (um gráfico ou trecho do mapa).
-16. Acesso completo ao dashboard, tabelas, filtros e demais páginas exige cadastro e login.
-17. Senhas nunca devem ser armazenadas em texto puro — sempre usar hash.
-18. O CRUD de usuários é responsabilidade exclusiva do módulo `back/armazenamento/usuarios.py`.
+14. Usuários não cadastrados podem visualizar apenas um preview da página inicial (um gráfico ou trecho do mapa).
+15. Acesso completo ao dashboard, tabelas, filtros e demais páginas exige cadastro e login.
+16. Senhas nunca devem ser armazenadas em texto puro — sempre usar hash via `bcrypt`.
+17. O CRUD de usuários é responsabilidade exclusiva do módulo `grupo5-guard.ia-backend/app/armazenamento/usuarios.py`.
+18. A pasta `app/usuario/` criada na branch `feat/crud-usuario` deve ser migrada para `app/armazenamento/usuarios.py` e adaptada para PostgreSQL.
 
 ### Ética e Transparência
 
@@ -53,20 +55,24 @@ O sistema é focado em cidadãos, pesquisadores, jornalistas e profissionais int
 | Parte | Tecnologia |
 |---|---|
 | Coleta, Filtro, Classificação, Armazenamento | Python 3.10+ |
-| Banco de dados | PostgreSQL |
+| Banco de dados | PostgreSQL (via Docker) |
+| ORM / Conector | psycopg2 (SQL puro — sem ORM) |
 | Dashboard | Streamlit + Plotly |
 | Autenticação | bcrypt (hash de senha) |
-| Infraestrutura | Docker + GitHub Actions |
+| Infraestrutura | Docker + Docker Compose + GitHub Actions |
 | Gerenciamento de dependências | pip + requirements.txt |
+
+> **Decisão arquitetural:** O projeto usa `psycopg2` com SQL puro, não SQLAlchemy. Isso é compatível com o pipeline de scripts Python e com o `schema.sql` já existente. Não introduzir ORM sem alinhamento explícito.
 
 ---
 
 ## Pipeline do Sistema
 
 ```
-coletor_camara.py  ──┐
-                     ├──► dados_brutos.json ──► filtro.py ──► dados_filtrados.json ──► armazenamento.py ──► PostgreSQL ──► dashboard.py
-coletor_senado.py  ──┘
+grupo5-guard.ia-backend/app/coleta/
+  coletor_camara.py  ──┐
+                       ├──► data/dados_brutos.json ──► filtro.py ──► data/dados_filtrados.json ──► armazenamento.py ──► PostgreSQL ──► dashboard
+  coletor_senado.py  ──┘
 ```
 
 Cada etapa recebe um input, processa e entrega um output. Nunca pula etapas.
@@ -95,35 +101,39 @@ Este é o schema padrão que todas as etapas devem respeitar. Nunca altere os no
 
 ---
 
-## Estrutura de Pastas
+## Estrutura Real de Pastas
 
 ```
-/
-├── back/
-│   ├── coleta/
-│   │   ├── __init__.py
-│   │   ├── coletor_camara.py
-│   │   └── coletor_senado.py
-│   ├── filtro/
-│   │   ├── __init__.py
-│   │   └── filtro.py
-│   ├── classificacao/
-│   │   ├── __init__.py
-│   │   └── classificador.py
-│   └── armazenamento/
-│       ├── __init__.py
-│       ├── armazenamento.py   ← proposições
-│       └── usuarios.py        ← CRUD de usuários
-├── front/
-│   └── dashboard.py
-├── data/
-│   ├── dados_brutos.json
-│   ├── dados_filtrados.json
-│   ├── checkpoint_camara.json
-│   └── checkpoint_senado.json
-├── docs/
-│   └── arquitetura.md
-└── requirements.txt
+2026-1-Guard.IA/
+├── .github/workflows/              # Automação e métricas
+├── dashboard/                      # Ignorar — versão antiga
+├── docs/                           # Documentação das sprints
+├── grupo5-guard.ia/                # Frontend estático (Next.js/React)
+├── grupo5-guard.ia-backend/        # BACKEND — pipeline de dados
+│   ├── app/
+│   │   ├── armazenamento/
+│   │   │   ├── database.py         # Conexão PostgreSQL via psycopg2
+│   │   │   ├── models.py           # Definições de tabelas
+│   │   │   ├── schema.sql          # SQL de criação das tabelas
+│   │   │   ├── armazenamento.py    # Inserção de proposições
+│   │   │   └── usuarios.py         # CRUD de usuários ← destino oficial
+│   │   ├── classificacao/
+│   │   ├── coleta/
+│   │   │   ├── coletor_camara.py
+│   │   │   └── coletor_senado.py
+│   │   ├── filtro/
+│   │   │   └── filtro.py
+│   │   └── main.py
+│   ├── data/                       # JSONs gerados localmente — nunca versionar
+│   │   ├── dados_brutos.json
+│   │   ├── dados_filtrados.json
+│   │   ├── checkpoint_camara.json
+│   │   └── checkpoint_senado.json
+│   └── docker-compose.yml
+└── grupo5-guard.ia-frontend/       # FRONTEND — Dashboard Release 1
+    └── dashboard/
+        ├── app.py
+        └── pages/
 ```
 
 ---
@@ -132,7 +142,6 @@ Este é o schema padrão que todas as etapas devem respeitar. Nunca altere os no
 
 ### Python
 - Versão: 3.10+
-- Linter: nenhum definido ainda
 - Funções nomeadas em `snake_case`
 - Constantes em `UPPER_SNAKE_CASE`
 - Classes em `PascalCase`
@@ -157,17 +166,20 @@ Este é o schema padrão que todas as etapas devem respeitar. Nunca altere os no
 
 ### Armazenamento
 - Banco: PostgreSQL
-- Conector Python: `psycopg2`
+- Conector: `psycopg2` — SQL puro, sem ORM
+- Configuração de conexão via variáveis de ambiente (`.env`) — nunca hardcoded
 - Sempre verificar duplicatas por `id_externo` antes de inserir
-- Docker obrigatório para subir o banco localmente
+- Docker obrigatório para subir o banco localmente via `docker-compose.yml`
 
 ### Usuários
-- Arquivo responsável: `back/armazenamento/usuarios.py`
+- Arquivo responsável: `grupo5-guard.ia-backend/app/armazenamento/usuarios.py`
+- Banco: PostgreSQL — nunca SQLite
 - Senhas armazenadas com hash via `bcrypt`
 - Funções obrigatórias: `criar_usuario`, `buscar_por_email`, `verificar_senha`, `deletar_usuario`
 - Nunca retornar `senha_hash` em consultas de listagem
 
 ### Dashboard
+- Localização: `grupo5-guard.ia-frontend/dashboard/`
 - Framework: Streamlit
 - Gráficos: Plotly
 - Sempre usar `@st.cache_data` em funções que consultam o banco
@@ -206,8 +218,10 @@ CATEGORIAS = {
 
 ## Schema do Banco de Dados (PostgreSQL)
 
+Localização do arquivo: `grupo5-guard.ia-backend/app/armazenamento/schema.sql`
+
 ```sql
-CREATE TABLE proposicoes (
+CREATE TABLE IF NOT EXISTS proposicoes (
     id                SERIAL PRIMARY KEY,
     id_externo        VARCHAR(50) UNIQUE,
     ementa            TEXT,
@@ -221,7 +235,7 @@ CREATE TABLE proposicoes (
     coletado_em       TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE usuarios (
+CREATE TABLE IF NOT EXISTS usuarios (
     id                SERIAL PRIMARY KEY,
     nome              VARCHAR(100) NOT NULL,
     email             VARCHAR(150) UNIQUE NOT NULL,
@@ -241,9 +255,10 @@ CREATE TABLE usuarios (
   - `fix/<nome>`
   - `chore/<nome>`
   - `docs/<nome>`
-- Mensagens de commit: Conventional Commits — `feat(coleta): descrição`, `fix(filtro): descrição`
+- Mensagens de commit: Conventional Commits — `feat(armazenamento): descrição`, `fix(filtro): descrição`
 - Nunca versionar `data/*.json` — arquivos gerados localmente
 - Nunca versionar `__pycache__/`
+- Nunca versionar `.env`
 
 ---
 
@@ -254,8 +269,9 @@ Funcionalidades obrigatórias para a Release 1:
 - [x] Coleta da Câmara funcionando com paginação e checkpoint
 - [x] Coleta do Senado funcionando com cursor por data e checkpoint
 - [ ] Filtro por palavras-chave com normalização de texto
-- [ ] Armazenamento no PostgreSQL — tabela `proposicoes` com deduplicação
-- [ ] CRUD de usuários — tabela `usuarios` com hash de senha
+- [ ] `schema.sql` atualizado com tabelas `proposicoes` e `usuarios`
+- [ ] Armazenamento no PostgreSQL — inserção de proposições com deduplicação
+- [ ] CRUD de usuários em PostgreSQL com hash de senha
 - [ ] Páginas de login e cadastro integradas com o banco
 - [ ] Página inicial com preview para usuário não logado
 - [ ] Dashboard básico com pelo menos 1 visualização para usuário logado
@@ -282,15 +298,18 @@ Funcionalidades obrigatórias para a Release 1:
 
 A menos que explicitamente solicitado, **não faça**:
 
+- Usar SQLite em qualquer parte do projeto
+- Usar SQLAlchemy ou qualquer ORM — o projeto usa psycopg2 com SQL puro
 - Alterar o schema JSON do contrato de dados sem alinhar todas as etapas
 - Adicionar dependências externas sem necessidade real
 - Criar lógica de negócio no Dashboard (só visualização)
 - Acessar o banco diretamente na etapa de Coleta ou Filtro
 - Salvar dados por item dentro de loops (sempre batch saving)
-- Fazer chamadas extras à API por proposição (fetch_detalhes está removido intencionalmente)
+- Fazer chamadas extras à API por proposição
 - Modificar arquivos de outras etapas sem alinhamento com o responsável
 - Armazenar senhas em texto puro
 - Retornar `senha_hash` em consultas de listagem de usuários
+- Hardcodar credenciais de banco no código — sempre usar `.env`
 
 ---
 
@@ -301,5 +320,6 @@ Este arquivo deve ser atualizado sempre que:
 - Uma decisão técnica importante for tomada
 - Uma convenção nova for estabelecida
 - O schema de dados for alterado
+- A estrutura de pastas mudar
 
 Nunca duplicar informações já existentes. Sempre evolução incremental.

@@ -15,4 +15,5 @@ plotly==6.7.0
 # --- UTILS ---
 anyio==4.13.0
 click==8.3.3
+bcrypt==4.2.1
 colorama==0.4.6
