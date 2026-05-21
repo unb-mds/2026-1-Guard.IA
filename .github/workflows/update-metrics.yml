@@ -1,0 +1,45 @@
+name: Update Productivity Metrics
+
+on:
+  push:
+    branches:
+      - dev-projeto
+      - estudos
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install PyGithub
+
+      - name: Run metrics collector
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python .github/workflows/metrics/collect_metrics.py
+
+      - name: Commit metrics.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/productivity/metrics.json
+          git diff --cached --quiet || git commit -m "chore: update productivity metrics [skip ci]"
+          git push
