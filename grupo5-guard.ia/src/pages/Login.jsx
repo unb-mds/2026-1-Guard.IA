@@ -1,22 +1,26 @@
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import mascot from "../assets/mascot.png";
+import mascote2 from "../assets/mascote2.png";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   function handleLogin(event) {
     event.preventDefault();
     alert("Login enviado!");
   }
 
   function handleVisitorAccess() {
-    alert("Acessando como visitante...");
+    navigate("/"); 
   }
+  
 
   return (
     <div className="login-page">
       <main className="login-shell">
         <section className="login-card">
           <h2>Fazer login</h2>
-          <p className="login-subtitle">Entre para continuar</p>
+          <p className="login-subtitle"></p>
 
           <form onSubmit={handleLogin}>
             <input type="email" placeholder="E-mail" required />
@@ -45,8 +49,8 @@ export default function Login() {
           </p>
         </section>
 
-        <section className="login-mascot">
-          <img src={mascot} alt="Mascote Guard.IA" />
+        <section className="login-mascote2">
+          <img src={mascote2} alt="Mascote Guard.IA" />
         </section>
 
         <section className="login-brand">

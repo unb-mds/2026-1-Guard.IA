@@ -22,7 +22,7 @@ body {
 .home-header {
   height: 64px;
   background: #006b4f;
-  color: white;
+  color:#F6F3E4;
   padding: 0 48px;
   display: flex;
   justify-content: space-between;
@@ -33,7 +33,7 @@ body {
   margin: 0;
   font-size: 26px;
   font-weight: 900;
-  color: #020202;
+  color: #F6F3E4;
 }
 
 .home-header nav {
