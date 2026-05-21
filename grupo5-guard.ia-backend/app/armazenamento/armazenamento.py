@@ -1,51 +1,47 @@
 import json
 import os
-from .database import execute_query
+from pathlib import Path
+from .database import execute_batch
 
-def carregar_dados_filtrados(caminho_arquivo: str):
+# Configuração de caminhos dinâmicos
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+DATA_DIR = BASE_DIR / "data"
+DADOS_FILTRADOS_FILE = DATA_DIR / "dados_filtrados.json"
+
+def carregar_dados_filtrados():
     """Lê o arquivo JSON de dados filtrados."""
-    if not os.path.exists(caminho_arquivo):
-        print(f"Erro: Arquivo {caminho_arquivo} não encontrado.")
+    if not DADOS_FILTRADOS_FILE.exists():
+        print(f"Erro: Arquivo {DADOS_FILTRADOS_FILE} não encontrado.")
         return []
     
     try:
-        with open(caminho_arquivo, 'r', encoding='utf-8') as f:
+        with open(DADOS_FILTRADOS_FILE, 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
         print(f"Erro ao ler JSON: {e}")
         return []
 
-def proposicao_existe(id_externo: str) -> bool:
-    """Verifica se uma proposição já existe no banco pelo id_externo."""
-    query = "SELECT 1 FROM proposicoes WHERE id_externo = %s LIMIT 1;"
-    result = execute_query(query, (id_externo,), fetch=True)
-    return len(result) > 0
-
 def salvar_proposicoes(proposicoes: list):
     """
-    Salva uma lista de proposições no banco de dados.
-    Implementa deduplicação obrigatória por id_externo.
+    Salva uma lista de proposições no banco de dados em lote.
+    Utiliza ON CONFLICT DO NOTHING para deduplicação no lado do banco.
     """
-    total_inseridas = 0
-    total_pulas = 0
-    
+    if not proposicoes:
+        print("Nenhuma proposição para salvar.")
+        return 0
+
     query = """
         INSERT INTO proposicoes (
             id_externo, ementa, autor, partido, estado, 
             casa, data_apresentacao, categoria, confianca
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
+        ) VALUES %s
+        ON CONFLICT (id_externo) DO NOTHING;
     """
     
-    for p in proposicoes:
-        id_ext = p.get('id_externo')
-        
-        # Deduplicação obrigatória
-        if proposicao_existe(id_ext):
-            total_pulas += 1
-            continue
-            
-        params = (
-            id_ext,
+    # Prepara os parâmetros para o execute_values
+    params_list = [
+        (
+            p.get('id_externo'),
             p.get('ementa'),
             p.get('autor', 'A pesquisar'),
             p.get('partido', 'A pesquisar'),
@@ -55,23 +51,21 @@ def salvar_proposicoes(proposicoes: list):
             p.get('categoria'),
             p.get('confianca')
         )
-        
-        try:
-            execute_query(query, params)
-            total_inseridas += 1
-        except Exception as e:
-            print(f"Erro ao inserir proposição {id_ext}: {e}")
-            
-    print(f"Processamento concluído: {total_inseridas} inseridas, {total_pulas} duplicadas puladas.")
-    return total_inseridas
+        for p in proposicoes
+    ]
+    
+    try:
+        execute_batch(query, params_list)
+        print(f"Processamento concluído. Tentativa de inserção de {len(proposicoes)} registros enviada.")
+        return len(proposicoes)
+    except Exception as e:
+        print(f"Erro crítico no armazenamento em lote: {e}")
+        return 0
 
 def iniciar_armazenamento():
     """Função principal para rodar a etapa de armazenamento."""
-    # Caminho definido no GEMINI.md
-    caminho_json = os.path.join("grupo5-guard.ia-backend", "data", "dados_filtrados.json")
-    
-    print(f"Iniciando armazenamento a partir de: {caminho_json}")
-    dados = carregar_dados_filtrados(caminho_json)
+    print(f"Iniciando armazenamento a partir de: {DADOS_FILTRADOS_FILE}")
+    dados = carregar_dados_filtrados()
     
     if dados:
         salvar_proposicoes(dados)

@@ -42,26 +42,47 @@ def release_connection(conn):
 
 def execute_query(query, params=None, fetch=False):
     """
-    Executa uma query SQL de forma segura.
-    Se fetch=True, retorna os resultados.
+    Executa uma query SQL de forma segura com suporte a transações.
     """
     conn = get_connection()
     if not conn:
         return None
     
-    # Garante que as mudanças sejam visíveis imediatamente
-    conn.autocommit = True
+    # Desativa autocommit para controle manual de transação
+    conn.autocommit = False
     
     try:
         with conn.cursor() as cursor:
             cursor.execute(query, params or ())
+            result = None
             if fetch:
                 result = cursor.fetchall()
-                return result
+            conn.commit()
+            return result
     except Exception as e:
-        # conn.rollback()  # Não necessário com autocommit=True
-        print(f"ERRO SQL: {e}\nQuery: {query}\nParams: {params}")
+        conn.rollback()
+        print(f"ERRO SQL (Rollback executado): {e}\nQuery: {query}")
         raise e
     finally:
         release_connection(conn)
-    return None
+
+def execute_batch(query, params_list):
+    """
+    Executa uma inserção em lote para alta performance.
+    """
+    conn = get_connection()
+    if not conn:
+        return
+    
+    conn.autocommit = False
+    try:
+        from psycopg2.extras import execute_values
+        with conn.cursor() as cursor:
+            execute_values(cursor, query, params_list)
+            conn.commit()
+    except Exception as e:
+        conn.rollback()
+        print(f"ERRO SQL Batch (Rollback executado): {e}")
+        raise e
+    finally:
+        release_connection(conn)
