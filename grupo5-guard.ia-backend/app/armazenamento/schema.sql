@@ -2,20 +2,11 @@
 -- Sistema de Monitoramento Legislativo
 -- Módulo: Armazenamento
 -- Arquivo: schema.sql
--- Descrição: Criação do banco de dados e tabela principal
+-- Descrição: Criação do banco de dados e tabelas
 -- ============================================================
 
--- Cria o banco (rodar separado se necessário)
--- CREATE DATABASE monitoramento_legislativo;
-
--- Conectar ao banco antes de rodar o restante:
--- \c monitoramento_legislativo
-
--- Remove a tabela se já existir (útil durante desenvolvimento)
-DROP TABLE IF EXISTS proposicoes;
-
--- Criação da tabela principal
-CREATE TABLE proposicoes (
+-- Criação da tabela de proposições
+CREATE TABLE IF NOT EXISTS proposicoes (
     id                 SERIAL PRIMARY KEY,
     id_externo         VARCHAR(50)  NOT NULL UNIQUE,
     ementa             TEXT         NOT NULL,
@@ -29,8 +20,18 @@ CREATE TABLE proposicoes (
     coletado_em        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Criação da tabela de usuários
+CREATE TABLE IF NOT EXISTS usuarios (
+    id                SERIAL PRIMARY KEY,
+    nome              VARCHAR(100) NOT NULL,
+    email             VARCHAR(150) UNIQUE NOT NULL,
+    senha_hash        VARCHAR(255) NOT NULL,
+    criado_em         TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Índices para acelerar as consultas do Dashboard
-CREATE INDEX idx_categoria       ON proposicoes (categoria);
-CREATE INDEX idx_casa            ON proposicoes (casa);
-CREATE INDEX idx_data            ON proposicoes (data_apresentacao);
-CREATE INDEX idx_confianca       ON proposicoes (confianca);
+CREATE INDEX IF NOT EXISTS idx_categoria       ON proposicoes (categoria);
+CREATE INDEX IF NOT EXISTS idx_casa            ON proposicoes (casa);
+CREATE INDEX IF NOT EXISTS idx_data            ON proposicoes (data_apresentacao);
+CREATE INDEX IF NOT EXISTS idx_confianca       ON proposicoes (confianca);
+CREATE INDEX IF NOT EXISTS idx_email_usuario   ON usuarios (email);
