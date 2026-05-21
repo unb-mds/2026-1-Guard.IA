@@ -18,3 +18,38 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+# Node / Next
+node_modules
+.next
+
+# Python
+venv
+__pycache__/
+*.pyc
+
+# Env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+ENV/
+
+# Streamlit
+.streamlit/config.toml
+
+# OS e IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Dados (Opcional: ignore se os JSONs ficarem muito grandes)
+# grupo5-guard.ia/data/*.json
