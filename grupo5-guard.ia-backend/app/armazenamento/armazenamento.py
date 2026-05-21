@@ -69,9 +69,10 @@ def iniciar_armazenamento():
     dados = carregar_dados_filtrados()
     
     if dados:
-        salvar_proposicoes(dados)
+        return salvar_proposicoes(dados) > 0
     else:
         print("ℹ️ Nenhum dado para processar.")
+        return True
 
 if __name__ == "__main__":
     iniciar_armazenamento()

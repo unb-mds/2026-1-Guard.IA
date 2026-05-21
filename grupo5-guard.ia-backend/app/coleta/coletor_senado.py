@@ -165,6 +165,7 @@ def coletar():
         print(f"❌ Erro crítico durante a coleta do Senado: {e}")
     finally:
         print(f"✨ Coleta Senado encerrada.")
+        return True
 
 if __name__ == "__main__":
     coletar()
