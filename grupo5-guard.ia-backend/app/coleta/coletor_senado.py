@@ -162,10 +162,11 @@ def coletar():
     except requests.exceptions.RequestException as e:
         print(f"❌ Erro na requisição à API do Senado: {e}")
     except Exception as e:
-        print(f"❌ Erro crítico durante a coleta do Senado: {e}")
+        print(f"\n❌ Erro crítico durante a coleta no Senado: {e}")
     finally:
         print(f"✨ Coleta Senado encerrada.")
-        return True
 
-if __name__ == "__main__":
+    return True
+
+    if __name__ == "__main__":
     coletar()

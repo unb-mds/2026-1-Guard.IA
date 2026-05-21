@@ -150,7 +150,8 @@ def coletar():
         print(f"\n❌ Erro crítico durante a coleta: {e}")
     finally:
         print(f"✨ Coleta encerrada.")
-        return True
+    
+    return True
 
 if __name__ == "__main__":
     coletar()

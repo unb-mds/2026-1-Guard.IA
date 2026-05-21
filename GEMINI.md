@@ -272,13 +272,15 @@ Funcionalidades obrigatórias para a Release 1:
 
 - [x] Coleta da Câmara funcionando com paginação e checkpoint
 - [x] Coleta do Senado funcionando com cursor por data e checkpoint
-- [ ] Filtro por palavras-chave com normalização de texto
-- [ ] `schema.sql` atualizado com tabelas `proposicoes` e `usuarios`
-- [ ] Armazenamento no PostgreSQL — inserção de proposições com deduplicação
-- [ ] CRUD de usuários em PostgreSQL com hash de senha
-- [ ] Páginas de login e cadastro integradas com o banco
-- [ ] Página inicial com preview para usuário não logado
-- [ ] Dashboard básico com pelo menos 1 visualização para usuário logado
+- [x] Filtro por palavras-chave com normalização de texto
+- [x] `schema.sql` atualizado com tabelas `proposicoes` e `usuarios`
+- [x] Armazenamento no PostgreSQL — inserção de proposições com deduplicação
+- [x] CRUD de usuários em PostgreSQL com hash de senha
+- [x] Integração total do pipeline via `main.py` (Coleta -> Filtro -> Banco)
+- [ ] Servidor FastAPI expondo rotas de autenticação e dados (Em andamento)
+- [ ] Páginas de login e cadastro integradas com a API (Frontend)
+- [ ] Página inicial com preview para usuário não logado (Frontend)
+- [ ] Dashboard básico com visualização de dados do banco (Frontend)
 
 **Fora do escopo da Release 1:**
 - Classificação por IA (Release 2)
