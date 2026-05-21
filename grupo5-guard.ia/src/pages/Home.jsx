@@ -6,18 +6,18 @@ import claraImg from "../assets/clara.jpeg";
 import lucasImg from "../assets/lucas.jpeg";
 import joaoImg from "../assets/joao.jpeg";
 import otavioImg from "../assets/otavio.jpeg";
-import gabriellaImg from "../assets/gabriella.JPG";
+import gabriellaImg from "../assets/gabriella.jpeg";
 import edvaldoImg from "../assets/edvaldo.jpeg";
 
 export default function Home() {
   const teamMembers = [
-    { name: "Clara", img: claraImg, github: "claranunes22" },
-    { name: "Edvaldo", img: edvaldoImg, github: "PajeMurici-dev" },
+   { name: "Clara", img: claraImg, github: "claranunes22" },
+   { name: "Edvaldo", img: edvaldoImg, github: "PajeMurici-dev" },
     { name: "Lucas", img: lucasImg, github: "LucasNF-Dev" },
-    { name: "João Paulo", img: joaoImg, github: "AlmondHare" },
-    { name: "Otávio", img: otavioImg, github: "otaviotex" },
-    { name: "Gabriella", img: gabriellaImg, github: "gabiiverissimo-dev" },
-  ];
+   { name: "João Paulo", img: joaoImg, github: "AlmondHare" },
+   { name: "Otávio", img: otavioImg, github: "otaviotex" },
+     {name: "Gabriella", img: gabriellaImg, github: "gabiiverissimo-dev" },
+ ];
 
   return (
     <div className="home-page">
