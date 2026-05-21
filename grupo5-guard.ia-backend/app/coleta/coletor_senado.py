@@ -32,26 +32,38 @@ def save_checkpoint(date):
     with open(CHECKPOINT_FILE, "w", encoding="utf-8") as f:
         json.dump(checkpoint, f, indent=4)
 
-def load_data():
-    """Carrega dados existentes para evitar duplicatas."""
+def load_existing_ids():
+    """Carrega apenas os IDs existentes para economizar memória."""
+    if not DATA_FILE.exists() or DATA_FILE.stat().st_size == 0:
+        return set()
+    try:
+        with open(DATA_FILE, "r", encoding="utf-8") as f:
+            dados = json.load(f)
+            return {p["id_externo"] for p in dados}
+    except Exception as e:
+        print(f"Erro ao carregar IDs existentes: {e}")
+    return set()
+
+def save_data(novas_proposicoes):
+    """Lê o arquivo, adiciona os novos dados e salva tudo (Merge)."""
+    dados_completos = []
     if DATA_FILE.exists() and DATA_FILE.stat().st_size > 0:
         try:
             with open(DATA_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception as e:
-            print(f"Erro ao carregar dados existentes: {e}")
-    return []
-
-def save_data(proposicoes):
-    """Salva a lista completa de proposições em formato JSON."""
+                dados_completos = json.load(f)
+        except Exception:
+            dados_completos = []
+    
+    dados_completos.extend(novas_proposicoes)
+    
     with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(proposicoes, f, ensure_ascii=False, indent=4)
+        json.dump(dados_completos, f, ensure_ascii=False, indent=4)
 
 def format_materia(materia):
     """Padroniza o objeto da matéria conforme o contrato de dados Guard.IA."""
     return {
         "id_externo": f"SENADO-{materia.get('Codigo')}",
-        "ementa": materia.get("Ementa", "").strip(),
+        "ementa": (materia.get("Ementa") or "").strip(),
         "autor": "A pesquisar",
         "partido": "A pesquisar",
         "estado": "A pesquisar",
@@ -64,10 +76,11 @@ def coletar():
     checkpoint = load_checkpoint()
     data_cursor = checkpoint["last_date"]
     
-    proposicoes_existentes = load_data()
-    ids_existentes = {p["id_externo"] for p in proposicoes_existentes}
+    # Sênior: Carregamos apenas os IDs para o set de deduplicação (economiza RAM)
+    ids_existentes = load_existing_ids()
     
-    print(f"Iniciando coleta Senado a partir de {data_cursor}...")
+    print(f"🚀 Iniciando coleta Senado a partir de {data_cursor}...")
+    print(f"📊 Registros já conhecidos: {len(ids_existentes)}")
     
     try:
         while True:
@@ -83,14 +96,14 @@ def coletar():
             materias_wrapper = pesquisa.get("Materias", {})
             
             if not materias_wrapper:
-                print("Fim da coleta. Nenhuma matéria nova encontrada no Senado.")
+                print("🏁 Fim da coleta. Nenhuma matéria nova encontrada no Senado.")
                 break
 
             materias = materias_wrapper.get("Materia", [])
             if isinstance(materias, dict):
                 materias = [materias]
 
-            novos_no_lote = 0
+            proposicoes_do_lote = []
             ultima_data_lote = data_cursor
 
             for mat in materias:
@@ -103,29 +116,33 @@ def coletar():
                     continue
                 
                 proposicao_formatada = format_materia(mat)
-                proposicoes_existentes.append(proposicao_formatada)
+                proposicoes_do_lote.append(proposicao_formatada)
                 ids_existentes.add(id_ext)
                 
                 # Atualiza a data para o cursor (formato YYYYMMDD)
                 data_ap = mat.get("Data", "")
                 if data_ap:
                     ultima_data_lote = data_ap.replace("-", "")
-                
-                novos_no_lote += 1
 
-            if novos_no_lote == 0:
-                print("Nenhum registro novo neste lote. Encerrando loop.")
-                break
+            if not proposicoes_do_lote:
+                print("ℹ️ Nenhum registro novo neste lote. Avançando data...")
+                try:
+                    dt = datetime.strptime(data_cursor, "%Y%m%d")
+                    from datetime import timedelta
+                    data_cursor = (dt + timedelta(days=1)).strftime("%Y%m%d")
+                    if dt > datetime.now():
+                        break
+                    continue
+                except:
+                    break
 
-            # Batch Saving: Salva ao final de cada lote processado
-            save_data(proposicoes_existentes)
+            # Batch Saving: Salva apenas os novos registros do lote
+            save_data(proposicoes_do_lote)
             save_checkpoint(ultima_data_lote)
-            print(f"Lote processado: {novos_no_lote} novas matérias. Próximo cursor: {ultima_data_lote}")
+            print(f"✅ Lote processado: {len(proposicoes_do_lote)} novas matérias. Próximo cursor: {ultima_data_lote}")
             
-            # Se o lote veio completo e não houver mais o que puxar, o próximo loop quebrará no 'novos_no_lote == 0'
-            # Mas para evitar loop infinito na mesma data se a API sempre retornar o mesmo lote:
+            # Prevenção de loop infinito na mesma data
             if ultima_data_lote == data_cursor:
-                # Se a data não avançou, tentamos forçar o avanço de um dia para o próximo cursor
                 try:
                     dt = datetime.strptime(data_cursor, "%Y%m%d")
                     from datetime import timedelta
@@ -136,11 +153,11 @@ def coletar():
                 data_cursor = ultima_data_lote
 
     except requests.exceptions.RequestException as e:
-        print(f"Erro na requisição à API do Senado: {e}")
+        print(f"❌ Erro na requisição à API do Senado: {e}")
     except Exception as e:
-        print(f"Erro crítico durante a coleta do Senado: {e}")
+        print(f"❌ Erro crítico durante a coleta do Senado: {e}")
     finally:
-        print(f"Coleta Senado encerrada. Total de registros: {len(proposicoes_existentes)}")
+        print(f"✨ Coleta Senado encerrada.")
 
 if __name__ == "__main__":
     coletar()
