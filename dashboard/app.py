@@ -105,20 +105,52 @@ st.markdown("""
 # =============================
 # CARREGAMENTO
 # =============================
+import os
+import psycopg2
+from dotenv import load_dotenv
+
+load_dotenv()
+
 @st.cache_data
 def carregar_dados_csv():
-    return pd.read_csv("dashboard/data_fake.csv")
+    # Fallback caso o banco falhe ou não tenha dados
+    try:
+        return pd.read_csv("dashboard/data_fake.csv")
+    except:
+        return pd.DataFrame()
 
-
+@st.cache_data
 def carregar_dados_banco():
     """
-    Função preparada para futura integração com PostgreSQL.
+    Busca as proposições reais do banco de dados PostgreSQL.
     """
-    pass
+    try:
+        conn = psycopg2.connect(
+            user=os.getenv("DB_USER", "postgres"),
+            password=os.getenv("DB_PASSWORD", "postgres"),
+            host=os.getenv("DB_HOST", "localhost"),
+            port=os.getenv("DB_PORT", "5432"),
+            database=os.getenv("DB_NAME", "monitoramento_legislativo")
+        )
+        query = "SELECT id_externo, ementa, autor, partido, estado, casa, data_apresentacao, categoria, confianca FROM proposicoes"
+        df_banco = pd.read_sql(query, conn)
+        conn.close()
+        return df_banco
+    except Exception as e:
+        st.sidebar.error(f"Erro ao conectar no banco: {e}")
+        return pd.DataFrame()
 
+# Tenta carregar do banco primeiro, se vazio, usa o fake
+df = carregar_dados_banco()
+if df.empty:
+    st.sidebar.warning("Usando dados simulados (Banco de dados indisponível ou vazio).")
+    df = carregar_dados_csv()
 
-df = carregar_dados_csv()
-df["data_apresentacao"] = pd.to_datetime(df["data_apresentacao"])
+if not df.empty:
+    df["data_apresentacao"] = pd.to_datetime(df["data_apresentacao"])
+else:
+    st.error("Nenhum dado encontrado para exibição.")
+    st.stop()
 
 # =============================
 # TOPO IGUAL AO PROTÓTIPO
