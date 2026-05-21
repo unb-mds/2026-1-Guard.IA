@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS proposicoes (
     ementa             TEXT         NOT NULL,
     autor              VARCHAR(255),
     partido            VARCHAR(50),
-    estado             VARCHAR(2),
+    estado             VARCHAR(20),
     casa               VARCHAR(20)  CHECK (casa IN ('Câmara', 'Senado')),
     data_apresentacao  DATE,
     categoria          VARCHAR(100),
