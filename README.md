@@ -1,39 +1,101 @@
-# 🛡️ Guard.IA - Monitoramento Legislativo Inteligente
 
-O **Guard.IA** é uma plataforma de inteligência de dados projetada para monitorar, filtrar e classificar proposições legislativas da Câmara dos Deputados e do Senado Federal que impactam a proteção da infância e adolescência no ambiente digital.
+# Guard.IA
 
-Este projeto é desenvolvido na disciplina de **Métodos de Desenvolvimento de Software (MDS)** da Universidade de Brasília (UnB).
-
----
-
-## 🏗️ Arquitetura do Sistema
-
-O sistema segue o padrão **Pipes and Filters**, garantindo que cada etapa do processamento seja independente e escalável:
-
-1.  **Coleta:** Scripts que consomem APIs abertas da Câmara e do Senado.
-2.  **Filtro:** Processamento de limpeza e seleção por palavras-chave relevantes.
-3.  **Classificação (IA):** Categorização temática usando modelos de NLP (BERT).
-4.  **Armazenamento:** Persistência dos dados em banco de dados **PostgreSQL**.
-5.  **Visualização:** Dashboard interativo construído com **Streamlit**.
+Sistema de monitoramento legislativo voltado à proteção de crianças e adolescentes no ambiente digital.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Sobre o projeto
 
-* **Linguagem:** Python 3.10+
-* **Banco de Dados:** PostgreSQL (via Docker)
-* **Interface/BI:** Streamlit & Plotly
-* **IA/NLP:** Hugging Face (BERT-base-portuguese)
-* **Infraestrutura:** Docker & GitHub Actions
+O Guard.IA é um projeto desenvolvido na disciplina de **Métodos de Desenvolvimento de Software (MDS)** da Universidade de Brasília (UnB).
+
+O objetivo do sistema é acompanhar proposições legislativas relacionadas à proteção de crianças e adolescentes na internet, permitindo a coleta, filtragem, classificação, armazenamento e visualização de dados legislativos de forma organizada e acessível.
+
+O projeto busca apoiar análises sobre segurança digital, legislação e políticas públicas relacionadas ao ambiente virtual.
 
 ---
 
-## 📂 Estrutura de Pastas
+## Funcionalidades
+
+- Coleta de proposições legislativas
+- Filtragem por palavras-chave
+- Classificação por temas
+- Armazenamento dos dados
+- Dashboard de visualização
+- Métricas de produtividade da equipe
+- Publicação automática via GitHub Pages
+
+---
+
+## Tecnologias utilizadas
+
+### Front-end
+- HTML5
+- CSS3
+- JavaScript
+
+### Dashboard
+- Streamlit
+- Pandas
+- Plotly
+
+### Back-end e scripts
+- Python 3.11+
+
+### Controle de versão
+- Git
+- GitHub
+
+### Integração contínua
+- GitHub Actions
+
+---
+
+## Estrutura do projeto
 
 ```text
-/
-├── back/           # Lógica do Pipeline (Coleta, Filtro, Classificação, Banco)
-├── front/          # Interface do Usuário (Dashboard)
-├── data/           # Arquivos de intercâmbio (JSON) e Checkpoints
-├── docs/           # Documentação do projeto e ADRs
-└── GEMINI.md       # Constituição e Regras Técnicas do Projeto
+2026-1-Guard.IA
+│
+├── armazenamento/
+├── classificacao/
+├── coleta/
+├── dashboard/
+├── docs/
+├── filtro/
+├── scripts/
+├── .github/workflows/
+├── README.md
+
+## GitHub Pages
+
+O projeto utiliza GitHub Pages para publicação da documentação e dashboard de produtividade.
+
+## Acesso
+https://unb-mds.github.io/2026-1-Guard.IA/
+Dashboard de produtividade
+
+## A página de produtividade apresenta métricas reais do repositório, atualizadas automaticamente via GitHub Actions.
+
+## Métricas exibidas
+Total de commits
+Issues abertas e fechadas
+Pull requests
+Ranking de committers
+Evolução das sprints
+Métricas de produtividade da equipe
+Metodologia
+
+## O desenvolvimento segue práticas de:
+
+Scrum
+Git Flow
+Pull Requests
+Versionamento por branches
+Integração contínua
+Equipe
+
+Projeto desenvolvido pela equipe da disciplina MDS/UnB.
+
+## Licença
+
+Projeto acadêmico desenvolvido para fins educacionais.
