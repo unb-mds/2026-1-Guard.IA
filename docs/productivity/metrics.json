@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-05-16T18:58:42.551064+00:00",
+  "generated_at": "2026-05-21T13:46:04.686821+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
     "estudos"
   ],
   "summary": {
-    "total_commits": 220,
-    "open_issues": 10,
-    "closed_issues": 16,
+    "total_commits": 239,
+    "open_issues": 8,
+    "closed_issues": 24,
     "contributors": 9,
-    "open_prs": 0
+    "open_prs": 2
   },
   "branches_data": {
     "dev-projeto": {
       "branch": "dev-projeto",
-      "total_commits": 156,
+      "total_commits": 175,
       "commits_per_author": {
+        "gabiiverissimo-dev": 17,
+        "claranunes22": 94,
+        "github-actions[bot]": 6,
         "lucasnferreiradev-lang": 17,
-        "github-actions[bot]": 5,
         "LucasNF-Dev": 3,
-        "PajeMurici-dev": 19,
+        "PajeMurici-dev": 20,
         "AlmondHare": 6,
-        "gabiiverissimo-dev": 12,
-        "claranunes22": 82,
         "otaviotex": 10,
         "RochaCarla": 2
       },
@@ -57,6 +57,10 @@
           "count": 2
         },
         {
+          "date": "2026-04-25",
+          "count": 1
+        },
+        {
           "date": "2026-04-26",
           "count": 24
         },
@@ -70,11 +74,19 @@
         },
         {
           "date": "2026-04-29",
-          "count": 8
+          "count": 9
+        },
+        {
+          "date": "2026-04-30",
+          "count": 1
         },
         {
           "date": "2026-05-03",
-          "count": 2
+          "count": 5
+        },
+        {
+          "date": "2026-05-04",
+          "count": 6
         },
         {
           "date": "2026-05-05",
@@ -82,7 +94,7 @@
         },
         {
           "date": "2026-05-14",
-          "count": 1
+          "count": 2
         },
         {
           "date": "2026-05-15",
@@ -90,10 +102,60 @@
         },
         {
           "date": "2026-05-16",
+          "count": 3
+        },
+        {
+          "date": "2026-05-17",
           "count": 1
+        },
+        {
+          "date": "2026-05-21",
+          "count": 3
         }
       ],
       "recent_commits": [
+        {
+          "sha": "28b2399",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-05-21T13:45:22+00:00",
+          "message": "Merge pull request #37 from unb-mds/feat/home-page",
+          "char_count": 81
+        },
+        {
+          "sha": "0301570",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-05-21T13:44:40+00:00",
+          "message": "Merge pull request #33 from unb-mds/feat/login-page",
+          "char_count": 83
+        },
+        {
+          "sha": "715957d",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-05-21T13:44:18+00:00",
+          "message": "Merge branch 'dev-projeto' into feat/login-page",
+          "char_count": 47
+        },
+        {
+          "sha": "5443826",
+          "author": "claranunes22",
+          "date": "2026-05-17T17:29:42+00:00",
+          "message": "feat: adiciona página inicial",
+          "char_count": 29
+        },
+        {
+          "sha": "98561a1",
+          "author": "claranunes22",
+          "date": "2026-05-16T21:04:41+00:00",
+          "message": "feat: adiciona página de login",
+          "char_count": 30
+        },
+        {
+          "sha": "fbb7fe5",
+          "author": "github-actions[bot]",
+          "date": "2026-05-16T18:58:42+00:00",
+          "message": "chore: update productivity metrics [skip ci]",
+          "char_count": 44
+        },
         {
           "sha": "9a2fc80",
           "author": "lucasnferreiradev-lang",
@@ -207,6 +269,13 @@
           "char_count": 86
         },
         {
+          "sha": "e157443",
+          "author": "claranunes22",
+          "date": "2026-05-14T16:10:49+00:00",
+          "message": "docs: atualiza README do projeto",
+          "char_count": 32
+        },
+        {
           "sha": "f82919a",
           "author": "lucasnferreiradev-lang",
           "date": "2026-05-05T01:00:18+00:00",
@@ -291,88 +360,39 @@
           "char_count": 68
         },
         {
-          "sha": "9693bee",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-03T01:27:22+00:00",
-          "message": "Arq: Ajuste para Pipes and Filters e inclusao do modulo de coleta",
-          "char_count": 65
+          "sha": "a91e19d",
+          "author": "claranunes22",
+          "date": "2026-05-04T15:03:48+00:00",
+          "message": "docs: remove markdown para usar HTML",
+          "char_count": 36
         },
         {
-          "sha": "27dd18c",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-03T01:27:22+00:00",
-          "message": "Arq: Ajuste para Pipes and Filters e inclusao do modulo de coleta",
-          "char_count": 65
+          "sha": "22a9906",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:54:54+00:00",
+          "message": "docs: melhora página inicial do GitHub Pages",
+          "char_count": 44
         },
         {
-          "sha": "ca23b5f",
-          "author": "AlmondHare",
-          "date": "2026-04-29T15:26:17+00:00",
-          "message": "teste",
-          "char_count": 5
+          "sha": "bf07d1b",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:41:14+00:00",
+          "message": "docs: adiciona página inicial do GitHub Pages",
+          "char_count": 45
         },
         {
-          "sha": "99eef81",
-          "author": "AlmondHare",
-          "date": "2026-04-29T15:26:17+00:00",
-          "message": "teste",
-          "char_count": 5
+          "sha": "d5f2273",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:16:16+00:00",
+          "message": "Merge pull request #26 from unb-mds/sprint-04-dashboard",
+          "char_count": 93
         },
         {
-          "sha": "1452f6e",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-29T14:13:04+00:00",
-          "message": "organização de pastas",
-          "char_count": 21
-        },
-        {
-          "sha": "43b2dd5",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-29T14:13:04+00:00",
-          "message": "organização de pastas",
-          "char_count": 21
-        },
-        {
-          "sha": "153f674",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-29T12:26:49+00:00",
-          "message": "feat: arquivos base do backend",
-          "char_count": 30
-        },
-        {
-          "sha": "f63f1de",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-29T12:26:49+00:00",
-          "message": "feat: arquivos base do backend",
-          "char_count": 30
-        },
-        {
-          "sha": "64e0402",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-29T12:10:36+00:00",
-          "message": "feat: arquivos base do frontend",
-          "char_count": 31
-        },
-        {
-          "sha": "72e1216",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-29T12:10:36+00:00",
-          "message": "feat: arquivos base do frontend",
-          "char_count": 31
-        },
-        {
-          "sha": "2d1f10c",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-28T22:51:11+00:00",
-          "message": "refactor: reestruturar diretório",
-          "char_count": 32
-        },
-        {
-          "sha": "a9ba635",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-28T22:51:11+00:00",
-          "message": "refactor: reestruturar diretório",
-          "char_count": 32
+          "sha": "51677ef",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:14:04+00:00",
+          "message": "docs: adiciona documentação do dashboard closes #27",
+          "char_count": 51
         }
       ]
     },
@@ -731,9 +751,9 @@
     }
   },
   "issues": {
-    "total": 26,
-    "open": 10,
-    "closed": 16,
+    "total": 32,
+    "open": 8,
+    "closed": 24,
     "timeline": [
       {
         "date": "2026-03-25",
@@ -834,9 +854,85 @@
         "date": "2026-05-15",
         "opened": 5,
         "closed": 0
+      },
+      {
+        "date": "2026-05-16",
+        "opened": 1,
+        "closed": 8
+      },
+      {
+        "date": "2026-05-17",
+        "opened": 3,
+        "closed": 0
+      },
+      {
+        "date": "2026-05-18",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-05-21",
+        "opened": 1,
+        "closed": 0
       }
     ],
     "list": [
+      {
+        "number": 42,
+        "title": "feat: home team",
+        "state": "open",
+        "created_at": "2026-05-21T13:30:53+00:00",
+        "closed_at": null,
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 40,
+        "title": "Redesign da Tela de Login",
+        "state": "open",
+        "created_at": "2026-05-18T03:16:43+00:00",
+        "closed_at": null,
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 38,
+        "title": "feat: home page",
+        "state": "open",
+        "created_at": "2026-05-17T17:33:23+00:00",
+        "closed_at": null,
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 36,
+        "title": "feat: implementação do __init__.py do módulo de filtragem",
+        "state": "open",
+        "created_at": "2026-05-17T05:13:26+00:00",
+        "closed_at": null,
+        "labels": []
+      },
+      {
+        "number": 35,
+        "title": "Feat: Criar CRUD",
+        "state": "open",
+        "created_at": "2026-05-17T04:40:19+00:00",
+        "closed_at": null,
+        "labels": []
+      },
+      {
+        "number": 34,
+        "title": "feat: criar página de login",
+        "state": "open",
+        "created_at": "2026-05-16T21:08:14+00:00",
+        "closed_at": null,
+        "labels": [
+          "enhancement"
+        ]
+      },
       {
         "number": 32,
         "title": "Estudo sobre Context Engineering e Desenvolvimento Assistido por IA [SPRINT 06]",
@@ -856,17 +952,17 @@
       {
         "number": 30,
         "title": "DevOps [SPRINT 04]",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-05-15T19:17:56+00:00",
-        "closed_at": null,
+        "closed_at": "2026-05-16T21:11:45+00:00",
         "labels": []
       },
       {
         "number": 29,
         "title": "Implementação de Módulo de Filtragem",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-05-15T18:43:42+00:00",
-        "closed_at": null,
+        "closed_at": "2026-05-16T21:11:45+00:00",
         "labels": [
           "documentation"
         ]
@@ -874,9 +970,9 @@
       {
         "number": 28,
         "title": "Implementação do workflow de produtividade",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-05-15T11:28:21+00:00",
-        "closed_at": null,
+        "closed_at": "2026-05-16T21:11:44+00:00",
         "labels": [
           "enhancement"
         ]
@@ -894,9 +990,9 @@
       {
         "number": 24,
         "title": "Criação do user flow do sistema",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-05-03T02:50:31+00:00",
-        "closed_at": null,
+        "closed_at": "2026-05-16T21:11:44+00:00",
         "labels": [
           "documentation"
         ]
@@ -904,9 +1000,9 @@
       {
         "number": 22,
         "title": "Classificação Temática de Proposições com IA (Objetivo e Funcionalidades)",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-04-26T22:49:38+00:00",
-        "closed_at": null,
+        "closed_at": "2026-05-16T21:10:34+00:00",
         "labels": [
           "enhancement"
         ]
@@ -914,9 +1010,9 @@
       {
         "number": 20,
         "title": "Coleta de Dados - Monitoramento Legislativo",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-04-26T15:17:32+00:00",
-        "closed_at": null,
+        "closed_at": "2026-05-16T21:10:33+00:00",
         "labels": []
       },
       {
@@ -932,9 +1028,9 @@
       {
         "number": 17,
         "title": "[Sprint 3] Estabelecimento do schema para o banco de dados",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-04-26T02:07:51+00:00",
-        "closed_at": null,
+        "closed_at": "2026-05-16T21:10:33+00:00",
         "labels": []
       },
       {
@@ -961,9 +1057,9 @@
       {
         "number": 14,
         "title": "Criar dashboard inicial com dados simulados",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-04-21T22:24:36+00:00",
-        "closed_at": null,
+        "closed_at": "2026-05-16T21:10:32+00:00",
         "labels": [
           "enhancement",
           "dashboard"
@@ -1096,6 +1192,46 @@
   },
   "pull_requests": [
     {
+      "number": 41,
+      "title": "Feat: home team",
+      "state": "open",
+      "base": "dev-projeto",
+      "head": "feat/home-team",
+      "author": "claranunes22",
+      "created_at": "2026-05-21T13:29:24+00:00",
+      "merged_at": null
+    },
+    {
+      "number": 39,
+      "title": "Feat: login redesign",
+      "state": "open",
+      "base": "dev-projeto",
+      "head": "feat/login-redesign",
+      "author": "claranunes22",
+      "created_at": "2026-05-18T03:14:56+00:00",
+      "merged_at": null
+    },
+    {
+      "number": 37,
+      "title": "feat: adiciona página inicial",
+      "state": "closed",
+      "base": "dev-projeto",
+      "head": "feat/home-page",
+      "author": "claranunes22",
+      "created_at": "2026-05-17T17:31:51+00:00",
+      "merged_at": "2026-05-21T13:45:22+00:00"
+    },
+    {
+      "number": 33,
+      "title": "feat: adiciona página de login",
+      "state": "closed",
+      "base": "dev-projeto",
+      "head": "feat/login-page",
+      "author": "claranunes22",
+      "created_at": "2026-05-16T21:06:00+00:00",
+      "merged_at": "2026-05-21T13:44:40+00:00"
+    },
+    {
       "number": 26,
       "title": "Sprint 04 - Dashboard (Visualização)",
       "state": "closed",
@@ -1157,13 +1293,13 @@
     }
   ],
   "all_authors": {
+    "gabiiverissimo-dev": 21,
+    "claranunes22": 138,
+    "github-actions[bot]": 6,
     "lucasnferreiradev-lang": 17,
-    "github-actions[bot]": 5,
     "LucasNF-Dev": 4,
-    "PajeMurici-dev": 26,
+    "PajeMurici-dev": 27,
     "AlmondHare": 8,
-    "gabiiverissimo-dev": 16,
-    "claranunes22": 126,
     "otaviotex": 15,
     "RochaCarla": 3
   }
