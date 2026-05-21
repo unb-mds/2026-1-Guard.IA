@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-05-21T13:46:04.686821+00:00",
+  "generated_at": "2026-05-21T13:48:33.108020+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
     "estudos"
   ],
   "summary": {
-    "total_commits": 239,
+    "total_commits": 243,
     "open_issues": 8,
     "closed_issues": 24,
     "contributors": 9,
-    "open_prs": 2
+    "open_prs": 1
   },
   "branches_data": {
     "dev-projeto": {
       "branch": "dev-projeto",
-      "total_commits": 175,
+      "total_commits": 179,
       "commits_per_author": {
-        "gabiiverissimo-dev": 17,
-        "claranunes22": 94,
-        "github-actions[bot]": 6,
+        "gabiiverissimo-dev": 18,
+        "github-actions[bot]": 7,
+        "claranunes22": 96,
         "lucasnferreiradev-lang": 17,
         "LucasNF-Dev": 3,
         "PajeMurici-dev": 20,
@@ -109,11 +109,29 @@
           "count": 1
         },
         {
+          "date": "2026-05-20",
+          "count": 2
+        },
+        {
           "date": "2026-05-21",
-          "count": 3
+          "count": 5
         }
       ],
       "recent_commits": [
+        {
+          "sha": "47fe6ab",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-05-21T13:47:51+00:00",
+          "message": "Merge pull request #39 from unb-mds/feat/login-redesign",
+          "char_count": 77
+        },
+        {
+          "sha": "1bc61f6",
+          "author": "github-actions[bot]",
+          "date": "2026-05-21T13:46:04+00:00",
+          "message": "chore: update productivity metrics [skip ci]",
+          "char_count": 44
+        },
         {
           "sha": "28b2399",
           "author": "gabiiverissimo-dev",
@@ -134,6 +152,20 @@
           "date": "2026-05-21T13:44:18+00:00",
           "message": "Merge branch 'dev-projeto' into feat/login-page",
           "char_count": 47
+        },
+        {
+          "sha": "fd41f84",
+          "author": "claranunes22",
+          "date": "2026-05-20T16:13:05+00:00",
+          "message": "chore: mover especificação do frontend para a pasta correta",
+          "char_count": 59
+        },
+        {
+          "sha": "3ff4dee",
+          "author": "claranunes22",
+          "date": "2026-05-20T16:05:06+00:00",
+          "message": "docs: adicionar especificação do frontend e refatorar interface de login",
+          "char_count": 72
         },
         {
           "sha": "5443826",
@@ -365,34 +397,6 @@
           "date": "2026-05-04T15:03:48+00:00",
           "message": "docs: remove markdown para usar HTML",
           "char_count": 36
-        },
-        {
-          "sha": "22a9906",
-          "author": "claranunes22",
-          "date": "2026-05-04T14:54:54+00:00",
-          "message": "docs: melhora página inicial do GitHub Pages",
-          "char_count": 44
-        },
-        {
-          "sha": "bf07d1b",
-          "author": "claranunes22",
-          "date": "2026-05-04T14:41:14+00:00",
-          "message": "docs: adiciona página inicial do GitHub Pages",
-          "char_count": 45
-        },
-        {
-          "sha": "d5f2273",
-          "author": "claranunes22",
-          "date": "2026-05-04T14:16:16+00:00",
-          "message": "Merge pull request #26 from unb-mds/sprint-04-dashboard",
-          "char_count": 93
-        },
-        {
-          "sha": "51677ef",
-          "author": "claranunes22",
-          "date": "2026-05-04T14:14:04+00:00",
-          "message": "docs: adiciona documentação do dashboard closes #27",
-          "char_count": 51
         }
       ]
     },
@@ -1204,12 +1208,12 @@
     {
       "number": 39,
       "title": "Feat: login redesign",
-      "state": "open",
+      "state": "closed",
       "base": "dev-projeto",
       "head": "feat/login-redesign",
       "author": "claranunes22",
       "created_at": "2026-05-18T03:14:56+00:00",
-      "merged_at": null
+      "merged_at": "2026-05-21T13:47:51+00:00"
     },
     {
       "number": 37,
@@ -1293,9 +1297,9 @@
     }
   ],
   "all_authors": {
-    "gabiiverissimo-dev": 21,
-    "claranunes22": 138,
-    "github-actions[bot]": 6,
+    "gabiiverissimo-dev": 22,
+    "github-actions[bot]": 7,
+    "claranunes22": 140,
     "lucasnferreiradev-lang": 17,
     "LucasNF-Dev": 4,
     "PajeMurici-dev": 27,
