@@ -1,17 +1,18 @@
-# --- BACKEND & DATABASE ---
-psycopg2-binary>=2.9.0
-python-dotenv>=1.0.0
-requests>=2.31.0
-fastapi>=0.100.0
-uvicorn>=0.23.0
-pydantic>=2.0.0
-bcrypt>=4.0.0
+# --- BACKEND & API ---
+fastapi==0.110.0
+uvicorn==0.27.1
+pydantic[email]==2.6.3
+bcrypt==4.1.2
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+requests==2.31.0
 
-# --- FRONTEND & DASHBOARD ---
-streamlit>=1.30.0
-pandas>=2.0.0
-plotly>=5.18.0
+# --- DASHBOARD & DATA ---
+streamlit==1.31.1
+pandas==2.2.0
+plotly==5.19.0
 
 # --- UTILS ---
-anyio>=4.0.0
-click>=8.1.0
+anyio==4.3.0
+click==8.1.7
+unicodedata2==15.1.0
