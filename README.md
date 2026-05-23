@@ -71,8 +71,8 @@ Para o desenvolvimento do frontend, o backend disponibiliza uma API FastAPI.
 - **Dependências:** Já incluídas no `requirements.txt`.
 - **Comando para rodar (em desenvolvimento):**
   ```bash
-  cd grupo5-guard.ia-backend/app
-  uvicorn armazenamento.usuarios:app --reload
+  cd grupo5-guard.ia-backend
+  uvicorn app.api:app --reload
   ```
   *(Nota: O front consome os dados e gerencia usuários através desta API).*
 

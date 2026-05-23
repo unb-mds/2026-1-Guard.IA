@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS proposicoes (
     data_apresentacao  DATE,
     categoria          VARCHAR(100),
     confianca          FLOAT        CHECK (confianca >= 0 AND confianca <= 1),
+    termos_chave       TEXT,
     coletado_em        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
 

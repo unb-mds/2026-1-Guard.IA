@@ -1,6 +1,43 @@
+import { useState } from "react";
 import "./Login.css";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState("");
+  const [carregando, setCarregando] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErro("");
+    setCarregando(true);
+
+    try {
+      const response = await fetch("http://localhost:8000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, senha }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.detail || "Erro ao realizar login");
+      }
+
+      // Sucesso! Armazena dados básicos e redireciona
+      localStorage.setItem("user", JSON.stringify(data));
+      alert(`Bem-vindo, ${data.nome}! Redirecionando para o dashboard...`);
+      window.location.href = "http://localhost:8501"; // URL padrão do Streamlit
+    } catch (err) {
+      setErro(err.message);
+    } finally {
+      setCarregando(false);
+    }
+  };
+
   return (
     <div className="login-page">
       <header className="login-header">
@@ -26,14 +63,30 @@ export default function Login() {
         <section className="login-card">
           <h3>Entrar</h3>
 
-          <form>
+          {erro && <p className="error-message" style={{ color: "red", marginBottom: "10px" }}>{erro}</p>}
+
+          <form onSubmit={handleSubmit}>
             <label>Email</label>
-            <input type="email" placeholder="Digite seu email" />
+            <input 
+              type="email" 
+              placeholder="Digite seu email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
             <label>Senha</label>
-            <input type="password" placeholder="Digite sua senha" />
+            <input 
+              type="password" 
+              placeholder="Digite sua senha" 
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+            />
 
-            <button type="submit">Entrar</button>
+            <button type="submit" disabled={carregando}>
+              {carregando ? "Entrando..." : "Entrar"}
+            </button>
           </form>
 
           <p className="register-text">

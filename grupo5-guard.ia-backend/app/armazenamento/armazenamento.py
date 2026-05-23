@@ -32,7 +32,7 @@ def salvar_proposicoes(proposicoes: list):
     query = """
         INSERT INTO proposicoes (
             id_externo, ementa, autor, partido, estado, 
-            casa, data_apresentacao, categoria, confianca
+            casa, data_apresentacao, categoria, confianca, termos_chave
         ) VALUES %s
         ON CONFLICT (id_externo) DO NOTHING;
     """
@@ -48,7 +48,8 @@ def salvar_proposicoes(proposicoes: list):
             p.get('casa'),
             p.get('data_apresentacao'),
             p.get('categoria'),
-            p.get('confianca')
+            p.get('confianca'),
+            ", ".join(p.get('termos_chave', [])) if p.get('termos_chave') else None
         )
         for p in proposicoes
     ]
