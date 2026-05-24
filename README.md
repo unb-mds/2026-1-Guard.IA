@@ -51,20 +51,30 @@ O projeto busca apoiar análises sobre segurança digital, legislação e polít
 
 ---
 
-## Estrutura do projeto
+## Estrutura do Projeto
 
-```text
-2026-1-Guard.IA
-│
-├── armazenamento/
-├── classificacao/
-├── coleta/
-├── dashboard/
-├── docs/
-├── filtro/
-├── scripts/
-├── .github/workflows/
-├── README.md
+O projeto é dividido em três partes principais:
+
+- **`grupo5-guard.ia-backend/`**: Pipeline de dados (Coleta, Filtro, Armazenamento) e API.
+- **`grupo5-guard.ia-frontend/`**: Dashboard em Streamlit.
+- **`grupo5-guard.ia/`**: Frontend web em React/Next.js.
+
+### Back-end e Pipeline de Dados
+Localizado em `grupo5-guard.ia-backend/app/`.
+- `coleta/`: Scripts para Câmara e Senado.
+- `filtro/`: Filtragem por palavras-chave com Regex.
+- `armazenamento/`: Integração com PostgreSQL (psycopg2).
+- `main.py`: Orquestrador do pipeline completo.
+
+### API (FastAPI)
+Para o desenvolvimento do frontend, o backend disponibiliza uma API FastAPI.
+- **Dependências:** Já incluídas no `requirements.txt`.
+- **Comando para rodar (em desenvolvimento):**
+  ```bash
+  cd grupo5-guard.ia-backend/app
+  uvicorn armazenamento.usuarios:app --reload
+  ```
+  *(Nota: O front consome os dados e gerencia usuários através desta API).*
 
 ## GitHub Pages
 
