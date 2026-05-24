@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Guard.IA · Comparativo de Branches</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#003366;--green:#005C37;--blue:#0B4ABC;--gold:#BFA630;
+  --bg:#f4f6fa;--surface:#fff;--border:#dde3ee;
+  --text:#1a1e2e;--muted:#6b7280;--radius:12px;
+  --b1:#0B4ABC;   /* dev-projeto */
+  --b2:#005C37;   /* estudos     */
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── Header ── */
+header{
+  background:var(--navy);color:#fff;padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 14px rgba(0,51,102,.4);
+}
+.logo{display:flex;align-items:center;gap:10px;font-size:1.1rem;font-weight:700}
+.logo svg{width:26px;height:26px}
+.badge{background:var(--gold);color:#1a1200;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
+#last-update{font-size:.75rem;opacity:.6}
+
+/* ── Demo banner ── */
+#demo-banner{
+  display:none;background:#fffbeb;border-bottom:2px solid var(--gold);
+  padding:.6rem 2rem;font-size:.8rem;color:#78500a;text-align:center;
+}
+#demo-banner a{color:var(--navy);font-weight:600}
+
+/* ── Legend pills ── */
+.branch-legend{
+  display:flex;gap:1rem;align-items:center;justify-content:center;
+  padding:.9rem 2rem;background:var(--surface);border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.branch-pill{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.82rem;font-weight:700;padding:.3rem .9rem;
+  border-radius:20px;border:2px solid transparent;
+}
+.pill-b1{background:#e8eeff;color:var(--b1);border-color:var(--b1)}
+.pill-b2{background:#e6f4ed;color:var(--b2);border-color:var(--b2)}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.dot-b1{background:var(--b1)}.dot-b2{background:var(--b2)}
+
+/* ── Layout ── */
+main{max-width:1240px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+/* ── Summary cards ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-bottom:2rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.4rem;display:flex;flex-direction:column;gap:.2rem}
+.card-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}
+.card-value{font-size:1.9rem;font-weight:800;line-height:1}
+.c-navy{color:var(--navy)}.c-b1{color:var(--b1)}.c-b2{color:var(--b2)}.c-gold{color:var(--gold)}
+.card-sub{font-size:.75rem;color:var(--muted)}
+
+/* ── Split columns ── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem}
+@media(max-width:800px){.split{grid-template-columns:1fr}}
+
+/* ── Panel ── */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;overflow:hidden}
+.panel-full{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;overflow:hidden;margin-bottom:2rem}
+.panel-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.panel-title .dot{width:8px;height:8px}
+.panel svg{width:100%;display:block}
+
+/* ── Comparison bar ── */
+.cmp-row{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem}
+.cmp-label{font-size:.78rem;font-weight:600;color:var(--muted);display:flex;justify-content:space-between}
+.cmp-track{height:22px;background:#f0f2f7;border-radius:4px;overflow:hidden;display:flex}
+.cmp-seg{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:.7rem;font-weight:700;color:#fff;min-width:4px;transition:width .6s ease}
+
+/* ── Table ── */
+.panel-wide{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:2rem;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.83rem}
+thead th{text-align:left;padding:.55rem .85rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);border-bottom:2px solid var(--border)}
+tbody tr{border-bottom:1px solid var(--border)}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:.5rem .85rem;vertical-align:top}
+tbody tr:hover td{background:#f8f9fd}
+.tag{display:inline-block;font-size:.67rem;font-weight:600;padding:1px 6px;border-radius:20px;margin:1px}
+.tag-open{background:#e0f2ea;color:#005C37}.tag-closed{background:#e5eaf8;color:#0B4ABC}
+.pill-open{background:#e0f2ea;color:#005C37;font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:20px}
+.pill-closed{background:#e5eaf8;color:#0B4ABC;font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:20px}
+.branch-tag{display:inline-block;font-size:.67rem;font-weight:700;padding:1px 7px;border-radius:20px}
+.bt-b1{background:#e8eeff;color:var(--b1)}.bt-b2{background:#e6f4ed;color:var(--b2)}
+
+/* ── Tooltip ── */
+.tooltip{position:fixed;background:rgba(26,30,46,.92);color:#fff;font-size:.76rem;padding:.4rem .7rem;border-radius:6px;pointer-events:none;opacity:0;transition:opacity .15s;z-index:999;max-width:240px}
+
+/* ── Loading ── */
+#loading{display:flex;flex-direction:column;align-items:center;gap:1rem;margin:4rem auto;color:var(--muted)}
+.spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <svg viewBox="0 0 28 28" fill="none"><path d="M14 2L3 8v12l11 6 11-6V8L14 2z" stroke="#BFA630" stroke-width="1.8" fill="none"/><path d="M14 7v7l5 3" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+    Guard.IA <span class="badge">PRODUTIVIDADE</span>
+  </div>
+  <span id="last-update">Carregando…</span>
+</header>
+
+<div id="demo-banner">
+  ⚠️ <strong>Dados de demonstração.</strong> O <code>metrics.json</code> ainda não foi gerado.
+  <a href="https://github.com/unb-mds/2026-1-Guard.IA/actions" target="_blank">Executar Actions →</a>
+</div>
+
+<div class="branch-legend">
+  <span class="branch-pill pill-b1"><span class="dot dot-b1"></span>dev-projeto</span>
+  <span class="branch-pill pill-b2"><span class="dot dot-b2"></span>estudos</span>
+</div>
+
+<main>
+  <div id="loading"><div class="spinner"></div><span>Buscando métricas…</span></div>
+
+  <div id="dashboard" style="display:none">
+
+    <!-- Summary cards -->
+    <div class="cards">
+      <div class="card"><span class="card-label">Commits — dev-projeto</span><span class="card-value c-b1" id="v-c1">–</span><span class="card-sub">na branch</span></div>
+      <div class="card"><span class="card-label">Commits — estudos</span><span class="card-value c-b2" id="v-c2">–</span><span class="card-sub">na branch</span></div>
+      <div class="card"><span class="card-label">Issues abertas</span><span class="card-value c-navy" id="v-open">–</span><span class="card-sub">no repositório</span></div>
+      <div class="card"><span class="card-label">Issues fechadas</span><span class="card-value c-navy" id="v-closed">–</span><span class="card-sub">no repositório</span></div>
+      <div class="card"><span class="card-label">Contribuidores</span><span class="card-value c-gold" id="v-members">–</span><span class="card-sub">nas duas branches</span></div>
+    </div>
+
+    <!-- Comparison section -->
+    <div class="panel-full">
+      <div class="panel-title">Comparativo de atividade — dev-projeto vs estudos</div>
+      <div id="cmp-authors"></div>
+    </div>
+
+    <!-- Timeline charts side by side -->
+    <div class="split">
+      <div class="panel">
+        <div class="panel-title"><span class="dot dot-b1"></span>Commits por dia — dev-projeto</div>
+        <div id="chart-c1"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title"><span class="dot dot-b2"></span>Commits por dia — estudos</div>
+        <div id="chart-c2"></div>
+      </div>
+    </div>
+
+    <!-- Issues timeline -->
+    <div class="panel-full">
+      <div class="panel-title">Issues abertas × fechadas por dia</div>
+      <div id="chart-issues"></div>
+    </div>
+
+    <!-- Commits tables side by side -->
+    <div class="split">
+      <div class="panel">
+        <div class="panel-title"><span class="dot dot-b1"></span>Commits recentes — dev-projeto</div>
+        <div style="overflow-x:auto">
+          <table><thead><tr><th>SHA</th><th>Autor</th><th>Data</th><th>Mensagem</th></tr></thead>
+          <tbody id="tbl-c1"></tbody></table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title"><span class="dot dot-b2"></span>Commits recentes — estudos</div>
+        <div style="overflow-x:auto">
+          <table><thead><tr><th>SHA</th><th>Autor</th><th>Data</th><th>Mensagem</th></tr></thead>
+          <tbody id="tbl-c2"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Issues table -->
+    <div class="panel-wide">
+      <div class="panel-title">Issues do repositório</div>
+      <table><thead><tr><th>#</th><th>Título</th><th>Estado</th><th>Aberta em</th><th>Fechada em</th><th>Labels</th></tr></thead>
+      <tbody id="tbl-issues"></tbody></table>
+    </div>
+
+  </div><!-- #dashboard -->
+</main>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ── Demo data ──────────────────────────────────────────────────────────────
+const DEMO = (function(){
+  const now = new Date();
+  function ago(n){ const d=new Date(now); d.setDate(d.getDate()-n); return d.toISOString().slice(0,10) }
+  function isoAgo(n,h=12){ return ago(n)+'T'+String(h).padStart(2,'0')+':00:00Z' }
+
+  const mkTimeline = (days,base,amp) =>
+    Array.from({length:days},(_,i)=>({date:ago(days-1-i),count:Math.max(0,Math.round(base+Math.sin(i*.8)*amp+Math.random()*1.5))}));
+
+  const b1Authors = {'ana-silva':18,'pedro-dev':12,'carlos-m':9,'julia-fs':6};
+  const b2Authors = {'thiago-r':14,'beatriz-k':10,'ana-silva':7,'pedro-dev':5};
+
+  const mkCommits = (authors,branch) => {
+    const list=[];
+    const msgs={
+      'dev-projeto':['feat: módulo de detecção NLP','fix: pipeline de ingestão','refactor: serviço de autenticação','docs: swagger da API'],
+      'estudos':['study: paper sobre BERT','study: anotações de transformers','study: resumo RAG','study: fine-tuning LLMs'],
+    };
+    let d=0;
+    Object.entries(authors).forEach(([a,n])=>{
+      for(let i=0;i<n;i++){
+        list.push({sha:(Math.random()*0xffffff|0).toString(16).padStart(6,'0'),author:a,
+          date:isoAgo(d%20,9+i%8),message:msgs[branch][i%msgs[branch].length],char_count:60+i*7});
+        d++;
+      }
+    });
+    return list.sort((a,b)=>b.date.localeCompare(a.date)).slice(0,15);
+  };
+
+  const issueTimeline = Array.from({length:12},(_,i)=>({date:ago(11-i),opened:Math.round(Math.random()*2),closed:Math.round(Math.random()*2)}));
+
+  return {
+    generated_at: now.toISOString(),
+    repo: 'unb-mds/2026-1-Guard.IA',
+    branches: ['dev-projeto','estudos'],
+    summary:{total_commits:81,open_issues:4,closed_issues:5,contributors:6,open_prs:2},
+    branches_data:{
+      'dev-projeto':{branch:'dev-projeto',total_commits:45,commits_per_author:b1Authors,
+        commit_timeline:mkTimeline(20,3,2),recent_commits:mkCommits(b1Authors,'dev-projeto')},
+      'estudos':{branch:'estudos',total_commits:36,commits_per_author:b2Authors,
+        commit_timeline:mkTimeline(20,2.5,1.5),recent_commits:mkCommits(b2Authors,'estudos')},
+    },
+    issues:{
+      open:4,closed:5,
+      timeline: issueTimeline,
+      list:[
+        {number:8,title:'Implementar classificador BERT',state:'open',created_at:isoAgo(10),closed_at:null,labels:['feature','AI']},
+        {number:7,title:'Pipeline de coleta Twitter',state:'closed',created_at:isoAgo(18),closed_at:isoAgo(6),labels:['feature']},
+        {number:6,title:'GitHub Actions para deploy',state:'closed',created_at:isoAgo(20),closed_at:isoAgo(10),labels:['devops']},
+        {number:5,title:'Documentar arquitetura',state:'open',created_at:isoAgo(7),closed_at:null,labels:['docs']},
+        {number:4,title:'Testes de integração',state:'open',created_at:isoAgo(5),closed_at:null,labels:['test']},
+      ]
+    },
+    all_authors:{'ana-silva':25,'thiago-r':14,'pedro-dev':17,'beatriz-k':10,'carlos-m':9,'julia-fs':6},
+    _demo: true,
+  };
+})();
+
+// ── Utils ──────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const fmtDate = s => s ? new Date(s).toLocaleDateString('pt-BR') : '–';
+const tip = $('tooltip');
+function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY-28)+'px'}
+function hideTip(){tip.style.opacity=0}
+
+// ── Load ───────────────────────────────────────────────────────────────────
+fetch('metrics.json')
+  .then(r=>{ if(!r.ok) throw new Error(); return r.json(); })
+  .then(d=>render(d,false))
+  .catch(()=>render(DEMO,true));
+
+// ── Render ─────────────────────────────────────────────────────────────────
+function render(d, isDemo){
+  $('loading').style.display   = 'none';
+  $('dashboard').style.display = 'block';
+  if(isDemo) $('demo-banner').style.display = 'block';
+
+  $('last-update').textContent = isDemo
+    ? 'Demonstração — sem dados reais'
+    : 'Atualizado em ' + new Date(d.generated_at).toLocaleString('pt-BR');
+
+  const b1 = d.branches_data?.['dev-projeto'] || {};
+  const b2 = d.branches_data?.['estudos']     || {};
+
+  $('v-c1').textContent      = b1.total_commits ?? 0;
+  $('v-c2').textContent      = b2.total_commits ?? 0;
+  $('v-open').textContent    = d.issues?.open    ?? d.summary?.open_issues   ?? 0;
+  $('v-closed').textContent  = d.issues?.closed  ?? d.summary?.closed_issues ?? 0;
+  $('v-members').textContent = d.summary?.contributors ?? 0;
+
+  drawComparison(b1.commits_per_author||{}, b2.commits_per_author||{});
+  drawTimeline('chart-c1', b1.commit_timeline||[], '#0B4ABC');
+  drawTimeline('chart-c2', b2.commit_timeline||[], '#005C37');
+  drawIssueTimeline(d.issues?.timeline||[]);
+  buildCommitTable('tbl-c1', b1.recent_commits||[]);
+  buildCommitTable('tbl-c2', b2.recent_commits||[]);
+  buildIssuesTable(d.issues?.list||[]);
+}
+
+// ── Comparison bars ────────────────────────────────────────────────────────
+function drawComparison(cpa1, cpa2){
+  const allAuthors = [...new Set([...Object.keys(cpa1),...Object.keys(cpa2)])];
+  if(!allAuthors.length){ $('cmp-authors').innerHTML='<p style="color:var(--muted);font-size:.83rem">Sem dados</p>'; return; }
+
+  const container = $('cmp-authors');
+  allAuthors.sort((a,b)=>(cpa1[b]||0)+(cpa2[b]||0) - ((cpa1[a]||0)+(cpa2[a]||0)));
+
+  allAuthors.forEach(author=>{
+    const v1 = cpa1[author]||0;
+    const v2 = cpa2[author]||0;
+    const total = v1+v2 || 1;
+    const p1 = (v1/total*100).toFixed(1);
+    const p2 = (v2/total*100).toFixed(1);
+
+    const row = document.createElement('div');
+    row.className = 'cmp-row';
+    row.innerHTML = `
+      <div class="cmp-label">
+        <span>${author}</span>
+        <span style="display:flex;gap:1rem">
+          <span style="color:var(--b1)">dev-projeto: ${v1}</span>
+          <span style="color:var(--b2)">estudos: ${v2}</span>
+        </span>
+      </div>
+      <div class="cmp-track">
+        <div class="cmp-seg" style="width:${p1}%;background:var(--b1)">${v1>0?v1:''}</div>
+        <div class="cmp-seg" style="width:${p2}%;background:var(--b2)">${v2>0?v2:''}</div>
+      </div>`;
+    container.appendChild(row);
+  });
+}
+
+// ── Timeline bar chart ─────────────────────────────────────────────────────
+function drawTimeline(containerId, data, color){
+  if(!data.length){ $(containerId).innerHTML='<p style="color:var(--muted);font-size:.82rem">Sem dados</p>'; return; }
+  const W=480,H=180,m={top:8,right:8,bottom:44,left:32};
+  const iW=W-m.left-m.right, iH=H-m.top-m.bottom;
+  const parseDay=d3.timeParse('%Y-%m-%d');
+  const rows=data.map(d=>({date:parseDay(d.date),count:d.count})).filter(d=>d.date);
+  const x=d3.scaleBand().domain(rows.map(d=>d.date)).range([0,iW]).padding(.18);
+  const y=d3.scaleLinear().domain([0,d3.max(rows,d=>d.count)||1]).nice().range([iH,0]);
+  const svg=d3.select('#'+containerId).append('svg').attr('viewBox',`0 0 ${W} ${H}`);
+  const g=svg.append('g').attr('transform',`translate(${m.left},${m.top})`);
+  g.append('g').call(d3.axisLeft(y).ticks(3).tickSize(-iW).tickFormat(''))
+   .call(a=>{a.select('.domain').remove();a.selectAll('line').attr('stroke','#e8ecf4').attr('stroke-dasharray','3 3')});
+  g.selectAll('rect').data(rows).join('rect')
+   .attr('x',d=>x(d.date)).attr('y',d=>y(d.count))
+   .attr('width',x.bandwidth()).attr('height',d=>iH-y(d.count))
+   .attr('fill',color).attr('rx',3).attr('opacity',.85)
+   .on('mousemove',(e,d)=>showTip(e,`<strong>${d3.timeFormat('%d/%m/%Y')(d.date)}</strong><br>${d.count} commit(s)`))
+   .on('mouseleave',hideTip);
+  const every=Math.ceil(rows.length/5);
+  g.append('g').attr('transform',`translate(0,${iH})`)
+   .call(d3.axisBottom(x).tickValues(rows.filter((_,i)=>i%every===0).map(d=>d.date)).tickFormat(d3.timeFormat('%d/%m')))
+   .call(a=>{a.select('.domain').remove();a.selectAll('text').attr('transform','rotate(-30)').attr('text-anchor','end').style('font-size','9px').style('fill','#6b7280')});
+  g.append('g').call(d3.axisLeft(y).ticks(3))
+   .call(a=>{a.select('.domain').remove();a.selectAll('text').style('font-size','9px').style('fill','#6b7280')});
+}
+
+// ── Issues chart ───────────────────────────────────────────────────────────
+function drawIssueTimeline(data){
+  if(!data.length){ $('chart-issues').innerHTML='<p style="color:var(--muted);font-size:.82rem">Sem dados</p>'; return; }
+  const W=900,H=200,m={top:8,right:120,bottom:44,left:32};
+  const iW=W-m.left-m.right, iH=H-m.top-m.bottom;
+  const parseDay=d3.timeParse('%Y-%m-%d');
+  const rows=data.map(d=>({date:parseDay(d.date),opened:d.opened,closed:d.closed})).filter(d=>d.date);
+  if(!rows.length) return;
+  const x=d3.scaleBand().domain(rows.map(d=>d.date)).range([0,iW]).padding(.18);
+  const maxV=d3.max(rows,d=>d.opened+d.closed)||1;
+  const y=d3.scaleLinear().domain([0,maxV]).nice().range([iH,0]);
+  const svg=d3.select('#chart-issues').append('svg').attr('viewBox',`0 0 ${W} ${H}`);
+  const g=svg.append('g').attr('transform',`translate(${m.left},${m.top})`);
+  g.append('g').call(d3.axisLeft(y).ticks(3).tickSize(-iW).tickFormat(''))
+   .call(a=>{a.select('.domain').remove();a.selectAll('line').attr('stroke','#e8ecf4').attr('stroke-dasharray','3 3')});
+  g.selectAll('.bo').data(rows).join('rect').attr('class','bo')
+   .attr('x',d=>x(d.date)).attr('y',d=>y(d.opened)).attr('width',x.bandwidth()).attr('height',d=>Math.max(0,iH-y(d.opened)))
+   .attr('fill','#003366').attr('rx',2)
+   .on('mousemove',(e,d)=>showTip(e,`${d3.timeFormat('%d/%m/%Y')(d.date)}<br>Abertas: ${d.opened}`)).on('mouseleave',hideTip);
+  g.selectAll('.bc').data(rows).join('rect').attr('class','bc')
+   .attr('x',d=>x(d.date)).attr('y',d=>y(d.opened+d.closed)).attr('width',x.bandwidth()).attr('height',d=>Math.max(0,iH-y(d.closed)))
+   .attr('fill','#005C37').attr('rx',2)
+   .on('mousemove',(e,d)=>showTip(e,`${d3.timeFormat('%d/%m/%Y')(d.date)}<br>Fechadas: ${d.closed}`)).on('mouseleave',hideTip);
+  const every=Math.ceil(rows.length/7);
+  g.append('g').attr('transform',`translate(0,${iH})`)
+   .call(d3.axisBottom(x).tickValues(rows.filter((_,i)=>i%every===0).map(d=>d.date)).tickFormat(d3.timeFormat('%d/%m')))
+   .call(a=>{a.select('.domain').remove();a.selectAll('text').attr('transform','rotate(-30)').attr('text-anchor','end').style('font-size','9px').style('fill','#6b7280')});
+  g.append('g').call(d3.axisLeft(y).ticks(3))
+   .call(a=>{a.select('.domain').remove();a.selectAll('text').style('font-size','9px').style('fill','#6b7280')});
+  const leg=svg.append('g').attr('transform',`translate(${m.left+iW+12},${m.top+10})`);
+  [['#003366','Abertas'],['#005C37','Fechadas']].forEach(([c,l],i)=>{
+    leg.append('rect').attr('y',i*20).attr('width',11).attr('height',11).attr('rx',2).attr('fill',c);
+    leg.append('text').attr('x',15).attr('y',i*20+9).style('font-size','10px').style('fill','#6b7280').text(l);
+  });
+}
+
+// ── Commit table ───────────────────────────────────────────────────────────
+function buildCommitTable(tbodyId, commits){
+  const tbody = $(tbodyId);
+  commits.slice(0,12).forEach(c=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><code style="font-size:.72rem;color:var(--navy)">${c.sha}</code></td>
+      <td style="white-space:nowrap;font-size:.8rem">${c.author}</td>
+      <td style="white-space:nowrap;font-size:.8rem">${fmtDate(c.date)}</td>
+      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.8rem"
+          title="${(c.message||'').replace(/"/g,'&quot;')}">${c.message||'–'}</td>`;
+    tbody.appendChild(tr);
+  });
+  if(!commits.length){
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td colspan="4" style="color:var(--muted);padding:.8rem">Sem commits ainda</td>';
+    tbody.appendChild(tr);
+  }
+}
+
+// ── Issues table ───────────────────────────────────────────────────────────
+function buildIssuesTable(issues){
+  const tbody=$('tbl-issues');
+  issues.slice(0,30).forEach(is=>{
+    const lblHtml=(is.labels||[]).map(l=>`<span class="tag ${is.state==='open'?'tag-open':'tag-closed'}">${l}</span>`).join('');
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td style="white-space:nowrap;color:var(--muted)">#${is.number}</td>
+      <td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+          title="${(is.title||'').replace(/"/g,'&quot;')}">${is.title||'–'}</td>
+      <td>${is.state==='open'?'<span class="pill-open">Aberta</span>':'<span class="pill-closed">Fechada</span>'}</td>
+      <td style="white-space:nowrap">${fmtDate(is.created_at)}</td>
+      <td style="white-space:nowrap">${fmtDate(is.closed_at)}</td>
+      <td>${lblHtml||'—'}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+</script>
+</body>
+</html>
