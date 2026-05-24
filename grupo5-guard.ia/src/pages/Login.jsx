@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
+import mascot from "../assets/mascot.png";
 
 export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
@@ -32,14 +33,11 @@ export default function Login({ setUser }) {
         throw new Error(data.detail || "Erro ao realizar login");
       }
 
-      console.log("Login bem-sucedido:", data);
-      
-      // Salva no localStorage e no estado global
       localStorage.setItem("user", JSON.stringify(data));
       if (setUser) setUser(data);
       
       alert(`Bem-vindo, ${data.nome}!`);
-      navigate("/"); // Redireciona para a home usando react-router
+      navigate("/");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -49,48 +47,27 @@ export default function Login({ setUser }) {
 
   return (
     <div className="login-page">
-      <header className="login-header">
-        <h1>GUARD.IA</h1>
-        <nav>
-          <Link to="/">Sobre o Sistema</Link>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/proposicoes">Proposições</Link>
-          <Link to="/ranking">Ranking</Link>
-          <Link to="/mapa">Mapa</Link>
-        </nav>
-      </header>
-
-      <main className="login-container">
-        <section className="login-text">
-          <h2>MONITORAMENTO<br />LEGISLATIVO</h2>
-          <p>
-            Acesse sua conta para acompanhar proposições relacionadas à proteção
-            de crianças e adolescentes no ambiente digital.
-          </p>
-        </section>
-
+      <main className="login-shell">
         <section className="login-card">
-          <h3>Entrar</h3>
+          <h2>Fazer login</h2>
+          <p className="login-subtitle">Entre para continuar</p>
 
-          {error && <p className="error-message" style={{ color: "red", marginBottom: "1rem" }}>{error}</p>}
+          {error && <p className="error-message" style={{ color: "#ff4d4d", marginBottom: "1rem", fontSize: "14px" }}>{error}</p>}
 
           <form onSubmit={handleSubmit}>
-            <label>Email</label>
             <input 
               type="email" 
-              placeholder="Digite seu email" 
+              placeholder="E-mail" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
+              required 
             />
-
-            <label>Senha</label>
             <input 
               type="password" 
-              placeholder="Digite sua senha" 
+              placeholder="Senha" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
+              required 
             />
 
             <button type="submit" disabled={loading}>
@@ -98,9 +75,31 @@ export default function Login({ setUser }) {
             </button>
           </form>
 
+          <div className="login-divider">
+            <span></span>
+            <p>ou</p>
+            <span></span>
+          </div>
+
+          <button
+            type="button"
+            className="visitor-button"
+            onClick={() => navigate("/")}
+          >
+            Acessar como visitante
+          </button>
+
           <p className="register-text">
-            Ainda não tem conta? <Link to="/cadastro">Cadastre-se</Link>
+            Não possui conta? <Link to="/cadastro">Cadastre-se</Link>
           </p>
+        </section>
+
+        <section className="login-mascot">
+          <img src={mascot} alt="Mascote Guard.IA" />
+        </section>
+
+        <section className="login-brand">
+          <h1>GUARD.IA</h1>
         </section>
       </main>
     </div>
