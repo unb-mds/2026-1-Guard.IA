@@ -26,7 +26,7 @@ export default function Home() {
 
         <nav>
           <a href="/">Sobre</a>
-          <a href="/dashboard">Dashboard</a>
+          <a href="http://localhost:8501">Dashboard</a>
           <a href="/proposicoes">Proposições</a>
           <a href="/ranking">Ranking</a>
           <a href="/login">Login</a>
@@ -95,7 +95,10 @@ export default function Home() {
             className="mascot-image"
           />
 
-          <button className="signup-button">
+          <button 
+            className="signup-button"
+            onClick={() => window.location.href = "/cadastro"}
+          >
             Cadastre-se para acessar 
           </button>
         </div>
