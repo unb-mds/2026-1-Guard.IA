@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-05-21T13:50:54.510932+00:00",
+  "generated_at": "2026-05-24T15:33:43.231508+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
     "estudos"
   ],
   "summary": {
-    "total_commits": 249,
+    "total_commits": 267,
     "open_issues": 8,
     "closed_issues": 24,
     "contributors": 9,
@@ -15,13 +15,13 @@
   "branches_data": {
     "dev-projeto": {
       "branch": "dev-projeto",
-      "total_commits": 185,
+      "total_commits": 203,
       "commits_per_author": {
+        "claranunes22": 100,
+        "lucasnferreiradev-lang": 20,
+        "LucasNF-Dev": 16,
+        "github-actions[bot]": 9,
         "gabiiverissimo-dev": 20,
-        "github-actions[bot]": 8,
-        "claranunes22": 99,
-        "lucasnferreiradev-lang": 17,
-        "LucasNF-Dev": 3,
         "PajeMurici-dev": 20,
         "AlmondHare": 6,
         "otaviotex": 10,
@@ -106,6 +106,10 @@
         },
         {
           "date": "2026-05-17",
+          "count": 2
+        },
+        {
+          "date": "2026-05-18",
           "count": 1
         },
         {
@@ -114,10 +118,126 @@
         },
         {
           "date": "2026-05-21",
-          "count": 10
+          "count": 25
+        },
+        {
+          "date": "2026-05-24",
+          "count": 1
         }
       ],
       "recent_commits": [
+        {
+          "sha": "8ed5c99",
+          "author": "claranunes22",
+          "date": "2026-05-24T15:33:01+00:00",
+          "message": "Merge pull request #43 from unb-mds/feat/teste-pipeline-unificado",
+          "char_count": 96
+        },
+        {
+          "sha": "1405cfb",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-05-21T18:41:02+00:00",
+          "message": "refactor(coleta): remove SyntaxWarnings e finaliza backend Release 1",
+          "char_count": 68
+        },
+        {
+          "sha": "38cfb5d",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T18:17:24+00:00",
+          "message": "docs: atualiza estrutura do projeto e instrucoes de FastAPI no README",
+          "char_count": 69
+        },
+        {
+          "sha": "4f3ac52",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T18:13:18+00:00",
+          "message": "fix(pipeline): corrige retorno das funcoes para indicar sucesso ao orquestrador",
+          "char_count": 79
+        },
+        {
+          "sha": "bcde6a5",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T18:06:49+00:00",
+          "message": "fix(armazenamento): aumenta tamanho da coluna estado para evitar erro de overflow",
+          "char_count": 81
+        },
+        {
+          "sha": "3782fcc",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T17:36:08+00:00",
+          "message": "docs: atualiza contrato de dados com campo termos_chave para auditoria de filtro",
+          "char_count": 80
+        },
+        {
+          "sha": "2dc5313",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T17:25:07+00:00",
+          "message": "chore(deps): corrige versoes invalidas e remove dependencias redundantes no requirements.txt",
+          "char_count": 92
+        },
+        {
+          "sha": "80a9de1",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T17:15:38+00:00",
+          "message": "feat(pipeline): finaliza orquestrador main.py e unifica branches",
+          "char_count": 64
+        },
+        {
+          "sha": "87eec6a",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T17:15:06+00:00",
+          "message": "chore(pipeline): resolve conflitos e unifica modulos otimizados na dev-projeto",
+          "char_count": 78
+        },
+        {
+          "sha": "85f123b",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T17:13:50+00:00",
+          "message": "feat(filtro): refatora filtragem com regex otimizado e metadados de auditoria",
+          "char_count": 77
+        },
+        {
+          "sha": "84ca6bb",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T14:31:14+00:00",
+          "message": "feat(armazenamento): integra CRUD de usuarios e schema SQL atualizado",
+          "char_count": 69
+        },
+        {
+          "sha": "ab20c3e",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T14:28:01+00:00",
+          "message": "feat(dashboard): conecta visualização ao banco de dados real",
+          "char_count": 60
+        },
+        {
+          "sha": "405ab2d",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T14:27:30+00:00",
+          "message": "feat(pipeline): unifica coleta, filtro e armazenamento em um pipeline robusto",
+          "char_count": 77
+        },
+        {
+          "sha": "24f5778",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T14:25:47+00:00",
+          "message": "feat(filtro): refatora filtragem com regex e paths dinamicos",
+          "char_count": 60
+        },
+        {
+          "sha": "77301c2",
+          "author": "LucasNF-Dev",
+          "date": "2026-05-21T14:11:48+00:00",
+          "message": "feat(armazenamento): otimiza insercao em lote e garante integridade transacional",
+          "char_count": 80
+        },
+        {
+          "sha": "c8d90e5",
+          "author": "github-actions[bot]",
+          "date": "2026-05-21T13:50:54+00:00",
+          "message": "chore: update productivity metrics [skip ci]",
+          "char_count": 44
+        },
         {
           "sha": "7a56ebd",
           "author": "gabiiverissimo-dev",
@@ -210,6 +330,20 @@
           "char_count": 72
         },
         {
+          "sha": "eaca988",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-05-18T00:44:49+00:00",
+          "message": "feat(armazenamento): correcoes de transacao e tratamento de erros no banco de dados",
+          "char_count": 83
+        },
+        {
+          "sha": "04cba0b",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-05-17T23:54:36+00:00",
+          "message": "feat(armazenamento): unifica banco postgres e implementa crud de usuarios",
+          "char_count": 73
+        },
+        {
           "sha": "5443826",
           "author": "claranunes22",
           "date": "2026-05-17T17:29:42+00:00",
@@ -271,132 +405,6 @@
           "date": "2026-05-15T12:14:07+00:00",
           "message": "chore: update productivity metrics [skip ci]",
           "char_count": 44
-        },
-        {
-          "sha": "de90c13",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:13:06+00:00",
-          "message": "Merge branch 'dev-projeto' of https://github.com/unb-mds/2026-1-Guard.IA into dev-projeto",
-          "char_count": 89
-        },
-        {
-          "sha": "a4b0141",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:12:21+00:00",
-          "message": "feat: adiciona docker compose para subir o banco postgreSQL",
-          "char_count": 59
-        },
-        {
-          "sha": "00302f9",
-          "author": "github-actions[bot]",
-          "date": "2026-05-15T12:08:52+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
-        },
-        {
-          "sha": "5431337",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:07:20+00:00",
-          "message": "Merge branch 'dev-projeto' of https://github.com/unb-mds/2026-1-Guard.IA into dev-projeto",
-          "char_count": 89
-        },
-        {
-          "sha": "421c519",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:06:29+00:00",
-          "message": "feat: Implementa a tabela schema para o armazenamento",
-          "char_count": 53
-        },
-        {
-          "sha": "2181a3c",
-          "author": "github-actions[bot]",
-          "date": "2026-05-15T12:05:17+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
-        },
-        {
-          "sha": "160c054",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:04:31+00:00",
-          "message": "merge: resolve conflitos com origin/dev-projeto",
-          "char_count": 47
-        },
-        {
-          "sha": "256e693",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T11:59:20+00:00",
-          "message": "feat: adiciona arquivos do projeto",
-          "char_count": 34
-        },
-        {
-          "sha": "386581b",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T11:58:54+00:00",
-          "message": "docs: atualiza README",
-          "char_count": 21
-        },
-        {
-          "sha": "76968ef",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-14T21:19:13+00:00",
-          "message": "feat(coleta): finaliza coletores da Câmara e Senado com paginação robusta e checkpoint",
-          "char_count": 86
-        },
-        {
-          "sha": "e157443",
-          "author": "claranunes22",
-          "date": "2026-05-14T16:10:49+00:00",
-          "message": "docs: atualiza README do projeto",
-          "char_count": 32
-        },
-        {
-          "sha": "f82919a",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-05T01:00:18+00:00",
-          "message": "feat: implementando esqueleto funcional do dashboard em Streamlit",
-          "char_count": 65
-        },
-        {
-          "sha": "28c9084",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-05T01:00:18+00:00",
-          "message": "feat: implementando esqueleto funcional do dashboard em Streamlit",
-          "char_count": 65
-        },
-        {
-          "sha": "3bcd780",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-05T00:50:37+00:00",
-          "message": "feat: centralizando dependências e simplificando manual do desenvolvedor",
-          "char_count": 72
-        },
-        {
-          "sha": "f884150",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-05T00:50:37+00:00",
-          "message": "feat: centralizando dependências e simplificando manual do desenvolvedor",
-          "char_count": 72
-        },
-        {
-          "sha": "bd0af48",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-05T00:25:11+00:00",
-          "message": "Arq: Renomeando para dev-projeto e limpando arquivos desnecessários",
-          "char_count": 67
-        },
-        {
-          "sha": "f088ecd",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-05T00:25:11+00:00",
-          "message": "Arq: Renomeando para dev-projeto e limpando arquivos desnecessários",
-          "char_count": 67
-        },
-        {
-          "sha": "a0ec158",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-05T00:10:46+00:00",
-          "message": "merge: resolvendo conflito no readme e integrando front e back",
-          "char_count": 62
         }
       ]
     },
@@ -1196,6 +1204,16 @@
   },
   "pull_requests": [
     {
+      "number": 43,
+      "title": "Feat/teste pipeline unificado",
+      "state": "closed",
+      "base": "dev-projeto",
+      "head": "feat/teste-pipeline-unificado",
+      "author": "LucasNF-Dev",
+      "created_at": "2026-05-21T18:29:05+00:00",
+      "merged_at": "2026-05-24T15:33:01+00:00"
+    },
+    {
       "number": 41,
       "title": "Feat: home team",
       "state": "closed",
@@ -1297,11 +1315,11 @@
     }
   ],
   "all_authors": {
+    "claranunes22": 144,
+    "lucasnferreiradev-lang": 20,
+    "LucasNF-Dev": 17,
+    "github-actions[bot]": 9,
     "gabiiverissimo-dev": 24,
-    "github-actions[bot]": 8,
-    "claranunes22": 143,
-    "lucasnferreiradev-lang": 17,
-    "LucasNF-Dev": 4,
     "PajeMurici-dev": 27,
     "AlmondHare": 8,
     "otaviotex": 15,
