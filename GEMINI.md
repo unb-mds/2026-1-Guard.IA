@@ -41,7 +41,7 @@ O sistema é focado em cidadãos, pesquisadores, jornalistas e profissionais int
 15. Acesso completo ao dashboard, tabelas, filtros e demais páginas exige cadastro e login.
 16. Senhas nunca devem ser armazenadas em texto puro — sempre usar hash via `bcrypt`.
 17. O CRUD de usuários é responsabilidade exclusiva do módulo `grupo5-guard.ia-backend/app/armazenamento/usuarios.py`.
-18. A pasta `app/usuario/` criada na branch `feat/crud-usuario` deve ser migrada para `app/armazenamento/usuarios.py` e adaptada para PostgreSQL.
+18. A API FastAPI em `app/api.py` é a ponte oficial entre o Frontend React e o Banco de Dados.
 
 ### Ética e Transparência
 
@@ -54,13 +54,15 @@ O sistema é focado em cidadãos, pesquisadores, jornalistas e profissionais int
 
 | Parte | Tecnologia |
 |---|---|
-| Coleta, Filtro, Classificação, Armazenamento | Python 3.10+ |
+| Pipeline (Coleta, Filtro, etc.) | Python 3.10+ |
+| Backend API | FastAPI |
 | Banco de dados | PostgreSQL (via Docker) |
 | ORM / Conector | psycopg2 (SQL puro — sem ORM) |
-| Dashboard | Streamlit + Plotly |
+| Frontend Principal | React (Vite) + JavaScript + CSS |
+| Dashboard Analítico | Streamlit + Plotly |
+| Documentação | MkDocs (Material theme) |
 | Autenticação | bcrypt (hash de senha) |
-| Infraestrutura | Docker + Docker Compose + GitHub Actions |
-| Gerenciamento de dependências | pip + requirements.txt |
+| Infraestrutura | Docker + GitHub Actions + GitHub Pages |
 
 > **Decisão arquitetural:** O projeto usa `psycopg2` com SQL puro, não SQLAlchemy. Isso é compatível com o pipeline de scripts Python e com o `schema.sql` já existente. Não introduzir ORM sem alinhamento explícito.
 
@@ -71,7 +73,7 @@ O sistema é focado em cidadãos, pesquisadores, jornalistas e profissionais int
 ```
 grupo5-guard.ia-backend/app/coleta/
   coletor_camara.py  ──┐
-                       ├──► data/dados_brutos.json ──► filtro.py ──► data/dados_filtrados.json ──► armazenamento.py ──► PostgreSQL ──► dashboard
+                       ├──► data/dados_brutos.json ──► filtro.py ──► data/dados_filtrados.json ──► armazenamento.py ──► PostgreSQL ──► dashboard/API
   coletor_senado.py  ──┘
 ```
 
@@ -105,39 +107,30 @@ Este é o schema padrão que todas as etapas devem respeitar. Nunca altere os no
 
 ---
 
-## Estrutura Real de Pastas
+## Estrutura de Pastas
 
 ```
 2026-1-Guard.IA/
 ├── .github/workflows/              # Automação e métricas
-├── dashboard/                      # Ignorar — versão antiga
-├── docs/                           # Documentação das sprints
-├── grupo5-guard.ia/                # Frontend estático (Next.js/React)
-├── grupo5-guard.ia-backend/        # BACKEND — pipeline de dados
+├── docs/                           # Documentação MkDocs (Markdown)
+├── mkdocs.yml                      # Configuração da documentação
+├── grupo5-guard.ia/                # FRONTEND — React (Vite)
+│   ├── src/
+│   │   ├── pages/ (Home, Login, Cadastro)
+│   │   └── App.jsx (Roteamento)
+├── grupo5-guard.ia-backend/        # BACKEND — pipeline de dados e API
 │   ├── app/
+│   │   ├── api.py                  # API FastAPI (Auth e Dados)
 │   │   ├── armazenamento/
-│   │   │   ├── database.py         # Conexão PostgreSQL via psycopg2
-│   │   │   ├── models.py           # Definições de tabelas
-│   │   │   ├── schema.sql          # SQL de criação das tabelas
-│   │   │   ├── armazenamento.py    # Inserção de proposições
-│   │   │   └── usuarios.py         # CRUD de usuários ← destino oficial
-│   │   ├── classificacao/
+│   │   │   ├── database.py         # Conexão PostgreSQL
+│   │   │   └── usuarios.py         # CRUD de usuários
 │   │   ├── coleta/
-│   │   │   ├── coletor_camara.py
-│   │   │   └── coletor_senado.py
 │   │   ├── filtro/
-│   │   │   └── filtro.py
-│   │   └── main.py
-│   ├── data/                       # JSONs gerados localmente — nunca versionar
-│   │   ├── dados_brutos.json
-│   │   ├── dados_filtrados.json
-│   │   ├── checkpoint_camara.json
-│   │   └── checkpoint_senado.json
+│   │   └── main.py                 # Orquestrador do pipeline
 │   └── docker-compose.yml
-└── grupo5-guard.ia-frontend/       # FRONTEND — Dashboard Release 1
+└── grupo5-guard.ia-frontend/       # DASHBOARD — Streamlit
     └── dashboard/
-        ├── app.py
-        └── pages/
+        └── app.py                  # Dashboard conectado ao Postgres
 ```
 
 ---
@@ -146,123 +139,21 @@ Este é o schema padrão que todas as etapas devem respeitar. Nunca altere os no
 
 ### Python
 - Versão: 3.10+
-- Funções nomeadas em `snake_case`
-- Constantes em `UPPER_SNAKE_CASE`
-- Classes em `PascalCase`
-- Arquivos em `snake_case`
+- Funções em `snake_case`, Classes em `PascalCase`.
+- API: Porta padrão 8000.
 
-### Coleta
-- Sempre usar `headers = {"Accept": "application/json"}` nas requisições
-- Sempre usar `timeout=30` nas requisições
-- Sempre implementar checkpoint para retomada em caso de falha
-- Batch saving: salvar dados apenas ao final de cada página/lote, nunca por item
-- Deduplicação obrigatória por `id_externo` antes de inserir
+### Frontend (React)
+- Vite como build tool.
+- CSS puro para estilização (conforme design da branch `feat/pag-cadastro`).
+- Comunicação com API via `fetch` para `http://localhost:8000`.
 
-### Filtro
-- Normalização obrigatória antes de comparar: minúsculas + remoção de acentos via `unicodedata`
-- Nunca comparar strings sem normalizar
-- Lista de palavras-chave centralizada em uma constante no topo do arquivo
-
-### Classificação
-- Modelo principal: `neuralmind/bert-base-portuguese-cased`
-- Modelo alternativo (hardware fraco): `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`
-- Sempre salvar o campo `confianca` junto com `categoria`
+### Documentação (MkDocs)
+- Branch de deploy: `gh-pages`.
+- Todo conteúdo novo deve ser adicionado em `docs/` como `.md`.
 
 ### Armazenamento
-- Banco: PostgreSQL
-- Conector: `psycopg2` — SQL puro, sem ORM
-- Configuração de conexão via variáveis de ambiente (`.env`) — nunca hardcoded
-- Sempre verificar duplicatas por `id_externo` antes de inserir
-- Docker obrigatório para subir o banco localmente via `docker-compose.yml`
-
-### Usuários
-- Arquivo responsável: `grupo5-guard.ia-backend/app/armazenamento/usuarios.py`
-- Banco: PostgreSQL — nunca SQLite
-- Senhas armazenadas com hash via `bcrypt`
-- Funções obrigatórias: `criar_usuario`, `buscar_por_email`, `verificar_senha`, `deletar_usuario`
-- Nunca retornar `senha_hash` em consultas de listagem
-
-### Dashboard
-- Localização: `grupo5-guard.ia-frontend/dashboard/`
-- Framework: Streamlit
-- Gráficos: Plotly
-- Sempre usar `@st.cache_data` em funções que consultam o banco
-- Usuário não logado: vê apenas preview da página inicial (um gráfico ou trecho do mapa)
-- Usuário logado: acesso completo a todas as páginas e funcionalidades
-
----
-
-## Palavras-chave do Filtro
-
-```python
-PALAVRAS_CHAVE = [
-    "crianca", "adolescente", "menor", "internet", "digital",
-    "online", "cyberbullying", "redes sociais", "lgpd",
-    "marco civil", "privacidade", "aplicativo", "eca",
-    "conteudo inapropriado", "tempo de tela"
-]
-```
-> Nota: a lista deve estar normalizada (sem acentos, minúsculas) pois o texto também será normalizado antes da comparação.
-
----
-
-## Categorias da Classificação
-
-```python
-CATEGORIAS = {
-    "cyberbullying":        "assédio, bullying, violência psicológica online",
-    "privacidade_dados":    "coleta de dados pessoais, LGPD, proteção de informações",
-    "tempo_de_tela":        "uso excessivo, dependência digital, limite de uso",
-    "conteudo_inapropriado":"pornografia, violência, conteúdo adulto na internet",
-    "educacao_digital":     "letramento digital, ensino, alfabetização tecnológica"
-}
-```
-
----
-
-## Schema do Banco de Dados (PostgreSQL)
-
-Localização do arquivo: `grupo5-guard.ia-backend/app/armazenamento/schema.sql`
-
-```sql
-CREATE TABLE IF NOT EXISTS proposicoes (
-    id                SERIAL PRIMARY KEY,
-    id_externo        VARCHAR(50) UNIQUE,
-    ementa            TEXT,
-    autor             VARCHAR(200),
-    partido           VARCHAR(20),
-    estado            VARCHAR(2),
-    casa              VARCHAR(10),
-    data_apresentacao DATE,
-    categoria         VARCHAR(100),
-    confianca         FLOAT,
-    coletado_em       TIMESTAMP DEFAULT NOW()
-);
-
-CREATE TABLE IF NOT EXISTS usuarios (
-    id                SERIAL PRIMARY KEY,
-    nome              VARCHAR(100) NOT NULL,
-    email             VARCHAR(150) UNIQUE NOT NULL,
-    senha_hash        VARCHAR(255) NOT NULL,
-    criado_em         TIMESTAMP DEFAULT NOW()
-);
-```
-
----
-
-## Regras de Git
-
-- Nunca commitar diretamente na `main`.
-- Branch de desenvolvimento: `dev-projeto`
-- Padrões de branch:
-  - `feat/<nome>`
-  - `fix/<nome>`
-  - `chore/<nome>`
-  - `docs/<nome>`
-- Mensagens de commit: Conventional Commits — `feat(armazenamento): descrição`, `fix(filtro): descrição`
-- Nunca versionar `data/*.json` — arquivos gerados localmente
-- Nunca versionar `__pycache__/`
-- Nunca versionar `.env`
+- Banco: PostgreSQL.
+- Docker obrigatório para subir o banco localmente.
 
 ---
 
@@ -270,62 +161,34 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 Funcionalidades obrigatórias para a Release 1:
 
-- [x] Coleta da Câmara funcionando com paginação e checkpoint
-- [x] Coleta do Senado funcionando com cursor por data e checkpoint
-- [x] Filtro por palavras-chave com normalização de texto
-- [x] `schema.sql` atualizado com tabelas `proposicoes` e `usuarios`
-- [x] Armazenamento no PostgreSQL — inserção de proposições com deduplicação
-- [x] CRUD de usuários em PostgreSQL com hash de senha
-- [x] Integração total do pipeline via `main.py` (Coleta -> Filtro -> Banco)
-- [ ] Servidor FastAPI expondo rotas de autenticação e dados (Em andamento)
-- [ ] Páginas de login e cadastro integradas com a API (Frontend)
-- [ ] Página inicial com preview para usuário não logado (Frontend)
-- [ ] Dashboard básico com visualização de dados do banco (Frontend)
-
-**Fora do escopo da Release 1:**
-- Classificação por IA (Release 2)
-- Dashboard completo com todos os gráficos (Release 2)
-- Coleta incremental automática via GitHub Actions (Release 2)
-- Preenchimento de `autor`, `partido` e `estado` (Release 2)
+- [x] Coleta da Câmara e Senado com checkpoint.
+- [x] Filtro por palavras-chave com normalização.
+- [x] Armazenamento no PostgreSQL com deduplicação.
+- [x] CRUD de usuários com hash de senha (bcrypt).
+- [x] API FastAPI (Login, Registro, Listagem de Proposições).
+- [x] Frontend React (Home, Login, Cadastro) integrado à API.
+- [x] Dashboard Streamlit funcional conectado ao banco.
+- [x] Documentação MkDocs publicada via GitHub Pages.
 
 ---
 
 ## Release 2 — Escopo
 
-- [ ] Classificação por IA/NLP
-- [ ] Dashboard completo com todos os gráficos
-- [ ] Coleta incremental diária via GitHub Actions
-- [ ] Enriquecimento de dados (autor, partido, estado)
-- [ ] Docker Compose unificando todos os serviços
+- [ ] Classificação por IA/NLP.
+- [ ] Dashboard completo com gráficos avançados.
+- [ ] Coleta incremental diária via GitHub Actions.
+- [ ] Docker Compose unificando Frontend, API e Banco.
 
 ---
 
-## Fora de Escopo Permanente
+## Regras de Git
 
-A menos que explicitamente solicitado, **não faça**:
-
-- Usar SQLite em qualquer parte do projeto
-- Usar SQLAlchemy ou qualquer ORM — o projeto usa psycopg2 com SQL puro
-- Alterar o schema JSON do contrato de dados sem alinhar todas as etapas
-- Adicionar dependências externas sem necessidade real
-- Criar lógica de negócio no Dashboard (só visualização)
-- Acessar o banco diretamente na etapa de Coleta ou Filtro
-- Salvar dados por item dentro de loops (sempre batch saving)
-- Fazer chamadas extras à API por proposição
-- Modificar arquivos de outras etapas sem alinhamento com o responsável
-- Armazenar senhas em texto puro
-- Retornar `senha_hash` em consultas de listagem de usuários
-- Hardcodar credenciais de banco no código — sempre usar `.env`
+- Nunca commitar na `main` diretamente. Use PRs.
+- Mensagens: Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`).
+- Deploy de Docs: `mkdocs gh-deploy` (gera branch `gh-pages`).
 
 ---
 
 ## Memória Evolutiva
 
-Este arquivo deve ser atualizado sempre que:
-- Uma etapa do pipeline for concluída
-- Uma decisão técnica importante for tomada
-- Uma convenção nova for estabelecida
-- O schema de dados for alterado
-- A estrutura de pastas mudar
-
-Nunca duplicar informações já existentes. Sempre evolução incremental.
+Este arquivo deve ser atualizado sempre que uma decisão técnica mudar o rumo do projeto ou uma nova tecnologia for adotada.
