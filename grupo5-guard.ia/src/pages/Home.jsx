@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Home.css";
 import mascot from "../assets/mascot.png";
 
@@ -8,14 +9,14 @@ export default function Home({ user, onLogout }) {
         <h1>GUARD.IA</h1>
 
         <nav>
-          <a href="/">Sobre</a>
-          <a href="/dashboard">Dashboard</a>
-          <a href="/proposicoes">Proposições</a>
-          <a href="/ranking">Ranking</a>
+          <Link to="/">Sobre</Link>
+          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/proposicoes">Proposições</Link>
+          <Link to="/ranking">Ranking</Link>
           {user ? (
             <button onClick={onLogout} className="logout-button">Sair ({user.nome})</button>
           ) : (
-            <a href="/login">Login</a>
+            <Link to="/login">Login</Link>
           )}
         </nav>
       </header>
@@ -85,13 +86,13 @@ export default function Home({ user, onLogout }) {
   />
 
   {user ? (
-    <button className="signup-button" onClick={() => window.location.href = "/dashboard"}>
+    <Link to="/dashboard" className="signup-button" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
       Ir para o Dashboard Completo
-    </button>
+    </Link>
   ) : (
-    <button className="signup-button" onClick={() => window.location.href = "/cadastro"}>
+    <Link to="/cadastro" className="signup-button" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
       Cadastre-se para acessar 
-    </button>
+    </Link>
   )}
 </div>
       </main>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
 export default function Login({ setUser }) {
@@ -6,6 +7,7 @@ export default function Login({ setUser }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ export default function Login({ setUser }) {
       if (setUser) setUser(data);
       
       alert(`Bem-vindo, ${data.nome}!`);
-      window.location.href = "/"; // Redireciona para a home
+      navigate("/"); // Redireciona para a home usando react-router
     } catch (err) {
       setError(err.message);
     } finally {
@@ -50,11 +52,11 @@ export default function Login({ setUser }) {
       <header className="login-header">
         <h1>GUARD.IA</h1>
         <nav>
-          <a href="/">Sobre o Sistema</a>
-          <a href="/dashboard">Dashboard</a>
-          <a href="/proposicoes">Proposições</a>
-          <a href="/ranking">Ranking</a>
-          <a href="/mapa">Mapa</a>
+          <Link to="/">Sobre o Sistema</Link>
+          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/proposicoes">Proposições</Link>
+          <Link to="/ranking">Ranking</Link>
+          <Link to="/mapa">Mapa</Link>
         </nav>
       </header>
 
@@ -97,7 +99,7 @@ export default function Login({ setUser }) {
           </form>
 
           <p className="register-text">
-            Ainda não tem conta? <a href="/cadastro">Cadastre-se</a>
+            Ainda não tem conta? <Link to="/cadastro">Cadastre-se</Link>
           </p>
         </section>
       </main>
