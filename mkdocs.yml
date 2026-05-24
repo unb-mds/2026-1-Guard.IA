@@ -1,0 +1,74 @@
+site_name: Guard.IA — Documentação
+site_description: Plataforma de monitoramento legislativo para proteção de crianças e adolescentes na internet.
+site_author: Squad 5 — MDS 2026/1 (UnB)
+site_url: https://unb-mds.github.io/2026-1-Guard.IA/
+repo_name: unb-mds/2026-1-Guard.IA
+repo_url: https://github.com/unb-mds/2026-1-Guard.IA
+
+theme:
+  name: material
+  language: pt
+  palette:
+    - scheme: default
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/weather-night
+        name: Mudar para modo escuro
+    - scheme: slate
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/weather-sunny
+        name: Mudar para modo claro
+  font:
+    text: Nunito
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang: pt
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Início: index.md
+  - Pipeline:
+      - Visão Geral: pipeline/visao_geral.md
+      - Arquitetura Pipes and Filters: pipeline/arquitetura.md
+  - Tecnologias:
+      - Stack do Projeto: tecnologias/stack.md
+      - Banco de Dados: tecnologias/banco.md
+      - Autenticação: tecnologias/autenticacao.md
+  - Sprints:
+      - Sprint 01 — Planejamento: sprints/sprint01.md
+      - Sprint 02 — Implementação: sprints/sprint02.md
+      - Sprint 03 — Refinamento: sprints/sprint03.md
+  - Equipe: equipe/index.md
