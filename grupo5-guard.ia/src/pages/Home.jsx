@@ -1,7 +1,7 @@
 import "./Home.css";
 import mascot from "../assets/mascot.png";
 
-export default function Home() {
+export default function Home({ user, onLogout }) {
   return (
     <div className="home-page">
       <header className="home-header">
@@ -12,7 +12,11 @@ export default function Home() {
           <a href="/dashboard">Dashboard</a>
           <a href="/proposicoes">Proposições</a>
           <a href="/ranking">Ranking</a>
-          <a href="/login">Login</a>
+          {user ? (
+            <button onClick={onLogout} className="logout-button">Sair ({user.nome})</button>
+          ) : (
+            <a href="/login">Login</a>
+          )}
         </nav>
       </header>
 
@@ -22,6 +26,8 @@ export default function Home() {
         <div className="about-content">
           <section className="about-text">
             <h3>Explicação:</h3>
+
+            {user && <p className="welcome-msg">Bem-vindo de volta, <strong>{user.nome}</strong>!</p>}
 
             <p>
               O Guard.IA é uma plataforma de monitoramento legislativo voltada
@@ -78,9 +84,15 @@ export default function Home() {
     className="mascot-image"
   />
 
-  <button className="signup-button">
-    Cadastre-se para acessar 
-  </button>
+  {user ? (
+    <button className="signup-button" onClick={() => window.location.href = "/dashboard"}>
+      Ir para o Dashboard Completo
+    </button>
+  ) : (
+    <button className="signup-button" onClick={() => window.location.href = "/cadastro"}>
+      Cadastre-se para acessar 
+    </button>
+  )}
 </div>
       </main>
 
