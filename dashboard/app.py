@@ -148,6 +148,10 @@ if df.empty:
 
 if not df.empty:
     df["data_apresentacao"] = pd.to_datetime(df["data_apresentacao"])
+    df["categoria"] = df["categoria"].fillna("Sem categoria")
+    df["partido"]   = df["partido"].fillna("Sem partido")
+    df["estado"]    = df["estado"].fillna("Sem estado")
+    df["autor"]     = df["autor"].fillna("Desconhecido")
 else:
     st.error("Nenhum dado encontrado para exibição.")
     st.stop()
