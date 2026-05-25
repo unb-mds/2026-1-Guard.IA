@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 import mascote2 from "../assets/mascote2.png";
 
-export default function Login() {
+export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
@@ -30,10 +30,10 @@ export default function Login() {
         throw new Error(data.detail || "Erro ao realizar login");
       }
 
-      // Sucesso! Armazena dados básicos e redireciona
+      // Sucesso! Armazena dados básicos, atualiza estado e redireciona
       localStorage.setItem("user", JSON.stringify(data));
-      alert(`Bem-vindo, ${data.nome}! Redirecionando para o dashboard...`);
-      window.location.href = "http://localhost:8501"; // URL padrão do Streamlit
+      if (setUser) setUser(data);
+      navigate("/");
     } catch (err) {
       setErro(err.message);
     } finally {
@@ -90,7 +90,7 @@ export default function Login() {
           </button>
 
           <p className="register-text">
-            Não possui conta? <a href="/cadastro">Cadastre-se</a>
+            Não possui conta? <Link to="/cadastro">Cadastre-se</Link>
           </p>
         </section>
 

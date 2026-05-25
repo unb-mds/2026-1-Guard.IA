@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  background: #f5f5f5;
   font-family: Arial, sans-serif;
   color: #111;
 }
@@ -12,17 +13,15 @@ body {
   width: 100%;
 }
 
-
 .home-page {
-  width: 100%;
   min-height: 100vh;
-  background: #f5f5f5;
-
+  background: linear-gradient(180deg, #f7f7f7 0%, #eeeeee 100%);
 }
+
 .home-header {
   height: 64px;
   background: #006b4f;
-  color:#F6F3E4;
+  color: white;
   padding: 0 48px;
   display: flex;
   justify-content: space-between;
@@ -33,7 +32,7 @@ body {
   margin: 0;
   font-size: 26px;
   font-weight: 900;
-  color: #F6F3E4;
+  color: #020202;
 }
 
 .home-header nav {
@@ -42,11 +41,27 @@ body {
   align-items: center;
 }
 
-.home-header nav a {
+.home-header nav a,
+.logout-button {
   color: white;
   text-decoration: none;
   font-size: 15px;
   font-weight: 700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.welcome-msg {
+  background: #d9e9e3;
+  color: #006b4f;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px !important;
+  font-size: 16px;
+  display: inline-block;
 }
 
 .about-section {
@@ -203,6 +218,7 @@ body {
 
 .team-section {
   padding: 60px 48px;
+  background: #fdfdfd;
   text-align: center;
 }
 
@@ -241,7 +257,7 @@ body {
   object-fit: cover;
   border: 3px solid #006b4f;
   margin-bottom: 15px;
-  background: #eee; /* Fundo enquanto carrega */
+  background: #eee;
 }
 
 .team-card h4 {

@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import "./Home.css";
 import mascot from "../assets/mascot.png";
 
-// Importação das fotos da equipe (certifique-se de que os arquivos existem em src/assets/ com extensão .jpeg)
 import claraImg from "../assets/clara.jpeg";
 import lucasImg from "../assets/lucas.jpeg";
 import joaoImg from "../assets/joao.jpeg";
@@ -9,15 +9,15 @@ import otavioImg from "../assets/otavio.jpeg";
 import gabriellaImg from "../assets/gabriella.jpeg";
 import edvaldoImg from "../assets/edvaldo.jpeg";
 
-export default function Home() {
+export default function Home({ user, onLogout }) {
   const teamMembers = [
-   { name: "Clara", img: claraImg, github: "claranunes22" },
-   { name: "Edvaldo", img: edvaldoImg, github: "PajeMurici-dev" },
+    { name: "Clara", img: claraImg, github: "claranunes22" },
+    { name: "Edvaldo", img: edvaldoImg, github: "PajeMurici-dev" },
     { name: "Lucas", img: lucasImg, github: "LucasNF-Dev" },
-   { name: "João Paulo", img: joaoImg, github: "AlmondHare" },
-   { name: "Otávio", img: otavioImg, github: "otaviotex" },
-     {name: "Gabriella", img: gabriellaImg, github: "gabiiverissimo-dev" },
- ];
+    { name: "João Paulo", img: joaoImg, github: "AlmondHare" },
+    { name: "Otávio", img: otavioImg, github: "otaviotex" },
+    { name: "Gabriella", img: gabriellaImg, github: "gabiiverissimo-dev" },
+  ];
 
   return (
     <div className="home-page">
@@ -25,11 +25,15 @@ export default function Home() {
         <h1>GUARD.IA</h1>
 
         <nav>
-          <a href="/">Sobre</a>
+          <Link to="/">Sobre</Link>
           <a href="http://localhost:8501">Dashboard</a>
-          <a href="/proposicoes">Proposições</a>
-          <a href="/ranking">Ranking</a>
-          <a href="/login">Login</a>
+          <Link to="/proposicoes">Proposições</Link>
+          <Link to="/ranking">Ranking</Link>
+          {user ? (
+            <button onClick={onLogout} className="logout-button">Sair ({user.nome})</button>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
         </nav>
       </header>
 
@@ -39,6 +43,8 @@ export default function Home() {
         <div className="about-content">
           <section className="about-text">
             <h3>Explicação:</h3>
+
+            {user && <p className="welcome-msg">Bem-vindo de volta, <strong>{user.nome}</strong>!</p>}
 
             <p>
               O Guard.IA é uma plataforma de monitoramento legislativo voltada
@@ -95,12 +101,23 @@ export default function Home() {
             className="mascot-image"
           />
 
-          <button 
-            className="signup-button"
-            onClick={() => window.location.href = "/cadastro"}
-          >
-            Cadastre-se para acessar 
-          </button>
+          {user ? (
+            <a
+              href="http://localhost:8501"
+              className="signup-button"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}
+            >
+              Ir para o Dashboard Completo
+            </a>
+          ) : (
+            <Link
+              to="/cadastro"
+              className="signup-button"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}
+            >
+              Cadastre-se para acessar
+            </Link>
+          )}
         </div>
       </main>
 
@@ -111,14 +128,14 @@ export default function Home() {
             <div className="team-card" key={member.name}>
               <img src={member.img} alt={member.name} />
               <h4>{member.name}</h4>
-              <a 
-                href={`https://github.com/${member.github}`} 
-                target="_blank" 
+              <a
+                href={`https://github.com/${member.github}`}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="github-link"
               >
-                <svg 
-                  viewBox="0 0 24 24" 
+                <svg
+                  viewBox="0 0 24 24"
                   className="github-icon-svg"
                   fill="currentColor"
                 >
