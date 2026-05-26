@@ -31,9 +31,9 @@ O Guard.IA automatiza esse processo inteiro:
 - [x] Armazenamento no PostgreSQL com deduplicação em lote
 - [x] CRUD de usuários com hash de senha (bcrypt)
 - [x] Pipeline completo integrado via `main.py`
-- [ ] Servidor FastAPI com rotas de autenticação *(em andamento)*
-- [ ] Páginas de login e cadastro integradas *(Frontend)*
-- [ ] Dashboard com visualização de dados *(Frontend)*
+- [x] Servidor FastAPI com rotas de autenticação
+- [x] Páginas de login e cadastro integradas com a API
+- [x] Dashboard com visualização de dados
 
 ---
 
