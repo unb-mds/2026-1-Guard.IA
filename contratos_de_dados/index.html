@@ -12,10 +12,8 @@
         <meta name="author" content="Squad 5 — MDS 2026/1 (UnB)">
       
       
-        <link rel="canonical" href="https://unb-mds.github.io/2026-1-Guard.IA/equipe/">
+        <link rel="canonical" href="https://unb-mds.github.io/2026-1-Guard.IA/contratos_de_dados/">
       
-      
-        <link rel="prev" href="../sprints/sprint05/">
       
       
       
@@ -27,7 +25,7 @@
     
     
       
-        <title>Equipe - Guard.IA — Documentação</title>
+        <title>Contrato de Dados — JSON Schema - Guard.IA — Documentação</title>
       
     
     
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#equipe" class="md-skip">
+        <a href="#contrato-de-dados-json-schema" class="md-skip">
           Ir para o conteúdo
         </a>
       
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Equipe
+              Contrato de Dados — JSON Schema
             
           </span>
         </div>
@@ -298,11 +296,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../equipe/" class="md-tabs__link">
         
   
   
@@ -888,37 +884,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Equipe
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../equipe/" class="md-nav__link">
         
   
   
@@ -934,59 +903,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#squad-5-mds-20261-unb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Squad 5 — MDS 2026/1 — UnB
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#divisao-de-responsabilidades" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Divisão de Responsabilidades
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repositorio" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repositório
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1018,10 +934,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#squad-5-mds-20261-unb" class="md-nav__link">
+  <a href="#o-que-e-um-contrato-de-dados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Squad 5 — MDS 2026/1 — UnB
+        O que é um Contrato de Dados?
       
     </span>
   </a>
@@ -1029,10 +945,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#divisao-de-responsabilidades" class="md-nav__link">
+  <a href="#por-que-o-contrato-e-vital-no-guardia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Divisão de Responsabilidades
+        Por que o Contrato é Vital no Guard.IA?
       
     </span>
   </a>
@@ -1040,10 +956,127 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#repositorio" class="md-nav__link">
+  <a href="#o-contrato-do-guardia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Repositório
+        O Contrato do Guard.IA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="O Contrato do Guard.IA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-dos-campos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descrição dos campos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#os-prefixos-de-id-deduplicacao-por-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os Prefixos de ID — Deduplicação por Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Os Prefixos de ID — Deduplicação por Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-problema-sem-prefixo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema sem prefixo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-solucao-prefixo-obrigatorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A solução: prefixo obrigatório
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imutabilidade-do-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Imutabilidade do Contrato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Imutabilidade do Contrato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-contrato-nao-pode-mudar-livremente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o contrato não pode mudar livremente?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-processo-de-mudanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O processo de mudança
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrato-entre-api-e-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato entre API e Frontend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referências
       
     </span>
   </a>
@@ -1070,72 +1103,193 @@
   
 
 
-<h1 id="equipe">Equipe<a class="headerlink" href="#equipe" title="Permanent link">&para;</a></h1>
-<h2 id="squad-5-mds-20261-unb">Squad 5 — MDS 2026/1 — UnB<a class="headerlink" href="#squad-5-mds-20261-unb" title="Permanent link">&para;</a></h2>
+<h1 id="contrato-de-dados-json-schema">Contrato de Dados — JSON Schema<a class="headerlink" href="#contrato-de-dados-json-schema" title="Permanent link">&para;</a></h1>
+<h2 id="o-que-e-um-contrato-de-dados">O que é um Contrato de Dados?<a class="headerlink" href="#o-que-e-um-contrato-de-dados" title="Permanent link">&para;</a></h2>
+<p>Em sistemas distribuídos e pipelines de dados, um <strong>contrato de dados</strong> é um acordo formal entre componentes sobre o formato, estrutura e semântica dos dados trocados entre eles. É análogo a um contrato jurídico: define direitos, obrigações e o que acontece quando uma das partes viola o acordo.</p>
+<p>Em arquiteturas como Pipes and Filters — adotada pelo Guard.IA — o contrato de dados é o único mecanismo de comunicação entre etapas. Se um filtro produz uma saída diferente do acordado, o próximo filtro quebra.</p>
+<div class="admonition info">
+<p class="admonition-title">Analogia prática</p>
+<p>Imagine uma linha de montagem industrial. Cada estação recebe peças com dimensões padronizadas e entrega peças com dimensões padronizadas. Se uma estação mudar o tamanho da peça sem avisar, toda a linha para. O contrato de dados funciona da mesma forma no software.</p>
+</div>
+<hr />
+<h2 id="por-que-o-contrato-e-vital-no-guardia">Por que o Contrato é Vital no Guard.IA?<a class="headerlink" href="#por-que-o-contrato-e-vital-no-guardia" title="Permanent link">&para;</a></h2>
+<p>O Guard.IA é composto por múltiplos componentes desenvolvidos por membros diferentes da equipe:</p>
+<ul>
+<li><strong>Backend Python</strong> — responsável pela coleta, filtro e armazenamento</li>
+<li><strong>API FastAPI</strong> — expõe os dados para o frontend</li>
+<li><strong>Frontend React</strong> — consome os dados da API</li>
+<li><strong>Dashboard Streamlit</strong> — consulta o banco diretamente</li>
+</ul>
+<p>Sem um contrato formal, cada desenvolvedor poderia nomear campos de forma diferente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Backend envia:    { &quot;id_externo&quot;: &quot;CAMARA-104417&quot; }
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Frontend espera:  { &quot;proposicao_id&quot;: &quot;CAMARA-104417&quot; }
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                           ↓
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                    ❌ undefined is not an object
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Custo da quebra de contrato</p>
+<p>Uma mudança de nome de campo não detectada pode quebrar silenciosamente o frontend, o dashboard e qualquer outro consumidor dos dados — sem erro explícito no backend. O bug só aparece na interface, dificultando o diagnóstico.</p>
+</div>
+<hr />
+<h2 id="o-contrato-do-guardia">O Contrato do Guard.IA<a class="headerlink" href="#o-contrato-do-guardia" title="Permanent link">&para;</a></h2>
+<p>O schema JSON abaixo é o <strong>único formato válido</strong> para troca de dados entre as etapas do pipeline e entre o backend e o frontend:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;id_externo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CAMARA-104417&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;ementa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dispõe sobre o uso seguro da internet por crianças...&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;autor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A pesquisar&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">&quot;partido&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A pesquisar&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">&quot;estado&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A pesquisar&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">&quot;casa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Câmara&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">&quot;data_apresentacao&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-01-15&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">&quot;termos_chave&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;internet&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;crianca&quot;</span><span class="p">]</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="descricao-dos-campos">Descrição dos campos<a class="headerlink" href="#descricao-dos-campos" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Membro</th>
-<th>Papel</th>
-<th>GitHub</th>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Lucas</td>
-<td>Arquitetura de Software</td>
-<td><em>(preencher)</em></td>
+<td><code>id_externo</code></td>
+<td><code>string</code></td>
+<td>✅</td>
+<td>Identificador único com prefixo da casa legislativa</td>
 </tr>
 <tr>
-<td>Gabriella</td>
-<td>Frontend</td>
-<td><em>(preencher)</em></td>
+<td><code>ementa</code></td>
+<td><code>string</code></td>
+<td>✅</td>
+<td>Resumo oficial da proposição</td>
 </tr>
 <tr>
-<td>Clara</td>
-<td>Frontend</td>
-<td><em>(preencher)</em></td>
+<td><code>autor</code></td>
+<td><code>string</code></td>
+<td>✅</td>
+<td>Nome do parlamentar autor (<code>"A pesquisar"</code> na Release 1)</td>
 </tr>
 <tr>
-<td>Otávio</td>
-<td>Backend / CRUD de Usuários</td>
-<td><em>(preencher)</em></td>
+<td><code>partido</code></td>
+<td><code>string</code></td>
+<td>✅</td>
+<td>Sigla do partido (<code>"A pesquisar"</code> na Release 1)</td>
 </tr>
 <tr>
-<td>Edvaldo</td>
-<td>Dados / Filtro</td>
-<td><em>(preencher)</em></td>
+<td><code>estado</code></td>
+<td><code>string</code></td>
+<td>✅</td>
+<td>UF do parlamentar (<code>"A pesquisar"</code> na Release 1)</td>
 </tr>
 <tr>
-<td>João</td>
-<td>Dados / Coleta</td>
-<td><em>(preencher)</em></td>
+<td><code>casa</code></td>
+<td><code>string</code></td>
+<td>✅</td>
+<td><code>"Câmara"</code> ou <code>"Senado"</code></td>
+</tr>
+<tr>
+<td><code>data_apresentacao</code></td>
+<td><code>string</code> (ISO 8601)</td>
+<td>✅</td>
+<td>Data no formato <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>termos_chave</code></td>
+<td><code>array&lt;string&gt;</code></td>
+<td>⬜</td>
+<td>Termos que ativaram o filtro (auditoria)</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="divisao-de-responsabilidades">Divisão de Responsabilidades<a class="headerlink" href="#divisao-de-responsabilidades" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Pipeline de Dados
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── Coleta        → João
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── Filtro        → Edvaldo
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── Armazenamento → Otávio
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── Classificação → (Release 2)
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Frontend
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── Dashboard     → Gabriella + Clara
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└── Login/Cadastro → Gabriella + Clara
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Arquitetura
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>└── Definição e documentação → Lucas
-</code></pre></div>
-<hr />
-<h2 id="repositorio">Repositório<a class="headerlink" href="#repositorio" title="Permanent link">&para;</a></h2>
-<p>🔗 <a href="https://github.com/unb-mds/2026-1-Guard.IA">github.com/unb-mds/2026-1-Guard.IA</a></p>
-<hr />
-<div class="admonition quote">
-<p class="admonition-title">Propósito</p>
-<p><em>"Transformar dados públicos em informação acessível para quem quer proteger crianças e adolescentes na internet."</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Campos marcados como 'A pesquisar'</p>
+<p>Na Release 1, os campos <code>autor</code>, <code>partido</code> e <code>estado</code> são preenchidos com o placeholder <code>"A pesquisar"</code> intencionalmente. O enriquecimento desses dados exigiria chamadas adicionais à API por proposição — o que foi adiado para a Release 2 por questões de performance. O contrato já reserva esses campos para garantir compatibilidade futura.</p>
 </div>
+<hr />
+<h2 id="os-prefixos-de-id-deduplicacao-por-design">Os Prefixos de ID — Deduplicação por Design<a class="headerlink" href="#os-prefixos-de-id-deduplicacao-por-design" title="Permanent link">&para;</a></h2>
+<h3 id="o-problema-sem-prefixo">O problema sem prefixo<a class="headerlink" href="#o-problema-sem-prefixo" title="Permanent link">&para;</a></h3>
+<p>Tanto a Câmara quanto o Senado usam IDs numéricos sequenciais para suas proposições. Sem prefixo, uma proposição da Câmara com ID <code>104417</code> e uma proposição do Senado com ID <code>104417</code> seriam indistinguíveis:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Câmara:  { &quot;id&quot;: 104417, &quot;casa&quot;: &quot;Câmara&quot; }
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Senado:  { &quot;id&quot;: 104417, &quot;casa&quot;: &quot;Senado&quot; }
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                  ↓
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>     Inserção no banco → CONFLICT ou sobrescrita silenciosa
+</code></pre></div>
+<h3 id="a-solucao-prefixo-obrigatorio">A solução: prefixo obrigatório<a class="headerlink" href="#a-solucao-prefixo-obrigatorio" title="Permanent link">&para;</a></h3>
+<p>O <code>id_externo</code> concatena o prefixo da casa com o ID original:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Câmara: CAMARA-{id}   →   &quot;CAMARA-104417&quot;
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Senado: SENADO-{codigo} →  &quot;SENADO-155651&quot;
+</code></pre></div>
+<p>Isso garante que <strong>nenhum ID será duplicado entre fontes diferentes</strong>, independentemente do volume de dados. A restrição <code>UNIQUE</code> no banco opera sobre esse campo composto:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">id_externo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span>
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Deduplicação garantida em dois níveis</p>
+<p><strong>Nível 1 (Python):</strong> o coletor verifica se o <code>id_externo</code> já está no conjunto de IDs conhecidos antes de processar.
+<strong>Nível 2 (PostgreSQL):</strong> o <code>ON CONFLICT (id_externo) DO NOTHING</code> no INSERT rejeita duplicatas no banco, mesmo que o Python falhe.</p>
+</div>
+<hr />
+<h2 id="imutabilidade-do-contrato">Imutabilidade do Contrato<a class="headerlink" href="#imutabilidade-do-contrato" title="Permanent link">&para;</a></h2>
+<h3 id="por-que-o-contrato-nao-pode-mudar-livremente">Por que o contrato não pode mudar livremente?<a class="headerlink" href="#por-que-o-contrato-nao-pode-mudar-livremente" title="Permanent link">&para;</a></h3>
+<p>O schema JSON é consumido por múltiplos componentes independentes. Uma alteração em qualquer campo afeta toda a cadeia:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Mudança no filtro.py
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>       ↓
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>dados_filtrados.json tem campo renomeado
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>       ↓
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>armazenamento.py quebra na leitura
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>       ↓
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>banco fica desatualizado
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>       ↓
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>API FastAPI retorna dados incorretos
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>       ↓
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>Frontend React quebra na renderização
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>       ↓
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>Dashboard Streamlit exibe dados errados
+</code></pre></div>
+<h3 id="o-processo-de-mudanca">O processo de mudança<a class="headerlink" href="#o-processo-de-mudanca" title="Permanent link">&para;</a></h3>
+<p>Qualquer alteração no contrato de dados segue um processo formal:</p>
+<ol>
+<li><strong>Proposta</strong> — o membro que precisa da mudança descreve o motivo</li>
+<li><strong>Alinhamento</strong> — todos os responsáveis por etapas afetadas são consultados</li>
+<li><strong>Atualização simultânea</strong> — todos os componentes são atualizados na mesma branch</li>
+<li><strong>Atualização do GEMINI.md</strong> — o novo schema é documentado como fonte de verdade</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Regra do GEMINI.md</p>
+<p><em>"O contrato de dados entre etapas é fixo — qualquer alteração no schema JSON deve ser comunicada e aprovada por todas as etapas."</em> — Constituição do Guard.IA, Regra 7.</p>
+</div>
+<hr />
+<h2 id="contrato-entre-api-e-frontend">Contrato entre API e Frontend<a class="headerlink" href="#contrato-entre-api-e-frontend" title="Permanent link">&para;</a></h2>
+<p>Além do contrato entre etapas do pipeline, existe um segundo contrato: entre a API FastAPI e o Frontend React.</p>
+<p>A API expõe os dados do banco no mesmo formato do schema JSON, garantindo que o frontend não precise de nenhuma transformação:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// GET /proposicoes</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nt">&quot;proposicoes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="nt">&quot;id_externo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CAMARA-104417&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">      </span><span class="nt">&quot;ementa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dispõe sobre o uso seguro da internet...&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">      </span><span class="nt">&quot;casa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Câmara&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">      </span><span class="nt">&quot;data_apresentacao&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-01-15&quot;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="p">],</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">655</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">}</span>
+</code></pre></div>
+<p>O Frontend React consome esse endpoint com <code>fetch</code> e pode confiar que os campos sempre existirão com os mesmos nomes — porque o contrato é o mesmo do pipeline.</p>
+<div class="admonition tip">
+<p class="admonition-title">Benefício direto</p>
+<p>Com contrato estável, o Frontend pode ser desenvolvido em paralelo ao Backend usando dados mockados no mesmo formato. Quando a API fica pronta, a integração é imediata — sem surpresas de nomenclatura.</p>
+</div>
+<hr />
+<h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li>NEWMAN, Sam. <em>Building Microservices</em>. O'Reilly Media, 2015.</li>
+<li>RICHARDSON, Chris. <em>Microservices Patterns</em>. Manning Publications, 2018.</li>
+<li>OpenAPI Specification. <em>Schema Object</em>. Disponível em: https://spec.openapis.org/oas/v3.1.0#schema-object</li>
+</ul>
 
 
 
@@ -1168,28 +1322,6 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
-        
-          
-          <a href="../sprints/sprint05/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Sprint 05 — Integração Final">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Anterior
-              </span>
-              <div class="md-ellipsis">
-                Sprint 05 — Integração Final
-              </div>
-            </div>
-          </a>
-        
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">

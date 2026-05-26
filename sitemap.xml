@@ -2,62 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/contratos_de_dados/</loc>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/frontend_spec/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/infraestrutura_docker/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/pipes_and_filters/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/postgres_vs_sqlite/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/requisitos_e_ia/</loc>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/equipe/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/estudos/requisitos_e_ia/</loc>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/pipeline/arquitetura/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/pipeline/visao_geral/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprint_02/estudo-storymap/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprint_02/prototipo/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprint_04/melhoria-dashboard/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprint_04/user-flow/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprints/sprint00/</loc>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprints/sprint01/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprints/sprint02/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprints/sprint03/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprints/sprint04/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://unb-mds.github.io/2026-1-Guard.IA/sprints/sprint05/</loc>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/tecnologias/autenticacao/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/tecnologias/banco/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
     <url>
          <loc>https://unb-mds.github.io/2026-1-Guard.IA/tecnologias/stack/</loc>
-         <lastmod>2026-05-24</lastmod>
+         <lastmod>2026-05-26</lastmod>
     </url>
 </urlset>

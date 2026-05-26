@@ -12,10 +12,8 @@
         <meta name="author" content="Squad 5 — MDS 2026/1 (UnB)">
       
       
-        <link rel="canonical" href="https://unb-mds.github.io/2026-1-Guard.IA/equipe/">
+        <link rel="canonical" href="https://unb-mds.github.io/2026-1-Guard.IA/infraestrutura_docker/">
       
-      
-        <link rel="prev" href="../sprints/sprint05/">
       
       
       
@@ -27,7 +25,7 @@
     
     
       
-        <title>Equipe - Guard.IA — Documentação</title>
+        <title>Infraestrutura como Código — Docker e Ambiente - Guard.IA — Documentação</title>
       
     
     
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#equipe" class="md-skip">
+        <a href="#infraestrutura-como-codigo-docker-e-ambiente" class="md-skip">
           Ir para o conteúdo
         </a>
       
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Equipe
+              Infraestrutura como Código — Docker e Ambiente
             
           </span>
         </div>
@@ -298,11 +296,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../equipe/" class="md-tabs__link">
         
   
   
@@ -888,37 +884,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Equipe
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../equipe/" class="md-nav__link">
         
   
   
@@ -934,59 +903,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#squad-5-mds-20261-unb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Squad 5 — MDS 2026/1 — UnB
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#divisao-de-responsabilidades" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Divisão de Responsabilidades
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repositorio" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repositório
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1018,10 +934,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#squad-5-mds-20261-unb" class="md-nav__link">
+  <a href="#o-problema-do-na-minha-maquina-funciona" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Squad 5 — MDS 2026/1 — UnB
+        O Problema do "Na Minha Máquina Funciona"
       
     </span>
   </a>
@@ -1029,10 +945,99 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#divisao-de-responsabilidades" class="md-nav__link">
+  <a href="#docker-no-guardia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Divisão de Responsabilidades
+        Docker no Guard.IA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker no Guard.IA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-foi-containerizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que foi containerizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-arquivo-docker-composeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O arquivo docker-compose.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variaveis-de-ambiente-e-seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variáveis de Ambiente e Segurança
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variáveis de Ambiente e Segurança">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-nao-colocar-credenciais-no-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que não colocar credenciais no código?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-arquivo-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O arquivo .env
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-o-python-le-as-variaveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como o Python lê as variáveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-subir-o-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como Subir o Ambiente
       
     </span>
   </a>
@@ -1040,10 +1045,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#repositorio" class="md-nav__link">
+  <a href="#isolamento-do-pipeline-de-dados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Repositório
+        Isolamento do Pipeline de Dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-2-docker-compose-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release 2 — Docker Compose Completo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referências
       
     </span>
   </a>
@@ -1070,72 +1097,188 @@
   
 
 
-<h1 id="equipe">Equipe<a class="headerlink" href="#equipe" title="Permanent link">&para;</a></h1>
-<h2 id="squad-5-mds-20261-unb">Squad 5 — MDS 2026/1 — UnB<a class="headerlink" href="#squad-5-mds-20261-unb" title="Permanent link">&para;</a></h2>
+<h1 id="infraestrutura-como-codigo-docker-e-ambiente">Infraestrutura como Código — Docker e Ambiente<a class="headerlink" href="#infraestrutura-como-codigo-docker-e-ambiente" title="Permanent link">&para;</a></h1>
+<h2 id="o-problema-do-na-minha-maquina-funciona">O Problema do "Na Minha Máquina Funciona"<a class="headerlink" href="#o-problema-do-na-minha-maquina-funciona" title="Permanent link">&para;</a></h2>
+<p>Um dos maiores desafios em projetos de software desenvolvidos em equipe é a inconsistência de ambientes. Com 6 desenvolvedores no Guard.IA usando sistemas operacionais diferentes (macOS, Windows, Linux), versões diferentes do Python e configurações distintas de banco de dados, o cenário clássico se repetia:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Desenvolvedor A: &quot;Funcionou aqui.&quot;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Desenvolvedor B: &quot;Na minha máquina dá erro de conexão.&quot;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Desenvolvedor C: &quot;Qual versão do PostgreSQL você instalou?&quot;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Desenvolvedor D: &quot;Que porta está usando?&quot;
+</code></pre></div>
+<p>A solução adotada foi <strong>Docker</strong> — uma plataforma de containerização que empacota o software e todas as suas dependências em unidades isoladas e reproduzíveis chamadas <strong>containers</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">O que é um container?</p>
+<p>Um container é um ambiente de execução isolado que contém tudo que uma aplicação precisa para rodar: sistema de arquivos, bibliotecas, variáveis de ambiente e configurações. É mais leve que uma máquina virtual e garante comportamento idêntico em qualquer host.</p>
+</div>
+<hr />
+<h2 id="docker-no-guardia">Docker no Guard.IA<a class="headerlink" href="#docker-no-guardia" title="Permanent link">&para;</a></h2>
+<h3 id="o-que-foi-containerizado">O que foi containerizado<a class="headerlink" href="#o-que-foi-containerizado" title="Permanent link">&para;</a></h3>
+<p>Na Release 1, o Docker é utilizado exclusivamente para o <strong>banco de dados PostgreSQL</strong>. Isso resolve o problema mais crítico de ambiente: garantir que todos os membros da equipe usem a mesma versão, configuração e porta do banco.</p>
+<h3 id="o-arquivo-docker-composeyml">O arquivo docker-compose.yml<a class="headerlink" href="#o-arquivo-docker-composeyml" title="Permanent link">&para;</a></h3>
+<p>O <code>docker-compose.yml</code> define o ambiente de forma declarativa:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:15</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoramento_legislativo_db</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guardia</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${DB_PASSWORD}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5432:5432&quot;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres_data:/var/lib/postgresql/data</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./app/armazenamento/schema.sql:/docker-entrypoint-initdb.d/schema.sql</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="nt">postgres_data</span><span class="p">:</span>
+</code></pre></div>
+<p>Cada campo tem uma função específica:</p>
 <table>
 <thead>
 <tr>
-<th>Membro</th>
-<th>Papel</th>
-<th>GitHub</th>
+<th>Campo</th>
+<th>Função</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Lucas</td>
-<td>Arquitetura de Software</td>
-<td><em>(preencher)</em></td>
+<td><code>image: postgres:15</code></td>
+<td>Define a versão exata do PostgreSQL — todos usam a mesma</td>
 </tr>
 <tr>
-<td>Gabriella</td>
-<td>Frontend</td>
-<td><em>(preencher)</em></td>
+<td><code>container_name</code></td>
+<td>Nome fixo para o container, facilitando comandos de manutenção</td>
 </tr>
 <tr>
-<td>Clara</td>
-<td>Frontend</td>
-<td><em>(preencher)</em></td>
+<td><code>environment</code></td>
+<td>Variáveis de configuração — lidas do arquivo <code>.env</code></td>
 </tr>
 <tr>
-<td>Otávio</td>
-<td>Backend / CRUD de Usuários</td>
-<td><em>(preencher)</em></td>
+<td><code>ports</code></td>
+<td>Mapeia a porta 5432 do container para a máquina local</td>
 </tr>
 <tr>
-<td>Edvaldo</td>
-<td>Dados / Filtro</td>
-<td><em>(preencher)</em></td>
+<td><code>volumes</code></td>
+<td>Persiste os dados mesmo após reiniciar o container</td>
 </tr>
 <tr>
-<td>João</td>
-<td>Dados / Coleta</td>
-<td><em>(preencher)</em></td>
+<td><code>docker-entrypoint-initdb.d</code></td>
+<td>Executa o <code>schema.sql</code> automaticamente na primeira inicialização</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition success">
+<p class="admonition-title">Inicialização automática do schema</p>
+<p>O mapeamento do <code>schema.sql</code> para <code>docker-entrypoint-initdb.d/</code> é um recurso nativo do PostgreSQL no Docker. Na primeira vez que o container é iniciado, ele executa automaticamente todos os arquivos <code>.sql</code> da pasta — criando as tabelas <code>proposicoes</code> e <code>usuarios</code> sem nenhum comando manual.</p>
+</div>
 <hr />
-<h2 id="divisao-de-responsabilidades">Divisão de Responsabilidades<a class="headerlink" href="#divisao-de-responsabilidades" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Pipeline de Dados
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── Coleta        → João
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── Filtro        → Edvaldo
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── Armazenamento → Otávio
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── Classificação → (Release 2)
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Frontend
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── Dashboard     → Gabriella + Clara
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└── Login/Cadastro → Gabriella + Clara
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Arquitetura
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>└── Definição e documentação → Lucas
+<h2 id="variaveis-de-ambiente-e-seguranca">Variáveis de Ambiente e Segurança<a class="headerlink" href="#variaveis-de-ambiente-e-seguranca" title="Permanent link">&para;</a></h2>
+<h3 id="por-que-nao-colocar-credenciais-no-codigo">Por que não colocar credenciais no código?<a class="headerlink" href="#por-que-nao-colocar-credenciais-no-codigo" title="Permanent link">&para;</a></h3>
+<p>Hardcodar credenciais de banco diretamente no código é uma prática insegura que:</p>
+<ul>
+<li>Expõe senhas no histórico do Git</li>
+<li>Impede o uso de credenciais diferentes em produção e desenvolvimento</li>
+<li>Dificulta a rotação de senhas em caso de comprometimento</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ❌ NUNCA fazer isso</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;minha_senha_secreta&quot;</span>  <span class="c1"># exposta no Git</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span>
+</code></pre></div>
+<h3 id="o-arquivo-env">O arquivo .env<a class="headerlink" href="#o-arquivo-env" title="Permanent link">&para;</a></h3>
+<p>O Guard.IA usa variáveis de ambiente carregadas de um arquivo <code>.env</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>DB_HOST=localhost
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>DB_PORT=5432
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>DB_NAME=guardia
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>DB_USER=postgres
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>DB_PASSWORD=sua_senha_aqui
+</code></pre></div>
+<p>O arquivo <code>.env</code> <strong>nunca é versionado</strong> — está no <code>.gitignore</code>. O repositório contém apenas o <code>.env.example</code> com os campos necessários mas sem valores reais:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>DB_HOST=localhost
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>DB_PORT=5432
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>DB_NAME=guardia
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>DB_USER=postgres
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>DB_PASSWORD=
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Regra obrigatória do projeto</p>
+<p>O arquivo <code>.env</code> nunca deve ser commitado. Credenciais expostas no Git são uma vulnerabilidade de segurança grave — mesmo em repositórios privados. O GEMINI.md registra essa regra formalmente: <em>"Nunca versionar <code>.env</code>"</em>.</p>
+</div>
+<h3 id="como-o-python-le-as-variaveis">Como o Python lê as variáveis<a class="headerlink" href="#como-o-python-le-as-variaveis" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">load_dotenv</span><span class="p">()</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">DB_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="s2">&quot;host&quot;</span><span class="p">:</span>     <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="s2">&quot;port&quot;</span><span class="p">:</span>     <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PORT&quot;</span><span class="p">,</span> <span class="mi">5432</span><span class="p">),</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s2">&quot;dbname&quot;</span><span class="p">:</span>   <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;guardia&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="s2">&quot;user&quot;</span><span class="p">:</span>     <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_USER&quot;</span><span class="p">,</span> <span class="s2">&quot;postgres&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="repositorio">Repositório<a class="headerlink" href="#repositorio" title="Permanent link">&para;</a></h2>
-<p>🔗 <a href="https://github.com/unb-mds/2026-1-Guard.IA">github.com/unb-mds/2026-1-Guard.IA</a></p>
-<hr />
-<div class="admonition quote">
-<p class="admonition-title">Propósito</p>
-<p><em>"Transformar dados públicos em informação acessível para quem quer proteger crianças e adolescentes na internet."</em></p>
+<h2 id="como-subir-o-ambiente">Como Subir o Ambiente<a class="headerlink" href="#como-subir-o-ambiente" title="Permanent link">&para;</a></h2>
+<p>Com Docker instalado, qualquer membro da equipe consegue ter o banco rodando com dois comandos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 1. Copiar o arquivo de ambiente</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># (editar .env com a senha desejada)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 2. Subir o container do banco</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p>O banco estará disponível em <code>localhost:5432</code> em segundos, com as tabelas já criadas e pronto para receber dados do pipeline.</p>
+<p>Para verificar se está saudável:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>ps
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># CONTAINER ID   IMAGE         STATUS</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># abc123         postgres:15   Up 2 minutes (healthy)</span>
+</code></pre></div>
+<p>Para encerrar:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>down
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Persistência dos dados</p>
+<p>O volume <code>postgres_data</code> garante que os dados inseridos no banco sobrevivem ao <code>docker compose down</code>. Para apagar tudo e começar do zero: <code>docker compose down -v</code>.</p>
 </div>
+<hr />
+<h2 id="isolamento-do-pipeline-de-dados">Isolamento do Pipeline de Dados<a class="headerlink" href="#isolamento-do-pipeline-de-dados" title="Permanent link">&para;</a></h2>
+<p>O Docker garante que o banco está sempre em um estado conhecido antes do pipeline executar. O <code>main.py</code> pode assumir que:</p>
+<ol>
+<li>O banco está disponível em <code>localhost:5432</code></li>
+<li>As tabelas <code>proposicoes</code> e <code>usuarios</code> existem</li>
+<li>As constraints (<code>UNIQUE</code>, <code>NOT NULL</code>) estão ativas</li>
+</ol>
+<p>Isso elimina uma classe de erros do tipo <code>relation "proposicoes" does not exist</code> que ocorre quando o banco não foi inicializado corretamente.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker compose up -d        # banco sobe com schema aplicado
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>        ↓
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>python -m app.main          # pipeline executa com banco garantido
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        ↓
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>655 proposições inseridas   # resultado previsível e reproduzível
+</code></pre></div>
+<hr />
+<h2 id="release-2-docker-compose-completo">Release 2 — Docker Compose Completo<a class="headerlink" href="#release-2-docker-compose-completo" title="Permanent link">&para;</a></h2>
+<p>Na Release 1, apenas o banco é containerizado. Para a Release 2, o plano é expandir o <code>docker-compose.yml</code> para incluir todos os serviços:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">db</span><span class="p">:</span><span class="w">        </span><span class="c1"># PostgreSQL</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">api</span><span class="p">:</span><span class="w">       </span><span class="c1"># FastAPI</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nt">frontend</span><span class="p">:</span><span class="w">  </span><span class="c1"># React (build estático)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="nt">dashboard</span><span class="p">:</span><span class="w"> </span><span class="c1"># Streamlit</span>
+</code></pre></div>
+<p>Com isso, o comando <code>docker compose up</code> sobe o sistema inteiro — banco, API, frontend e dashboard — sem nenhuma instalação manual além do próprio Docker.</p>
+<div class="admonition tip">
+<p class="admonition-title">Objetivo da Release 2</p>
+<p>Um único <code>docker compose up</code> para subir o Guard.IA completo. Zero configuração manual. Ambiente 100% reproduzível em qualquer máquina.</p>
+</div>
+<hr />
+<h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Docker Documentation. <em>Docker Compose</em>. Disponível em: https://docs.docker.com/compose/</li>
+<li>Docker Documentation. <em>Use environment variables</em>. Disponível em: https://docs.docker.com/compose/environment-variables/</li>
+<li>PostgreSQL Docker Hub. <em>Official Image Documentation</em>. Disponível em: https://hub.docker.com/_/postgres</li>
+</ul>
 
 
 
@@ -1168,28 +1311,6 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
-        
-          
-          <a href="../sprints/sprint05/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Sprint 05 — Integração Final">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Anterior
-              </span>
-              <div class="md-ellipsis">
-                Sprint 05 — Integração Final
-              </div>
-            </div>
-          </a>
-        
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
