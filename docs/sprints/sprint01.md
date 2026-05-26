@@ -1,39 +1,46 @@
-# Sprint 01 — Planejamento
+# Sprint 01 — Estudos Técnicos
 
 ## Informações
 
 | Campo | Detalhe |
 |---|---|
-| Data | *(preencher)* |
-| Duração | *(preencher)* |
-| Participantes | Lucas, Gabriella, Clara, Otávio, Edvaldo, João |
+| **Data de Encerramento** | 15 de Abril |
+| **Participantes** | Lucas, Gabriella, Clara, Otávio, Edvaldo, João |
 
 ---
 
-## Objetivos da Sprint
+## Objetivo da Sprint
 
-- [ ] Definir o tema e escopo do projeto
-- [ ] Estudar as APIs públicas da Câmara e do Senado
-- [ ] Definir a arquitetura do sistema
-- [ ] Dividir responsabilidades entre os membros
-- [ ] Configurar o repositório no GitHub
+Aprofundar os estudos em ferramentas e tecnologias específicas que seriam utilizadas no desenvolvimento do projeto, com foco em prototipagem, gestão ágil, APIs, Docker e fontes de dados legislativos.
 
 ---
 
-## Resultados Alcançados
+## O que cada membro estudou
 
-*(preencher com o que foi entregue)*
+| Membro | Tema estudado |
+|---|---|
+| Otávio | Docker — containerização, criação de imagens, docker-compose e ambientes isolados |
+| Clara | Figma — design de interfaces, prototipagem interativa e criação de wireframes |
+| Gabriella | Scrum avançado — papéis (PO, SM, Dev Team), cerimônias e artefatos (backlog, burndown) |
+| Lucas | Fontes de dados legislativos — portais da Câmara, Senado e APIs governamentais disponíveis |
+| Edvaldo | Product Owner — responsabilidades, gestão do backlog, priorização e comunicação com stakeholders |
+| João | APIs REST — design RESTful, autenticação com JWT, documentação com Swagger/OpenAPI |
 
 ---
 
 ## Decisões Tomadas
 
-- Arquitetura escolhida: **Pipes and Filters**
-- Stack definida: Python + PostgreSQL + Streamlit
-- Divisão de papéis: Lucas (Arquitetura), Gabriella e Clara (Frontend), Otávio (Backend/CRUD), Edvaldo e João (Dados)
+- **Docker** confirmado como ferramenta de infraestrutura — garante paridade entre os ambientes de desenvolvimento
+- **Figma** será utilizado pelo Front-End para criar protótipos antes da implementação
+- As fontes de dados legislativos levantadas por Lucas serão avaliadas quanto à disponibilidade de APIs e qualidade dos dados
+- Sprints de 1 a 2 semanas confirmadas
 
 ---
 
-## Notas e Observações
+## Pendências para a próxima sprint
 
-*(preencher com observações relevantes da sprint)*
+- [ ] Eleger Scrum Master e Product Owner formalmente
+- [ ] Iniciar o levantamento de requisitos com base nas fontes de dados mapeadas
+- [ ] Criar o Story Map do produto
+- [ ] Definir o primeiro protótipo no Figma
+- [ ] Configurar o ambiente Docker para o projeto

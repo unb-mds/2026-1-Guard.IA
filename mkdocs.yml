@@ -68,8 +68,11 @@ nav:
       - Banco de Dados: tecnologias/banco.md
       - Autenticação: tecnologias/autenticacao.md
   - Sprints:
-      - Sprint 01 — Planejamento: sprints/sprint01.md
-      - Sprint 02 — Implementação: sprints/sprint02.md
-      - Sprint 03 — Refinamento: sprints/sprint03.md
+      - Sprint 00 — Nivelamento: sprints/sprint00.md
+      - Sprint 01 — Estudos Técnicos: sprints/sprint01.md
+      - Sprint 02 — Requisitos e Story Map: sprints/sprint02.md
+      - Sprint 03 — Primeiro Desenvolvimento: sprints/sprint03.md
+      - Sprint 04 — UX e DevOps: sprints/sprint04.md
+      - Sprint 05 — Integração Final: sprints/sprint05.md
   - Equipe: equipe/index.md
   - Produtividade: produtividade.md
