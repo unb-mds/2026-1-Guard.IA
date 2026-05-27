@@ -12,8 +12,8 @@ def verificar_senha(senha: str, senha_hash: str) -> bool:
 
 def criar_usuario(nome: str, email: str, senha: str):
     """
-    Cria um novo usuário no PostgreSQL.
-    Retorna o ID do usuário criado ou None se houver erro (ex: email duplicado).
+    Cria um novo usuario no PostgreSQL.
+    Retorna o ID do usuario criado ou None se houver erro (ex: email duplicado).
     """
     senha_hash = hash_senha(senha)
     query = """
@@ -26,7 +26,7 @@ def criar_usuario(nome: str, email: str, senha: str):
         if result:
             return result[0][0]
     except Exception as e:
-        print(f"Erro ao criar usuário: {e}")
+        print(f"Erro ao criar usuario: {e}")
     return None
 
 def buscar_por_email(email: str):

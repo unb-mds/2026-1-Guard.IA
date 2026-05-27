@@ -104,11 +104,11 @@ def get_proposicoes(limit: int = 100, offset: int = 0):
                 })
         return proposicoes
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Erro ao buscar proposições: {e}")
+        raise HTTPException(status_code=500, detail=f"Erro ao buscar proposicoes: {e}")
 
 @app.get("/stats")
 def get_stats():
-    """Retorna estatísticas para o dashboard."""
+    """Retorna estatisticas para o dashboard."""
     query_total = "SELECT COUNT(*) FROM proposicoes;"
     query_categorias = "SELECT categoria, COUNT(*) FROM proposicoes GROUP BY categoria;"
     
