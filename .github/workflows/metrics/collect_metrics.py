@@ -8,7 +8,6 @@ OUTPUT_PATH = "docs/productivity/metrics.json"
 
 BRANCHES_IGNORADAS = {"gh-pages"}
 
-
 def _iso(dt):
     if dt is None:
         return None
@@ -183,7 +182,6 @@ def collect_issues(repo):
         "list":     issues[:200],
     }
 
-
 def collect_prs(repo):
     prs = []
     for pr in repo.get_pulls(state="all"):
@@ -198,7 +196,6 @@ def collect_prs(repo):
             "merged_at":  _iso(pr.merged_at),
         })
     return prs[:100]
-
 
 def main():
     token = os.environ.get("GITHUB_TOKEN")
