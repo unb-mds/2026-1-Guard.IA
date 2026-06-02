@@ -3,20 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Guard.IA · Comparativo de Branches</title>
+<title>Guard.IA · Produtividade</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#003366;--green:#005C37;--blue:#0B4ABC;--gold:#BFA630;
+  --navy:#003366;--green:#005C37;--gold:#BFA630;
   --bg:#f4f6fa;--surface:#fff;--border:#dde3ee;
   --text:#1a1e2e;--muted:#6b7280;--radius:12px;
-  --b1:#0B4ABC;   /* dev-projeto */
-  --b2:#005C37;   /* estudos     */
 }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-/* ── Header ── */
 header{
   background:var(--navy);color:#fff;padding:0 2rem;
   display:flex;align-items:center;justify-content:space-between;
@@ -28,79 +25,77 @@ header{
 .badge{background:var(--gold);color:#1a1200;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
 #last-update{font-size:.75rem;opacity:.6}
 
-/* ── Demo banner ── */
 #demo-banner{
   display:none;background:#fffbeb;border-bottom:2px solid var(--gold);
   padding:.6rem 2rem;font-size:.8rem;color:#78500a;text-align:center;
 }
 #demo-banner a{color:var(--navy);font-weight:600}
 
-/* ── Legend pills ── */
-.branch-legend{
-  display:flex;gap:1rem;align-items:center;justify-content:center;
-  padding:.9rem 2rem;background:var(--surface);border-bottom:1px solid var(--border);
-  flex-wrap:wrap;
-}
-.branch-pill{
-  display:flex;align-items:center;gap:.5rem;
-  font-size:.82rem;font-weight:700;padding:.3rem .9rem;
-  border-radius:20px;border:2px solid transparent;
-}
-.pill-b1{background:#e8eeff;color:var(--b1);border-color:var(--b1)}
-.pill-b2{background:#e6f4ed;color:var(--b2);border-color:var(--b2)}
-.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.dot-b1{background:var(--b1)}.dot-b2{background:var(--b2)}
-
-/* ── Layout ── */
 main{max-width:1240px;margin:0 auto;padding:2rem 1.5rem 4rem}
 
-/* ── Summary cards ── */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-bottom:2rem}
+/* Cards de resumo */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.4rem;display:flex;flex-direction:column;gap:.2rem}
 .card-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}
-.card-value{font-size:1.9rem;font-weight:800;line-height:1}
-.c-navy{color:var(--navy)}.c-b1{color:var(--b1)}.c-b2{color:var(--b2)}.c-gold{color:var(--gold)}
+.card-value{font-size:1.9rem;font-weight:800;line-height:1;color:var(--navy)}
 .card-sub{font-size:.75rem;color:var(--muted)}
 
-/* ── Split columns ── */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem}
-@media(max-width:800px){.split{grid-template-columns:1fr}}
+/* Seletor de branches */
+.branch-selector{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-bottom:1.5rem;
+}
+.branch-selector-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:.8rem}
+.branch-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.branch-pill{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.3rem .85rem;border-radius:20px;font-size:.78rem;font-weight:600;
+  border:2px solid transparent;cursor:pointer;transition:all .15s;user-select:none;
+}
+.branch-pill.active{color:#fff}
+.branch-pill.inactive{background:#f0f2f7;color:var(--muted);border-color:#dde3ee}
+.branch-pill.inactive:hover{background:#e8eaf0}
+.pill-deleted{font-size:.62rem;background:rgba(0,0,0,.15);padding:1px 5px;border-radius:8px;margin-left:2px}
 
-/* ── Panel ── */
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;overflow:hidden}
-.panel-full{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;overflow:hidden;margin-bottom:2rem}
+/* Panel */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;overflow:hidden;margin-bottom:1.5rem}
 .panel-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.panel-title .dot{width:8px;height:8px}
-.panel svg{width:100%;display:block}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;display:inline-block}
 
-/* ── Comparison bar ── */
-.cmp-row{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem}
-.cmp-label{font-size:.78rem;font-weight:600;color:var(--muted);display:flex;justify-content:space-between}
-.cmp-track{height:22px;background:#f0f2f7;border-radius:4px;overflow:hidden;display:flex}
-.cmp-seg{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:.7rem;font-weight:700;color:#fff;min-width:4px;transition:width .6s ease}
+/* Comparativo */
+.cmp-row{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.cmp-label{font-size:.78rem;font-weight:600;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.cmp-track{height:20px;background:#f0f2f7;border-radius:4px;overflow:hidden;display:flex}
+.cmp-seg{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:5px;font-size:.68rem;font-weight:700;color:#fff;min-width:4px;transition:width .5s ease}
 
-/* ── Table ── */
-.panel-wide{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:2rem;overflow-x:auto}
+/* Grid 2 colunas */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+
+/* Tabela */
+.tbl-wrap{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:.83rem}
-thead th{text-align:left;padding:.55rem .85rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);border-bottom:2px solid var(--border)}
+thead th{text-align:left;padding:.5rem .8rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);border-bottom:2px solid var(--border)}
 tbody tr{border-bottom:1px solid var(--border)}
 tbody tr:last-child{border-bottom:none}
-tbody td{padding:.5rem .85rem;vertical-align:top}
+tbody td{padding:.45rem .8rem;vertical-align:top}
 tbody tr:hover td{background:#f8f9fd}
 .tag{display:inline-block;font-size:.67rem;font-weight:600;padding:1px 6px;border-radius:20px;margin:1px}
 .tag-open{background:#e0f2ea;color:#005C37}.tag-closed{background:#e5eaf8;color:#0B4ABC}
-.pill-open{background:#e0f2ea;color:#005C37;font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:20px}
-.pill-closed{background:#e5eaf8;color:#0B4ABC;font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:20px}
-.branch-tag{display:inline-block;font-size:.67rem;font-weight:700;padding:1px 7px;border-radius:20px}
-.bt-b1{background:#e8eeff;color:var(--b1)}.bt-b2{background:#e6f4ed;color:var(--b2)}
+.pill-open{background:#e0f2ea;color:#005C37;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
+.pill-closed{background:#e5eaf8;color:#0B4ABC;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
+.pill-merged{background:#f3e8ff;color:#7c3aed;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
 
-/* ── Tooltip ── */
+/* Tooltip */
 .tooltip{position:fixed;background:rgba(26,30,46,.92);color:#fff;font-size:.76rem;padding:.4rem .7rem;border-radius:6px;pointer-events:none;opacity:0;transition:opacity .15s;z-index:999;max-width:240px}
 
-/* ── Loading ── */
+/* Loading */
 #loading{display:flex;flex-direction:column;align-items:center;gap:1rem;margin:4rem auto;color:var(--muted)}
 .spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+
+/* Seção vazia */
+.empty{color:var(--muted);font-size:.83rem;padding:.5rem 0}
 </style>
 </head>
 <body>
@@ -118,217 +113,247 @@ tbody tr:hover td{background:#f8f9fd}
   <a href="https://github.com/unb-mds/2026-1-Guard.IA/actions" target="_blank">Executar Actions →</a>
 </div>
 
-<div class="branch-legend">
-  <span class="branch-pill pill-b1"><span class="dot dot-b1"></span>dev-projeto</span>
-  <span class="branch-pill pill-b2"><span class="dot dot-b2"></span>estudos</span>
-</div>
-
 <main>
   <div id="loading"><div class="spinner"></div><span>Buscando métricas…</span></div>
-
-  <div id="dashboard" style="display:none">
-
-    <!-- Summary cards -->
-    <div class="cards">
-      <div class="card"><span class="card-label">Commits — dev-projeto</span><span class="card-value c-b1" id="v-c1">–</span><span class="card-sub">na branch</span></div>
-      <div class="card"><span class="card-label">Commits — estudos</span><span class="card-value c-b2" id="v-c2">–</span><span class="card-sub">na branch</span></div>
-      <div class="card"><span class="card-label">Issues abertas</span><span class="card-value c-navy" id="v-open">–</span><span class="card-sub">no repositório</span></div>
-      <div class="card"><span class="card-label">Issues fechadas</span><span class="card-value c-navy" id="v-closed">–</span><span class="card-sub">no repositório</span></div>
-      <div class="card"><span class="card-label">Contribuidores</span><span class="card-value c-gold" id="v-members">–</span><span class="card-sub">nas duas branches</span></div>
-    </div>
-
-    <!-- Comparison section -->
-    <div class="panel-full">
-      <div class="panel-title">Comparativo de atividade — dev-projeto vs estudos</div>
-      <div id="cmp-authors"></div>
-    </div>
-
-    <!-- Timeline charts side by side -->
-    <div class="split">
-      <div class="panel">
-        <div class="panel-title"><span class="dot dot-b1"></span>Commits por dia — dev-projeto</div>
-        <div id="chart-c1"></div>
-      </div>
-      <div class="panel">
-        <div class="panel-title"><span class="dot dot-b2"></span>Commits por dia — estudos</div>
-        <div id="chart-c2"></div>
-      </div>
-    </div>
-
-    <!-- Issues timeline -->
-    <div class="panel-full">
-      <div class="panel-title">Issues abertas × fechadas por dia</div>
-      <div id="chart-issues"></div>
-    </div>
-
-    <!-- Commits tables side by side -->
-    <div class="split">
-      <div class="panel">
-        <div class="panel-title"><span class="dot dot-b1"></span>Commits recentes — dev-projeto</div>
-        <div style="overflow-x:auto">
-          <table><thead><tr><th>SHA</th><th>Autor</th><th>Data</th><th>Mensagem</th></tr></thead>
-          <tbody id="tbl-c1"></tbody></table>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="panel-title"><span class="dot dot-b2"></span>Commits recentes — estudos</div>
-        <div style="overflow-x:auto">
-          <table><thead><tr><th>SHA</th><th>Autor</th><th>Data</th><th>Mensagem</th></tr></thead>
-          <tbody id="tbl-c2"></tbody></table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Issues table -->
-    <div class="panel-wide">
-      <div class="panel-title">Issues do repositório</div>
-      <table><thead><tr><th>#</th><th>Título</th><th>Estado</th><th>Aberta em</th><th>Fechada em</th><th>Labels</th></tr></thead>
-      <tbody id="tbl-issues"></tbody></table>
-    </div>
-
-  </div><!-- #dashboard -->
+  <div id="dashboard" style="display:none"></div>
 </main>
 
 <div class="tooltip" id="tooltip"></div>
 
 <script>
-// ── Demo data ──────────────────────────────────────────────────────────────
-const DEMO = (function(){
-  const now = new Date();
-  function ago(n){ const d=new Date(now); d.setDate(d.getDate()-n); return d.toISOString().slice(0,10) }
-  function isoAgo(n,h=12){ return ago(n)+'T'+String(h).padStart(2,'0')+':00:00Z' }
+const BRANCH_COLORS = [
+  '#0B4ABC','#005C37','#8B2FC9','#C25B00','#0077A8',
+  '#7A1F3D','#2E6B3E','#5A3E8C','#A04000','#00695C'
+];
 
-  const mkTimeline = (days,base,amp) =>
-    Array.from({length:days},(_,i)=>({date:ago(days-1-i),count:Math.max(0,Math.round(base+Math.sin(i*.8)*amp+Math.random()*1.5))}));
-
-  const b1Authors = {'ana-silva':18,'pedro-dev':12,'carlos-m':9,'julia-fs':6};
-  const b2Authors = {'thiago-r':14,'beatriz-k':10,'ana-silva':7,'pedro-dev':5};
-
-  const mkCommits = (authors,branch) => {
-    const list=[];
-    const msgs={
-      'dev-projeto':['feat: módulo de detecção NLP','fix: pipeline de ingestão','refactor: serviço de autenticação','docs: swagger da API'],
-      'estudos':['study: paper sobre BERT','study: anotações de transformers','study: resumo RAG','study: fine-tuning LLMs'],
-    };
-    let d=0;
-    Object.entries(authors).forEach(([a,n])=>{
-      for(let i=0;i<n;i++){
-        list.push({sha:(Math.random()*0xffffff|0).toString(16).padStart(6,'0'),author:a,
-          date:isoAgo(d%20,9+i%8),message:msgs[branch][i%msgs[branch].length],char_count:60+i*7});
-        d++;
-      }
-    });
-    return list.sort((a,b)=>b.date.localeCompare(a.date)).slice(0,15);
-  };
-
-  const issueTimeline = Array.from({length:12},(_,i)=>({date:ago(11-i),opened:Math.round(Math.random()*2),closed:Math.round(Math.random()*2)}));
-
-  return {
-    generated_at: now.toISOString(),
-    repo: 'unb-mds/2026-1-Guard.IA',
-    branches: ['dev-projeto','estudos'],
-    summary:{total_commits:81,open_issues:4,closed_issues:5,contributors:6,open_prs:2},
-    branches_data:{
-      'dev-projeto':{branch:'dev-projeto',total_commits:45,commits_per_author:b1Authors,
-        commit_timeline:mkTimeline(20,3,2),recent_commits:mkCommits(b1Authors,'dev-projeto')},
-      'estudos':{branch:'estudos',total_commits:36,commits_per_author:b2Authors,
-        commit_timeline:mkTimeline(20,2.5,1.5),recent_commits:mkCommits(b2Authors,'estudos')},
-    },
-    issues:{
-      open:4,closed:5,
-      timeline: issueTimeline,
-      list:[
-        {number:8,title:'Implementar classificador BERT',state:'open',created_at:isoAgo(10),closed_at:null,labels:['feature','AI']},
-        {number:7,title:'Pipeline de coleta Twitter',state:'closed',created_at:isoAgo(18),closed_at:isoAgo(6),labels:['feature']},
-        {number:6,title:'GitHub Actions para deploy',state:'closed',created_at:isoAgo(20),closed_at:isoAgo(10),labels:['devops']},
-        {number:5,title:'Documentar arquitetura',state:'open',created_at:isoAgo(7),closed_at:null,labels:['docs']},
-        {number:4,title:'Testes de integração',state:'open',created_at:isoAgo(5),closed_at:null,labels:['test']},
-      ]
-    },
-    all_authors:{'ana-silva':25,'thiago-r':14,'pedro-dev':17,'beatriz-k':10,'carlos-m':9,'julia-fs':6},
-    _demo: true,
-  };
-})();
-
-// ── Utils ──────────────────────────────────────────────────────────────────
-const $ = id => document.getElementById(id);
-const fmtDate = s => s ? new Date(s).toLocaleDateString('pt-BR') : '–';
-const tip = $('tooltip');
+const tip = document.getElementById('tooltip');
 function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY-28)+'px'}
 function hideTip(){tip.style.opacity=0}
+const fmtDate = s => s ? new Date(s).toLocaleDateString('pt-BR') : '–';
 
-// ── Load ───────────────────────────────────────────────────────────────────
+let globalData = null;
+let activeBranches = new Set();
+let branchColorMap = {};
+
+function buildDemoData() {
+  const now = new Date();
+  function ago(n){const d=new Date(now);d.setDate(d.getDate()-n);return d.toISOString().slice(0,10)}
+  function isoAgo(n,h=12){return ago(n)+'T'+String(h).padStart(2,'0')+':00:00Z'}
+  const mkTimeline=(days,base,amp)=>Array.from({length:days},(_,i)=>({date:ago(days-1-i),count:Math.max(0,Math.round(base+Math.sin(i*.8)*amp+Math.random()*1.5))}));
+  const mkCommits=(authors,msgs)=>{
+    const list=[];let d=0;
+    Object.entries(authors).forEach(([a,n])=>{for(let i=0;i<n;i++){list.push({sha:(Math.random()*0xffffff|0).toString(16).padStart(6,'0'),author:a,date:isoAgo(d%20,9+i%8),message:msgs[i%msgs.length],char_count:60+i*7});d++;}});
+    return list.sort((a,b)=>b.date.localeCompare(a.date)).slice(0,15);
+  };
+  const branches_data = {
+    'dev-projeto':{branch:'dev-projeto',total_commits:45,commits_per_author:{'ana-silva':18,'pedro-dev':12,'carlos-m':9},commit_timeline:mkTimeline(20,3,2),recent_commits:mkCommits({'ana-silva':5,'pedro-dev':3},['feat: módulo NLP','fix: pipeline','docs: swagger'])},
+    'estudos':{branch:'estudos',total_commits:36,commits_per_author:{'thiago-r':14,'beatriz-k':10,'ana-silva':7},commit_timeline:mkTimeline(20,2.5,1.5),recent_commits:mkCommits({'thiago-r':4,'beatriz-k':3},['study: BERT','study: transformers'])},
+    'feat/login-page':{branch:'feat/login-page',status:'deleted',merged_into:'dev-projeto',merged_at:isoAgo(5),pr_number:33,pr_title:'feat: adiciona página de login',total_commits:8,commits_per_author:{'ana-silva':8},commit_timeline:mkTimeline(5,2,1),recent_commits:mkCommits({'ana-silva':3},['feat: login page','fix: validation'])},
+  };
+  const issueTimeline=Array.from({length:12},(_,i)=>({date:ago(11-i),opened:Math.round(Math.random()*2),closed:Math.round(Math.random()*2)}));
+  return {
+    generated_at:now.toISOString(),repo:'unb-mds/2026-1-Guard.IA',
+    branches:['dev-projeto','estudos'],
+    branches_deletadas:['feat/login-page'],
+    summary:{total_commits:89,open_issues:4,closed_issues:5,contributors:6,open_prs:2,branches_ativas:2,branches_deletadas:1},
+    branches_data,
+    issues:{open:4,closed:5,timeline:issueTimeline,list:[
+      {number:8,title:'Implementar classificador BERT',state:'open',created_at:isoAgo(10),closed_at:null,labels:['feature']},
+      {number:7,title:'Pipeline de coleta',state:'closed',created_at:isoAgo(18),closed_at:isoAgo(6),labels:['feature']},
+    ]},
+    all_authors:{'ana-silva':33,'thiago-r':14,'pedro-dev':12,'beatriz-k':10,'carlos-m':9},
+    _demo:true,
+  };
+}
+
 fetch('metrics.json')
-  .then(r=>{ if(!r.ok) throw new Error(); return r.json(); })
-  .then(d=>render(d,false))
-  .catch(()=>render(DEMO,true));
+  .then(r=>{if(!r.ok)throw new Error();return r.json();})
+  .then(d=>init(d,false))
+  .catch(()=>init(buildDemoData(),true));
 
-// ── Render ─────────────────────────────────────────────────────────────────
-function render(d, isDemo){
-  $('loading').style.display   = 'none';
-  $('dashboard').style.display = 'block';
-  if(isDemo) $('demo-banner').style.display = 'block';
+function init(d, isDemo) {
+  globalData = d;
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  if(isDemo) document.getElementById('demo-banner').style.display = 'block';
 
-  $('last-update').textContent = isDemo
+  document.getElementById('last-update').textContent = isDemo
     ? 'Demonstração — sem dados reais'
     : 'Atualizado em ' + new Date(d.generated_at).toLocaleString('pt-BR');
 
-  const b1 = d.branches_data?.['dev-projeto'] || {};
-  const b2 = d.branches_data?.['estudos']     || {};
+  // Monta mapa de cores por branch
+  const todasBranches = Object.keys(d.branches_data || {});
+  todasBranches.forEach((b, i) => { branchColorMap[b] = BRANCH_COLORS[i % BRANCH_COLORS.length]; });
 
-  $('v-c1').textContent      = b1.total_commits ?? 0;
-  $('v-c2').textContent      = b2.total_commits ?? 0;
-  $('v-open').textContent    = d.issues?.open    ?? d.summary?.open_issues   ?? 0;
-  $('v-closed').textContent  = d.issues?.closed  ?? d.summary?.closed_issues ?? 0;
-  $('v-members').textContent = d.summary?.contributors ?? 0;
+  // Ativa todas por padrão
+  activeBranches = new Set(todasBranches);
 
-  drawComparison(b1.commits_per_author||{}, b2.commits_per_author||{});
-  drawTimeline('chart-c1', b1.commit_timeline||[], '#0B4ABC');
-  drawTimeline('chart-c2', b2.commit_timeline||[], '#005C37');
-  drawIssueTimeline(d.issues?.timeline||[]);
-  buildCommitTable('tbl-c1', b1.recent_commits||[]);
-  buildCommitTable('tbl-c2', b2.recent_commits||[]);
-  buildIssuesTable(d.issues?.list||[]);
+  render();
 }
 
-// ── Comparison bars ────────────────────────────────────────────────────────
-function drawComparison(cpa1, cpa2){
-  const allAuthors = [...new Set([...Object.keys(cpa1),...Object.keys(cpa2)])];
-  if(!allAuthors.length){ $('cmp-authors').innerHTML='<p style="color:var(--muted);font-size:.83rem">Sem dados</p>'; return; }
+function render() {
+  const d = globalData;
+  const dash = document.getElementById('dashboard');
+  dash.innerHTML = '';
 
-  const container = $('cmp-authors');
-  allAuthors.sort((a,b)=>(cpa1[b]||0)+(cpa2[b]||0) - ((cpa1[a]||0)+(cpa2[a]||0)));
+  const branchesAtivas = d.branches || [];
+  const branchesDeletadas = d.branches_deletadas || [];
+  const todasBranches = Object.keys(d.branches_data || {});
 
-  allAuthors.forEach(author=>{
-    const v1 = cpa1[author]||0;
-    const v2 = cpa2[author]||0;
-    const total = v1+v2 || 1;
-    const p1 = (v1/total*100).toFixed(1);
-    const p2 = (v2/total*100).toFixed(1);
+  // ── Cards de resumo ──
+  const activeBranchData = todasBranches.filter(b => activeBranches.has(b)).map(b => d.branches_data[b]);
+  const totalCommitsAtivo = activeBranchData.reduce((s, b) => s + (b.total_commits || 0), 0);
 
+  const cardsEl = document.createElement('div');
+  cardsEl.className = 'cards';
+  cardsEl.innerHTML = `
+    <div class="card"><span class="card-label">Commits (selecionadas)</span><span class="card-value">${totalCommitsAtivo}</span><span class="card-sub">${activeBranches.size} branch(es) ativas</span></div>
+    <div class="card"><span class="card-label">Branches ativas</span><span class="card-value">${branchesAtivas.length}</span><span class="card-sub">no repositório</span></div>
+    <div class="card"><span class="card-label">Branches deletadas</span><span class="card-value">${branchesDeletadas.length}</span><span class="card-sub">após merge</span></div>
+    <div class="card"><span class="card-label">Issues abertas</span><span class="card-value">${d.issues?.open ?? d.summary?.open_issues ?? 0}</span><span class="card-sub">no repositório</span></div>
+    <div class="card"><span class="card-label">Issues fechadas</span><span class="card-value">${d.issues?.closed ?? d.summary?.closed_issues ?? 0}</span><span class="card-sub">no repositório</span></div>
+    <div class="card"><span class="card-label">Contribuidores</span><span class="card-value">${d.summary?.contributors ?? 0}</span><span class="card-sub">únicos</span></div>
+  `;
+  dash.appendChild(cardsEl);
+
+  // ── Seletor de branches ──
+  const selectorEl = document.createElement('div');
+  selectorEl.className = 'branch-selector';
+  selectorEl.innerHTML = `<div class="branch-selector-title">Filtrar branches — clique para ativar/desativar</div><div class="branch-pills" id="branch-pills"></div>`;
+  dash.appendChild(selectorEl);
+
+  const pillsContainer = selectorEl.querySelector('#branch-pills');
+  todasBranches.forEach(b => {
+    const isDeleted = branchesDeletadas.includes(b);
+    const isActive = activeBranches.has(b);
+    const color = branchColorMap[b];
+    const pill = document.createElement('span');
+    pill.className = 'branch-pill ' + (isActive ? 'active' : 'inactive');
+    if(isActive) { pill.style.background = color; pill.style.borderColor = color; }
+    pill.innerHTML = b + (isDeleted ? '<span class="pill-deleted">deletada</span>' : '');
+    pill.title = isDeleted ? `Deletada após merge` : 'Branch ativa';
+    pill.addEventListener('click', () => {
+      if(activeBranches.has(b)) { if(activeBranches.size > 1) activeBranches.delete(b); }
+      else activeBranches.add(b);
+      render();
+    });
+    pillsContainer.appendChild(pill);
+  });
+
+  // ── Comparativo de autores ──
+  const cmpPanel = document.createElement('div');
+  cmpPanel.className = 'panel';
+  cmpPanel.innerHTML = `<div class="panel-title">Comparativo de commits por autor — branches selecionadas</div><div id="cmp-content"></div>`;
+  dash.appendChild(cmpPanel);
+  buildComparison(cmpPanel.querySelector('#cmp-content'), d);
+
+  // ── Timeline por branch (grid dinâmico) ──
+  const selectedBranches = todasBranches.filter(b => activeBranches.has(b));
+  if(selectedBranches.length > 0) {
+    const gridEl = document.createElement('div');
+    gridEl.className = 'grid2';
+    selectedBranches.forEach(b => {
+      const bd = d.branches_data[b];
+      const isDeleted = branchesDeletadas.includes(b);
+      const color = branchColorMap[b];
+      const panel = document.createElement('div');
+      panel.className = 'panel';
+      const statusBadge = isDeleted
+        ? `<span style="font-size:.65rem;background:#f3e8ff;color:#7c3aed;padding:1px 6px;border-radius:10px;margin-left:6px">deletada</span>`
+        : '';
+      panel.innerHTML = `
+        <div class="panel-title">
+          <span class="dot" style="background:${color}"></span>
+          Commits por dia — ${b}${statusBadge}
+          ${isDeleted ? `<span style="font-size:.7rem;color:var(--muted);margin-left:auto">merged em ${bd.merged_into || '?'}</span>` : ''}
+        </div>
+        <div id="chart-${b.replace(/[^a-z0-9]/gi,'_')}"></div>
+      `;
+      gridEl.appendChild(panel);
+      setTimeout(() => drawTimeline(`chart-${b.replace(/[^a-z0-9]/gi,'_')}`, bd.commit_timeline || [], color), 0);
+    });
+    dash.appendChild(gridEl);
+  }
+
+  // ── Timeline de issues ──
+  const issuePanel = document.createElement('div');
+  issuePanel.className = 'panel';
+  issuePanel.innerHTML = `<div class="panel-title">Issues abertas × fechadas por dia</div><div id="chart-issues"></div>`;
+  dash.appendChild(issuePanel);
+  setTimeout(() => drawIssueTimeline(d.issues?.timeline || []), 0);
+
+  // ── Tabelas de commits por branch ──
+  const commitsGrid = document.createElement('div');
+  commitsGrid.className = 'grid2';
+  selectedBranches.forEach(b => {
+    const bd = d.branches_data[b];
+    const color = branchColorMap[b];
+    const panel = document.createElement('div');
+    panel.className = 'panel';
+    panel.innerHTML = `
+      <div class="panel-title"><span class="dot" style="background:${color}"></span>Commits recentes — ${b}</div>
+      <div class="tbl-wrap">
+        <table><thead><tr><th>SHA</th><th>Autor</th><th>Data</th><th>Mensagem</th></tr></thead>
+        <tbody id="tbl-${b.replace(/[^a-z0-9]/gi,'_')}"></tbody></table>
+      </div>
+    `;
+    commitsGrid.appendChild(panel);
+    setTimeout(() => buildCommitTable(`tbl-${b.replace(/[^a-z0-9]/gi,'_')}`, bd.recent_commits || []), 0);
+  });
+  dash.appendChild(commitsGrid);
+
+  // ── Tabela de issues ──
+  const issueTablePanel = document.createElement('div');
+  issueTablePanel.className = 'panel';
+  issueTablePanel.innerHTML = `
+    <div class="panel-title">Issues do repositório</div>
+    <div class="tbl-wrap">
+      <table><thead><tr><th>#</th><th>Título</th><th>Estado</th><th>Aberta em</th><th>Fechada em</th><th>Labels</th></tr></thead>
+      <tbody id="tbl-issues"></tbody></table>
+    </div>
+  `;
+  dash.appendChild(issueTablePanel);
+  buildIssuesTable(d.issues?.list || []);
+}
+
+function buildComparison(container, d) {
+  const selected = Object.keys(d.branches_data || {}).filter(b => activeBranches.has(b));
+  if(!selected.length) { container.innerHTML = '<p class="empty">Nenhuma branch selecionada.</p>'; return; }
+
+  const allAuthors = {};
+  selected.forEach(b => {
+    Object.entries(d.branches_data[b].commits_per_author || {}).forEach(([a, n]) => {
+      if(!allAuthors[a]) allAuthors[a] = {};
+      allAuthors[a][b] = (allAuthors[a][b] || 0) + n;
+    });
+  });
+
+  const sorted = Object.entries(allAuthors)
+    .sort((a,b) => Object.values(b[1]).reduce((s,v)=>s+v,0) - Object.values(a[1]).reduce((s,v)=>s+v,0));
+
+  sorted.forEach(([author, perBranch]) => {
+    const total = Object.values(perBranch).reduce((s,v)=>s+v,0) || 1;
     const row = document.createElement('div');
     row.className = 'cmp-row';
+    const labelsHtml = selected.map(b => `<span style="color:${branchColorMap[b]}">${b}: ${perBranch[b]||0}</span>`).join(' · ');
+    const segsHtml = selected.map(b => {
+      const v = perBranch[b] || 0;
+      const pct = (v/total*100).toFixed(1);
+      return `<div class="cmp-seg" style="width:${pct}%;background:${branchColorMap[b]}">${v>0?v:''}</div>`;
+    }).join('');
     row.innerHTML = `
-      <div class="cmp-label">
-        <span>${author}</span>
-        <span style="display:flex;gap:1rem">
-          <span style="color:var(--b1)">dev-projeto: ${v1}</span>
-          <span style="color:var(--b2)">estudos: ${v2}</span>
-        </span>
-      </div>
-      <div class="cmp-track">
-        <div class="cmp-seg" style="width:${p1}%;background:var(--b1)">${v1>0?v1:''}</div>
-        <div class="cmp-seg" style="width:${p2}%;background:var(--b2)">${v2>0?v2:''}</div>
-      </div>`;
+      <div class="cmp-label"><span>${author}</span><span style="display:flex;gap:.75rem;font-size:.72rem">${labelsHtml}</span></div>
+      <div class="cmp-track">${segsHtml}</div>`;
     container.appendChild(row);
   });
 }
 
-// ── Timeline bar chart ─────────────────────────────────────────────────────
-function drawTimeline(containerId, data, color){
-  if(!data.length){ $(containerId).innerHTML='<p style="color:var(--muted);font-size:.82rem">Sem dados</p>'; return; }
+function drawTimeline(containerId, data, color) {
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  if(!data.length) { el.innerHTML='<p class="empty">Sem dados de timeline.</p>'; return; }
   const W=480,H=180,m={top:8,right:8,bottom:44,left:32};
-  const iW=W-m.left-m.right, iH=H-m.top-m.bottom;
+  const iW=W-m.left-m.right,iH=H-m.top-m.bottom;
   const parseDay=d3.timeParse('%Y-%m-%d');
   const rows=data.map(d=>({date:parseDay(d.date),count:d.count})).filter(d=>d.date);
   const x=d3.scaleBand().domain(rows.map(d=>d.date)).range([0,iW]).padding(.18);
@@ -351,11 +376,12 @@ function drawTimeline(containerId, data, color){
    .call(a=>{a.select('.domain').remove();a.selectAll('text').style('font-size','9px').style('fill','#6b7280')});
 }
 
-// ── Issues chart ───────────────────────────────────────────────────────────
-function drawIssueTimeline(data){
-  if(!data.length){ $('chart-issues').innerHTML='<p style="color:var(--muted);font-size:.82rem">Sem dados</p>'; return; }
+function drawIssueTimeline(data) {
+  const el = document.getElementById('chart-issues');
+  if(!el) return;
+  if(!data.length) { el.innerHTML='<p class="empty">Sem dados de issues.</p>'; return; }
   const W=900,H=200,m={top:8,right:120,bottom:44,left:32};
-  const iW=W-m.left-m.right, iH=H-m.top-m.bottom;
+  const iW=W-m.left-m.right,iH=H-m.top-m.bottom;
   const parseDay=d3.timeParse('%Y-%m-%d');
   const rows=data.map(d=>({date:parseDay(d.date),opened:d.opened,closed:d.closed})).filter(d=>d.date);
   if(!rows.length) return;
@@ -387,36 +413,34 @@ function drawIssueTimeline(data){
   });
 }
 
-// ── Commit table ───────────────────────────────────────────────────────────
-function buildCommitTable(tbodyId, commits){
-  const tbody = $(tbodyId);
+function buildCommitTable(tbodyId, commits) {
+  const tbody = document.getElementById(tbodyId);
+  if(!tbody) return;
+  if(!commits.length) {
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td colspan="4" class="empty">Sem commits ainda</td>';
+    tbody.appendChild(tr); return;
+  }
   commits.slice(0,12).forEach(c=>{
     const tr=document.createElement('tr');
     tr.innerHTML=`
       <td><code style="font-size:.72rem;color:var(--navy)">${c.sha}</code></td>
       <td style="white-space:nowrap;font-size:.8rem">${c.author}</td>
       <td style="white-space:nowrap;font-size:.8rem">${fmtDate(c.date)}</td>
-      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.8rem"
-          title="${(c.message||'').replace(/"/g,'&quot;')}">${c.message||'–'}</td>`;
+      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.8rem" title="${(c.message||'').replace(/"/g,'&quot;')}">${c.message||'–'}</td>`;
     tbody.appendChild(tr);
   });
-  if(!commits.length){
-    const tr=document.createElement('tr');
-    tr.innerHTML='<td colspan="4" style="color:var(--muted);padding:.8rem">Sem commits ainda</td>';
-    tbody.appendChild(tr);
-  }
 }
 
-// ── Issues table ───────────────────────────────────────────────────────────
-function buildIssuesTable(issues){
-  const tbody=$('tbl-issues');
+function buildIssuesTable(issues) {
+  const tbody = document.getElementById('tbl-issues');
+  if(!tbody) return;
   issues.slice(0,30).forEach(is=>{
     const lblHtml=(is.labels||[]).map(l=>`<span class="tag ${is.state==='open'?'tag-open':'tag-closed'}">${l}</span>`).join('');
     const tr=document.createElement('tr');
     tr.innerHTML=`
       <td style="white-space:nowrap;color:var(--muted)">#${is.number}</td>
-      <td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
-          title="${(is.title||'').replace(/"/g,'&quot;')}">${is.title||'–'}</td>
+      <td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${(is.title||'').replace(/"/g,'&quot;')}">${is.title||'–'}</td>
       <td>${is.state==='open'?'<span class="pill-open">Aberta</span>':'<span class="pill-closed">Fechada</span>'}</td>
       <td style="white-space:nowrap">${fmtDate(is.created_at)}</td>
       <td style="white-space:nowrap">${fmtDate(is.closed_at)}</td>
