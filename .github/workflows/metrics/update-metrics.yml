@@ -45,3 +45,13 @@ jobs:
           git add docs/productivity/metrics.json
           git diff --cached --quiet || git commit -m "chore: update productivity metrics [skip ci]"
           git push
+
+      - name: Publicar metrics.json no gh-pages
+        run: |
+          git fetch origin gh-pages
+          git checkout gh-pages
+          mkdir -p productivity
+          cp docs/productivity/metrics.json productivity/metrics.json
+          git add productivity/metrics.json
+          git diff --cached --quiet || git commit -m "chore: update metrics.json no gh-pages [skip ci]"
+          git push
