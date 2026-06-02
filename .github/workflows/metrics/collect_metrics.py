@@ -8,6 +8,7 @@ OUTPUT_PATH = "docs/productivity/metrics.json"
 
 BRANCHES_IGNORADAS = {"gh-pages"}
 
+
 def _iso(dt):
     if dt is None:
         return None
@@ -142,7 +143,6 @@ def collect_branch_deletada(repo, pr):
 
 def collect_issues(repo):
     all_issues = list(repo.get_issues(state="all"))
-
     issues                = []
     issues_open_per_day   = {}
     issues_closed_per_day = {}
@@ -182,6 +182,7 @@ def collect_issues(repo):
         "list":     issues[:200],
     }
 
+
 def collect_prs(repo):
     prs = []
     for pr in repo.get_pulls(state="all"):
@@ -197,6 +198,7 @@ def collect_prs(repo):
         })
     return prs[:100]
 
+
 def main():
     token = os.environ.get("GITHUB_TOKEN")
     if not token:
@@ -209,7 +211,6 @@ def main():
     print(" Descobrindo branches...")
 
     _, branches_ativas, branches_deletadas = descobrir_branches(repo)
-
     branches_data = {}
     for branch_name in sorted(branches_ativas):
         print(f" Coletando branch ativa '{branch_name}'…")
@@ -275,6 +276,7 @@ def main():
     print(f"   Issues              : open={s['open_issues']}  closed={s['closed_issues']}")
     print(f"   PRs abertos         : {s['open_prs']}")
     print(f"   Membros únicos      : {s['contributors']}")
+
 
 if __name__ == "__main__":
     main()
