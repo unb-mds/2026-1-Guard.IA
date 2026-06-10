@@ -7,6 +7,7 @@ REPO_NAME   = "unb-mds/2026-1-Guard.IA"
 OUTPUT_PATH = "docs/productivity/metrics.json"
 
 BRANCHES_IGNORADAS = {"gh-pages"}
+AUTORES_IGNORADOS = {"github-actions[bot]"}
 
 
 def _iso(dt):
@@ -72,7 +73,11 @@ def _processar_commits(commits_raw):
     commits_per_day    = {}
 
     for c in commits_raw:
-        login    = (c.author.login if c.author else None) or c.commit.author.name or "unknown"
+        login = (c.author.login if c.author else None) or c.commit.author.name or "unknown"
+
+        if login in AUTORES_IGNORADOS:
+            continue
+
         date_str = _iso(c.commit.author.date)
         day_key  = (date_str or "unknown")[:10]
         msg      = c.commit.message or ""
@@ -110,8 +115,6 @@ def collect_branch(repo, branch_name):
 def collect_branch_deletada(repo, pr):
     branch_name = pr.head.ref
     try:
-        # Para branches deletadas, usa o SHA do PR como ponto de partida
-        # e compara com o base para pegar só os commits do PR
         comp        = repo.compare(pr.base.sha, pr.head.sha)
         commits_raw = list(comp.commits)
     except Exception:
