@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T00:35:19.641575+00:00",
+  "generated_at": "2026-06-10T02:04:11.879973+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -25,10 +25,10 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 91,
+    "total_commits": 84,
     "open_issues": 1,
     "closed_issues": 31,
-    "contributors": 8,
+    "contributors": 7,
     "open_prs": 2,
     "branches_ativas": 16,
     "branches_deletadas": 3
@@ -36,11 +36,10 @@
   "branches_data": {
     "dev-projeto": {
       "branch": "dev-projeto",
-      "total_commits": 12,
+      "total_commits": 9,
       "commits_per_author": {
         "claranunes22": 6,
-        "gabiiverissimo-dev": 3,
-        "github-actions[bot]": 3
+        "gabiiverissimo-dev": 3
       },
       "commit_timeline": [
         {
@@ -49,11 +48,11 @@
         },
         {
           "date": "2026-05-21",
-          "count": 7
+          "count": 5
         },
         {
           "date": "2026-05-24",
-          "count": 2
+          "count": 1
         }
       ],
       "recent_commits": [
@@ -100,13 +99,6 @@
           "char_count": 77
         },
         {
-          "sha": "67302e4",
-          "author": "github-actions[bot]",
-          "date": "2026-05-21T13:48:33+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
-        },
-        {
           "sha": "276acb5",
           "author": "gabiiverissimo-dev",
           "date": "2026-05-21T13:49:32+00:00",
@@ -121,25 +113,11 @@
           "char_count": 67
         },
         {
-          "sha": "c8d90e5",
-          "author": "github-actions[bot]",
-          "date": "2026-05-21T13:50:54+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
-        },
-        {
           "sha": "8ed5c99",
           "author": "claranunes22",
           "date": "2026-05-24T15:33:01+00:00",
           "message": "Merge pull request #43 from unb-mds/feat/teste-pipeline-unificado",
           "char_count": 96
-        },
-        {
-          "sha": "658bac4",
-          "author": "github-actions[bot]",
-          "date": "2026-05-24T15:33:43+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
         }
       ]
     },
@@ -315,12 +293,11 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 29,
+      "total_commits": 26,
       "commits_per_author": {
         "PajeMurici-dev": 12,
         "gabiiverissimo-dev": 2,
         "claranunes22": 11,
-        "github-actions[bot]": 3,
         "LucasNF-Dev": 1
       },
       "commit_timeline": [
@@ -350,15 +327,11 @@
         },
         {
           "date": "2026-05-14",
-          "count": 8
+          "count": 7
         },
         {
           "date": "2026-05-15",
-          "count": 6
-        },
-        {
-          "date": "2026-06-10",
-          "count": 1
+          "count": 5
         }
       ],
       "recent_commits": [
@@ -475,13 +448,6 @@
           "char_count": 35
         },
         {
-          "sha": "031ab03",
-          "author": "github-actions[bot]",
-          "date": "2026-05-14T01:19:36+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
-        },
-        {
           "sha": "606c32a",
           "author": "PajeMurici-dev",
           "date": "2026-05-14T01:33:54+00:00",
@@ -531,13 +497,6 @@
           "char_count": 49
         },
         {
-          "sha": "21d1f5c",
-          "author": "github-actions[bot]",
-          "date": "2026-05-15T12:35:59+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
-        },
-        {
           "sha": "5a4dd64",
           "author": "PajeMurici-dev",
           "date": "2026-05-15T12:38:34+00:00",
@@ -557,13 +516,6 @@
           "date": "2026-05-15T19:48:16+00:00",
           "message": "Revise README for clarity and project details",
           "char_count": 107
-        },
-        {
-          "sha": "cba7c26",
-          "author": "github-actions[bot]",
-          "date": "2026-06-10T00:25:58+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
         }
       ]
     },
@@ -576,13 +528,12 @@
     },
     "release-1-integration": {
       "branch": "release-1-integration",
-      "total_commits": 38,
+      "total_commits": 37,
       "commits_per_author": {
         "claranunes22": 5,
         "gabiiverissimo-dev": 8,
-        "github-actions[bot]": 3,
         "lucasnferreiradev-lang": 9,
-        "PajeMurici-dev": 11,
+        "PajeMurici-dev": 13,
         "LucasNF-Dev": 2
       },
       "commit_timeline": [
@@ -592,7 +543,7 @@
         },
         {
           "date": "2026-05-21",
-          "count": 9
+          "count": 7
         },
         {
           "date": "2026-05-23",
@@ -624,7 +575,7 @@
         },
         {
           "date": "2026-06-10",
-          "count": 2
+          "count": 3
         }
       ],
       "recent_commits": [
@@ -671,13 +622,6 @@
           "char_count": 77
         },
         {
-          "sha": "67302e4",
-          "author": "github-actions[bot]",
-          "date": "2026-05-21T13:48:33+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
-        },
-        {
           "sha": "276acb5",
           "author": "gabiiverissimo-dev",
           "date": "2026-05-21T13:49:32+00:00",
@@ -690,13 +634,6 @@
           "date": "2026-05-21T13:50:05+00:00",
           "message": "Merge pull request #41 from unb-mds/feat/home-team",
           "char_count": 67
-        },
-        {
-          "sha": "c8d90e5",
-          "author": "github-actions[bot]",
-          "date": "2026-05-21T13:50:54+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
         },
         {
           "sha": "4203a68",
@@ -888,11 +825,18 @@
           "char_count": 51
         },
         {
-          "sha": "fd9adab",
-          "author": "github-actions[bot]",
-          "date": "2026-06-10T00:28:04+00:00",
-          "message": "chore: update productivity metrics [skip ci]",
-          "char_count": 44
+          "sha": "15449b0",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-10T01:58:20+00:00",
+          "message": "fix: atualiza o clllect metrics para ignorar o bot na pagina de produtividade",
+          "char_count": 77
+        },
+        {
+          "sha": "77386f4",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-10T01:58:59+00:00",
+          "message": "Merge branch 'release-1-integration' of https://github.com/unb-mds/2026-1-Guard.IA into release-1-integration",
+          "char_count": 109
         }
       ]
     },
@@ -1579,9 +1523,8 @@
   ],
   "all_authors": {
     "claranunes22": 27,
-    "PajeMurici-dev": 25,
+    "PajeMurici-dev": 27,
     "gabiiverissimo-dev": 13,
-    "github-actions[bot]": 9,
     "lucasnferreiradev-lang": 9,
     "LucasNF-Dev": 4,
     "otaviotex": 2,
@@ -1601,11 +1544,6 @@
       "main": 2,
       "release-1-integration": 8
     },
-    "github-actions[bot]": {
-      "dev-projeto": 3,
-      "main": 3,
-      "release-1-integration": 3
-    },
     "otaviotex": {
       "feat/crud-usuario": 1,
       "filtragem-B": 1
@@ -1615,7 +1553,7 @@
     },
     "PajeMurici-dev": {
       "main": 12,
-      "release-1-integration": 11,
+      "release-1-integration": 13,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1
     },
