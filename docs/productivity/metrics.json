@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T16:04:53.192491+00:00",
+  "generated_at": "2026-06-17T16:27:21.543364+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -25,11 +25,11 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 85,
+    "total_commits": 22,
     "open_issues": 1,
     "closed_issues": 31,
-    "contributors": 7,
-    "open_prs": 2,
+    "contributors": 6,
+    "open_prs": 1,
     "branches_ativas": 16,
     "branches_deletadas": 3
   },
@@ -293,10 +293,25 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 1,
+      "commits_per_author": {
+        "PajeMurici-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-17",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "20b5733",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-17T16:22:25+00:00",
+          "message": "Merge pull request #45 from unb-mds/release-1-integration",
+          "char_count": 116
+        }
+      ]
     },
     "pages-metricas": {
       "branch": "pages-metricas",
@@ -307,374 +322,10 @@
     },
     "release-1-integration": {
       "branch": "release-1-integration",
-      "total_commits": 64,
-      "commits_per_author": {
-        "PajeMurici-dev": 26,
-        "gabiiverissimo-dev": 10,
-        "claranunes22": 16,
-        "LucasNF-Dev": 3,
-        "lucasnferreiradev-lang": 9
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-04-25",
-          "count": 1
-        },
-        {
-          "date": "2026-04-29",
-          "count": 1
-        },
-        {
-          "date": "2026-04-30",
-          "count": 1
-        },
-        {
-          "date": "2026-05-03",
-          "count": 3
-        },
-        {
-          "date": "2026-05-04",
-          "count": 6
-        },
-        {
-          "date": "2026-05-13",
-          "count": 2
-        },
-        {
-          "date": "2026-05-14",
-          "count": 7
-        },
-        {
-          "date": "2026-05-15",
-          "count": 5
-        },
-        {
-          "date": "2026-05-20",
-          "count": 3
-        },
-        {
-          "date": "2026-05-21",
-          "count": 7
-        },
-        {
-          "date": "2026-05-23",
-          "count": 2
-        },
-        {
-          "date": "2026-05-24",
-          "count": 4
-        },
-        {
-          "date": "2026-05-25",
-          "count": 3
-        },
-        {
-          "date": "2026-05-26",
-          "count": 4
-        },
-        {
-          "date": "2026-05-27",
-          "count": 3
-        },
-        {
-          "date": "2026-06-01",
-          "count": 2
-        },
-        {
-          "date": "2026-06-02",
-          "count": 6
-        },
-        {
-          "date": "2026-06-10",
-          "count": 3
-        },
-        {
-          "date": "2026-06-17",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "ccc1743",
-          "author": "PajeMurici-dev",
-          "date": "2026-04-25T00:30:56+00:00",
-          "message": "Create estudo-storymap.md",
-          "char_count": 65
-        },
-        {
-          "sha": "1850119",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-29T16:45:58+00:00",
-          "message": "Merge pull request #23 from unb-mds/PajeMurici-dev-patch-1",
-          "char_count": 85
-        },
-        {
-          "sha": "8376de3",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-04-30T13:27:54+00:00",
-          "message": "docs: detalhamento das funcionalidades e fluxo do protótipo Guard.IA",
-          "char_count": 271
-        },
-        {
-          "sha": "46773a0",
-          "author": "claranunes22",
-          "date": "2026-05-03T03:15:27+00:00",
-          "message": "docs: adiciona user flow",
-          "char_count": 24
-        },
-        {
-          "sha": "9c264f7",
-          "author": "claranunes22",
-          "date": "2026-05-03T03:16:29+00:00",
-          "message": "Merge branch 'estudos' of https://github.com/unb-mds/2026-1-Guard.IA into estudos",
-          "char_count": 81
-        },
-        {
-          "sha": "3873ce0",
-          "author": "claranunes22",
-          "date": "2026-05-03T03:19:24+00:00",
-          "message": "Merge pull request #25 from unb-mds/estudos",
-          "char_count": 52
-        },
-        {
-          "sha": "2e448c3",
-          "author": "claranunes22",
-          "date": "2026-05-04T13:54:00+00:00",
-          "message": "feat: melhorias no dashboard",
-          "char_count": 28
-        },
-        {
-          "sha": "efe5d91",
-          "author": "claranunes22",
-          "date": "2026-05-04T14:14:04+00:00",
-          "message": "docs: adiciona documentação do dashboard closes #27",
-          "char_count": 51
-        },
-        {
-          "sha": "5661d14",
-          "author": "claranunes22",
-          "date": "2026-05-04T14:16:16+00:00",
-          "message": "Merge pull request #26 from unb-mds/sprint-04-dashboard",
-          "char_count": 93
-        },
-        {
-          "sha": "4637131",
-          "author": "claranunes22",
-          "date": "2026-05-04T14:41:14+00:00",
-          "message": "docs: adiciona página inicial do GitHub Pages",
-          "char_count": 45
-        },
-        {
-          "sha": "755f6c7",
-          "author": "claranunes22",
-          "date": "2026-05-04T14:54:54+00:00",
-          "message": "docs: melhora página inicial do GitHub Pages",
-          "char_count": 44
-        },
-        {
-          "sha": "91b4962",
-          "author": "claranunes22",
-          "date": "2026-05-04T15:03:48+00:00",
-          "message": "docs: remove markdown para usar HTML",
-          "char_count": 36
-        },
-        {
-          "sha": "48ee430",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-13T16:14:13+00:00",
-          "message": "feat: adiciona workflow de produtividade",
-          "char_count": 40
-        },
-        {
-          "sha": "3269059",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-13T17:19:07+00:00",
-          "message": "fix: corrige workflow yml",
-          "char_count": 25
-        },
-        {
-          "sha": "6271258",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-14T01:12:41+00:00",
-          "message": "fix: move workflow para pasta correta",
-          "char_count": 37
-        },
-        {
-          "sha": "761cd38",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-14T01:18:41+00:00",
-          "message": "fix: corrige nome do script coletor",
-          "char_count": 35
-        },
-        {
-          "sha": "606c32a",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-14T01:33:54+00:00",
-          "message": "fix: força rebuild do pages",
-          "char_count": 27
-        },
-        {
-          "sha": "c569ea3",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-14T01:36:41+00:00",
-          "message": "fix: forca rebuild do pages",
-          "char_count": 27
-        },
-        {
-          "sha": "7d3f11c",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-14T01:40:16+00:00",
-          "message": "fix: adiciona .nojekyll para desativar Jekyll",
-          "char_count": 45
-        },
-        {
-          "sha": "f1a4867",
-          "author": "claranunes22",
-          "date": "2026-05-14T16:26:00+00:00",
-          "message": "docs: atualiza README do projeto",
-          "char_count": 111
-        },
-        {
-          "sha": "10acd00",
-          "author": "claranunes22",
-          "date": "2026-05-14T16:31:17+00:00",
-          "message": "docs: atualiza README do projeto",
-          "char_count": 92
-        },
-        {
-          "sha": "377b50e",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:30:22+00:00",
-          "message": "fix: corrige update metrics para referenciar a main",
-          "char_count": 51
-        },
-        {
-          "sha": "686df3a",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:33:51+00:00",
-          "message": "fix: workflow commita metrics.json sempre na main",
-          "char_count": 49
-        },
-        {
-          "sha": "5a4dd64",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:38:34+00:00",
-          "message": "fix: atualiza versoes das actions para Node.js 24",
-          "char_count": 49
-        },
-        {
-          "sha": "69c4591",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-15T12:38:50+00:00",
-          "message": "Merge branch 'main' of https://github.com/unb-mds/2026-1-Guard.IA",
-          "char_count": 65
-        },
-        {
-          "sha": "4c84db4",
-          "author": "LucasNF-Dev",
-          "date": "2026-05-15T19:48:16+00:00",
-          "message": "Revise README for clarity and project details",
-          "char_count": 107
-        },
-        {
-          "sha": "3ff4dee",
-          "author": "claranunes22",
-          "date": "2026-05-20T16:05:06+00:00",
-          "message": "docs: adicionar especificação do frontend e refatorar interface de login",
-          "char_count": 72
-        },
-        {
-          "sha": "fd41f84",
-          "author": "claranunes22",
-          "date": "2026-05-20T16:13:05+00:00",
-          "message": "chore: mover especificação do frontend para a pasta correta",
-          "char_count": 59
-        },
-        {
-          "sha": "64cff3b",
-          "author": "claranunes22",
-          "date": "2026-05-20T18:42:32+00:00",
-          "message": "feat: adicionar seção da equipe com ícones e links do GitHub",
-          "char_count": 60
-        },
-        {
-          "sha": "d1c59c0",
-          "author": "claranunes22",
-          "date": "2026-05-21T13:22:21+00:00",
-          "message": "feat: adiciona documentação técnica e fotos da equipe",
-          "char_count": 53
-        },
-        {
-          "sha": "def1611",
-          "author": "claranunes22",
-          "date": "2026-05-21T13:24:18+00:00",
-          "message": "chore: adiciona .gitignore na raiz",
-          "char_count": 34
-        },
-        {
-          "sha": "47fe6ab",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-05-21T13:47:51+00:00",
-          "message": "Merge pull request #39 from unb-mds/feat/login-redesign",
-          "char_count": 77
-        },
-        {
-          "sha": "276acb5",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-05-21T13:49:32+00:00",
-          "message": "Merge branch 'dev-projeto' into feat/home-team",
-          "char_count": 46
-        },
-        {
-          "sha": "7a56ebd",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-05-21T13:50:05+00:00",
-          "message": "Merge pull request #41 from unb-mds/feat/home-team",
-          "char_count": 67
-        },
-        {
-          "sha": "4203a68",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-05-21T15:51:29+00:00",
-          "message": "fix: corrige scroll e inconsistência de background na home",
-          "char_count": 58
-        },
-        {
-          "sha": "a04b9eb",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-05-21T20:43:24+00:00",
-          "message": "feat: add Cadastro page with registration form and mascots; update Home and Login styles",
-          "char_count": 88
-        },
-        {
-          "sha": "4f5ff14",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-23T17:14:20+00:00",
-          "message": "feat(release-1): integração completa do pipeline, api, dashboard e login",
-          "char_count": 72
-        },
-        {
-          "sha": "19e7d56",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-23T17:20:07+00:00",
-          "message": "chore: atualiza dependências no requirements.txt",
-          "char_count": 48
-        },
-        {
-          "sha": "fac3c21",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-24T22:38:50+00:00",
-          "message": "feat(frontend): merge 'feat/pag-cadastro' with API integration",
-          "char_count": 62
-        },
-        {
-          "sha": "1220d1c",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-24T22:46:20+00:00",
-          "message": "fix(frontend): update navigation links and signup button in Home",
-          "char_count": 64
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "sprint-04-dashboard": {
       "branch": "sprint-04-dashboard",
@@ -1229,12 +880,12 @@
     {
       "number": 45,
       "title": "feat(frontend): Integração completa do Frontend Release 1",
-      "state": "open",
+      "state": "closed",
       "base": "main",
       "head": "release-1-integration",
       "author": "LucasNF-Dev",
       "created_at": "2026-05-24T22:48:21+00:00",
-      "merged_at": null
+      "merged_at": "2026-06-17T16:22:26+00:00"
     },
     {
       "number": 44,
@@ -1358,25 +1009,22 @@
     }
   ],
   "all_authors": {
-    "PajeMurici-dev": 28,
-    "claranunes22": 27,
-    "gabiiverissimo-dev": 13,
-    "lucasnferreiradev-lang": 9,
-    "LucasNF-Dev": 4,
+    "claranunes22": 11,
+    "gabiiverissimo-dev": 3,
+    "PajeMurici-dev": 3,
     "otaviotex": 2,
-    "AlmondHare": 2
+    "AlmondHare": 2,
+    "LucasNF-Dev": 1
   },
   "author_por_branch": {
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,
       "feat/teste-pipeline-unificado": 3,
-      "release-1-integration": 16,
       "sprint-04-dashboard": 1
     },
     "gabiiverissimo-dev": {
-      "dev-projeto": 3,
-      "release-1-integration": 10
+      "dev-projeto": 3
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
@@ -1386,16 +1034,12 @@
       "filtragem-B": 2
     },
     "PajeMurici-dev": {
-      "release-1-integration": 26,
+      "main": 1,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1
     },
     "LucasNF-Dev": {
-      "release-1-integration": 3,
       "feature/estrutura-inicial": 1
-    },
-    "lucasnferreiradev-lang": {
-      "release-1-integration": 9
     }
   }
 }
