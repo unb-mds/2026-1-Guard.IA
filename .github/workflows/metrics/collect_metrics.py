@@ -2,14 +2,12 @@ import json
 import os
 from datetime import datetime, timezone
 from github import Github
-
+ 
 REPO_NAME   = "unb-mds/2026-1-Guard.IA"
 OUTPUT_PATH = "docs/productivity/metrics.json"
-
 BRANCHES_IGNORADAS = {"gh-pages"}
-AUTORES_IGNORADOS = {"github-actions[bot]"}
-
-
+AUTORES_IGNORADOS  = {"github-actions[bot]"}
+ 
 def _iso(dt):
     if dt is None:
         return None

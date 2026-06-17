@@ -111,6 +111,107 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# =============================
+# ESTILO VISUAL GUARD.IA
+# =============================
+st.markdown("""
+<style>
+    .stApp {
+        background-color: #F5F5F5;
+    }
+
+    [data-testid="stSidebar"] {
+        background-color: #0B6B4D;
+    }
+
+    [data-testid="stSidebar"] * {
+        color: white;
+    }
+
+    .topbar {
+        background-color: #006B4F;
+        padding: 18px 32px;
+        color: white;
+        font-weight: 800;
+        font-size: 30px;
+        letter-spacing: 1px;
+        margin-bottom: 45px;
+    }
+
+    .nav {
+        float: right;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 8px;
+    }
+
+    .nav span {
+        margin-left: 28px;
+    }
+
+    .hero {
+        padding: 10px 35px 20px 35px;
+    }
+
+    .hero-title {
+        font-size: 64px;
+        font-weight: 900;
+        line-height: 1.05;
+        color: #000000;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 22px;
+        color: #222222;
+        max-width: 950px;
+        margin-bottom: 35px;
+        font-weight: 500;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 14px;
+        padding: 24px;
+        border: 1px solid #E0E0E0;
+        box-shadow: 0px 3px 12px rgba(0,0,0,0.06);
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 15px;
+        color: #555;
+        font-weight: 600;
+    }
+
+    .card-value {
+        font-size: 34px;
+        color: #006B4F;
+        font-weight: 900;
+    }
+
+    .section-title {
+        font-size: 26px;
+        font-weight: 800;
+        color: #111;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    .block {
+        background-color: white;
+        padding: 24px;
+        border-radius: 16px;
+        border: 1px solid #E6E6E6;
+        box-shadow: 0px 3px 12px rgba(0,0,0,0.05);
+        margin-bottom: 25px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# =============================
+# CARREGAMENTO
+# =============================
 @st.cache_data
 def carregar_dados_csv():
     # Fallback caso o banco falhe ou não tenha dados
