@@ -1,211 +1,111 @@
-# 🛡️ Guard.IA - Monitoramento Legislativo Inteligente
 
-O **Guard.IA** é uma plataforma de inteligência de dados projetada para monitorar, filtrar e classificar proposições legislativas da Câmara dos Deputados e do Senado Federal que impactam a proteção da infância e adolescência no ambiente digital.
+# Guard.IA
 
-Este projeto é desenvolvido na disciplina de Métodos de Desenvolvimento de Software (MDS) da Universidade de Brasília (UnB).
-
----
-
-# 🏗️ Arquitetura do Sistema
-
-O sistema segue o padrão **Pipes and Filters**, garantindo que cada etapa do processamento seja independente:
-
-- **Coleta:** Scripts Python que consomem APIs da Câmara e Senado.
-- **Filtro:** Processamento de limpeza e seleção por palavras-chave.
-- **Classificação (IA):** Categorização temática usando modelos BERT (Release 2).
-- **Armazenamento:** Persistência em banco de dados PostgreSQL via Docker.
-- **Visualização:** Dashboard interativo construído com Streamlit.
+Sistema de monitoramento legislativo voltado à proteção de crianças e adolescentes no ambiente digital.
 
 ---
 
-# 📂 Estrutura de Pastas
+## Sobre o projeto
 
-```plaintext
-/
-├── back/           # Lógica do Pipeline (Coleta, Filtro, Classificação, Banco)
-├── front/          # Interface do Usuário (Dashboard)
-├── data/           # Arquivos de intercâmbio (JSON) e Checkpoints
-├── docs/           # Documentação do projeto e ADRs
-└── GEMINI.md       # "Constituição" e Regras Técnicas do Projeto
-```
+O Guard.IA é um projeto desenvolvido na disciplina de **Métodos de Desenvolvimento de Software (MDS)** da Universidade de Brasília (UnB).
+
+O objetivo do sistema é acompanhar proposições legislativas relacionadas à proteção de crianças e adolescentes na internet, permitindo a coleta, filtragem, classificação, armazenamento e visualização de dados legislativos de forma organizada e acessível.
+
+O projeto busca apoiar análises sobre segurança digital, legislação e políticas públicas relacionadas ao ambiente virtual.
 
 ---
 
-# 🚀 Como Executar
+## Funcionalidades
 
-## 1. Preparação do Ambiente
-
-```bash
-# Clone o repositório
-git clone https://github.com/unb-mds/2026-1-Guard.IA.git
-
-# Entre na pasta do projeto
-cd 2026-1-Guard.IA
-
-# Configure o ambiente virtual (VENV)
-python -m venv venv
-
-# Linux/Mac
-source venv/bin/activate
-
-# Windows
-.\venv\Scripts\activate
-
-# Instale as dependências
-pip install -r requirements.txt
-```
+- Coleta de proposições legislativas
+- Filtragem por palavras-chave
+- Classificação por temas
+- Armazenamento dos dados
+- Dashboard de visualização
+- Métricas de produtividade da equipe
+- Publicação automática via GitHub Pages
 
 ---
 
-## 2. Infraestrutura e Coleta
+## Tecnologias utilizadas
 
-```bash
-# Sobe o banco de dados PostgreSQL
-docker-compose up -d
+### Front-end
+- HTML5
+- CSS3
+- JavaScript
 
-# Executa a carga histórica da Câmara
-python back/coleta/coletor_camara.py
-
-# Executa a carga histórica do Senado
-python back/coleta/coletor_senado.py
-```
-
----
-
-# 🛠️ Guia de Sobrevivência no Git (Obrigatório)
-
-Para evitar conflitos de merge e perda de código, siga este fluxo sempre que for trabalhar.
-
----
-
-## 1. Verificações Iniciais
-
-### ✅ Branch Correta
-
-Nunca trabalhe na `main`.
-
-Use sempre a branch:
-
-```bash
-dev-projeto
-```
-
-Confira sua branch atual:
-
-```bash
-git branch
-```
-
-O asterisco (`*`) deve estar em `dev-projeto`.
-
----
-
-### ✅ Fetch (A Espiadinha)
-
-Antes de começar, veja se alguém da equipe subiu alterações novas:
-
-```bash
-git fetch origin
-git status
-```
-
-Se aparecer algo como:
-
-```plaintext
-Your branch is behind 'origin/dev-projeto'
-```
-
-você precisa fazer um `pull`.
-
----
-
-# 🔄 Fluxo de Trabalho Seguro
-
-## 1. PULL
-
-Atualize seu código local:
-
-```bash
-git pull origin dev-projeto
-```
-
----
-
-## 2. TRABALHE
-
-Implemente suas alterações normalmente.
-
----
-
-## 3. ADD & COMMIT
-
-Salve suas alterações localmente:
-
-```bash
-git add .
-
-git commit -m "feat(modulo): descricao curta do que foi feito"
-```
-
-Exemplo:
-
-```bash
-git commit -m "feat(coleta): adiciona coletor da API do Senado"
-```
-
----
-
-## 4. PUSH
-
-Envie suas alterações para o GitHub:
-
-```bash
-git push origin dev-projeto
-```
-
----
-
-# ⚠️ Dica Importante
-
-Se o `push` falhar:
-
-1. Faça um novo `pull`
-2. Resolva os conflitos de merge
-3. Faça commit das correções
-4. Tente o `push` novamente
-
----
-
-# 🧱 Tecnologias Utilizadas
-
-- Python
-- PostgreSQL
-- Docker
+### Dashboard
 - Streamlit
-- Transformers / BERT
-- APIs da Câmara dos Deputados
-- APIs do Senado Federal
+- Pandas
+- Plotly
+
+### Back-end e scripts
+- Python 3.11+
+
+### Controle de versão
+- Git
+- GitHub
+
+### Integração contínua
+- GitHub Actions
 
 ---
 
-# 📌 Objetivo do Projeto
+## Estrutura do Projeto
 
-O Guard.IA busca automatizar o monitoramento legislativo relacionado à segurança digital de crianças e adolescentes, permitindo:
+O projeto é dividido em três partes principais:
 
-- acompanhamento automatizado de projetos de lei;
-- filtragem inteligente de conteúdo;
-- categorização temática via IA;
-- visualização simplificada dos dados legislativos;
-- apoio a pesquisas e iniciativas de proteção digital.
+- **`grupo5-guard.ia-backend/`**: Pipeline de dados (Coleta, Filtro, Armazenamento) e API.
+- **`grupo5-guard.ia-frontend/`**: Dashboard em Streamlit.
+- **`grupo5-guard.ia/`**: Frontend web em React/Next.js.
 
----
+### Back-end e Pipeline de Dados
+Localizado em `grupo5-guard.ia-backend/app/`.
+- `coleta/`: Scripts para Câmara e Senado.
+- `filtro/`: Filtragem por palavras-chave com Regex.
+- `armazenamento/`: Integração com PostgreSQL (psycopg2).
+- `main.py`: Orquestrador do pipeline completo.
 
-# ⚖️ Licença
+### API (FastAPI)
+Para o desenvolvimento do frontend, o backend disponibiliza uma API FastAPI.
+- **Dependências:** Já incluídas no `requirements.txt`.
+- **Comando para rodar (em desenvolvimento):**
+  ```bash
+  cd grupo5-guard.ia-backend
+  uvicorn app.api:app --reload
+  ```
+  *(Nota: O front consome os dados e gerencia usuários através desta API).*
 
-Este projeto está sob a licença **MIT**.
+## GitHub Pages
 
----
+O projeto utiliza GitHub Pages para publicação da documentação e dashboard de produtividade.
 
-# 👥 Equipe
+## Acesso
+https://unb-mds.github.io/2026-1-Guard.IA/
+Dashboard de produtividade
 
-**Equipe Guard.IA — UnB Gama — 2026**
+## A página de produtividade apresenta métricas reais do repositório, atualizadas automaticamente via GitHub Actions.
+
+## Métricas exibidas
+Total de commits
+Issues abertas e fechadas
+Pull requests
+Ranking de committers
+Evolução das sprints
+Métricas de produtividade da equipe
+Metodologia
+
+## O desenvolvimento segue práticas de:
+
+Scrum
+Git Flow
+Pull Requests
+Versionamento por branches
+Integração contínua
+Equipe
+
+Projeto desenvolvido pela equipe da disciplina MDS/UnB.
+
+## Licença
+
+Projeto acadêmico desenvolvido para fins educacionais.

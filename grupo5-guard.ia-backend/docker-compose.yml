@@ -1,0 +1,29 @@
+# ============================================================
+# Sistema de Monitoramento Legislativo
+# Módulo: Armazenamento
+# Arquivo: docker-compose.yml
+# Descrição: Sobe o PostgreSQL em container sem instalação local
+# ============================================================
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: monitoramento_legislativo_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: monitoramento_legislativo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d monitoramento_legislativo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

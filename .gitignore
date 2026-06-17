@@ -1,0 +1,26 @@
+# Node / Next
+node_modules
+.next
+package-lock.json
+
+# Python
+venv
+.venv
+__pycache__/
+*.pyc
+
+# Env
+.env
+.env.local
+
+# Dados do Pipeline (Mandato GEMINI.md)
+grupo5-guard.ia-backend/data/*.json
+
+# OS e IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/config.toml

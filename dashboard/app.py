@@ -105,20 +105,157 @@ st.markdown("""
 # =============================
 # CARREGAMENTO
 # =============================
+import os
+import psycopg2
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# =============================
+# ESTILO VISUAL GUARD.IA
+# =============================
+st.markdown("""
+<style>
+    .stApp {
+        background-color: #F5F5F5;
+    }
+
+    [data-testid="stSidebar"] {
+        background-color: #0B6B4D;
+    }
+
+    [data-testid="stSidebar"] * {
+        color: white;
+    }
+
+    .topbar {
+        background-color: #006B4F;
+        padding: 18px 32px;
+        color: white;
+        font-weight: 800;
+        font-size: 30px;
+        letter-spacing: 1px;
+        margin-bottom: 45px;
+    }
+
+    .nav {
+        float: right;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 8px;
+    }
+
+    .nav span {
+        margin-left: 28px;
+    }
+
+    .hero {
+        padding: 10px 35px 20px 35px;
+    }
+
+    .hero-title {
+        font-size: 64px;
+        font-weight: 900;
+        line-height: 1.05;
+        color: #000000;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 22px;
+        color: #222222;
+        max-width: 950px;
+        margin-bottom: 35px;
+        font-weight: 500;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 14px;
+        padding: 24px;
+        border: 1px solid #E0E0E0;
+        box-shadow: 0px 3px 12px rgba(0,0,0,0.06);
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 15px;
+        color: #555;
+        font-weight: 600;
+    }
+
+    .card-value {
+        font-size: 34px;
+        color: #006B4F;
+        font-weight: 900;
+    }
+
+    .section-title {
+        font-size: 26px;
+        font-weight: 800;
+        color: #111;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    .block {
+        background-color: white;
+        padding: 24px;
+        border-radius: 16px;
+        border: 1px solid #E6E6E6;
+        box-shadow: 0px 3px 12px rgba(0,0,0,0.05);
+        margin-bottom: 25px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# =============================
+# CARREGAMENTO
+# =============================
 @st.cache_data
 def carregar_dados_csv():
-    return pd.read_csv("dashboard/data_fake.csv")
+    # Fallback caso o banco falhe ou não tenha dados
+    try:
+        return pd.read_csv("dashboard/data_fake.csv")
+    except:
+        return pd.DataFrame()
 
-
+@st.cache_data
 def carregar_dados_banco():
     """
-    Função preparada para futura integração com PostgreSQL.
+    Busca as proposições reais do banco de dados PostgreSQL.
     """
-    pass
+    try:
+        conn = psycopg2.connect(
+            user=os.getenv("DB_USER", "postgres"),
+            password=os.getenv("DB_PASSWORD", "postgres"),
+            host=os.getenv("DB_HOST", "localhost"),
+            port=os.getenv("DB_PORT", "5432"),
+            database=os.getenv("DB_NAME", "monitoramento_legislativo")
+        )
+        query = "SELECT id_externo, ementa, autor, partido, estado, casa, data_apresentacao, categoria, confianca FROM proposicoes"
+        df_banco = pd.read_sql(query, conn)
+        conn.close()
+        return df_banco
+    except Exception as e:
+        st.sidebar.error(f"Erro ao conectar no banco: {e}")
+        return pd.DataFrame()
 
+# Tenta carregar do banco primeiro, se vazio, usa o fake
+df = carregar_dados_banco()
+if df.empty:
+    st.sidebar.warning("Usando dados simulados (Banco de dados indisponível ou vazio).")
+    df = carregar_dados_csv()
 
-df = carregar_dados_csv()
-df["data_apresentacao"] = pd.to_datetime(df["data_apresentacao"])
+if not df.empty:
+    df["data_apresentacao"] = pd.to_datetime(df["data_apresentacao"])
+    df["categoria"] = df["categoria"].fillna("Sem categoria")
+    df["partido"]   = df["partido"].fillna("Sem partido")
+    df["estado"]    = df["estado"].fillna("Sem estado")
+    df["autor"]     = df["autor"].fillna("Desconhecido")
+else:
+    st.error("Nenhum dado encontrado para exibição.")
+    st.stop()
 
 # =============================
 # TOPO IGUAL AO PROTÓTIPO
