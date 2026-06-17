@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T02:04:11.879973+00:00",
+  "generated_at": "2026-06-17T16:04:53.192491+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -25,7 +25,7 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 84,
+    "total_commits": 85,
     "open_issues": 1,
     "closed_issues": 31,
     "contributors": 7,
@@ -293,12 +293,27 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 26,
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "pages-metricas": {
+      "branch": "pages-metricas",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "release-1-integration": {
+      "branch": "release-1-integration",
+      "total_commits": 64,
       "commits_per_author": {
-        "PajeMurici-dev": 12,
-        "gabiiverissimo-dev": 2,
-        "claranunes22": 11,
-        "LucasNF-Dev": 1
+        "PajeMurici-dev": 26,
+        "gabiiverissimo-dev": 10,
+        "claranunes22": 16,
+        "LucasNF-Dev": 3,
+        "lucasnferreiradev-lang": 9
       },
       "commit_timeline": [
         {
@@ -332,6 +347,50 @@
         {
           "date": "2026-05-15",
           "count": 5
+        },
+        {
+          "date": "2026-05-20",
+          "count": 3
+        },
+        {
+          "date": "2026-05-21",
+          "count": 7
+        },
+        {
+          "date": "2026-05-23",
+          "count": 2
+        },
+        {
+          "date": "2026-05-24",
+          "count": 4
+        },
+        {
+          "date": "2026-05-25",
+          "count": 3
+        },
+        {
+          "date": "2026-05-26",
+          "count": 4
+        },
+        {
+          "date": "2026-05-27",
+          "count": 3
+        },
+        {
+          "date": "2026-06-01",
+          "count": 2
+        },
+        {
+          "date": "2026-06-02",
+          "count": 6
+        },
+        {
+          "date": "2026-06-10",
+          "count": 3
+        },
+        {
+          "date": "2026-06-17",
+          "count": 1
         }
       ],
       "recent_commits": [
@@ -516,69 +575,7 @@
           "date": "2026-05-15T19:48:16+00:00",
           "message": "Revise README for clarity and project details",
           "char_count": 107
-        }
-      ]
-    },
-    "pages-metricas": {
-      "branch": "pages-metricas",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
-    },
-    "release-1-integration": {
-      "branch": "release-1-integration",
-      "total_commits": 37,
-      "commits_per_author": {
-        "claranunes22": 5,
-        "gabiiverissimo-dev": 8,
-        "lucasnferreiradev-lang": 9,
-        "PajeMurici-dev": 13,
-        "LucasNF-Dev": 2
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-05-20",
-          "count": 3
         },
-        {
-          "date": "2026-05-21",
-          "count": 7
-        },
-        {
-          "date": "2026-05-23",
-          "count": 2
-        },
-        {
-          "date": "2026-05-24",
-          "count": 4
-        },
-        {
-          "date": "2026-05-25",
-          "count": 3
-        },
-        {
-          "date": "2026-05-26",
-          "count": 4
-        },
-        {
-          "date": "2026-05-27",
-          "count": 3
-        },
-        {
-          "date": "2026-06-01",
-          "count": 2
-        },
-        {
-          "date": "2026-06-02",
-          "count": 6
-        },
-        {
-          "date": "2026-06-10",
-          "count": 3
-        }
-      ],
-      "recent_commits": [
         {
           "sha": "3ff4dee",
           "author": "claranunes22",
@@ -676,167 +673,6 @@
           "date": "2026-05-24T22:46:20+00:00",
           "message": "fix(frontend): update navigation links and signup button in Home",
           "char_count": 64
-        },
-        {
-          "sha": "74eccbf",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-24T22:54:03+00:00",
-          "message": "docs: adiciona documentação MkDocs do projeto Guard.IA",
-          "char_count": 54
-        },
-        {
-          "sha": "08373a4",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-24T23:08:44+00:00",
-          "message": "docs: atualiza GEMINI.md com stack React, FastAPI e MkDocs",
-          "char_count": 58
-        },
-        {
-          "sha": "9911657",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-25T16:33:15+00:00",
-          "message": "feat: adiciona pagina de produtividade",
-          "char_count": 38
-        },
-        {
-          "sha": "d9b0eef",
-          "author": "LucasNF-Dev",
-          "date": "2026-05-25T16:10:24+00:00",
-          "message": "feat(frontend): integra autenticacao com estado React e secao de equipe",
-          "char_count": 847
-        },
-        {
-          "sha": "3e5a4ed",
-          "author": "LucasNF-Dev",
-          "date": "2026-05-25T19:44:52+00:00",
-          "message": "fix(dashboard): trata valores NULL de categoria/partido/estado/autor",
-          "char_count": 268
-        },
-        {
-          "sha": "7042b95",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-26T01:10:23+00:00",
-          "message": "docs: adiciona atas de sprints 00 a 05 e estudos técnicos",
-          "char_count": 57
-        },
-        {
-          "sha": "4c529e5",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-26T01:17:51+00:00",
-          "message": "docs: release 1 concluída",
-          "char_count": 25
-        },
-        {
-          "sha": "055f0df",
-          "author": "PajeMurici-dev",
-          "date": "2026-05-26T14:53:34+00:00",
-          "message": "fix: corrige a pagina de produtividade do pages",
-          "char_count": 47
-        },
-        {
-          "sha": "94a38e4",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-05-26T20:30:21+00:00",
-          "message": "docs: adiciona release notes da Release 1 e inclui na navegação MkDocs",
-          "char_count": 70
-        },
-        {
-          "sha": "ba7f67e",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-05-27T00:09:23+00:00",
-          "message": "refactor: clean env setup, fix DB integration and standardize logs",
-          "char_count": 66
-        },
-        {
-          "sha": "4c8e2e5",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-05-27T00:09:55+00:00",
-          "message": "Merge branch 'release-1-integration' of https://github.com/unb-mds/2026-1-Guard.IA into release-1-integration",
-          "char_count": 109
-        },
-        {
-          "sha": "04b4163",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-05-27T00:43:55+00:00",
-          "message": "feat: add Filtros page with filtering functionality and integrate into routing",
-          "char_count": 78
-        },
-        {
-          "sha": "6536e10",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-01T15:47:41+00:00",
-          "message": "fix: atualiza o collect_metrics.py para incluir mais branches",
-          "char_count": 61
-        },
-        {
-          "sha": "50e25ee",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-01T15:57:24+00:00",
-          "message": "fix: correçao do collect_metrics.py",
-          "char_count": 35
-        },
-        {
-          "sha": "e9a0a2d",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-02T18:50:23+00:00",
-          "message": "fix: adiciona a implementação de descobrir branches antigas no collect_metrics.py",
-          "char_count": 81
-        },
-        {
-          "sha": "ffbe814",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-02T18:52:15+00:00",
-          "message": "feat: adiciona novas bramches na pagina de produtividade",
-          "char_count": 56
-        },
-        {
-          "sha": "9502ba3",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-02T19:07:02+00:00",
-          "message": "fix: atualiza o update metrics para ser ativado em qualquer branch",
-          "char_count": 66
-        },
-        {
-          "sha": "dd53840",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-02T19:10:41+00:00",
-          "message": "fix: corrige o problema de duplicação do mesmo commit em duas branches no collect_metrics",
-          "char_count": 89
-        },
-        {
-          "sha": "1067326",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-02T19:12:21+00:00",
-          "message": "fix: corrige a pagina de index para o novo collect_metrics",
-          "char_count": 58
-        },
-        {
-          "sha": "0b0773b",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-02T19:21:10+00:00",
-          "message": "feat: publica o mestric.json no gh-pages",
-          "char_count": 40
-        },
-        {
-          "sha": "d2604a4",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-10T00:24:48+00:00",
-          "message": "fix: corrige o update-metrics para atualizar o json",
-          "char_count": 51
-        },
-        {
-          "sha": "15449b0",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-10T01:58:20+00:00",
-          "message": "fix: atualiza o clllect metrics para ignorar o bot na pagina de produtividade",
-          "char_count": 77
-        },
-        {
-          "sha": "77386f4",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-10T01:58:59+00:00",
-          "message": "Merge branch 'release-1-integration' of https://github.com/unb-mds/2026-1-Guard.IA into release-1-integration",
-          "char_count": 109
         }
       ]
     },
@@ -1522,8 +1358,8 @@
     }
   ],
   "all_authors": {
+    "PajeMurici-dev": 28,
     "claranunes22": 27,
-    "PajeMurici-dev": 27,
     "gabiiverissimo-dev": 13,
     "lucasnferreiradev-lang": 9,
     "LucasNF-Dev": 4,
@@ -1535,14 +1371,12 @@
       "dev-projeto": 6,
       "estudos": 1,
       "feat/teste-pipeline-unificado": 3,
-      "main": 11,
-      "release-1-integration": 5,
+      "release-1-integration": 16,
       "sprint-04-dashboard": 1
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
-      "main": 2,
-      "release-1-integration": 8
+      "release-1-integration": 10
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
@@ -1552,14 +1386,12 @@
       "filtragem-B": 2
     },
     "PajeMurici-dev": {
-      "main": 12,
-      "release-1-integration": 13,
+      "release-1-integration": 26,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1
     },
     "LucasNF-Dev": {
-      "main": 1,
-      "release-1-integration": 2,
+      "release-1-integration": 3,
       "feature/estrutura-inicial": 1
     },
     "lucasnferreiradev-lang": {
