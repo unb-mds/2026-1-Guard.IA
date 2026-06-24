@@ -1,10 +1,11 @@
 {
-  "generated_at": "2026-06-17T16:27:21.543364+00:00",
+  "generated_at": "2026-06-24T01:44:07.334399+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
     "estudos",
     "feat/armazenamento-postgres",
+    "feat/classificacao-release-2",
     "feat/crud-usuario",
     "feat/home-page",
     "feat/home-team",
@@ -25,12 +26,12 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 22,
+    "total_commits": 23,
     "open_issues": 1,
     "closed_issues": 31,
-    "contributors": 6,
+    "contributors": 7,
     "open_prs": 1,
-    "branches_ativas": 16,
+    "branches_ativas": 17,
     "branches_deletadas": 3
   },
   "branches_data": {
@@ -149,6 +150,28 @@
       "commits_per_author": {},
       "commit_timeline": [],
       "recent_commits": []
+    },
+    "feat/classificacao-release-2": {
+      "branch": "feat/classificacao-release-2",
+      "total_commits": 1,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-24",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "3e16a73",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-24T01:38:50+00:00",
+          "message": "feat: implementa classificador de IA por embeddings semanticos (Release 2)",
+          "char_count": 800
+        }
+      ]
     },
     "feat/crud-usuario": {
       "branch": "feat/crud-usuario",
@@ -1014,6 +1037,7 @@
     "PajeMurici-dev": 3,
     "otaviotex": 2,
     "AlmondHare": 2,
+    "lucasnferreiradev-lang": 1,
     "LucasNF-Dev": 1
   },
   "author_por_branch": {
@@ -1025,6 +1049,9 @@
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3
+    },
+    "lucasnferreiradev-lang": {
+      "feat/classificacao-release-2": 1
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
