@@ -1,692 +1,509 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Guard.IA · Produtividade</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --navy:#003366;--green:#005C37;--gold:#BFA630;
-  --bg:#f4f6fa;--surface:#fff;--border:#dde3ee;
-  --text:#1a1e2e;--muted:#6b7280;--radius:12px;
-}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guard.IA — Produtividade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    /* ── MkDocs Material: light scheme + green primary ── */
+    :root {
+      --md-hue: 225;
 
-header{
-  background:var(--navy);color:#fff;padding:0 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  height:64px;position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 14px rgba(0,51,102,.4);
-}
-.logo{display:flex;align-items:center;gap:10px;font-size:1.1rem;font-weight:700}
-.logo svg{width:26px;height:26px}
-.badge{background:var(--gold);color:#1a1200;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
-#last-update{font-size:.75rem;opacity:.6}
+      /* primary = green (#4cae4f) */
+      --md-primary-fg-color:        #4cae4f;
+      --md-primary-fg-color--light: #68bb6c;
+      --md-primary-fg-color--dark:  #398e3d;
+      --md-primary-bg-color:        #ffffff;
+      --md-primary-bg-color--light: #ffffffb3;
 
-#demo-banner{
-  display:none;background:#fffbeb;border-bottom:2px solid var(--gold);
-  padding:.6rem 2rem;font-size:.8rem;color:#78500a;text-align:center;
-}
-#demo-banner a{color:var(--navy);font-weight:600}
+      /* defaults (light scheme) */
+      --md-default-fg-color:          hsla(var(--md-hue),15%,21%,0.87);
+      --md-default-fg-color--light:   hsla(var(--md-hue),15%,21%,0.54);
+      --md-default-fg-color--lighter: hsla(var(--md-hue),15%,21%,0.32);
+      --md-default-bg-color:          hsla(var(--md-hue),15%,100%,1);
 
-main{max-width:1240px;margin:0 auto;padding:2rem 1.5rem 4rem}
+      /* accent = green */
+      --md-accent-fg-color:             #00c753;
+      --md-accent-fg-color--transparent:#00c7531a;
 
-/* Cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.4rem;display:flex;flex-direction:column;gap:.2rem}
-.card-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}
-.card-value{font-size:1.9rem;font-weight:800;line-height:1;color:var(--navy)}
-.card-sub{font-size:.75rem;color:var(--muted)}
+      /* shadow */
+      --md-shadow-z1: 0 0.2rem 0.5rem #0000000d, 0 0 0.05rem #0000001a;
+      --md-shadow-z2: 0 0.2rem 0.5rem #00000040, 0 0 0.05rem #00000040;
 
-/* Section title */
-.section-title{
-  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
-  color:var(--muted);margin:2rem 0 .8rem;padding-left:.2rem;
-  display:flex;align-items:center;gap:.5rem;
-}
-.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+      /* page tokens mapped to Material vars */
+      --bg:      #f8f9fa;
+      --surface: var(--md-default-bg-color);
+      --border:  hsla(var(--md-hue),15%,21%,0.12);
+      --text:    var(--md-default-fg-color);
+      --muted:   var(--md-default-fg-color--light);
+      --primary: var(--md-primary-fg-color);
+      --primary-dark: var(--md-primary-fg-color--dark);
+      --accent:  var(--md-accent-fg-color);
+      --radius:  0.2rem; /* Material uses tight radius */
+    }
 
-/* Ranking de integrantes */
-.ranking-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1.5rem}
-.member-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:1.2rem 1.4rem;
-}
-.member-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem}
-.member-avatar{
-  width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.85rem;font-weight:700;color:#fff;flex-shrink:0;
-}
-.member-name{font-size:.92rem;font-weight:700;color:var(--text)}
-.member-total{font-size:.75rem;color:var(--muted)}
-.member-branch-row{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.3rem}
-.member-branch-label{font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between}
-.member-branch-track{height:8px;background:#f0f2f7;border-radius:4px;overflow:hidden}
-.member-branch-fill{height:100%;border-radius:4px;transition:width .4s ease}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Gráfico de barras agrupado */
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;overflow:hidden;margin-bottom:1.5rem}
-.panel-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;display:inline-block}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Roboto', -apple-system, system-ui, sans-serif;
+      font-size: .875rem;
+      line-height: 1.6;
+    }
 
-/* Seletor de branches */
-.branch-selector{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:1.2rem 1.4rem;margin-bottom:1.5rem;
-}
-.branch-selector-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:.8rem}
-.branch-pills{display:flex;flex-wrap:wrap;gap:.5rem}
-.branch-pill{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.3rem .85rem;border-radius:20px;font-size:.78rem;font-weight:600;
-  border:2px solid transparent;cursor:pointer;transition:all .15s;user-select:none;
-}
-.branch-pill.active{color:#fff}
-.branch-pill.inactive{background:#f0f2f7;color:var(--muted);border-color:#dde3ee}
-.branch-pill.inactive:hover{background:#e8eaf0}
-.pill-deleted{font-size:.62rem;background:rgba(0,0,0,.15);padding:1px 5px;border-radius:8px;margin-left:2px}
+    /* ── HEADER (md-header style) ── */
+    header {
+      background: var(--md-primary-fg-color);
+      color: var(--md-primary-bg-color);
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 2.4rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--md-shadow-z2);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+    .logo svg { width: 20px; height: 20px; }
 
-/* Comparativo */
-.cmp-row{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
-.cmp-label{font-size:.78rem;font-weight:600;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
-.cmp-track{height:20px;background:#f0f2f7;border-radius:4px;overflow:hidden;display:flex}
-.cmp-seg{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:5px;font-size:.68rem;font-weight:700;color:#fff;min-width:4px;transition:width .5s ease}
+    /* Material chip/badge */
+    .badge {
+      background: var(--md-primary-fg-color--dark);
+      color: var(--md-primary-bg-color);
+      font-size: .6rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: .1rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      opacity: .9;
+    }
+    #last-update {
+      font-size: .65rem;
+      opacity: .7;
+      letter-spacing: .02em;
+    }
 
-/* Grid */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
-@media(max-width:800px){.grid2{grid-template-columns:1fr}.ranking-grid{grid-template-columns:1fr}}
+    /* ── LAYOUT ── */
+    .main-wrap { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
 
-/* Tabela */
-.tbl-wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:.83rem}
-thead th{text-align:left;padding:.5rem .8rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);border-bottom:2px solid var(--border)}
-tbody tr{border-bottom:1px solid var(--border)}
-tbody tr:last-child{border-bottom:none}
-tbody td{padding:.45rem .8rem;vertical-align:top}
-tbody tr:hover td{background:#f8f9fd}
-.tag{display:inline-block;font-size:.67rem;font-weight:600;padding:1px 6px;border-radius:20px;margin:1px}
-.tag-open{background:#e0f2ea;color:#005C37}.tag-closed{background:#e5eaf8;color:#0B4ABC}
-.pill-open{background:#e0f2ea;color:#005C37;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
-.pill-closed{background:#e5eaf8;color:#0B4ABC;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
-.rank-badge{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:20px;height:20px;border-radius:50%;font-size:.65rem;font-weight:800;
-  background:var(--navy);color:#fff;margin-right:4px;
-}
-.rank-badge.gold{background:#BFA630;color:#1a1200}
-.rank-badge.silver{background:#9ca3af;color:#fff}
-.rank-badge.bronze{background:#92400e;color:#fff}
+    /* ── CARDS (md-card style) ── */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.25rem;
+      box-shadow: var(--md-shadow-z1);
+      border: none;
+    }
 
-/* Tooltip */
-.tooltip{position:fixed;background:rgba(26,30,46,.92);color:#fff;font-size:.76rem;padding:.4rem .7rem;border-radius:6px;pointer-events:none;opacity:0;transition:opacity .15s;z-index:999;max-width:240px}
+    /* Card accent stripe on top — Material-style */
+    .card-kpi {
+      border-top: 3px solid var(--md-primary-fg-color);
+    }
 
-/* Loading */
-#loading{display:flex;flex-direction:column;align-items:center;gap:1rem;margin:4rem auto;color:var(--muted)}
-.spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.empty{color:var(--muted);font-size:.83rem;padding:.5rem 0}
-</style>
+    .card-title {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--md-primary-fg-color--dark);
+    }
+    .stat-sub { font-size: .72rem; color: var(--muted); margin-top: .25rem; }
+
+    /* ── GRID ── */
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr;        gap: .75rem; }
+    .grid-3 { display: grid; grid-template-columns: 2fr 1fr;        gap: .75rem; }
+    @media(max-width:900px) {
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+    @media(max-width:500px) { .grid-4 { grid-template-columns: 1fr; } }
+
+    /* ── SVG ── */
+    svg text { font-family: 'Roboto', sans-serif; }
+
+    /* ── TOOLTIP (Material elevation) ── */
+    .tooltip {
+      position: fixed;
+      pointer-events: none;
+      background: hsla(var(--md-hue),15%,21%,0.92);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      font-size: .72rem;
+      padding: 4px 10px;
+      border-radius: .15rem;
+      opacity: 0;
+      transition: opacity .12s;
+      z-index: 999;
+      white-space: nowrap;
+      box-shadow: var(--md-shadow-z2);
+    }
+
+    /* ── MEMBER TABLE ── */
+    .member-row {
+      display: grid;
+      grid-template-columns: 32px 1fr 60px 60px 100px;
+      align-items: center;
+      gap: .75rem;
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .8rem;
+    }
+    .member-row:last-child { border-bottom: none; }
+    .member-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--md-primary-fg-color);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: .68rem; font-weight: 700;
+    }
+
+    /* Material linear progress */
+    .bar-wrap {
+      background: var(--md-accent-fg-color--transparent);
+      border-radius: 0;
+      height: 4px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: var(--md-primary-fg-color);
+      transition: width .6s ease;
+    }
+
+    /* ── SPRINT PROGRESS ── */
+    .sprint-bar-wrap {
+      background: var(--md-accent-fg-color--transparent);
+      height: 4px;
+      overflow: hidden;
+      margin: .5rem 0 0;
+      border-radius: 0;
+    }
+    .sprint-bar-fill {
+      height: 100%;
+      background: var(--md-primary-fg-color);
+      transition: width .8s ease;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .section-gap { margin-bottom: .75rem; }
+  </style>
 </head>
 <body>
 
+<!-- ── HEADER ── -->
 <header>
   <div class="logo">
-    <svg viewBox="0 0 28 28" fill="none"><path d="M14 2L3 8v12l11 6 11-6V8L14 2z" stroke="#BFA630" stroke-width="1.8" fill="none"/><path d="M14 7v7l5 3" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
-    Guard.IA <span class="badge">PRODUTIVIDADE</span>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L3 7v10l9 5 9-5V7L12 2Z" stroke="#BFA630" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M12 7v10M7.5 9.5l4.5 2.5 4.5-2.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    Guard.IA
+    <span class="badge">Produtividade</span>
   </div>
   <span id="last-update">Carregando…</span>
 </header>
 
-<div id="demo-banner">
-  ⚠️ <strong>Dados de demonstração.</strong> O <code>metrics.json</code> ainda não foi gerado.
-  <a href="https://github.com/unb-mds/2026-1-Guard.IA/actions" target="_blank">Executar Actions →</a>
-</div>
-
-<main>
-  <div id="loading"><div class="spinner"></div><span>Buscando métricas…</span></div>
-  <div id="dashboard" style="display:none"></div>
-</main>
-
 <div class="tooltip" id="tooltip"></div>
 
-<script>
-const BRANCH_COLORS = [
-  '#0B4ABC','#005C37','#8B2FC9','#C25B00','#0077A8',
-  '#7A1F3D','#2E6B3E','#5A3E8C','#A04000','#00695C'
-];
+<div class="main-wrap">
 
-// Cores para avatares dos membros (fixas por índice)
-const MEMBER_COLORS = [
-  '#003366','#005C37','#7c3aed','#b45309','#0369a1',
-  '#be123c','#166534','#6d28d9','#c2410c','#0f766e'
-];
-
-const tip = document.getElementById('tooltip');
-function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY-28)+'px'}
-function hideTip(){tip.style.opacity=0}
-const fmtDate = s => s ? new Date(s).toLocaleDateString('pt-BR') : '–';
-const initials = name => name.split(/[-_.]/).map(p=>p[0]?.toUpperCase()||'').slice(0,2).join('') || '?';
-
-let globalData   = null;
-let activeBranches = new Set();
-let branchColorMap = {};
-
-// ── Dados de demonstração ──────────────────────────────────────────────────
-function buildDemoData() {
-  const now = new Date();
-  function ago(n){const d=new Date(now);d.setDate(d.getDate()-n);return d.toISOString().slice(0,10)}
-  function isoAgo(n,h=12){return ago(n)+'T'+String(h).padStart(2,'0')+':00:00Z'}
-  const mkTimeline=(days,base,amp)=>Array.from({length:days},(_,i)=>({date:ago(days-1-i),count:Math.max(0,Math.round(base+Math.sin(i*.8)*amp+Math.random()*1.5))}));
-  const mkCommits=(authors,msgs)=>{
-    const list=[];let d=0;
-    Object.entries(authors).forEach(([a,n])=>{for(let i=0;i<n;i++){list.push({sha:(Math.random()*0xffffff|0).toString(16).padStart(6,'0'),author:a,date:isoAgo(d%20,9+i%8),message:msgs[i%msgs.length],char_count:60+i*7});d++;}});
-    return list.sort((a,b)=>b.date.localeCompare(a.date)).slice(0,15);
-  };
-
-  const branches_data = {
-    'dev-projeto':{branch:'dev-projeto',total_commits:28,commits_per_author:{'ana-silva':12,'pedro-dev':10,'carlos-m':6},commit_timeline:mkTimeline(20,2,1.5),recent_commits:mkCommits({'ana-silva':4,'pedro-dev':3},['feat: módulo NLP','fix: pipeline','docs: swagger'])},
-    'estudos':{branch:'estudos',total_commits:22,commits_per_author:{'thiago-r':10,'beatriz-k':8,'ana-silva':4},commit_timeline:mkTimeline(20,1.5,1),recent_commits:mkCommits({'thiago-r':4,'beatriz-k':3},['study: BERT','study: transformers'])},
-    'feat/login-page':{branch:'feat/login-page',status:'deleted',merged_into:'dev-projeto',merged_at:isoAgo(5),pr_number:33,pr_title:'feat: adiciona página de login',total_commits:6,commits_per_author:{'ana-silva':4,'pedro-dev':2},commit_timeline:mkTimeline(5,1.5,0.8),recent_commits:mkCommits({'ana-silva':3},['feat: login page','fix: validation'])},
-  };
-
-  // Consolida por autor
-  const all_authors = {};
-  const author_por_branch = {};
-  Object.entries(branches_data).forEach(([b, bd]) => {
-    Object.entries(bd.commits_per_author).forEach(([a, n]) => {
-      all_authors[a] = (all_authors[a] || 0) + n;
-      if (!author_por_branch[a]) author_por_branch[a] = {};
-      author_por_branch[a][b] = n;
-    });
-  });
-
-  const issueTimeline=Array.from({length:12},(_,i)=>({date:ago(11-i),opened:Math.round(Math.random()*2),closed:Math.round(Math.random()*2)}));
-
-  return {
-    generated_at:now.toISOString(), repo:'unb-mds/2026-1-Guard.IA',
-    branches:['dev-projeto','estudos'],
-    branches_deletadas:['feat/login-page'],
-    summary:{total_commits:56,open_issues:4,closed_issues:5,contributors:5,open_prs:2,branches_ativas:2,branches_deletadas:1},
-    branches_data,
-    issues:{open:4,closed:5,timeline:issueTimeline,list:[
-      {number:8,title:'Implementar classificador BERT',state:'open',created_at:isoAgo(10),closed_at:null,labels:['feature']},
-      {number:7,title:'Pipeline de coleta',state:'closed',created_at:isoAgo(18),closed_at:isoAgo(6),labels:['feature']},
-    ]},
-    all_authors,
-    author_por_branch,
-    _demo:true,
-  };
-}
-
-// ── Boot ───────────────────────────────────────────────────────────────────
-fetch('metrics.json')
-  .then(r=>{if(!r.ok)throw new Error();return r.json();})
-  .then(d=>init(d,false))
-  .catch(()=>init(buildDemoData(),true));
-
-function init(d, isDemo) {
-  globalData = d;
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('dashboard').style.display = 'block';
-  if(isDemo) document.getElementById('demo-banner').style.display = 'block';
-
-  document.getElementById('last-update').textContent = isDemo
-    ? 'Demonstração — sem dados reais'
-    : 'Atualizado em ' + new Date(d.generated_at).toLocaleString('pt-BR');
-
-  const todasBranches = Object.keys(d.branches_data || {});
-  todasBranches.forEach((b, i) => { branchColorMap[b] = BRANCH_COLORS[i % BRANCH_COLORS.length]; });
-  activeBranches = new Set(todasBranches);
-  render();
-}
-
-// ── Render principal ───────────────────────────────────────────────────────
-function render() {
-  const d    = globalData;
-  const dash = document.getElementById('dashboard');
-  dash.innerHTML = '';
-
-  const branchesAtivas   = d.branches || [];
-  const branchesDeletadas = d.branches_deletadas || [];
-  const todasBranches    = Object.keys(d.branches_data || {});
-
-  // ── Cards resumo ──
-  const totalCommits = Object.values(d.branches_data || {})
-    .reduce((s, b) => s + (b.total_commits || 0), 0);
-
-  const cardsEl = document.createElement('div');
-  cardsEl.className = 'cards';
-  cardsEl.innerHTML = `
-    <div class="card"><span class="card-label">Commits totais</span><span class="card-value">${totalCommits}</span><span class="card-sub">em todas as branches</span></div>
-    <div class="card"><span class="card-label">Integrantes</span><span class="card-value">${d.summary?.contributors ?? 0}</span><span class="card-sub">contribuidores únicos</span></div>
-    <div class="card"><span class="card-label">Branches ativas</span><span class="card-value">${branchesAtivas.length}</span><span class="card-sub">no repositório</span></div>
-    <div class="card"><span class="card-label">Branches deletadas</span><span class="card-value">${branchesDeletadas.length}</span><span class="card-sub">após merge</span></div>
-    <div class="card"><span class="card-label">Issues abertas</span><span class="card-value">${d.issues?.open ?? d.summary?.open_issues ?? 0}</span><span class="card-sub">no repositório</span></div>
-    <div class="card"><span class="card-label">Issues fechadas</span><span class="card-value">${d.issues?.closed ?? d.summary?.closed_issues ?? 0}</span><span class="card-sub">resolvidas</span></div>
-  `;
-  dash.appendChild(cardsEl);
-
-  // ── SEÇÃO: Commits por integrante ──
-  const secMembros = document.createElement('div');
-  secMembros.className = 'section-title';
-  secMembros.textContent = 'Commits por integrante — todas as branches';
-  dash.appendChild(secMembros);
-
-  buildMemberRanking(dash, d, todasBranches);
-
-  const chartPanel = document.createElement('div');
-  chartPanel.className = 'panel';
-  chartPanel.innerHTML = `<div class="panel-title">Commits por integrante × branch</div><div id="chart-members"></div>`;
-  dash.appendChild(chartPanel);
-  setTimeout(() => drawMemberChart(d, todasBranches), 0);
-
-  // ── Tabela consolidada por integrante ──
-  const authorTablePanel = document.createElement('div');
-  authorTablePanel.className = 'panel';
-  authorTablePanel.innerHTML = `
-    <div class="panel-title">Detalhamento por integrante</div>
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr>
-          <th>#</th><th>Integrante</th><th>Total</th>
-          ${todasBranches.map(b=>`<th style="color:${branchColorMap[b]}">${b}</th>`).join('')}
-        </tr></thead>
-        <tbody id="tbl-authors"></tbody>
-      </table>
-    </div>`;
-  dash.appendChild(authorTablePanel);
-  buildAuthorTable(d, todasBranches);
-
-  // ── SEÇÃO: Por branch ──
-  const secBranches = document.createElement('div');
-  secBranches.className = 'section-title';
-  secBranches.textContent = 'Detalhes por branch';
-  dash.appendChild(secBranches);
-
-  // Seletor de branches
-  const selectorEl = document.createElement('div');
-  selectorEl.className = 'branch-selector';
-  selectorEl.innerHTML = `<div class="branch-selector-title">Filtrar branches — clique para ativar/desativar</div><div class="branch-pills" id="branch-pills"></div>`;
-  dash.appendChild(selectorEl);
-
-  const pillsContainer = selectorEl.querySelector('#branch-pills');
-  todasBranches.forEach(b => {
-    const isDeleted = branchesDeletadas.includes(b);
-    const isActive  = activeBranches.has(b);
-    const color     = branchColorMap[b];
-    const pill      = document.createElement('span');
-    pill.className  = 'branch-pill ' + (isActive ? 'active' : 'inactive');
-    if(isActive){ pill.style.background = color; pill.style.borderColor = color; }
-    pill.innerHTML  = b + (isDeleted ? '<span class="pill-deleted">deletada</span>' : '');
-    pill.title      = isDeleted ? 'Deletada após merge' : 'Branch ativa';
-    pill.addEventListener('click', () => {
-      if(activeBranches.has(b)){ if(activeBranches.size > 1) activeBranches.delete(b); }
-      else activeBranches.add(b);
-      render();
-    });
-    pillsContainer.appendChild(pill);
-  });
-
-  // Timelines por branch
-  const selectedBranches = todasBranches.filter(b => activeBranches.has(b));
-  if(selectedBranches.length > 0) {
-    const gridEl = document.createElement('div');
-    gridEl.className = 'grid2';
-    selectedBranches.forEach(b => {
-      const bd        = d.branches_data[b];
-      const isDeleted = branchesDeletadas.includes(b);
-      const color     = branchColorMap[b];
-      const panel     = document.createElement('div');
-      panel.className = 'panel';
-      const statusBadge = isDeleted
-        ? `<span style="font-size:.65rem;background:#f3e8ff;color:#7c3aed;padding:1px 6px;border-radius:10px;margin-left:6px">deletada</span>` : '';
-      panel.innerHTML = `
-        <div class="panel-title">
-          <span class="dot" style="background:${color}"></span>
-          Commits por dia — ${b}${statusBadge}
-          ${isDeleted ? `<span style="font-size:.7rem;color:var(--muted);margin-left:auto">merged em ${bd.merged_into||'?'}</span>` : ''}
-        </div>
-        <div id="chart-${b.replace(/[^a-z0-9]/gi,'_')}"></div>`;
-      gridEl.appendChild(panel);
-      setTimeout(() => drawTimeline(`chart-${b.replace(/[^a-z0-9]/gi,'_')}`, bd.commit_timeline||[], color), 0);
-    });
-    dash.appendChild(gridEl);
-  }
-
-  // Tabelas de commits recentes
-  const commitsGrid = document.createElement('div');
-  commitsGrid.className = 'grid2';
-  selectedBranches.forEach(b => {
-    const bd    = d.branches_data[b];
-    const color = branchColorMap[b];
-    const panel = document.createElement('div');
-    panel.className = 'panel';
-    panel.innerHTML = `
-      <div class="panel-title"><span class="dot" style="background:${color}"></span>Commits recentes — ${b}</div>
-      <div class="tbl-wrap">
-        <table><thead><tr><th>SHA</th><th>Autor</th><th>Data</th><th>Mensagem</th></tr></thead>
-        <tbody id="tbl-${b.replace(/[^a-z0-9]/gi,'_')}"></tbody></table>
-      </div>`;
-    commitsGrid.appendChild(panel);
-    setTimeout(() => buildCommitTable(`tbl-${b.replace(/[^a-z0-9]/gi,'_')}`, bd.recent_commits||[]), 0);
-  });
-  dash.appendChild(commitsGrid);
-
-  // ── SEÇÃO: Issues ──
-  const secIssues = document.createElement('div');
-  secIssues.className = 'section-title';
-  secIssues.textContent = 'Issues';
-  dash.appendChild(secIssues);
-
-  const issuePanel = document.createElement('div');
-  issuePanel.className = 'panel';
-  issuePanel.innerHTML = `<div class="panel-title">Issues abertas × fechadas por dia</div><div id="chart-issues"></div>`;
-  dash.appendChild(issuePanel);
-  setTimeout(() => drawIssueTimeline(d.issues?.timeline || []), 0);
-
-  const issueTablePanel = document.createElement('div');
-  issueTablePanel.className = 'panel';
-  issueTablePanel.innerHTML = `
-    <div class="panel-title">Lista de issues</div>
-    <div class="tbl-wrap">
-      <table><thead><tr><th>#</th><th>Título</th><th>Estado</th><th>Aberta em</th><th>Fechada em</th><th>Labels</th></tr></thead>
-      <tbody id="tbl-issues"></tbody></table>
-    </div>`;
-  dash.appendChild(issueTablePanel);
-  buildIssuesTable(d.issues?.list || []);
-}
-
-// ── Cards de ranking por membro ────────────────────────────────────────────
-function buildMemberRanking(container, d, todasBranches) {
-  const allAuthors     = d.all_authors     || {};
-  const authorPorBranch = d.author_por_branch || {};
-
-  // Fallback: recalcula do branches_data se all_authors vier vazio
-  const authors = Object.keys(allAuthors).length
-    ? Object.entries(allAuthors).sort((a,b) => b[1]-a[1])
-    : Object.entries(
-        Object.values(d.branches_data||{}).reduce((acc, bd) => {
-          Object.entries(bd.commits_per_author||{}).forEach(([a,n]) => { acc[a]=(acc[a]||0)+n; });
-          return acc;
-        }, {})
-      ).sort((a,b)=>b[1]-a[1]);
-
-  if(!authors.length){ return; }
-
-  const maxTotal = authors[0][1] || 1;
-  const grid     = document.createElement('div');
-  grid.className = 'ranking-grid';
-
-  authors.forEach(([author, total], idx) => {
-    const color   = MEMBER_COLORS[idx % MEMBER_COLORS.length];
-    const perBranch = authorPorBranch[author] || {};
-
-    // Badge de posição
-    let badgeClass = 'rank-badge';
-    if(idx === 0) badgeClass += ' gold';
-    else if(idx === 1) badgeClass += ' silver';
-    else if(idx === 2) badgeClass += ' bronze';
-
-    const card = document.createElement('div');
-    card.className = 'member-card';
-
-    const branchRowsHtml = todasBranches.map(b => {
-      const count = perBranch[b] || 0;
-      const pct   = total ? (count / total * 100).toFixed(1) : 0;
-      return `
-        <div class="member-branch-row">
-          <div class="member-branch-label">
-            <span style="color:${branchColorMap[b]}">${b}</span>
-            <span>${count} commit${count!==1?'s':''}</span>
-          </div>
-          <div class="member-branch-track">
-            <div class="member-branch-fill" style="width:${pct}%;background:${branchColorMap[b]}"></div>
-          </div>
-        </div>`;
-    }).join('');
-
-    card.innerHTML = `
-      <div class="member-header">
-        <div class="member-avatar" style="background:${color}">${initials(author)}</div>
-        <div>
-          <div class="member-name"><span class="${badgeClass}">${idx+1}</span>${author}</div>
-          <div class="member-total">${total} commits no total</div>
-        </div>
+  <!-- ── KPI ROW ── -->
+  <div class="grid-4 section-gap">
+    <div class="card card-kpi">
+      <div class="card-title">Total de Commits</div>
+      <div class="stat-value" id="kpi-commits">—</div>
+      <div class="stat-sub">em todas as branches</div>
+    </div>
+    <div class="card card-kpi">
+      <div class="card-title">Issues Fechadas</div>
+      <div class="stat-value" id="kpi-issues-closed">—</div>
+      <div class="stat-sub" id="kpi-issues-sub">de — abertas</div>
+    </div>
+    <div class="card card-kpi">
+      <div class="card-title">Membros Ativos</div>
+      <div class="stat-value" id="kpi-members">—</div>
+      <div class="stat-sub">com commits registrados</div>
+    </div>
+    <div class="card card-kpi">
+      <div class="card-title">Sprint Atual</div>
+      <div class="stat-value" id="kpi-sprint">—</div>
+      <div class="stat-sub" id="kpi-sprint-sub">progresso</div>
+      <div class="sprint-bar-wrap">
+        <div class="sprint-bar-fill" id="sprint-bar" style="width:0%"></div>
       </div>
-      ${branchRowsHtml}`;
-    grid.appendChild(card);
-  });
+    </div>
+  </div>
 
-  container.appendChild(grid);
+  <!-- ── CHART ROW 1: Line + Heatmap ── -->
+  <div class="grid-2 section-gap">
+    <div class="card">
+      <div class="card-title">Commits por Dia da Semana</div>
+      <div id="chart-line"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Heatmap de Intensidade — Últimos 3 Meses</div>
+      <div id="chart-heatmap"></div>
+    </div>
+  </div>
+
+  <!-- ── CHART ROW 2: Donut + Treemap ── -->
+  <div class="grid-3 section-gap">
+    <div class="card">
+      <div class="card-title">Commits por Semana (Treemap)</div>
+      <div id="chart-treemap"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Commits por Branch</div>
+      <div id="chart-donut" style="display:flex;flex-direction:column;align-items:center"></div>
+    </div>
+  </div>
+
+  <!-- ── MEMBER TABLE ── -->
+  <div class="card">
+    <div class="card-title">Participação Individual</div>
+    <div class="member-row" style="font-weight:700;color:var(--muted);font-size:.7rem">
+      <div></div><div>Membro</div><div>Commits</div><div>Issues</div><div>Contribuição</div>
+    </div>
+    <div id="member-table"></div>
+  </div>
+
+</div>
+
+<script>
+
+// ── HELPERS ──
+const $ = id => document.getElementById(id);
+const tooltip = $('tooltip');
+function showTip(e, html) {
+  tooltip.innerHTML = html;
+  tooltip.style.opacity = 1;
+  tooltip.style.left = (e.clientX + 14) + 'px';
+  tooltip.style.top  = (e.clientY - 28) + 'px';
+}
+function hideTip() { tooltip.style.opacity = 0; }
+
+// ── KPIs ──
+function renderKPIs(m) {
+  $('last-update').textContent = 'Atualizado: ' + new Date(m.generated_at).toLocaleString('pt-BR');
+  $('kpi-commits').textContent = m.kpis.commits;
+  $('kpi-issues-closed').textContent = m.kpis.issues_closed;
+  $('kpi-issues-sub').textContent = `de ${m.kpis.issues_total} abertas`;
+  $('kpi-members').textContent = m.kpis.active_members;
+  $('kpi-sprint').textContent = m.sprint.name;
+  $('kpi-sprint-sub').textContent = m.sprint.progress + '% concluído';
+  setTimeout(() => { $('sprint-bar').style.width = m.sprint.progress + '%'; }, 100);
 }
 
-// ── Gráfico de barras agrupado: integrante × branch ───────────────────────
-function drawMemberChart(d, todasBranches) {
-  const el = document.getElementById('chart-members');
-  if(!el) return;
+// ── LINE CHART ──
+function renderLine(data) {
+  const W = $('chart-line').clientWidth || 440, H = 200;
+  const margin = { top:16, right:16, bottom:28, left:36 };
+  const w = W - margin.left - margin.right, h = H - margin.top - margin.bottom;
 
-  const allAuthors = d.all_authors || {};
-  const authorPorBranch = d.author_por_branch || {};
-  const authors = Object.keys(allAuthors).length
-    ? Object.keys(allAuthors)
-    : Object.keys(
-        Object.values(d.branches_data||{}).reduce((acc,bd) => {
-          Object.keys(bd.commits_per_author||{}).forEach(a => { acc[a]=1; });
-          return acc;
-        },{})
-      );
+  const svg = d3.select('#chart-line').append('svg')
+    .attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('width','100%');
+  const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
-  if(!authors.length || !todasBranches.length){
-    el.innerHTML='<p class="empty">Sem dados.</p>'; return;
-  }
+  const x = d3.scaleBand().domain(data.map(d=>d.day)).range([0,w]).padding(.1);
+  const y = d3.scaleLinear().domain([0, d3.max(data,d=>d.count)*1.15]).range([h,0]);
 
-  const W=860, H=260, m={top:10, right:20, bottom:60, left:36};
-  const iW=W-m.left-m.right, iH=H-m.top-m.bottom;
+  // area
+  const area = d3.area().x(d=>x(d.day)+x.bandwidth()/2).y0(h).y1(d=>y(d.count)).curve(d3.curveMonotoneX);
+  const line = d3.line().x(d=>x(d.day)+x.bandwidth()/2).y(d=>y(d.count)).curve(d3.curveMonotoneX);
 
-  const x0 = d3.scaleBand().domain(authors).range([0,iW]).paddingInner(.25).paddingOuter(.1);
-  const x1 = d3.scaleBand().domain(todasBranches).range([0,x0.bandwidth()]).padding(.08);
-  const maxVal = d3.max(authors, a =>
-    d3.max(todasBranches, b => (authorPorBranch[a]?.[b] || 0))
-  ) || 1;
-  const y = d3.scaleLinear().domain([0, maxVal]).nice().range([iH,0]);
+  const defs = svg.append('defs');
+  const grad = defs.append('linearGradient').attr('id','lineGrad').attr('x1','0').attr('x2','0').attr('y1','0').attr('y2','1');
+  grad.append('stop').attr('offset','0%').attr('stop-color','#4cae4f').attr('stop-opacity',.28);
+  grad.append('stop').attr('offset','100%').attr('stop-color','#4cae4f').attr('stop-opacity',.01);
 
-  const svg = d3.select('#chart-members').append('svg').attr('viewBox',`0 0 ${W} ${H}`);
-  const g   = svg.append('g').attr('transform',`translate(${m.left},${m.top})`);
+  g.append('path').datum(data).attr('fill','url(#lineGrad)').attr('d',area);
+  g.append('path').datum(data).attr('fill','none').attr('stroke','#4cae4f').attr('stroke-width',2.2).attr('d',line);
 
-  // Gridlines
-  g.append('g').call(d3.axisLeft(y).ticks(4).tickSize(-iW).tickFormat(''))
-   .call(a=>{a.select('.domain').remove();a.selectAll('line').attr('stroke','#e8ecf4').attr('stroke-dasharray','3 3')});
+  // dots
+  g.selectAll('circle').data(data).join('circle')
+    .attr('cx',d=>x(d.day)+x.bandwidth()/2).attr('cy',d=>y(d.count))
+    .attr('r',4).attr('fill','#4cae4f').attr('stroke','#fff').attr('stroke-width',2)
+    .on('mousemove',(e,d)=>showTip(e,`<b>${d.day}</b>: ${d.count} commits`))
+    .on('mouseleave',hideTip);
 
-  // Grupos por autor
-  const authorGroups = g.selectAll('.ag').data(authors).join('g')
-    .attr('class','ag')
-    .attr('transform', a => `translate(${x0(a)},0)`);
+  // axes
+  g.append('g').attr('transform',`translate(0,${h})`).call(d3.axisBottom(x).tickSize(0)).select('.domain').remove();
+  g.append('g').call(d3.axisLeft(y).ticks(4).tickSize(-w)).select('.domain').remove();
+  g.selectAll('.tick line').attr('stroke','hsla(225,15%,21%,0.1)');
+  g.selectAll('.tick text').attr('fill','hsla(225,15%,21%,0.54)').attr('font-size',11);
+}
 
-  // Barras por branch dentro de cada autor
-  authorGroups.selectAll('rect').data(a =>
-    todasBranches.map(b => ({ branch: b, author: a, value: authorPorBranch[a]?.[b] || 0 }))
-  ).join('rect')
-    .attr('x', d => x1(d.branch))
-    .attr('y', d => y(d.value))
-    .attr('width', x1.bandwidth())
-    .attr('height', d => Math.max(0, iH - y(d.value)))
-    .attr('fill', d => branchColorMap[d.branch])
-    .attr('rx', 3)
-    .attr('opacity', .85)
-    .on('mousemove', (e,d) => showTip(e, `<strong>${d.author}</strong><br>${d.branch}<br>${d.value} commits`))
-    .on('mouseleave', hideTip);
+// ── HEATMAP ──
+function renderHeatmap(data) {
+  const cellSize = 13, cellPad = 2;
+  const weekdays = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const weeks = d3.timeWeeks(d3.min(data,d=>new Date(d.date)), d3.max(data,d=>new Date(d.date)));
 
-  // Eixo X (autores)
-  g.append('g').attr('transform',`translate(0,${iH})`)
-   .call(d3.axisBottom(x0))
-   .call(a=>{
-     a.select('.domain').remove();
-     a.selectAll('text').attr('transform','rotate(-20)').attr('text-anchor','end').style('font-size','10px').style('fill','#6b7280');
-   });
+  const W = $('chart-heatmap').clientWidth || 440;
+  const H = (cellSize+cellPad)*7 + 32;
+  const marginLeft = 34;
 
-  // Eixo Y
-  g.append('g').call(d3.axisLeft(y).ticks(4))
-   .call(a=>{a.select('.domain').remove();a.selectAll('text').style('font-size','9px').style('fill','#6b7280')});
+  const svg = d3.select('#chart-heatmap').append('svg')
+    .attr('viewBox',`0 0 ${W} ${H}`).attr('width','100%');
 
-  // Legenda
-  const leg = svg.append('g').attr('transform',`translate(${m.left},${H-14})`);
-  todasBranches.forEach((b, i) => {
-    const lx = i * 160;
-    leg.append('rect').attr('x',lx).attr('y',0).attr('width',10).attr('height',10).attr('rx',2).attr('fill',branchColorMap[b]);
-    leg.append('text').attr('x',lx+14).attr('y',9).style('font-size','10px').style('fill','#6b7280').text(b);
+  const color = d3.scaleSequential([0, d3.max(data,d=>d.count)||7], d3.interpolate('#e8f5e9','#2e7d32'));
+
+  const dateMap = new Map(data.map(d=>[d.date,d.count]));
+
+  // week columns
+  const xScale = d3.scaleBand().domain(weeks.map(d=>d3.timeFormat('%Y-%W')(d))).range([marginLeft, W-8]).padding(.08);
+
+  const g = svg.append('g').attr('transform','translate(0,20)');
+
+  // day labels
+  weekdays.forEach((d,i)=>{
+    g.append('text').text(d).attr('x',2).attr('y',(cellSize+cellPad)*i + cellSize*.8)
+      .attr('font-size',9).attr('fill','hsla(225,15%,21%,0.54)').attr('font-family','inherit');
+  });
+
+  // cells
+  data.forEach(datum=>{
+    const date = new Date(datum.date + 'T00:00:00');
+    const weekStr = d3.timeFormat('%Y-%W')(date);
+    const dow = date.getDay();
+    const xPos = xScale(weekStr);
+    if (xPos === undefined) return;
+    g.append('rect')
+      .attr('x', xPos).attr('y', (cellSize+cellPad)*dow)
+      .attr('width', xScale.bandwidth()).attr('height', cellSize)
+      .attr('rx',2).attr('fill', datum.count === 0 ? '#e8f5e9' : color(datum.count))
+      .on('mousemove',(e)=>showTip(e,`<b>${datum.date}</b>: ${datum.count} commits`))
+      .on('mouseleave',hideTip);
   });
 }
 
-// ── Tabela de autores × branches ──────────────────────────────────────────
-function buildAuthorTable(d, todasBranches) {
-  const tbody  = document.getElementById('tbl-authors');
-  if(!tbody) return;
+// ── DONUT ──
+function renderDonut(data) {
+  const size = 180;
+  const R = size/2 - 8, r = R*0.55;
+  const colors = ['#1b5e20','#2e7d32','#388e3c','#4cae4f','#81c784','#a5d6a7'];
 
-  const allAuthors      = d.all_authors || {};
-  const authorPorBranch = d.author_por_branch || {};
+  const svg = d3.select('#chart-donut').append('svg')
+    .attr('viewBox',`0 0 ${size} ${size}`).attr('width',size).attr('height',size);
+  const g = svg.append('g').attr('transform',`translate(${size/2},${size/2})`);
 
-  const authors = Object.keys(allAuthors).length
-    ? Object.entries(allAuthors).sort((a,b)=>b[1]-a[1])
-    : Object.entries(
-        Object.values(d.branches_data||{}).reduce((acc,bd) => {
-          Object.entries(bd.commits_per_author||{}).forEach(([a,n])=>{acc[a]=(acc[a]||0)+n;});
-          return acc;
-        },{})
-      ).sort((a,b)=>b[1]-a[1]);
+  const pie = d3.pie().value(d=>d.count).sort(null);
+  const arc = d3.arc().innerRadius(r).outerRadius(R);
 
-  authors.forEach(([author, total], idx) => {
-    const color = MEMBER_COLORS[idx % MEMBER_COLORS.length];
-    const perBranch = authorPorBranch[author] || {};
-    const branchCells = todasBranches.map(b => {
-      const v = perBranch[b] || 0;
-      return `<td style="text-align:center;font-size:.8rem;font-weight:${v?'700':'400'};color:${v?branchColorMap[b]:'var(--muted)'}">${v || '—'}</td>`;
-    }).join('');
+  const arcs = pie(data);
+  const total = d3.sum(data,d=>d.count);
 
-    let badgeClass = 'rank-badge';
-    if(idx===0) badgeClass+=' gold'; else if(idx===1) badgeClass+=' silver'; else if(idx===2) badgeClass+=' bronze';
+  g.selectAll('path').data(arcs).join('path')
+    .attr('d',arc).attr('fill',(_,i)=>colors[i]).attr('stroke','#fff').attr('stroke-width',2)
+    .on('mousemove',(e,d)=>showTip(e,`<b>${d.data.branch}</b>: ${d.data.count} commits (${Math.round(d.data.count/total*100)}%)`))
+    .on('mouseleave',hideTip);
 
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><span class="${badgeClass}">${idx+1}</span></td>
-      <td>
-        <div style="display:flex;align-items:center;gap:.5rem">
-          <div style="width:24px;height:24px;border-radius:50%;background:${color};display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0">${initials(author)}</div>
-          <span style="font-weight:600;font-size:.85rem">${author}</span>
+  g.append('text').text(total).attr('text-anchor','middle').attr('dy','-.1em')
+    .attr('font-size',22).attr('font-weight',700).attr('fill','#1b5e20');
+  g.append('text').text('commits').attr('text-anchor','middle').attr('dy','1.1em')
+    .attr('font-size',10).attr('fill','hsla(225,15%,21%,0.54)');
+
+  // legend
+  const legend = d3.select('#chart-donut').append('div')
+    .style('font-size','11px').style('margin-top','12px').style('width','100%');
+  data.forEach((d,i)=>{
+    const row = legend.append('div').style('display','flex').style('align-items','center').style('gap','6px').style('margin-bottom','4px');
+    row.append('div').style('width','10px').style('height','10px').style('border-radius','2px').style('background',colors[i]).style('flex-shrink','0');
+    row.append('span').style('color','hsla(225,15%,21%,0.87)').text(`${d.branch} — ${d.count}`);
+  });
+}
+
+// ── TREEMAP ──
+function renderTreemap(data) {
+  const W = $('chart-treemap').clientWidth || 560, H = 220;
+  const colors = ['#1b5e20','#2e7d32','#388e3c','#4cae4f','#66bb6a','#a5d6a7'];
+
+  const root = d3.hierarchy({ children: data }).sum(d=>d.count);
+  d3.treemap().size([W,H]).padding(3).round(true)(root);
+
+  const svg = d3.select('#chart-treemap').append('svg')
+    .attr('viewBox',`0 0 ${W} ${H}`).attr('width','100%');
+
+  const cell = svg.selectAll('g').data(root.leaves()).join('g')
+    .attr('transform',d=>`translate(${d.x0},${d.y0})`);
+
+  cell.append('rect')
+    .attr('width',d=>d.x1-d.x0).attr('height',d=>d.y1-d.y0)
+    .attr('rx',6).attr('fill',(_,i)=>colors[i]).attr('opacity',.9)
+    .on('mousemove',(e,d)=>showTip(e,`<b>${d.data.week}</b>: ${d.data.count} commits`))
+    .on('mouseleave',hideTip);
+
+  cell.append('text')
+    .attr('x',8).attr('y',18)
+    .attr('fill','#fff').attr('font-size',11).attr('font-weight',700)
+    .text(d=>d.x1-d.x0 > 50 ? d.data.week : '');
+
+  cell.append('text')
+    .attr('x',8).attr('y',33)
+    .attr('fill','rgba(255,255,255,.8)').attr('font-size',13).attr('font-weight',800)
+    .text(d=>d.x1-d.x0 > 50 ? d.data.count : '');
+}
+
+// ── MEMBER TABLE ──
+function renderMembers(members) {
+  const maxC = d3.max(members,d=>d.commits);
+  const table = $('member-table');
+  members.forEach(m=>{
+    const initials = m.login.slice(0,2).toUpperCase();
+    const pct = Math.round(m.commits/maxC*100);
+    table.innerHTML += `
+      <div class="member-row">
+        <div class="member-avatar">${initials}</div>
+        <div style="font-weight:600">${m.login}</div>
+        <div style="font-variant-numeric:tabular-nums">${m.commits}</div>
+        <div style="font-variant-numeric:tabular-nums">${m.issues}</div>
+        <div style="width:100%">
+          <div class="bar-wrap"><div class="bar-fill" style="width:${pct}%"></div></div>
+          <div style="font-size:.68rem;color:hsla(225,15%,21%,0.54);margin-top:2px">${pct}%</div>
         </div>
-      </td>
-      <td style="font-weight:800;color:var(--navy);font-size:.95rem">${total}</td>
-      ${branchCells}`;
-    tbody.appendChild(tr);
+      </div>`;
   });
 }
 
-// ── Timeline por branch ───────────────────────────────────────────────────
-function drawTimeline(containerId, data, color) {
-  const el = document.getElementById(containerId);
-  if(!el) return;
-  if(!data.length){ el.innerHTML='<p class="empty">Sem dados de timeline.</p>'; return; }
-  const W=480,H=180,m={top:8,right:8,bottom:44,left:32};
-  const iW=W-m.left-m.right, iH=H-m.top-m.bottom;
-  const parseDay=d3.timeParse('%Y-%m-%d');
-  const rows=data.map(d=>({date:parseDay(d.date),count:d.count})).filter(d=>d.date);
-  const x=d3.scaleBand().domain(rows.map(d=>d.date)).range([0,iW]).padding(.18);
-  const y=d3.scaleLinear().domain([0,d3.max(rows,d=>d.count)||1]).nice().range([iH,0]);
-  const svg=d3.select('#'+containerId).append('svg').attr('viewBox',`0 0 ${W} ${H}`);
-  const g=svg.append('g').attr('transform',`translate(${m.left},${m.top})`);
-  g.append('g').call(d3.axisLeft(y).ticks(3).tickSize(-iW).tickFormat(''))
-   .call(a=>{a.select('.domain').remove();a.selectAll('line').attr('stroke','#e8ecf4').attr('stroke-dasharray','3 3')});
-  g.selectAll('rect').data(rows).join('rect')
-   .attr('x',d=>x(d.date)).attr('y',d=>y(d.count))
-   .attr('width',x.bandwidth()).attr('height',d=>iH-y(d.count))
-   .attr('fill',color).attr('rx',3).attr('opacity',.85)
-   .on('mousemove',(e,d)=>showTip(e,`<strong>${d3.timeFormat('%d/%m/%Y')(d.date)}</strong><br>${d.count} commit(s)`))
-   .on('mouseleave',hideTip);
-  const every=Math.ceil(rows.length/5);
-  g.append('g').attr('transform',`translate(0,${iH})`)
-   .call(d3.axisBottom(x).tickValues(rows.filter((_,i)=>i%every===0).map(d=>d.date)).tickFormat(d3.timeFormat('%d/%m')))
-   .call(a=>{a.select('.domain').remove();a.selectAll('text').attr('transform','rotate(-30)').attr('text-anchor','end').style('font-size','9px').style('fill','#6b7280')});
-  g.append('g').call(d3.axisLeft(y).ticks(3))
-   .call(a=>{a.select('.domain').remove();a.selectAll('text').style('font-size','9px').style('fill','#6b7280')});
+// ── INIT ──
+function init(m) {
+  renderKPIs(m);
+  renderLine(m.commits_by_weekday);
+  renderHeatmap(m.heatmap);
+  renderDonut(m.commits_by_branch);
+  renderTreemap(m.commits_by_week);
+  renderMembers(m.members);
 }
 
-// ── Timeline de issues ────────────────────────────────────────────────────
-function drawIssueTimeline(data) {
-  const el = document.getElementById('chart-issues');
-  if(!el) return;
-  if(!data.length){ el.innerHTML='<p class="empty">Sem dados de issues.</p>'; return; }
-  const W=900,H=200,m={top:8,right:120,bottom:44,left:32};
-  const iW=W-m.left-m.right, iH=H-m.top-m.bottom;
-  const parseDay=d3.timeParse('%Y-%m-%d');
-  const rows=data.map(d=>({date:parseDay(d.date),opened:d.opened,closed:d.closed})).filter(d=>d.date);
-  if(!rows.length) return;
-  const x=d3.scaleBand().domain(rows.map(d=>d.date)).range([0,iW]).padding(.18);
-  const maxV=d3.max(rows,d=>d.opened+d.closed)||1;
-  const y=d3.scaleLinear().domain([0,maxV]).nice().range([iH,0]);
-  const svg=d3.select('#chart-issues').append('svg').attr('viewBox',`0 0 ${W} ${H}`);
-  const g=svg.append('g').attr('transform',`translate(${m.left},${m.top})`);
-  g.append('g').call(d3.axisLeft(y).ticks(3).tickSize(-iW).tickFormat(''))
-   .call(a=>{a.select('.domain').remove();a.selectAll('line').attr('stroke','#e8ecf4').attr('stroke-dasharray','3 3')});
-  g.selectAll('.bo').data(rows).join('rect').attr('class','bo')
-   .attr('x',d=>x(d.date)).attr('y',d=>y(d.opened)).attr('width',x.bandwidth()).attr('height',d=>Math.max(0,iH-y(d.opened)))
-   .attr('fill','#003366').attr('rx',2)
-   .on('mousemove',(e,d)=>showTip(e,`${d3.timeFormat('%d/%m/%Y')(d.date)}<br>Abertas: ${d.opened}`)).on('mouseleave',hideTip);
-  g.selectAll('.bc').data(rows).join('rect').attr('class','bc')
-   .attr('x',d=>x(d.date)).attr('y',d=>y(d.opened+d.closed)).attr('width',x.bandwidth()).attr('height',d=>Math.max(0,iH-y(d.closed)))
-   .attr('fill','#005C37').attr('rx',2)
-   .on('mousemove',(e,d)=>showTip(e,`${d3.timeFormat('%d/%m/%Y')(d.date)}<br>Fechadas: ${d.closed}`)).on('mouseleave',hideTip);
-  const every=Math.ceil(rows.length/7);
-  g.append('g').attr('transform',`translate(0,${iH})`)
-   .call(d3.axisBottom(x).tickValues(rows.filter((_,i)=>i%every===0).map(d=>d.date)).tickFormat(d3.timeFormat('%d/%m')))
-   .call(a=>{a.select('.domain').remove();a.selectAll('text').attr('transform','rotate(-30)').attr('text-anchor','end').style('font-size','9px').style('fill','#6b7280')});
-  g.append('g').call(d3.axisLeft(y).ticks(3))
-   .call(a=>{a.select('.domain').remove();a.selectAll('text').style('font-size','9px').style('fill','#6b7280')});
-  const leg=svg.append('g').attr('transform',`translate(${m.left+iW+12},${m.top+10})`);
-  [['#003366','Abertas'],['#005C37','Fechadas']].forEach(([c,l],i)=>{
-    leg.append('rect').attr('y',i*20).attr('width',11).attr('height',11).attr('rx',2).attr('fill',c);
-    leg.append('text').attr('x',15).attr('y',i*20+9).style('font-size','10px').style('fill','#6b7280').text(l);
-  });
-}
-
-// ── Tabela de commits recentes ────────────────────────────────────────────
-function buildCommitTable(tbodyId, commits) {
-  const tbody = document.getElementById(tbodyId);
-  if(!tbody) return;
-  if(!commits.length){
-    const tr=document.createElement('tr');
-    tr.innerHTML='<td colspan="4" class="empty">Sem commits ainda</td>';
-    tbody.appendChild(tr); return;
-  }
-  commits.slice(0,12).forEach(c=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td><code style="font-size:.72rem;color:var(--navy)">${c.sha}</code></td>
-      <td style="white-space:nowrap;font-size:.8rem">${c.author}</td>
-      <td style="white-space:nowrap;font-size:.8rem">${fmtDate(c.date)}</td>
-      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.8rem" title="${(c.message||'').replace(/"/g,'&quot;')}">${c.message||'–'}</td>`;
-    tbody.appendChild(tr);
-  });
-}
-
-// ── Tabela de issues ──────────────────────────────────────────────────────
-function buildIssuesTable(issues) {
-  const tbody = document.getElementById('tbl-issues');
-  if(!tbody) return;
-  issues.slice(0,30).forEach(is=>{
-    const lblHtml=(is.labels||[]).map(l=>`<span class="tag ${is.state==='open'?'tag-open':'tag-closed'}">${l}</span>`).join('');
-    const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td style="white-space:nowrap;color:var(--muted)">#${is.number}</td>
-      <td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${(is.title||'').replace(/"/g,'&quot;')}">${is.title||'–'}</td>
-      <td>${is.state==='open'?'<span class="pill-open">Aberta</span>':'<span class="pill-closed">Fechada</span>'}</td>
-      <td style="white-space:nowrap">${fmtDate(is.created_at)}</td>
-      <td style="white-space:nowrap">${fmtDate(is.closed_at)}</td>
-      <td>${lblHtml||'—'}</td>`;
-    tbody.appendChild(tr);
-  });
-}
+window.addEventListener('DOMContentLoaded', () => {
+  fetch('metrics.json')
+    .then(r => r.json())
+    .then(init)
+    .catch(err => console.error('Erro ao carregar metrics.json:', err));
+});
 </script>
 </body>
 </html>
