@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T01:44:07.334399+00:00",
+  "generated_at": "2026-06-24T17:05:15.603594+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -26,7 +26,7 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 23,
+    "total_commits": 24,
     "open_issues": 1,
     "closed_issues": 31,
     "contributors": 7,
@@ -345,10 +345,25 @@
     },
     "release-1-integration": {
       "branch": "release-1-integration",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 1,
+      "commits_per_author": {
+        "PajeMurici-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-24",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "ef4bbfe",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-24T16:59:18+00:00",
+          "message": "fix atualiza na branch release 1 a pagina de produtividade",
+          "char_count": 58
+        }
+      ]
     },
     "sprint-04-dashboard": {
       "branch": "sprint-04-dashboard",
@@ -1033,8 +1048,8 @@
   ],
   "all_authors": {
     "claranunes22": 11,
+    "PajeMurici-dev": 4,
     "gabiiverissimo-dev": 3,
-    "PajeMurici-dev": 3,
     "otaviotex": 2,
     "AlmondHare": 2,
     "lucasnferreiradev-lang": 1,
@@ -1062,6 +1077,7 @@
     },
     "PajeMurici-dev": {
       "main": 1,
+      "release-1-integration": 1,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1
     },
