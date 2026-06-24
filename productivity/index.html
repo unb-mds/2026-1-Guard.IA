@@ -292,54 +292,6 @@
 </div>
 
 <script>
-// ── MOCK DATA (substitua pelo fetch('metrics.json') em produção) ──
-const METRICS = {
-  generated_at: new Date().toISOString(),
-  sprint: { name: "Sprint 2", progress: 62 },
-  kpis: { commits: 147, issues_closed: 18, issues_total: 24, active_members: 6 },
-  commits_by_weekday: [
-    { day: "Dom", count: 4 },
-    { day: "Seg", count: 22 },
-    { day: "Ter", count: 31 },
-    { day: "Qua", count: 28 },
-    { day: "Qui", count: 35 },
-    { day: "Sex", count: 20 },
-    { day: "Sáb", count: 7 },
-  ],
-  heatmap: (() => {
-    const days = [];
-    const now = new Date();
-    for (let i = 89; i >= 0; i--) {
-      const d = new Date(now); d.setDate(now.getDate() - i);
-      days.push({ date: d.toISOString().slice(0,10), count: Math.floor(Math.random()*8) });
-    }
-    return days;
-  })(),
-  commits_by_branch: [
-    { branch: "main",           count: 42 },
-    { branch: "dev-projeto",    count: 38 },
-    { branch: "release-1",      count: 25 },
-    { branch: "storage-module", count: 21 },
-    { branch: "feat/docs",      count: 13 },
-    { branch: "outras",         count: 8  },
-  ],
-  commits_by_week: [
-    { week: "Sem 1", count: 14 },
-    { week: "Sem 2", count: 22 },
-    { week: "Sem 3", count: 31 },
-    { week: "Sem 4", count: 18 },
-    { week: "Sem 5", count: 27 },
-    { week: "Sem 6", count: 35 },
-  ],
-  members: [
-    { login: "Edvaldo",  commits: 34, issues: 5 },
-    { login: "Ana",      commits: 28, issues: 4 },
-    { login: "Carlos",   commits: 24, issues: 3 },
-    { login: "Beatriz",  commits: 22, issues: 4 },
-    { login: "Diego",    commits: 21, issues: 3 },
-    { login: "Fernanda", commits: 18, issues: 2 },
-  ],
-};
 
 // ── HELPERS ──
 const $ = id => document.getElementById(id);
@@ -537,7 +489,6 @@ function renderMembers(members) {
 }
 
 // ── INIT ──
-// Em produção: fetch('metrics.json').then(r=>r.json()).then(init);
 function init(m) {
   renderKPIs(m);
   renderLine(m.commits_by_weekday);
@@ -547,7 +498,12 @@ function init(m) {
   renderMembers(m.members);
 }
 
-window.addEventListener('DOMContentLoaded', () => init(METRICS));
+window.addEventListener('DOMContentLoaded', () => {
+  fetch('metrics.json')
+    .then(r => r.json())
+    .then(init)
+    .catch(err => console.error('Erro ao carregar metrics.json:', err));
+});
 </script>
 </body>
 </html>
