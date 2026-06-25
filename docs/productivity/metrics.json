@@ -2,6 +2,7 @@
   "generated_at": "2026-06-25T23:29:30.412160+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
+    "chore/remove-cadastro",
     "dev-projeto",
     "estudos",
     "feat/armazenamento-postgres",
@@ -35,6 +36,28 @@
     "branches_deletadas": 5
   },
   "branches_data": {
+    "chore/remove-cadastro": {
+      "branch": "chore/remove-cadastro",
+      "total_commits": 1,
+      "commits_per_author": {
+        "gabiiverissimo-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-25",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "bce6dbd",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-25T23:39:49+00:00",
+          "message": "chore(backend): remove rotas e dependências de autenticação",
+          "char_count": 59
+        }
+      ]
+    },
     "dev-projeto": {
       "branch": "dev-projeto",
       "total_commits": 9,
@@ -1122,6 +1145,16 @@
   },
   "pull_requests": [
     {
+      "number": 46,
+      "title": "chore(backend): remove rotas e dependências de autenticação",
+      "state": "open",
+      "base": "feat/classificacao-release-2",
+      "head": "chore/remove-cadastro",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-06-25T23:40:47+00:00",
+      "merged_at": null
+    },
+    {
       "number": 45,
       "title": "feat(frontend): Integração completa do Frontend Release 1",
       "state": "closed",
@@ -1258,10 +1291,15 @@
     "PajeMurici-dev": 5,
     "otaviotex": 2,
     "AlmondHare": 2,
-    "lucasnferreiradev-lang": 1,
     "LucasNF-Dev": 1
   },
   "author_por_branch": {
+    "gabiiverissimo-dev": {
+      "chore/remove-cadastro": 1,
+      "dev-projeto": 3,
+      "feat/home-team": 1,
+      "feat/login-page": 3
+    },
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,

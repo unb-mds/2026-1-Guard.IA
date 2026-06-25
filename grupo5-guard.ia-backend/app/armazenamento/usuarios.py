@@ -1,26 +1,26 @@
-import bcrypt
+"""import bcrypt
 from .database import execute_query
 
 def hash_senha(senha: str) -> str:
-    """Gera um hash saltado para a senha."""
+    Gera um hash saltado para a senha.
     salt = bcrypt.gensalt()
     return bcrypt.hashpw(senha.encode('utf-8'), salt).decode('utf-8')
 
 def verificar_senha(senha: str, senha_hash: str) -> bool:
-    """Verifica se a senha fornecida corresponde ao hash."""
+    Verifica se a senha fornecida corresponde ao hash.
     return bcrypt.checkpw(senha.encode('utf-8'), senha_hash.encode('utf-8'))
 
 def criar_usuario(nome: str, email: str, senha: str):
-    """
+    
     Cria um novo usuario no PostgreSQL.
     Retorna o ID do usuario criado ou None se houver erro (ex: email duplicado).
-    """
+    
     senha_hash = hash_senha(senha)
-    query = """
+    query = 
         INSERT INTO usuarios (nome, email, senha_hash)
         VALUES (%s, %s, %s)
         RETURNING id;
-    """
+    
     try:
         result = execute_query(query, (nome, email, senha_hash), fetch=True)
         if result:
@@ -30,10 +30,10 @@ def criar_usuario(nome: str, email: str, senha: str):
     return None
 
 def buscar_por_email(email: str):
-    """
+    
     Busca um usuário pelo email.
     Retorna um dicionário com os dados ou None.
-    """
+    
     query = "SELECT id, nome, email, senha_hash, criado_em FROM usuarios WHERE email = %s;"
     try:
         result = execute_query(query, (email,), fetch=True)
@@ -51,7 +51,7 @@ def buscar_por_email(email: str):
     return None
 
 def deletar_usuario(usuario_id: int) -> bool:
-    """Remove um usuário pelo ID."""
+   Remove um usuário pelo ID.
     query = "DELETE FROM usuarios WHERE id = %s;"
     try:
         execute_query(query, (usuario_id,))
@@ -60,10 +60,10 @@ def deletar_usuario(usuario_id: int) -> bool:
         return False
 
 def listar_usuarios():
-    """
+
     Lista todos os usuários.
     IMPORTANTE: Nunca retorna o campo senha_hash.
-    """
+ 
     query = "SELECT id, nome, email, criado_em FROM usuarios;"
     results = execute_query(query, fetch=True)
     
@@ -76,4 +76,4 @@ def listar_usuarios():
                 "email": row[2],
                 "criado_em": row[3]
             })
-    return usuarios
+    return usuarios"""
