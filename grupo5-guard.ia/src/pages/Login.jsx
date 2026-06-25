@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 import mascote2 from "../assets/mascote2.png";
@@ -104,4 +104,4 @@ export default function Login({ setUser }) {
       </main>
     </div>
   );
-}
+}*/

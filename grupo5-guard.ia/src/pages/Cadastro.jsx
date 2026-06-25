@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cadastro.css";
 import mascote1 from "../assets/mascote1.png";
@@ -147,4 +147,4 @@ export default function Cadastro() {
       </main>
     </div>
   );
-}
+}*/
