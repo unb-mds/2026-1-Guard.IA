@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T23:56:25.877507+00:00",
+  "generated_at": "2026-06-25T23:57:00.036897+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "chore/remove-cadastro",
@@ -27,7 +27,7 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 45,
+    "total_commits": 43,
     "open_issues": 1,
     "closed_issues": 31,
     "contributors": 6,
@@ -38,33 +38,10 @@
   "branches_data": {
     "chore/remove-cadastro": {
       "branch": "chore/remove-cadastro",
-      "total_commits": 2,
-      "commits_per_author": {
-        "gabiiverissimo-dev": 1,
-        "PajeMurici-dev": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-25",
-          "count": 2
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "bce6dbd",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-25T23:39:49+00:00",
-          "message": "chore(backend): remove rotas e dependências de autenticação",
-          "char_count": 59
-        },
-        {
-          "sha": "3159cca",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-25T23:52:09+00:00",
-          "message": "Merge branch 'feat/classificacao-release-2' into chore/remove-cadastro",
-          "char_count": 70
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "dev-projeto": {
       "branch": "dev-projeto",
@@ -1283,28 +1260,13 @@
   ],
   "all_authors": {
     "claranunes22": 25,
-    "gabiiverissimo-dev": 8,
-    "PajeMurici-dev": 7,
+    "gabiiverissimo-dev": 7,
+    "PajeMurici-dev": 6,
     "otaviotex": 2,
     "AlmondHare": 2,
     "LucasNF-Dev": 1
   },
   "author_por_branch": {
-    "gabiiverissimo-dev": {
-      "chore/remove-cadastro": 1,
-      "dev-projeto": 3,
-      "feat/home-team": 1,
-      "feat/login-page": 3
-    },
-    "PajeMurici-dev": {
-      "chore/remove-cadastro": 1,
-      "feat/classificacao-release-2": 1,
-      "main": 1,
-      "release-1-integration": 1,
-      "PajeMurici-dev-patch-1": 1,
-      "PajeMurici-dev-patch-2": 1,
-      "feat/login-page": 1
-    },
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,
@@ -1312,6 +1274,19 @@
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11
+    },
+    "gabiiverissimo-dev": {
+      "dev-projeto": 3,
+      "feat/home-team": 1,
+      "feat/login-page": 3
+    },
+    "PajeMurici-dev": {
+      "feat/classificacao-release-2": 1,
+      "main": 1,
+      "release-1-integration": 1,
+      "PajeMurici-dev-patch-1": 1,
+      "PajeMurici-dev-patch-2": 1,
+      "feat/login-page": 1
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
