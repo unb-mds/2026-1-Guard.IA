@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T23:45:23.740331+00:00",
+  "generated_at": "2026-06-25T23:29:30.412160+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "chore/remove-cadastro",
@@ -27,12 +27,12 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 43,
+    "total_commits": 44,
     "open_issues": 1,
     "closed_issues": 31,
-    "contributors": 6,
-    "open_prs": 2,
-    "branches_ativas": 16,
+    "contributors": 7,
+    "open_prs": 1,
+    "branches_ativas": 15,
     "branches_deletadas": 5
   },
   "branches_data": {
@@ -176,10 +176,37 @@
     },
     "feat/classificacao-release-2": {
       "branch": "feat/classificacao-release-2",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 2,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1,
+        "gabiiverissimo-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-24",
+          "count": 1
+        },
+        {
+          "date": "2026-06-25",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "3e16a73",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-24T01:38:50+00:00",
+          "message": "feat: implementa classificador de IA por embeddings semanticos (Release 2)",
+          "char_count": 800
+        },
+        {
+          "sha": "0ee7483",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-25T23:25:03+00:00",
+          "message": "chore(ui): simplify landing page and remove user authentication",
+          "char_count": 63
+        }
+      ]
     },
     "feat/crud-usuario": {
       "branch": "feat/crud-usuario",
@@ -1280,6 +1307,15 @@
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11
+    },
+    "gabiiverissimo-dev": {
+      "dev-projeto": 3,
+      "feat/classificacao-release-2": 1,
+      "feat/home-team": 1,
+      "feat/login-page": 3
+    },
+    "lucasnferreiradev-lang": {
+      "feat/classificacao-release-2": 1
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
