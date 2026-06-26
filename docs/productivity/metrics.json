@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T23:05:14.572263+00:00",
+  "generated_at": "2026-06-26T23:20:21.915310+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -29,7 +29,7 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 44,
+    "total_commits": 45,
     "open_issues": 1,
     "closed_issues": 33,
     "contributors": 6,
@@ -185,14 +185,14 @@
     },
     "feat/endpoints": {
       "branch": "feat/endpoints",
-      "total_commits": 1,
+      "total_commits": 2,
       "commits_per_author": {
-        "PajeMurici-dev": 1
+        "PajeMurici-dev": 2
       },
       "commit_timeline": [
         {
           "date": "2026-06-26",
-          "count": 1
+          "count": 2
         }
       ],
       "recent_commits": [
@@ -202,6 +202,13 @@
           "date": "2026-06-26T22:59:36+00:00",
           "message": "feat: adiciona as funções de classificação, busca individual e stats como endpoints na API",
           "char_count": 90
+        },
+        {
+          "sha": "6f0ab86",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-26T23:15:00+00:00",
+          "message": "fix: ccorrige update metrics",
+          "char_count": 28
         }
       ]
     },
@@ -1351,7 +1358,7 @@
   ],
   "all_authors": {
     "claranunes22": 22,
-    "PajeMurici-dev": 9,
+    "PajeMurici-dev": 10,
     "gabiiverissimo-dev": 8,
     "otaviotex": 2,
     "AlmondHare": 2,
@@ -1376,7 +1383,7 @@
       "filtragem-B": 1
     },
     "PajeMurici-dev": {
-      "feat/endpoints": 1,
+      "feat/endpoints": 2,
       "release-1-integration": 4,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
