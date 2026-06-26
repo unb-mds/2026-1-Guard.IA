@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T02:04:24.248390+00:00",
+  "generated_at": "2026-06-26T02:09:45.152483+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "chore/remove-cadastro",
@@ -27,11 +27,11 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 46,
+    "total_commits": 44,
     "open_issues": 1,
     "closed_issues": 31,
     "contributors": 6,
-    "open_prs": 2,
+    "open_prs": 1,
     "branches_ativas": 16,
     "branches_deletadas": 5
   },
@@ -161,48 +161,10 @@
     },
     "feat/classificacao-release-2": {
       "branch": "feat/classificacao-release-2",
-      "total_commits": 3,
-      "commits_per_author": {
-        "PajeMurici-dev": 2,
-        "AlmondHare": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-17",
-          "count": 1
-        },
-        {
-          "date": "2026-06-25",
-          "count": 1
-        },
-        {
-          "date": "2026-06-26",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "20b5733",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-17T16:22:25+00:00",
-          "message": "Merge pull request #45 from unb-mds/release-1-integration",
-          "char_count": 116
-        },
-        {
-          "sha": "89ca99e",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-25T23:52:48+00:00",
-          "message": "Merge pull request #46 from unb-mds/chore/remove-cadastro",
-          "char_count": 118
-        },
-        {
-          "sha": "b865cda",
-          "author": "AlmondHare",
-          "date": "2026-06-26T01:59:41+00:00",
-          "message": "Merge branch 'main' into feat/classificacao-release-2",
-          "char_count": 53
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "feat/crud-usuario": {
       "branch": "feat/crud-usuario",
@@ -333,10 +295,25 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 1,
+      "commits_per_author": {
+        "AlmondHare": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "944d2d2",
+          "author": "AlmondHare",
+          "date": "2026-06-26T02:04:31+00:00",
+          "message": "Merge pull request #47 from unb-mds/feat/classificacao-release-2",
+          "char_count": 99
+        }
+      ]
     },
     "pages-metricas": {
       "branch": "pages-metricas",
@@ -1146,12 +1123,12 @@
     {
       "number": 47,
       "title": "Versão mais atualizada do projeto",
-      "state": "open",
+      "state": "closed",
       "base": "main",
       "head": "feat/classificacao-release-2",
       "author": "gabiiverissimo-dev",
       "created_at": "2026-06-26T01:56:21+00:00",
-      "merged_at": null
+      "merged_at": "2026-06-26T02:04:31+00:00"
     },
     {
       "number": 46,
@@ -1296,8 +1273,8 @@
   ],
   "all_authors": {
     "claranunes22": 25,
-    "PajeMurici-dev": 8,
     "gabiiverissimo-dev": 7,
+    "PajeMurici-dev": 6,
     "AlmondHare": 3,
     "otaviotex": 2,
     "LucasNF-Dev": 1
@@ -1316,20 +1293,19 @@
       "feat/home-team": 1,
       "feat/login-page": 3
     },
+    "otaviotex": {
+      "feat/crud-usuario": 1,
+      "filtragem-B": 1
+    },
+    "AlmondHare": {
+      "filtragem-B": 2,
+      "main": 1
+    },
     "PajeMurici-dev": {
-      "feat/classificacao-release-2": 2,
       "release-1-integration": 3,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
       "feat/login-page": 1
-    },
-    "AlmondHare": {
-      "feat/classificacao-release-2": 1,
-      "filtragem-B": 2
-    },
-    "otaviotex": {
-      "feat/crud-usuario": 1,
-      "filtragem-B": 1
     },
     "LucasNF-Dev": {
       "feature/estrutura-inicial": 1
