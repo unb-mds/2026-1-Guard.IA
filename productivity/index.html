@@ -14,10 +14,8 @@
       --md-primary-fg-color--light: #68bb6c;
       --md-primary-fg-color--dark:  #398e3d;
       --md-primary-bg-color:        #ffffff;
-      --md-primary-bg-color--light: #ffffffb3;
       --md-default-fg-color:          hsla(var(--md-hue),15%,21%,0.87);
       --md-default-fg-color--light:   hsla(var(--md-hue),15%,21%,0.54);
-      --md-default-fg-color--lighter: hsla(var(--md-hue),15%,21%,0.32);
       --md-default-bg-color:          hsla(var(--md-hue),15%,100%,1);
       --md-accent-fg-color:             #00c753;
       --md-accent-fg-color--transparent:#00c7531a;
@@ -28,14 +26,9 @@
       --border:  hsla(var(--md-hue),15%,21%,0.12);
       --text:    var(--md-default-fg-color);
       --muted:   var(--md-default-fg-color--light);
-      --primary: var(--md-primary-fg-color);
-      --primary-dark: var(--md-primary-fg-color--dark);
-      --accent:  var(--md-accent-fg-color);
       --radius:  0.2rem;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -44,79 +37,47 @@
       line-height: 1.6;
     }
 
+    /* Header */
     header {
       background: var(--md-primary-fg-color);
       color: var(--md-primary-bg-color);
       padding: 0 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 2.4rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 2.4rem; position: sticky; top: 0; z-index: 100;
       box-shadow: var(--md-shadow-z2);
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      font-size: .9rem;
-      font-weight: 700;
-      letter-spacing: .01em;
-    }
+    .logo { display: flex; align-items: center; gap: .5rem; font-size: .9rem; font-weight: 700; }
     .logo svg { width: 20px; height: 20px; }
     .badge {
-      background: var(--md-primary-fg-color--dark);
-      color: var(--md-primary-bg-color);
-      font-size: .6rem;
-      font-weight: 700;
-      padding: 1px 6px;
-      border-radius: .1rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      opacity: .9;
+      background: var(--md-primary-fg-color--dark); color: var(--md-primary-bg-color);
+      font-size: .6rem; font-weight: 700; padding: 1px 6px; border-radius: .1rem;
+      letter-spacing: .06em; text-transform: uppercase; opacity: .9;
     }
-    #last-update { font-size: .65rem; opacity: .7; letter-spacing: .02em; }
+    #last-update { font-size: .65rem; opacity: .7; }
 
-    /* demo banner */
+    /* Demo banner */
     #demo-banner {
-      display: none;
-      background: #fff8e1;
-      border-bottom: 2px solid #f59e0b;
-      padding: .45rem 1rem;
-      font-size: .75rem;
-      color: #78500a;
-      text-align: center;
+      display: none; background: #fff8e1; border-bottom: 2px solid #f59e0b;
+      padding: .45rem 1rem; font-size: .75rem; color: #78500a; text-align: center;
     }
     #demo-banner a { color: #398e3d; font-weight: 700; }
 
     .main-wrap { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
 
+    /* Cards */
     .card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.25rem;
-      box-shadow: var(--md-shadow-z1);
-      border: none;
+      background: var(--surface); border-radius: var(--radius);
+      padding: 1.2rem 1.25rem; box-shadow: var(--md-shadow-z1);
     }
     .card-kpi { border-top: 3px solid var(--md-primary-fg-color); }
     .card-title {
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: .6rem;
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: .6rem;
     }
-    .stat-value {
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--md-primary-fg-color--dark);
-    }
+    .stat-value { font-size: 2rem; font-weight: 700; line-height: 1; color: var(--md-primary-fg-color--dark); }
     .stat-sub { font-size: .72rem; color: var(--muted); margin-top: .25rem; }
 
+    /* Grids */
     .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
     .grid-3 { display: grid; grid-template-columns: 2fr 1fr; gap: .75rem; }
@@ -126,92 +87,63 @@
     }
     @media(max-width:500px) { .grid-4 { grid-template-columns: 1fr; } }
 
+    .section-gap { margin-bottom: .75rem; }
     svg text { font-family: 'Roboto', sans-serif; }
 
+    /* Tooltip */
     .tooltip {
-      position: fixed;
-      pointer-events: none;
-      background: hsla(var(--md-hue),15%,21%,0.92);
-      color: #fff;
-      font-family: 'Roboto', sans-serif;
-      font-size: .72rem;
-      padding: 4px 10px;
-      border-radius: .15rem;
-      opacity: 0;
-      transition: opacity .12s;
-      z-index: 999;
-      white-space: nowrap;
+      position: fixed; pointer-events: none;
+      background: hsla(var(--md-hue),15%,21%,0.92); color: #fff;
+      font-family: 'Roboto', sans-serif; font-size: .72rem;
+      padding: 4px 10px; border-radius: .15rem; opacity: 0;
+      transition: opacity .12s; z-index: 999; white-space: nowrap;
       box-shadow: var(--md-shadow-z2);
     }
 
+    /* Progress bar */
+    .sprint-bar-wrap { background: var(--md-accent-fg-color--transparent); height: 4px; overflow: hidden; margin: .5rem 0 0; }
+    .sprint-bar-fill { height: 100%; background: var(--md-primary-fg-color); transition: width .8s ease; }
+
+    /* Branch pills */
+    #branch-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
+    .branch-pill {
+      font-size: .7rem; font-weight: 700; padding: 2px 10px;
+      border-radius: 20px; border: 2px solid transparent;
+    }
+
+    /* Member table */
     .member-row {
-      display: grid;
-      grid-template-columns: 32px 1fr 60px 100px;
-      align-items: center;
-      gap: .75rem;
-      padding: .5rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: .8rem;
+      display: grid; grid-template-columns: 32px 1fr 60px 100px;
+      align-items: center; gap: .75rem; padding: .5rem 0;
+      border-bottom: 1px solid var(--border); font-size: .8rem;
     }
     .member-row:last-child { border-bottom: none; }
     .member-avatar {
-      width: 28px; height: 28px;
-      border-radius: 50%;
+      width: 28px; height: 28px; border-radius: 50%;
       background: var(--md-primary-fg-color);
       display: flex; align-items: center; justify-content: center;
       color: #fff; font-size: .68rem; font-weight: 700;
     }
+    .bar-wrap { background: var(--md-accent-fg-color--transparent); height: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--md-primary-fg-color); transition: width .6s ease; }
 
-    .bar-wrap {
-      background: var(--md-accent-fg-color--transparent);
-      border-radius: 0;
-      height: 4px;
-      overflow: hidden;
-    }
-    .bar-fill {
-      height: 100%;
-      background: var(--md-primary-fg-color);
-      transition: width .6s ease;
-    }
+    /* Author-branch breakdown */
+    .author-branches { font-size: .68rem; color: var(--muted); margin-top: 2px; display: flex; flex-wrap: wrap; gap: .3rem; }
+    .author-branch-tag { padding: 0px 5px; border-radius: 3px; font-weight: 600; }
 
-    .sprint-bar-wrap {
-      background: var(--md-accent-fg-color--transparent);
-      height: 4px;
-      overflow: hidden;
-      margin: .5rem 0 0;
-      border-radius: 0;
-    }
-    .sprint-bar-fill {
-      height: 100%;
-      background: var(--md-primary-fg-color);
-      transition: width .8s ease;
-    }
-
-    .section-gap { margin-bottom: .75rem; }
-
-    /* branch pills */
-    #branch-pills {
-      display: flex; flex-wrap: wrap; gap: .5rem;
-      margin-bottom: .75rem;
-    }
-    .branch-pill {
-      font-size: .7rem; font-weight: 700;
-      padding: 2px 10px; border-radius: 20px;
-      border: 2px solid transparent;
-    }
-
-    /* issues table */
+    /* Issues table */
     .issues-table { width: 100%; border-collapse: collapse; font-size: .8rem; margin-top: .5rem; }
-    .issues-table th { text-align: left; padding: .4rem .6rem; font-size: .65rem; font-weight: 700;
+    .issues-table th {
+      text-align: left; padding: .4rem .6rem; font-size: .65rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
-      border-bottom: 2px solid var(--border); }
+      border-bottom: 2px solid var(--border);
+    }
     .issues-table td { padding: .4rem .6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
     .issues-table tr:last-child td { border-bottom: none; }
     .issues-table tr:hover td { background: #f4faf4; }
     .pill-open   { background: #e0f2ea; color: #1b5e20; font-size: .68rem; font-weight: 700; padding: 1px 8px; border-radius: 20px; }
     .pill-closed { background: #e8f5e9; color: #398e3d; font-size: .68rem; font-weight: 700; padding: 1px 8px; border-radius: 20px; }
-    .tag { display: inline-block; font-size: .65rem; font-weight: 600; padding: 1px 5px; border-radius: 3px;
-      margin: 1px; background: #e8f5e9; color: #2e7d32; }
+    .tag { display: inline-block; font-size: .65rem; font-weight: 600; padding: 1px 5px; border-radius: 3px; margin: 1px; background: #e8f5e9; color: #2e7d32; }
   </style>
 </head>
 <body>
@@ -222,8 +154,7 @@
       <path d="M12 2L3 7v10l9 5 9-5V7L12 2Z" stroke="#BFA630" stroke-width="1.8" stroke-linejoin="round"/>
       <path d="M12 7v10M7.5 9.5l4.5 2.5 4.5-2.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
     </svg>
-    Guard.IA
-    <span class="badge">Produtividade</span>
+    Guard.IA <span class="badge">Produtividade</span>
   </div>
   <span id="last-update">Carregando…</span>
 </header>
@@ -242,7 +173,7 @@
     <div class="card card-kpi">
       <div class="card-title">Total de Commits</div>
       <div class="stat-value" id="kpi-commits">—</div>
-      <div class="stat-sub">em todas as branches</div>
+      <div class="stat-sub">commits exclusivos por branch</div>
     </div>
     <div class="card card-kpi">
       <div class="card-title">Issues Fechadas</div>
@@ -257,7 +188,7 @@
     <div class="card card-kpi">
       <div class="card-title">Issues Abertas</div>
       <div class="stat-value" id="kpi-issues-open">—</div>
-      <div class="stat-sub">pendentes</div>
+      <div class="stat-sub" id="kpi-issues-pct">pendentes</div>
       <div class="sprint-bar-wrap">
         <div class="sprint-bar-fill" id="issues-bar" style="width:0%"></div>
       </div>
@@ -270,7 +201,7 @@
   <!-- Charts row 1 -->
   <div class="grid-2 section-gap">
     <div class="card">
-      <div class="card-title">Commits por Dia da Semana</div>
+      <div class="card-title">Commits por Dia da Semana — todas as branches</div>
       <div id="chart-line"></div>
     </div>
     <div class="card">
@@ -282,7 +213,7 @@
   <!-- Charts row 2 -->
   <div class="grid-3 section-gap">
     <div class="card">
-      <div class="card-title">Commits por Semana (Treemap)</div>
+      <div class="card-title">Commits por Semana — Treemap</div>
       <div id="chart-treemap"></div>
     </div>
     <div class="card">
@@ -312,33 +243,28 @@
 </div>
 
 <script>
-// ── DEMO DATA ────────────────────────────────────────────────────────────────
+// ── PALETA ────────────────────────────────────────────────────────────────────
+const PALETTE = ['#1b5e20','#2e7d32','#388e3c','#4cae4f','#66bb6a','#81c784','#558b2f','#33691e'];
+
+// ── DEMO DATA ─────────────────────────────────────────────────────────────────
 const DEMO = (function(){
   const now = new Date();
   function ago(n){ const d=new Date(now); d.setDate(d.getDate()-n); return d.toISOString().slice(0,10) }
   function isoAgo(n,h=10){ return ago(n)+'T'+String(h).padStart(2,'0')+':00:00Z' }
 
-  const authors = {'ana-silva':22,'pedro-dev':17,'carlos-m':12,'julia-fs':9,'thiago-r':8,'beatriz-k':5};
+  const mkTimeline = (days, base, amp) =>
+    Array.from({length:days},(_,i)=>({date:ago(days-1-i), count:Math.max(0,Math.round(base+Math.sin(i*.7)*amp+Math.random()*2))}));
 
-  // commit_timeline: últimos 60 dias
-  const commit_timeline = Array.from({length:60},(_,i)=>({
-    date: ago(59-i),
-    count: Math.max(0, Math.round(2 + Math.sin(i*.5)*2 + Math.random()*3))
-  }));
+  const b1cpa = {'ana-silva':18,'pedro-dev':12,'carlos-m':9};
+  const b2cpa = {'thiago-r':14,'beatriz-k':10,'ana-silva':5,'pedro-dev':3};
 
-  const branches_data = {
-    'dev-projeto': {
-      branch:'dev-projeto', total_commits:45,
-      commits_per_author:{'ana-silva':18,'pedro-dev':14,'carlos-m':13},
-      commit_timeline: commit_timeline.slice(30),
-      recent_commits: []
-    },
-    'estudos': {
-      branch:'estudos', total_commits:28,
-      commits_per_author:{'julia-fs':9,'thiago-r':8,'beatriz-k':5,'ana-silva':4,'pedro-dev':3},
-      commit_timeline: commit_timeline.slice(40),
-      recent_commits: []
-    }
+  const mkCommits = (cpa, msgs) => {
+    const list=[]; let d=0;
+    Object.entries(cpa).forEach(([a,n])=>{ for(let i=0;i<n;i++){
+      list.push({sha:(Math.random()*0xffffff|0).toString(16).padStart(6,'0'),
+        author:a,date:isoAgo(d%25,9+i%8),message:msgs[i%msgs.length],char_count:60+i*7}); d++;
+    }});
+    return list.sort((a,b)=>b.date.localeCompare(a.date)).slice(0,15);
   };
 
   return {
@@ -346,13 +272,20 @@ const DEMO = (function(){
     repo: 'unb-mds/2026-1-Guard.IA',
     branches: ['dev-projeto','estudos'],
     branches_deletadas: [],
-    summary: { total_commits:73, open_issues:4, closed_issues:6, contributors:6 },
-    branches_data,
-    commit_timeline,
-    all_authors: authors,
+    summary: {total_commits:71, open_issues:4, closed_issues:6, contributors:5, open_prs:1, branches_ativas:2, branches_deletadas:0},
+    branches_data: {
+      'dev-projeto': {branch:'dev-projeto', total_commits:39,
+        commits_per_author: b1cpa,
+        commit_timeline: mkTimeline(30,2,1.5),
+        recent_commits: mkCommits(b1cpa,['feat: módulo NLP','fix: pipeline','refactor: auth','docs: swagger'])},
+      'estudos': {branch:'estudos', total_commits:32,
+        commits_per_author: b2cpa,
+        commit_timeline: mkTimeline(25,1.5,1),
+        recent_commits: mkCommits(b2cpa,['study: BERT','study: transformers','study: RAG','study: fine-tuning'])},
+    },
     issues: {
       open:4, closed:6,
-      timeline: Array.from({length:14},(_,i)=>({date:ago(13-i),opened:Math.round(Math.random()*2),closed:Math.round(Math.random()*1)})),
+      timeline: Array.from({length:14},(_,i)=>({date:ago(13-i),opened:Math.round(Math.random()*2),closed:Math.round(Math.random()*1.5)})),
       list: [
         {number:8,title:'Classificador BERT',state:'open',  created_at:isoAgo(10),closed_at:null,     labels:['feature','AI']},
         {number:7,title:'Pipeline Twitter',  state:'closed',created_at:isoAgo(18),closed_at:isoAgo(6),labels:['feature']},
@@ -360,31 +293,32 @@ const DEMO = (function(){
         {number:5,title:'Documentar arq.',   state:'open',  created_at:isoAgo(7), closed_at:null,     labels:['docs']},
       ]
     },
+    all_authors: {'ana-silva':23,'pedro-dev':15,'thiago-r':14,'beatriz-k':10,'carlos-m':9},
+    author_por_branch: {
+      'ana-silva':  {'dev-projeto':18,'estudos':5},
+      'pedro-dev':  {'dev-projeto':12,'estudos':3},
+      'carlos-m':   {'dev-projeto':9},
+      'thiago-r':   {'estudos':14},
+      'beatriz-k':  {'estudos':10},
+    },
     _demo: true
   };
 })();
 
-// ── UTILS ────────────────────────────────────────────────────────────────────
+// ── UTILS ─────────────────────────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
 const fmtDate = s => s ? new Date(s).toLocaleDateString('pt-BR') : '–';
-const PALETTE = ['#1b5e20','#2e7d32','#388e3c','#4cae4f','#66bb6a','#81c784','#a5d6a7','#558b2f'];
-
 const tooltip = $('tooltip');
-function showTip(e, html){
-  tooltip.innerHTML = html;
-  tooltip.style.opacity = 1;
-  tooltip.style.left = (e.clientX+14)+'px';
-  tooltip.style.top  = (e.clientY-28)+'px';
-}
-function hideTip(){ tooltip.style.opacity = 0; }
+function showTip(e,html){ tooltip.innerHTML=html; tooltip.style.opacity=1; tooltip.style.left=(e.clientX+14)+'px'; tooltip.style.top=(e.clientY-28)+'px'; }
+function hideTip(){ tooltip.style.opacity=0; }
 
-// ── LOAD ────────────────────────────────────────────────────────────────────
+// ── LOAD ──────────────────────────────────────────────────────────────────────
 fetch('metrics.json')
   .then(r=>{ if(!r.ok) throw new Error(); return r.json(); })
-  .then(d=>init(d, false))
-  .catch(()=>init(DEMO, true));
+  .then(d=>init(d,false))
+  .catch(()=>init(DEMO,true));
 
-// ── INIT ─────────────────────────────────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────────────────────────────────
 function init(m, isDemo) {
   if(isDemo) $('demo-banner').style.display = 'block';
 
@@ -392,30 +326,33 @@ function init(m, isDemo) {
     ? 'Demonstração — sem dados reais'
     : 'Atualizado: ' + new Date(m.generated_at).toLocaleString('pt-BR');
 
-  const s = m.summary || {};
+  const s              = m.summary        || {};
+  const branchesData   = m.branches_data  || {};
+  const activeBranches = m.branches       || [];
+  const deletedBranches= m.branches_deletadas || [];
+  const allAuthors     = m.all_authors    || {};
+  const authorPerBranch= m.author_por_branch || {};
 
   // ── KPIs ──
-  $('kpi-commits').textContent      = s.total_commits   ?? 0;
-  $('kpi-issues-closed').textContent = m.issues?.closed  ?? s.closed_issues ?? 0;
-  $('kpi-issues-sub').textContent    = `de ${(m.issues?.closed ?? s.closed_issues ?? 0) + (m.issues?.open ?? s.open_issues ?? 0)} no total`;
-  $('kpi-members').textContent       = s.contributors    ?? Object.keys(m.all_authors||{}).length;
-  $('kpi-issues-open').textContent   = m.issues?.open    ?? s.open_issues ?? 0;
+  $('kpi-commits').textContent       = s.total_commits  ?? 0;
+  $('kpi-issues-closed').textContent = m.issues?.closed ?? s.closed_issues ?? 0;
+  $('kpi-members').textContent       = s.contributors   ?? Object.keys(allAuthors).length;
+  $('kpi-issues-open').textContent   = m.issues?.open   ?? s.open_issues ?? 0;
 
-  // progress bar: % de issues fechadas
   const totalIssues = (m.issues?.open ?? 0) + (m.issues?.closed ?? 0);
   const closedPct   = totalIssues > 0 ? Math.round((m.issues?.closed ?? 0) / totalIssues * 100) : 0;
-  setTimeout(()=>{ $('issues-bar').style.width = closedPct + '%'; }, 100);
+  $('kpi-issues-sub').textContent  = `de ${totalIssues} no total`;
+  $('kpi-issues-pct').textContent  = `${closedPct}% resolvidas`;
+  setTimeout(()=>{ $('issues-bar').style.width = closedPct+'%'; }, 150);
 
   // ── Branch pills ──
   const pillsEl = $('branch-pills');
-  const activeBranches   = m.branches          || [];
-  const deletedBranches  = m.branches_deletadas || [];
   activeBranches.forEach((b,i)=>{
     const c = PALETTE[i % PALETTE.length];
     const el = document.createElement('span');
     el.className = 'branch-pill';
     el.style.cssText = `background:${c}18;color:${c};border-color:${c}`;
-    el.textContent = b;
+    el.textContent = `${b} (${branchesData[b]?.total_commits ?? 0} commits)`;
     pillsEl.appendChild(el);
   });
   deletedBranches.forEach(b=>{
@@ -426,252 +363,202 @@ function init(m, isDemo) {
     pillsEl.appendChild(el);
   });
 
-  // ── Derivar dados para gráficos a partir do commit_timeline ──
-  // O collect_metrics não gera heatmap/weekday/week/branch — calculamos aqui no front
-  const allTimeline = buildGlobalTimeline(m);
+  // ── Agrega commit_timeline de todas as branches ──
+  const globalTimeline = buildGlobalTimeline(branchesData, activeBranches);
 
-  renderLine(buildWeekdayData(allTimeline));
-  renderHeatmap(buildHeatmapData(allTimeline));
-  renderTreemap(buildWeekData(allTimeline));
-  renderDonut(buildBranchData(m));
-  renderMembers(m.all_authors || {});
+  // ── Gráficos ──
+  renderLine(buildWeekdayData(globalTimeline));
+  renderHeatmap(buildHeatmapData(globalTimeline));
+  renderTreemap(buildWeekData(globalTimeline));
+  renderDonut(activeBranches, branchesData);
+  renderMembers(allAuthors, authorPerBranch, activeBranches);
   renderIssuesTable(m.issues?.list || []);
 }
 
-// ── DERIVAÇÕES ───────────────────────────────────────────────────────────────
+// ── DERIVAÇÕES ────────────────────────────────────────────────────────────────
 
-// Junta todos os commit_timeline de todas as branches em uma timeline global
-function buildGlobalTimeline(m) {
+// Agrega commit_timeline de cada branch em um mapa global por data
+function buildGlobalTimeline(branchesData, activeBranches) {
   const map = {};
-  const branches = m.branches || [];
-
-  // usa o commit_timeline global se existir, senão agrega por branch
-  if (m.commit_timeline && m.commit_timeline.length) {
-    m.commit_timeline.forEach(d=>{ map[d.date] = (map[d.date]||0) + d.count; });
-  } else {
-    branches.forEach(b=>{
-      const bd = m.branches_data?.[b];
-      if(!bd) return;
-      (bd.commit_timeline||[]).forEach(d=>{ map[d.date] = (map[d.date]||0) + d.count; });
+  activeBranches.forEach(b => {
+    (branchesData[b]?.commit_timeline || []).forEach(({date, count}) => {
+      map[date] = (map[date] || 0) + count;
     });
-  }
-
+  });
   return Object.entries(map).sort().map(([date,count])=>({date,count}));
 }
 
-// Agrupa por dia da semana (0=Dom … 6=Sáb)
+// Agrupa por dia da semana
 function buildWeekdayData(timeline) {
   const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
   const counts = Array(7).fill(0);
-  timeline.forEach(({date,count})=>{
-    const dow = new Date(date+'T12:00:00').getDay();
-    counts[dow] += count;
+  timeline.forEach(({date,count}) => {
+    counts[new Date(date+'T12:00:00').getDay()] += count;
   });
   return days.map((day,i)=>({day, count:counts[i]}));
 }
 
 // Últimos 90 dias para heatmap
 function buildHeatmapData(timeline) {
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - 90);
   const map = {};
-  timeline.forEach(({date,count})=>{
-    if(new Date(date+'T12:00:00') >= cutoff) map[date] = count;
-  });
-  // preenche dias sem commit
-  const result = [];
-  for(let i=89; i>=0; i--){
-    const d = new Date(); d.setDate(d.getDate()-i);
+  timeline.forEach(({date,count}) => { map[date] = count; });
+  return Array.from({length:90},(_,i) => {
+    const d = new Date(); d.setDate(d.getDate()-(89-i));
     const key = d.toISOString().slice(0,10);
-    result.push({date:key, count:map[key]||0});
-  }
-  return result;
+    return {date:key, count:map[key]||0};
+  });
 }
 
-// Agrupa por semana ISO para treemap
+// Agrupa por semana para treemap
 function buildWeekData(timeline) {
   const map = {};
-  timeline.forEach(({date,count})=>{
-    const d = new Date(date+'T12:00:00');
-    const week = d3.timeFormat('%Y-W%V')(d);
+  timeline.forEach(({date,count}) => {
+    const week = d3.timeFormat('%Y-W%V')(new Date(date+'T12:00:00'));
     map[week] = (map[week]||0) + count;
   });
   return Object.entries(map).sort().slice(-12).map(([week,count])=>({week,count}));
 }
 
-// Commits por branch para donut
-function buildBranchData(m) {
-  const branches = m.branches || [];
-  return branches.map(b=>({
-    branch: b,
-    count:  m.branches_data?.[b]?.total_commits || 0
-  })).filter(d=>d.count > 0);
-}
-
-// ── LINE CHART ───────────────────────────────────────────────────────────────
+// ── LINE CHART ────────────────────────────────────────────────────────────────
 function renderLine(data) {
   const W = $('chart-line').clientWidth || 440, H = 200;
-  const margin = {top:16,right:16,bottom:28,left:36};
-  const w = W-margin.left-margin.right, h = H-margin.top-margin.bottom;
-
+  const m = {top:16,right:16,bottom:28,left:36};
+  const w = W-m.left-m.right, h = H-m.top-m.bottom;
   const svg = d3.select('#chart-line').append('svg').attr('viewBox',`0 0 ${W} ${H}`).attr('width','100%');
-  const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
-
+  const g = svg.append('g').attr('transform',`translate(${m.left},${m.top})`);
   const x = d3.scaleBand().domain(data.map(d=>d.day)).range([0,w]).padding(.1);
-  const y = d3.scaleLinear().domain([0,d3.max(data,d=>d.count)*1.15||1]).range([h,0]);
-
+  const y = d3.scaleLinear().domain([0,(d3.max(data,d=>d.count)||1)*1.15]).range([h,0]);
   const area = d3.area().x(d=>x(d.day)+x.bandwidth()/2).y0(h).y1(d=>y(d.count)).curve(d3.curveMonotoneX);
   const line = d3.line().x(d=>x(d.day)+x.bandwidth()/2).y(d=>y(d.count)).curve(d3.curveMonotoneX);
-
   const defs = svg.append('defs');
   const grad = defs.append('linearGradient').attr('id','lineGrad').attr('x1','0').attr('x2','0').attr('y1','0').attr('y2','1');
   grad.append('stop').attr('offset','0%').attr('stop-color','#4cae4f').attr('stop-opacity',.28);
   grad.append('stop').attr('offset','100%').attr('stop-color','#4cae4f').attr('stop-opacity',.01);
-
   g.append('path').datum(data).attr('fill','url(#lineGrad)').attr('d',area);
   g.append('path').datum(data).attr('fill','none').attr('stroke','#4cae4f').attr('stroke-width',2.2).attr('d',line);
-
   g.selectAll('circle').data(data).join('circle')
     .attr('cx',d=>x(d.day)+x.bandwidth()/2).attr('cy',d=>y(d.count))
     .attr('r',4).attr('fill','#4cae4f').attr('stroke','#fff').attr('stroke-width',2)
-    .on('mousemove',(e,d)=>showTip(e,`<b>${d.day}</b>: ${d.count} commits`))
-    .on('mouseleave',hideTip);
-
+    .on('mousemove',(e,d)=>showTip(e,`<b>${d.day}</b>: ${d.count} commits`)).on('mouseleave',hideTip);
   g.append('g').attr('transform',`translate(0,${h})`).call(d3.axisBottom(x).tickSize(0)).select('.domain').remove();
   g.append('g').call(d3.axisLeft(y).ticks(4).tickSize(-w)).select('.domain').remove();
   g.selectAll('.tick line').attr('stroke','hsla(225,15%,21%,0.1)');
   g.selectAll('.tick text').attr('fill','hsla(225,15%,21%,0.54)').attr('font-size',11);
 }
 
-// ── HEATMAP ──────────────────────────────────────────────────────────────────
+// ── HEATMAP ───────────────────────────────────────────────────────────────────
 function renderHeatmap(data) {
-  const cellSize = 13, cellPad = 2;
-  const weekdays = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const cellSize=13, cellPad=2;
+  const weekdays=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
   const W = $('chart-heatmap').clientWidth || 440;
-  const H = (cellSize+cellPad)*7 + 32;
+  const H = (cellSize+cellPad)*7+32;
   const marginLeft = 34;
-
   const svg = d3.select('#chart-heatmap').append('svg').attr('viewBox',`0 0 ${W} ${H}`).attr('width','100%');
-  const color = d3.scaleSequential([0, d3.max(data,d=>d.count)||5], d3.interpolate('#e8f5e9','#2e7d32'));
-
+  const color = d3.scaleSequential([0,d3.max(data,d=>d.count)||5], d3.interpolate('#e8f5e9','#2e7d32'));
   const weeks = d3.timeWeeks(
     d3.min(data,d=>new Date(d.date+'T12:00:00')),
     d3.max(data,d=>{ const dd=new Date(d.date+'T12:00:00'); dd.setDate(dd.getDate()+7); return dd; })
   );
   const xScale = d3.scaleBand().domain(weeks.map(d=>d3.timeFormat('%Y-%W')(d))).range([marginLeft,W-8]).padding(.08);
-
   const g = svg.append('g').attr('transform','translate(0,20)');
-
   weekdays.forEach((d,i)=>{
     g.append('text').text(d).attr('x',2).attr('y',(cellSize+cellPad)*i+cellSize*.8)
-      .attr('font-size',9).attr('fill','hsla(225,15%,21%,0.54)').attr('font-family','inherit');
+      .attr('font-size',9).attr('fill','hsla(225,15%,21%,0.54)');
   });
-
   data.forEach(datum=>{
     const date = new Date(datum.date+'T12:00:00');
     const weekStr = d3.timeFormat('%Y-%W')(date);
-    const dow = date.getDay();
     const xPos = xScale(weekStr);
     if(xPos===undefined) return;
-    g.append('rect')
-      .attr('x',xPos).attr('y',(cellSize+cellPad)*dow)
-      .attr('width',xScale.bandwidth()).attr('height',cellSize)
-      .attr('rx',2).attr('fill',datum.count===0?'#e8f5e9':color(datum.count))
-      .on('mousemove',e=>showTip(e,`<b>${datum.date}</b>: ${datum.count} commits`))
-      .on('mouseleave',hideTip);
+    g.append('rect').attr('x',xPos).attr('y',(cellSize+cellPad)*date.getDay())
+      .attr('width',xScale.bandwidth()).attr('height',cellSize).attr('rx',2)
+      .attr('fill',datum.count===0?'#e8f5e9':color(datum.count))
+      .on('mousemove',e=>showTip(e,`<b>${datum.date}</b>: ${datum.count} commits`)).on('mouseleave',hideTip);
   });
 }
 
-// ── DONUT ────────────────────────────────────────────────────────────────────
-function renderDonut(data) {
+// ── DONUT ─────────────────────────────────────────────────────────────────────
+function renderDonut(activeBranches, branchesData) {
+  const data = activeBranches.map((b,i)=>({branch:b, count:branchesData[b]?.total_commits||0, color:PALETTE[i%PALETTE.length]}))
+                              .filter(d=>d.count>0);
   if(!data.length) return;
-  const size = 180;
-  const R = size/2-8, r = R*0.55;
-  const colors = PALETTE;
-
-  const svg = d3.select('#chart-donut').append('svg')
-    .attr('viewBox',`0 0 ${size} ${size}`).attr('width',size).attr('height',size);
+  const size=180, R=size/2-8, r=R*0.55;
+  const svg = d3.select('#chart-donut').append('svg').attr('viewBox',`0 0 ${size} ${size}`).attr('width',size).attr('height',size);
   const g = svg.append('g').attr('transform',`translate(${size/2},${size/2})`);
-
   const pie = d3.pie().value(d=>d.count).sort(null);
   const arc = d3.arc().innerRadius(r).outerRadius(R);
   const total = d3.sum(data,d=>d.count);
-
   g.selectAll('path').data(pie(data)).join('path')
-    .attr('d',arc).attr('fill',(_,i)=>colors[i]).attr('stroke','#fff').attr('stroke-width',2)
+    .attr('d',arc).attr('fill',d=>d.data.color).attr('stroke','#fff').attr('stroke-width',2)
     .on('mousemove',(e,d)=>showTip(e,`<b>${d.data.branch}</b>: ${d.data.count} commits (${Math.round(d.data.count/total*100)}%)`))
     .on('mouseleave',hideTip);
-
-  g.append('text').text(total).attr('text-anchor','middle').attr('dy','-.1em')
-    .attr('font-size',22).attr('font-weight',700).attr('fill','#1b5e20');
-  g.append('text').text('commits').attr('text-anchor','middle').attr('dy','1.1em')
-    .attr('font-size',10).attr('fill','hsla(225,15%,21%,0.54)');
-
-  const legend = d3.select('#chart-donut').append('div')
-    .style('font-size','11px').style('margin-top','12px').style('width','100%');
-  data.forEach((d,i)=>{
+  g.append('text').text(total).attr('text-anchor','middle').attr('dy','-.1em').attr('font-size',22).attr('font-weight',700).attr('fill','#1b5e20');
+  g.append('text').text('commits').attr('text-anchor','middle').attr('dy','1.1em').attr('font-size',10).attr('fill','hsla(225,15%,21%,0.54)');
+  const legend = d3.select('#chart-donut').append('div').style('font-size','11px').style('margin-top','12px').style('width','100%');
+  data.forEach(d=>{
     const row = legend.append('div').style('display','flex').style('align-items','center').style('gap','6px').style('margin-bottom','4px');
-    row.append('div').style('width','10px').style('height','10px').style('border-radius','2px').style('background',colors[i]).style('flex-shrink','0');
+    row.append('div').style('width','10px').style('height','10px').style('border-radius','2px').style('background',d.color).style('flex-shrink','0');
     row.append('span').style('color','hsla(225,15%,21%,0.87)').text(`${d.branch} — ${d.count}`);
   });
 }
 
-// ── TREEMAP ──────────────────────────────────────────────────────────────────
+// ── TREEMAP ───────────────────────────────────────────────────────────────────
 function renderTreemap(data) {
   if(!data.length) return;
-  const W = $('chart-treemap').clientWidth || 560, H = 220;
-
+  const W = $('chart-treemap').clientWidth||560, H=220;
   const root = d3.hierarchy({children:data}).sum(d=>d.count);
   d3.treemap().size([W,H]).padding(3).round(true)(root);
-
   const svg = d3.select('#chart-treemap').append('svg').attr('viewBox',`0 0 ${W} ${H}`).attr('width','100%');
-
-  const cell = svg.selectAll('g').data(root.leaves()).join('g')
-    .attr('transform',d=>`translate(${d.x0},${d.y0})`);
-
-  cell.append('rect')
-    .attr('width',d=>d.x1-d.x0).attr('height',d=>d.y1-d.y0)
+  const cell = svg.selectAll('g').data(root.leaves()).join('g').attr('transform',d=>`translate(${d.x0},${d.y0})`);
+  cell.append('rect').attr('width',d=>d.x1-d.x0).attr('height',d=>d.y1-d.y0)
     .attr('rx',4).attr('fill',(_,i)=>PALETTE[i%PALETTE.length]).attr('opacity',.9)
-    .on('mousemove',(e,d)=>showTip(e,`<b>${d.data.week}</b>: ${d.data.count} commits`))
-    .on('mouseleave',hideTip);
-
-  cell.append('text').attr('x',8).attr('y',18)
-    .attr('fill','#fff').attr('font-size',11).attr('font-weight',700)
+    .on('mousemove',(e,d)=>showTip(e,`<b>${d.data.week}</b>: ${d.data.count} commits`)).on('mouseleave',hideTip);
+  cell.append('text').attr('x',8).attr('y',18).attr('fill','#fff').attr('font-size',11).attr('font-weight',700)
     .text(d=>d.x1-d.x0>50?d.data.week:'');
-
-  cell.append('text').attr('x',8).attr('y',33)
-    .attr('fill','rgba(255,255,255,.8)').attr('font-size',13).attr('font-weight',800)
+  cell.append('text').attr('x',8).attr('y',33).attr('fill','rgba(255,255,255,.8)').attr('font-size',13).attr('font-weight',800)
     .text(d=>d.x1-d.x0>50?d.data.count:'');
 }
 
-// ── MEMBER TABLE ─────────────────────────────────────────────────────────────
-function renderMembers(allAuthors) {
-  const entries = Object.entries(allAuthors).sort((a,b)=>b[1]-a[1]);
+// ── MEMBER TABLE ──────────────────────────────────────────────────────────────
+function renderMembers(allAuthors, authorPerBranch, activeBranches) {
+  const entries = Object.entries(allAuthors);
   if(!entries.length) return;
-  const maxC = entries[0][1] || 1;
+  const maxC = entries[0][1] || 1; // já vem ordenado
   const table = $('member-table');
-  entries.forEach(([login, commits])=>{
+
+  entries.forEach(([login, commits]) => {
     const initials = login.slice(0,2).toUpperCase();
     const pct = Math.round(commits/maxC*100);
+
+    // tags por branch usando author_por_branch
+    const branchTags = activeBranches.map((b,i) => {
+      const c = authorPerBranch[login]?.[b];
+      if(!c) return '';
+      return `<span class="author-branch-tag" style="background:${PALETTE[i%PALETTE.length]}18;color:${PALETTE[i%PALETTE.length]}">${b}: ${c}</span>`;
+    }).join('');
+
     const row = document.createElement('div');
     row.className = 'member-row';
     row.innerHTML = `
       <div class="member-avatar">${initials}</div>
-      <div style="font-weight:600">${login}</div>
+      <div>
+        <div style="font-weight:600">${login}</div>
+        <div class="author-branches">${branchTags}</div>
+      </div>
       <div style="font-variant-numeric:tabular-nums">${commits}</div>
       <div style="width:100%">
         <div class="bar-wrap"><div class="bar-fill" style="width:${pct}%"></div></div>
-        <div style="font-size:.68rem;color:hsla(225,15%,21%,0.54);margin-top:2px">${pct}%</div>
+        <div style="font-size:.68rem;color:var(--muted);margin-top:2px">${pct}%</div>
       </div>`;
     table.appendChild(row);
   });
 }
 
-// ── ISSUES TABLE ─────────────────────────────────────────────────────────────
+// ── ISSUES TABLE ──────────────────────────────────────────────────────────────
 function renderIssuesTable(issues) {
   const tbody = $('issues-table');
   if(!issues.length){
-    tbody.innerHTML = '<tr><td colspan="6" style="color:var(--muted);padding:.8rem">Nenhuma issue encontrada</td></tr>';
+    tbody.innerHTML='<tr><td colspan="6" style="color:var(--muted);padding:.8rem">Nenhuma issue encontrada</td></tr>';
     return;
   }
   issues.slice(0,50).forEach(is=>{
