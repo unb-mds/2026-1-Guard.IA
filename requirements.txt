@@ -12,6 +12,9 @@ streamlit==1.31.1
 pandas==2.2.0
 plotly==5.19.0
 
+# --- CLASSIFICAÇÃO (Release 2) ---
+sentence-transformers==3.0.1
+
 # --- UTILS ---
 anyio==4.3.0
 click==8.1.7

@@ -12,6 +12,7 @@ try:
     from coleta.coletor_senado import coletar as coletar_senado
     from filtro.filtragem import iniciar_filtragem
     from armazenamento.armazenamento import iniciar_armazenamento
+    from classificacao.classificador import iniciar_classificacao
 except ImportError as e:
     print(f" Erro de importacao: {e}")
     print("Certifique-se de que está rodando o script a partir da raiz do backend.")
@@ -31,17 +32,17 @@ def run_stage(name, func):
 
 def main():
     print("="*60)
-    print("  GUARD.IA - ORQUESTRADOR DO PIPELINE (RELEASE 1)")
+    print("  GUARD.IA - ORQUESTRADOR DO PIPELINE (RELEASE 2)")
     print("="*60)
-    
+
     start_total = time.time()
 
     # 1. COLETA
-    print("\n[1/3] Iniciando Coleta de Dados Brutos...")
+    print("\n[1/4] Iniciando Coleta de Dados Brutos...")
     # Coletamos ambos; falha em um nao necessariamente impede o outro
     run_stage("Coleta Camara", coletar_camara)
     run_stage("Coleta Senado", coletar_senado)
-    
+
     # 2. FILTRO
     # O Filtro depende de existir o arquivo dados_brutos.json
     success_filtro = run_stage("Filtragem de Relevancia", iniciar_filtragem)
@@ -54,6 +55,14 @@ def main():
     success_db = run_stage("Carga no PostgreSQL", iniciar_armazenamento)
     if not success_db:
         print(" Pipeline interrompido: Falha no armazenamento.")
+        return
+
+    # 4. CLASSIFICAÇÃO
+    # Lê do banco, gera embeddings e faz UPDATE com categoria + confianca.
+    # GEMINI.md Regras 19 e 20: estimativas transparentes, confianca obrigatória.
+    success_class = run_stage("Classificacao por IA", iniciar_classificacao)
+    if not success_class:
+        print(" Pipeline interrompido: Falha na classificação.")
         return
 
     duration_total = round(time.time() - start_total, 2)

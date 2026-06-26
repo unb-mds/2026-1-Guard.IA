@@ -1,4 +1,4 @@
-* {
+/* {
   box-sizing: border-box;
 }
 
@@ -72,7 +72,7 @@ body,
   outline: none;
 }
 
-/*correção da duplicata de esconder a senha*/
+/*correção da duplicata de esconder a senha
 .register-card input[type="password"]::-ms-reveal,
 .register-card input[type="password"]::-ms-clear {
   display: none; 
@@ -200,4 +200,4 @@ body,
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
-}
+}*/

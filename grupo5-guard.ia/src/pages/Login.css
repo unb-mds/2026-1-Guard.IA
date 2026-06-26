@@ -1,5 +1,5 @@
 
-* {
+/* {
   box-sizing: border-box;
 }
 
@@ -23,7 +23,7 @@ body,
 
 /* ==========================================
    ESTRUTURA DO GRID (2 COLUNAS DE BASE)
-   ========================================== */
+   ========================================== 
 .login-shell {
   width: 100vw;
   height: 100vh;
@@ -34,14 +34,14 @@ body,
 
 /* ==========================================
    COLUNA 1: CARD DE LOGIN (ESQUERDA)
-   ========================================== */
+   ========================================== 
 .login-card {
   background: #141816;
   color: white;
    width: 580px;
   margin: 60px 0 0 120px;
   border-radius: 32px 32px 0 0;
-  padding: 50px 50px; /* Reduzido levemente para dar mais respiro vertical */
+  padding: 50px 50px; /* Reduzido levemente para dar mais respiro vertical 
   height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@ body,
 .login-card h2 {
   color: white;
   font-size: 34px;
-  margin: 0 0 8px; /* Ajustado para o subtítulo ficar colado */
+  margin: 0 0 8px; /* Ajustado para o subtítulo ficar colado 
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -61,7 +61,7 @@ body,
 .login-subtitle {
   color: #51d6ae;
   font-size: 14px;
-  margin-bottom: 30px; /* Espaço controlado antes dos inputs */
+  margin-bottom: 30px; /* Espaço controlado antes dos inputs 
   font-weight: 700;
 }
 
@@ -69,11 +69,11 @@ body,
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Espaçamento ideal entre e-mail, senha e botão entrar */
+  gap: 16px; /* Espaçamento ideal entre e-mail, senha e botão entrar 
 }
 
 .login-card input {
-  height: 46px; /* Aumentado levemente para melhor usabilidade */
+  height: 46px; /* Aumentado levemente para melhor usabilidade 
   border: none;
   border-radius: 999px;
   padding: 0 20px;
@@ -118,13 +118,13 @@ body,
   background: #005f43;
 }
 
-/* Divisória "OU" */
+/* Divisória "OU" 
 .login-divider {
   display: flex;
   align-items: center;
   gap: 14px;
   width: 100%;
-  margin: 24px 0; /* Espaçamento simétrico */
+  margin: 24px 0; /* Espaçamento simétrico 
   color: #51d6ae;
   font-weight: 700;
   font-size: 14px;
@@ -141,7 +141,7 @@ body,
   text-transform: uppercase;
 }
 
-/* Botão de Visitante */
+/* Botão de Visitante 
 .visitor-button {
   width: 100%;
   height: 46px;
@@ -160,9 +160,9 @@ body,
   background: #e2e0c8;
 }
 
-/* Texto de Cadastro no Rodapé */
+/* Texto de Cadastro no Rodapé 
 .register-text {
-  margin-top: auto !important; /* Força o "Não possui conta?" a ir lá para o final do card */
+  margin-top: auto !important; /* Força o "Não possui conta?" a ir lá para o final do card 
   padding-top: 20px;
   color: #51d6ae !important;
   font-size: 14px !important;
@@ -181,7 +181,7 @@ body,
 
 /* ==========================================
    COLUNA 2: MASCOTE (AJUSTE FINAL NO TOPO)
-   ========================================== */
+   ========================================== 
 .login-mascote2 {
 
   display: flex;
@@ -212,7 +212,7 @@ body,
 }
 /* ==========================================
    LOGOTIPO ABSOLUTO (DIREITA)
-   ========================================== */
+   ========================================== 
 .login-brand {
   position: absolute;
   top: 0;
@@ -238,4 +238,4 @@ body,
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
-}
+}*/

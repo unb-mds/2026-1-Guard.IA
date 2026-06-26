@@ -9,7 +9,7 @@ import otavioImg from "../assets/otavio.jpeg";
 import gabriellaImg from "../assets/gabriella.jpeg";
 import edvaldoImg from "../assets/edvaldo.jpeg";
 
-export default function Home({ user, onLogout }) {
+export default function Home() {
   const teamMembers = [
     { name: "Clara", img: claraImg, github: "claranunes22" },
     { name: "Edvaldo", img: edvaldoImg, github: "PajeMurici-dev" },
@@ -29,11 +29,6 @@ export default function Home({ user, onLogout }) {
           <a href="http://localhost:8501">Dashboard</a>
           <Link to="/proposicoes">Proposições</Link>
           <Link to="/ranking">Ranking</Link>
-          {user ? (
-            <button onClick={onLogout} className="logout-button">Sair ({user.nome})</button>
-          ) : (
-            <Link to="/login">Login</Link>
-          )}
         </nav>
       </header>
 
@@ -43,8 +38,6 @@ export default function Home({ user, onLogout }) {
         <div className="about-content">
           <section className="about-text">
             <h3>Explicação:</h3>
-
-            {user && <p className="welcome-msg">Bem-vindo de volta, <strong>{user.nome}</strong>!</p>}
 
             <p>
               O Guard.IA é uma plataforma de monitoramento legislativo voltada
@@ -94,32 +87,7 @@ export default function Home({ user, onLogout }) {
           Acompanhe dados legislativos de forma simples, visual e acessível.
         </p>
 
-        <div className="signup-area">
-          <img
-            src={mascot}
-            alt="Mascote GuardIA"
-            className="mascot-image"
-          />
-
-          {user ? (
-            <Link
-              to="/filtros"
-              className="signup-button"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}
-            >
-              Ir para o Dashboard Completo
-            </Link>
-          ) : (
-            <Link
-              to="/cadastro"
-              className="signup-button"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}
-            >
-              Cadastre-se para acessar
-            </Link>
-          )}
-        </div>
-      </main>
+       </main>
 
       <section className="team-section">
         <h2>NOSSA EQUIPE</h2>
