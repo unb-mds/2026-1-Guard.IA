@@ -1,3 +1,24 @@
+/* index.css - Reset base */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
 * {
   margin: 0;
   padding: 0;

@@ -1,27 +1,30 @@
 /*import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
-import mascote2 from "../assets/mascote2.png";
+import mascot from "../assets/mascot.png";
 
 export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [erro, setErro] = useState("");
-  const [carregando, setCarregando] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErro("");
-    setCarregando(true);
+    setError("");
+    setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/auth/login", {
+      const response = await fetch("http://localhost:8000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, senha }),
+        body: JSON.stringify({
+          email: email,
+          senha: password,
+        }),
       });
 
       const data = await response.json();
@@ -30,20 +33,17 @@ export default function Login({ setUser }) {
         throw new Error(data.detail || "Erro ao realizar login");
       }
 
-      // Sucesso! Armazena dados básicos, atualiza estado e redireciona
       localStorage.setItem("user", JSON.stringify(data));
       if (setUser) setUser(data);
+      
+      alert(`Bem-vindo, ${data.nome}!`);
       navigate("/");
     } catch (err) {
-      setErro(err.message);
+      setError(err.message);
     } finally {
-      setCarregando(false);
+      setLoading(false);
     }
   };
-
-  function handleVisitorAccess() {
-    navigate("/"); 
-  }
 
   return (
     <div className="login-page">
@@ -52,6 +52,7 @@ export default function Login({ setUser }) {
           <h2>Fazer login</h2>
           <p className="login-subtitle">Entre para continuar</p>
 
+          {error && <p className="error-message" style={{ color: "#ff4d4d", marginBottom: "1rem", fontSize: "14px" }}>{error}</p>}
           {erro && <p className="error-message" style={{ color: "red", marginBottom: "10px" }}>{erro}</p>}
 
           <form onSubmit={handleSubmit}>
