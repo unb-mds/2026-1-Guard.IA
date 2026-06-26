@@ -2,12 +2,13 @@ import json
 import os
 from datetime import datetime, timezone
 from github import Github
- 
-REPO_NAME   = "unb-mds/2026-1-Guard.IA"
-OUTPUT_PATH = "docs/productivity/metrics.json"
+
+REPO_NAME          = "unb-mds/2026-1-Guard.IA"
+OUTPUT_PATH        = "docs/productivity/metrics.json"
 BRANCHES_IGNORADAS = {"gh-pages"}
 AUTORES_IGNORADOS  = {"github-actions[bot]"}
- 
+
+
 def _iso(dt):
     if dt is None:
         return None
@@ -32,47 +33,18 @@ def descobrir_branches(repo):
     return branches_ativas, branches_deletadas
 
 
-def _commits_exclusivos(repo, branch_name):
-    try:
-        branch_obj = repo.get_branch(branch_name)
-        head_sha   = branch_obj.commit.sha
-
-        all_branches = [b.name for b in repo.get_branches()
-                        if b.name != branch_name and b.name not in BRANCHES_IGNORADAS]
-        best_base_sha = None
-        best_ahead    = None
-
-        for other in all_branches:
-            try:
-                comp = repo.compare(other, branch_name)
-                ahead = comp.ahead_by
-                if best_ahead is None or ahead < best_ahead:
-                    best_ahead    = ahead
-                    best_base_sha = comp.merge_base_commit.sha
-            except Exception:
-                continue
-
-        if best_base_sha:
-            comp = repo.compare(best_base_sha, head_sha)
-            commits_raw = list(comp.commits)
-        else:
-            commits_raw = list(repo.get_commits(sha=branch_name))
-
-    except Exception as e:
-        print(f"  Erro ao coletar commits exclusivos de '{branch_name}': {e}")
-        commits_raw = []
-
-    return commits_raw
-
-
-def _processar_commits(commits_raw):
+def _processar_commits(commits_raw, shas_vistos=None):
     commits            = []
     commits_per_author = {}
     commits_per_day    = {}
 
     for c in commits_raw:
-        login = (c.author.login if c.author else None) or c.commit.author.name or "unknown"
+        if shas_vistos is not None:
+            if c.sha in shas_vistos:
+                continue
+            shas_vistos.add(c.sha)
 
+        login = (c.author.login if c.author else None) or c.commit.author.name or "unknown"
         if login in AUTORES_IGNORADOS:
             continue
 
@@ -97,9 +69,20 @@ def _processar_commits(commits_raw):
     return commits, commits_per_author, commit_timeline
 
 
-def collect_branch(repo, branch_name):
-    commits_raw = _commits_exclusivos(repo, branch_name)
-    commits, commits_per_author, commit_timeline = _processar_commits(commits_raw)
+def collect_branch(repo, branch_name, shas_vistos):
+    try:
+        commits_raw = list(repo.get_commits(sha=branch_name))
+    except Exception as e:
+        print(f"  ⚠️  Erro ao coletar '{branch_name}': {e}")
+        return {
+            "branch":             branch_name,
+            "total_commits":      0,
+            "commits_per_author": {},
+            "commit_timeline":    [],
+            "recent_commits":     [],
+        }
+
+    commits, commits_per_author, commit_timeline = _processar_commits(commits_raw, shas_vistos)
 
     return {
         "branch":             branch_name,
@@ -110,7 +93,7 @@ def collect_branch(repo, branch_name):
     }
 
 
-def collect_branch_deletada(repo, pr):
+def collect_branch_deletada(repo, pr, shas_vistos):
     branch_name = pr.head.ref
     try:
         comp        = repo.compare(pr.base.sha, pr.head.sha)
@@ -119,7 +102,7 @@ def collect_branch_deletada(repo, pr):
         try:
             commits_raw = list(repo.get_commits(sha=pr.head.sha))
         except Exception as e:
-            print(f"   Branch deletada '{branch_name}' sem acesso: {e}")
+            print(f"  ⚠️  Branch deletada '{branch_name}' sem acesso: {e}")
             return {
                 "branch":             branch_name,
                 "status":             "deleted",
@@ -133,7 +116,7 @@ def collect_branch_deletada(repo, pr):
                 "recent_commits":     [],
             }
 
-    commits, commits_per_author, commit_timeline = _processar_commits(commits_raw)
+    commits, commits_per_author, commit_timeline = _processar_commits(commits_raw, shas_vistos)
 
     return {
         "branch":             branch_name,
@@ -218,12 +201,16 @@ def main():
     print(f" Repositório: {REPO_NAME}")
     print(" Descobrindo branches...")
 
-    branches_ativas, branches_deletadas_set = descobrir_branches(repo)
+    branches_ativas, _ = descobrir_branches(repo)
     branches_data = {}
+    shas_vistos = set()
 
-    for branch_name in sorted(branches_ativas):
-        print(f" Coletando branch ativa '{branch_name}'…")
-        branches_data[branch_name] = collect_branch(repo, branch_name)
+
+    ordem = sorted(branches_ativas, key=lambda b: (b != "main", b != "dev-projeto", b))
+
+    for branch_name in ordem:
+        print(f" Coletando branch '{branch_name}'…")
+        branches_data[branch_name] = collect_branch(repo, branch_name, shas_vistos)
 
     prs_merged = {}
     for pr in repo.get_pulls(state="closed"):
@@ -233,16 +220,17 @@ def main():
                 prs_merged[nome] = pr
 
     for branch_name, pr in sorted(prs_merged.items()):
-        print(f"  Coletando branch deletada '{branch_name}' (PR #{pr.number})…")
-        branches_data[branch_name] = collect_branch_deletada(repo, pr)
+        print(f" Coletando branch deletada '{branch_name}' (PR #{pr.number})…")
+        branches_data[branch_name] = collect_branch_deletada(repo, pr, shas_vistos)
 
     print(" Coletando issues…")
     issues_data = collect_issues(repo)
 
     print(" Coletando pull requests…")
     prs_data = collect_prs(repo)
-    all_authors = {}
-    author_por_branch = {} 
+
+    all_authors       = {}
+    author_por_branch = {}
 
     for b_name, bd in branches_data.items():
         for author, count in bd["commits_per_author"].items():
@@ -255,7 +243,7 @@ def main():
         sorted(all_authors.items(), key=lambda x: x[1], reverse=True)
     )
 
-    branches_ativas_list   = sorted(branches_ativas)
+    branches_ativas_list    = sorted(branches_ativas)
     branches_deletadas_list = sorted(prs_merged.keys())
 
     data = {
@@ -264,10 +252,10 @@ def main():
         "branches":           branches_ativas_list,
         "branches_deletadas": branches_deletadas_list,
         "summary": {
-            "total_commits":      sum(bd["total_commits"] for bd in branches_data.values()),
+            "total_commits":      len(shas_vistos),  
             "open_issues":        issues_data["open"],
             "closed_issues":      issues_data["closed"],
-            "contributors":       len(all_authors),
+            "contributors":       len(all_authors_sorted),
             "open_prs":           sum(1 for p in prs_data if p["state"] == "open"),
             "branches_ativas":    len(branches_ativas_list),
             "branches_deletadas": len(branches_deletadas_list),
@@ -284,20 +272,23 @@ def main():
         json.dump(data, fh, ensure_ascii=False, indent=2)
 
     s = data["summary"]
-    print(f"\n  metrics.json gerado → {OUTPUT_PATH}")
-    print(f"   Commits totais      : {s['total_commits']}")
-    print(f"   Branches ativas     : {s['branches_ativas']}")
-    print(f"   Branches deletadas  : {s['branches_deletadas']}")
-    for b_name, bd in sorted(branches_data.items()):
-        status = " [deletada]" if bd.get("status") == "deleted" else ""
-        print(f"   ├─ {b_name}{status}: {bd['total_commits']} commits exclusivos")
-    print(f"\n   Commits por integrante (todas as branches):")
+    print(f"\n✅  metrics.json gerado → {OUTPUT_PATH}")
+    print(f"   Commits totais (sem dupla contagem) : {s['total_commits']}")
+    print(f"   Branches ativas                     : {s['branches_ativas']}")
+    print(f"   Branches deletadas                  : {s['branches_deletadas']}")
+    for b_name in ordem:
+        bd = branches_data.get(b_name, {})
+        print(f"   ├─ {b_name}: {bd.get('total_commits', 0)} commits")
+    for b_name in sorted(prs_merged.keys()):
+        bd = branches_data.get(b_name, {})
+        print(f"   ├─ {b_name} [deletada]: {bd.get('total_commits', 0)} commits")
+    print(f"\n   Commits por integrante:")
     for author, total in all_authors_sorted.items():
         detalhe = ", ".join(f"{b}:{c}" for b, c in author_por_branch[author].items())
-        print(f"   ├─ {author}: {total} total  ({detalhe})")
-    print(f"\n   Issues              : open={s['open_issues']}  closed={s['closed_issues']}")
-    print(f"   PRs abertos         : {s['open_prs']}")
-    print(f"   Membros únicos      : {s['contributors']}")
+        print(f"   ├─ {author}: {total}  ({detalhe})")
+    print(f"\n   Issues  : open={s['open_issues']}  closed={s['closed_issues']}")
+    print(f"   PRs     : abertos={s['open_prs']}")
+    print(f"   Membros : {s['contributors']}")
 
 
 if __name__ == "__main__":
