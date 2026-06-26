@@ -24,7 +24,7 @@ O sistema é focado em cidadãos, pesquisadores, jornalistas e profissionais int
 
 5. Respeite rigorosamente a arquitetura **Pipes and Filters**: cada etapa do pipeline é independente e se comunica apenas com a etapa seguinte.
 6. Nenhuma etapa do pipeline deve conhecer a implementação interna de outra etapa.
-7. O contrato de dados entre etapas é fixo — qualquer alteração no schema JSON deve ser comunicada e aprovada por todas as etapas.
+7. O contrato de dados entre etapas é fixo - qualquer alteração no schema JSON deve ser comunicada e aprovada por todas as etapas.
 8. Prefira componentes reutilizáveis e desacoplados em vez de soluções rápidas e específicas.
 
 ### Dados e Pipeline
@@ -34,14 +34,6 @@ O sistema é focado em cidadãos, pesquisadores, jornalistas e profissionais int
 11. O banco de dados PostgreSQL é de responsabilidade exclusiva da etapa de Armazenamento.
 12. Nenhuma etapa deve ler ou escrever no arquivo de outra etapa diretamente.
 13. **SQLite é proibido no projeto.** O banco oficial é PostgreSQL. Todo código que usar SQLite deve ser adaptado.
-
-### Acesso e Autenticação
-
-14. Usuários não cadastrados podem visualizar apenas um preview da página inicial (um gráfico ou trecho do mapa).
-15. Acesso completo ao dashboard, tabelas, filtros e demais páginas exige cadastro e login.
-16. Senhas nunca devem ser armazenadas em texto puro — sempre usar hash via `bcrypt`.
-17. O CRUD de usuários é responsabilidade exclusiva do módulo `grupo5-guard.ia-backend/app/armazenamento/usuarios.py`.
-18. A API FastAPI em `app/api.py` é a ponte oficial entre o Frontend React e o Banco de Dados.
 
 ### Ética e Transparência
 
@@ -59,9 +51,7 @@ O sistema é focado em cidadãos, pesquisadores, jornalistas e profissionais int
 | Banco de dados | PostgreSQL (via Docker) |
 | ORM / Conector | psycopg2 (SQL puro — sem ORM) |
 | Frontend Principal | React (Vite) + JavaScript + CSS |
-| Dashboard Analítico | Streamlit + Plotly |
 | Documentação | MkDocs (Material theme) |
-| Autenticação | bcrypt (hash de senha) |
 | Infraestrutura | Docker + GitHub Actions + GitHub Pages |
 
 > **Decisão arquitetural:** O projeto usa `psycopg2` com SQL puro, não SQLAlchemy. Isso é compatível com o pipeline de scripts Python e com o `schema.sql` já existente. Não introduzir ORM sem alinhamento explícito.
@@ -111,26 +101,22 @@ Este é o schema padrão que todas as etapas devem respeitar. Nunca altere os no
 
 ```
 2026-1-Guard.IA/
-├── .github/workflows/              # Automação e métricas
-├── docs/                           # Documentação MkDocs (Markdown)
-├── mkdocs.yml                      # Configuração da documentação
-├── grupo5-guard.ia/                # FRONTEND — React (Vite)
+├── .github/workflows/      # Automação e métricas
+├── docs/                   # Documentação MkDocs (Markdown)
+├── mkdocs.yml              # Configuração da documentação
+├── grupo5-guard.ia/        # FRONTEND — React (Vite)
 │   ├── src/
-│   │   ├── pages/ (Home, Login, Cadastro)
+│   │   ├── pages/ (Home, VisualizacaoProposicoes)
 │   │   └── App.jsx (Roteamento)
-├── grupo5-guard.ia-backend/        # BACKEND — pipeline de dados e API
-│   ├── app/
-│   │   ├── api.py                  # API FastAPI (Auth e Dados)
-│   │   ├── armazenamento/
-│   │   │   ├── database.py         # Conexão PostgreSQL
-│   │   │   └── usuarios.py         # CRUD de usuários
-│   │   ├── coleta/
-│   │   ├── filtro/
-│   │   └── main.py                 # Orquestrador do pipeline
-│   └── docker-compose.yml
-└── grupo5-guard.ia-frontend/       # DASHBOARD — Streamlit
-    └── dashboard/
-        └── app.py                  # Dashboard conectado ao Postgres
+└── grupo5-guard.ia-backend/ # BACKEND — pipeline de dados e API
+    ├── app/
+    │   ├── api.py          # API FastAPI (Entrega de Dados)
+    │   ├── armazenamento/
+    │   │   └── database.py # Conexão PostgreSQL e inserção
+    │   ├── coleta/
+    │   ├── filtro/
+    │   └── main.py         # Orquestrador do pipeline
+    └── docker-compose.yml
 ```
 
 ---
@@ -178,6 +164,7 @@ Funcionalidades obrigatórias para a Release 1:
 - [ ] Dashboard completo com gráficos avançados.
 - [ ] Coleta incremental diária via GitHub Actions.
 - [ ] Docker Compose unificando Frontend, API e Banco.
+- [ ] Remoção do CRUD de Usuários e Login: Sendo um projeto estritamente acadêmico, sem fins lucrativos e focado em dados abertos, a remoção do controle de acesso reduz a complexidade desnecessária de segurança (LGPD, hashes e gerenciamento de estado de sessão), eliminando barreiras para usuários finais (jornalistas/pesquisadores).
 
 ---
 
@@ -191,4 +178,6 @@ Funcionalidades obrigatórias para a Release 1:
 
 ## Memória Evolutiva
 
-Este arquivo deve ser atualizado sempre que uma decisão técnica mudar o rumo do projeto ou uma nova tecnologia for adotada.
+Junho de 2026: Decisão de escopo tomada pela equipe de remover o fluxo de autenticação (Login/Cadastro) e o dashboard Streamlit secundário. O projeto passa a ser um portal de acesso público direto construído puramente em React integrado à API FastAPI, simplificando a arquitetura e focando na transparência dos dados.
+
+-Este arquivo deve ser atualizado sempre que uma decisão técnica mudar o rumo do projeto ou uma nova tecnologia for adotada.-
