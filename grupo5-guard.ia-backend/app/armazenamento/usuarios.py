@@ -1,4 +1,4 @@
-# """import bcrypt
+# import bcrypt
 # from .database import execute_query
 
 # def hash_senha(senha: str) -> str:
@@ -76,4 +76,4 @@
 #                 "email": row[2],
 #                 "criado_em": row[3]
 #             })
-#     return usuarios"""
+#     return usuarios
