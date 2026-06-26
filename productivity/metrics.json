@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T21:09:41.266557+00:00",
+  "generated_at": "2026-06-26T21:11:14.016639+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -28,7 +28,7 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 46,
+    "total_commits": 44,
     "open_issues": 0,
     "closed_issues": 33,
     "contributors": 6,
@@ -198,32 +198,10 @@
     },
     "feat/nova-pagina-dashboard": {
       "branch": "feat/nova-pagina-dashboard",
-      "total_commits": 2,
-      "commits_per_author": {
-        "claranunes22": 2
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-26",
-          "count": 2
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "16ae2db",
-          "author": "claranunes22",
-          "date": "2026-06-26T21:00:54+00:00",
-          "message": "chore: comenta de forma correta arquivo obsoleto de usuarios",
-          "char_count": 60
-        },
-        {
-          "sha": "06d08ae",
-          "author": "claranunes22",
-          "date": "2026-06-26T21:03:42+00:00",
-          "message": "chore: remove aspas invalidas e comenta usuarios",
-          "char_count": 48
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "feat/teste-pipeline-unificado": {
       "branch": "feat/teste-pipeline-unificado",
@@ -1354,7 +1332,7 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 25,
+    "claranunes22": 23,
     "gabiiverissimo-dev": 8,
     "PajeMurici-dev": 8,
     "otaviotex": 2,
@@ -1365,7 +1343,6 @@
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,
-      "feat/nova-pagina-dashboard": 2,
       "main": 1,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
