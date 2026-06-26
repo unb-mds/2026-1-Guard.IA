@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T21:56:15.537542+00:00",
+  "generated_at": "2026-06-26T23:05:14.572263+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -7,6 +7,7 @@
     "feat/armazenamento-postgres",
     "feat/classificacao-release-2",
     "feat/crud-usuario",
+    "feat/endpoints",
     "feat/home-page",
     "feat/login-redesign",
     "feat/nova-pagina-dashboard",
@@ -28,12 +29,12 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 45,
+    "total_commits": 44,
     "open_issues": 1,
     "closed_issues": 33,
     "contributors": 6,
     "open_prs": 1,
-    "branches_ativas": 16,
+    "branches_ativas": 17,
     "branches_deletadas": 6
   },
   "branches_data": {
@@ -182,6 +183,28 @@
         }
       ]
     },
+    "feat/endpoints": {
+      "branch": "feat/endpoints",
+      "total_commits": 1,
+      "commits_per_author": {
+        "PajeMurici-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "4b79587",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-26T22:59:36+00:00",
+          "message": "feat: adiciona as funções de classificação, busca individual e stats como endpoints na API",
+          "char_count": 90
+        }
+      ]
+    },
     "feat/home-page": {
       "branch": "feat/home-page",
       "total_commits": 0,
@@ -260,33 +283,10 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 2,
-      "commits_per_author": {
-        "claranunes22": 1,
-        "PajeMurici-dev": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-26",
-          "count": 2
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "8c1b081",
-          "author": "claranunes22",
-          "date": "2026-06-26T21:06:41+00:00",
-          "message": "Merge pull request #51 from unb-mds/feat/nova-pagina-dashboard",
-          "char_count": 81
-        },
-        {
-          "sha": "2126518",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-26T21:51:20+00:00",
-          "message": "fix: corrige o arquivo duplicado do update metrics e atualiza o novo",
-          "char_count": 68
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "pages-metricas": {
       "branch": "pages-metricas",
@@ -1350,7 +1350,7 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 23,
+    "claranunes22": 22,
     "PajeMurici-dev": 9,
     "gabiiverissimo-dev": 8,
     "otaviotex": 2,
@@ -1361,7 +1361,6 @@
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,
-      "main": 1,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11
@@ -1376,16 +1375,16 @@
       "feat/crud-usuario": 1,
       "filtragem-B": 1
     },
-    "AlmondHare": {
-      "filtragem-B": 2
-    },
     "PajeMurici-dev": {
-      "main": 1,
+      "feat/endpoints": 1,
       "release-1-integration": 4,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
       "chore/remove-cadastro": 1,
       "feat/login-page": 1
+    },
+    "AlmondHare": {
+      "filtragem-B": 2
     },
     "LucasNF-Dev": {
       "feature/estrutura-inicial": 1
