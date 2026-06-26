@@ -8,31 +8,31 @@ DATA_DIR = BASE_DIR / "data"
 DADOS_FILTRADOS_FILE = DATA_DIR / "dados_filtrados.json"
 
 def carregar_dados_filtrados():
-    """Lê o arquivo JSON de dados filtrados."""
+    """Le o arquivo JSON de dados filtrados."""
     if not DADOS_FILTRADOS_FILE.exists():
-        print(f"❌ Erro: Arquivo {DADOS_FILTRADOS_FILE} não encontrado.")
+        print(f" Erro: Arquivo {DADOS_FILTRADOS_FILE} não encontrado.")
         return []
     
     try:
         with open(DADOS_FILTRADOS_FILE, 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
-        print(f"❌ Erro ao ler JSON: {e}")
+        print(f" Erro ao ler JSON: {e}")
         return []
 
 def salvar_proposicoes(proposicoes: list):
     """
-    Salva uma lista de proposições no banco de dados em lote.
+    Salva uma lista de proposicoes no banco de dados em lote.
     Utiliza ON CONFLICT DO NOTHING para deduplicação no lado do banco.
     """
     if not proposicoes:
-        print("ℹ️ Nenhuma proposição para salvar.")
+        print("ℹ Nenhuma proposicao para salvar.")
         return 0
 
     query = """
         INSERT INTO proposicoes (
             id_externo, ementa, autor, partido, estado, 
-            casa, data_apresentacao, categoria, confianca
+            casa, data_apresentacao, categoria, confianca, termos_chave
         ) VALUES %s
         ON CONFLICT (id_externo) DO NOTHING;
     """
@@ -48,30 +48,31 @@ def salvar_proposicoes(proposicoes: list):
             p.get('casa'),
             p.get('data_apresentacao'),
             p.get('categoria'),
-            p.get('confianca')
+            p.get('confianca'),
+            ", ".join(p.get('termos_chave', [])) if p.get('termos_chave') else None
         )
         for p in proposicoes
     ]
     
     try:
         execute_batch(query, params_list)
-        print(f"✅ Armazenamento concluído: {len(proposicoes)} registros processados via batch insert.")
+        print(f" Armazenamento concluido: {len(proposicoes)} registros processados via batch insert.")
         return len(proposicoes)
     except Exception as e:
-        print(f"❌ Erro crítico no armazenamento em lote: {e}")
+        print("ERRO AO CONECTAR:", repr(e))
         return 0
 
 def iniciar_armazenamento():
-    """Função principal para rodar a etapa de armazenamento."""
-    print(f"📥 Iniciando etapa de Armazenamento...")
-    print(f"📂 Lendo dados filtrados de: {DADOS_FILTRADOS_FILE}")
+    """Funcao principal para rodar a etapa de armazenamento."""
+    print(f" Iniciando etapa de Armazenamento...")
+    print(f" Lendo dados filtrados de: {DADOS_FILTRADOS_FILE}")
     
     dados = carregar_dados_filtrados()
     
     if dados:
         return salvar_proposicoes(dados) > 0
     else:
-        print("ℹ️ Nenhum dado para processar.")
+        print("ℹNenhum dado para processar.")
         return True
 
 if __name__ == "__main__":

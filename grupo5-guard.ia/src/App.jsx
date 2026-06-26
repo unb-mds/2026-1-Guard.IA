@@ -5,6 +5,10 @@ import Dashboard from "./pages/Dashboard";
 import Proposicoes from "./pages/Proposicoes";
 import Ranking from "./pages/Ranking";
 import "./App.css";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Home from "./pages/Home";
+import Filtros from "./pages/filtros";
 
 function App() {
   return (
@@ -34,6 +38,11 @@ function App() {
           </Routes>
         </main>
       </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/filtros" element={<Filtros />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </Router>
   );
 }

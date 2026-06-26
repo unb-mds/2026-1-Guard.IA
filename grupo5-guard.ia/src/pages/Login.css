@@ -89,52 +89,19 @@
   font-weight: 900;
   text-transform: uppercase;        
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-.login-card button:hover {
-  background: #005f43;
+.visitor-button:hover {
+  background: #e2e0c8;
 }
 
-.login-divider {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  width: 100%;
-  margin: 24px 0;
-  color: #51d6ae;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.login-divider span {
-  flex: 1;
-  height: 1px;
-  background: #1f6b53;
-}
-
-.login-divider p {
-  margin: 0;
-  text-transform: uppercase;        
-}
-
-.visitor-button {
-  width: 100%;
-  height: 46px;
-  border-radius: 999px;
-  border: none;
-  background: #f7f5df;
-  color: #151917;
-  font-size: 16px;
-  font-weight: 900;
-  text-transform: uppercase;        
-  cursor: pointer;
-}
-
+/* Texto de Cadastro no Rodapé 
 .register-text {
-  margin-top: auto !important;
+  margin-top: auto !important; /* Força o "Não possui conta?" a ir lá para o final do card 
   padding-top: 20px;
-  color: #51d6ae !important;        
-  font-size: 14px !important;       
+  color: #51d6ae !important;
+  font-size: 14px !important;
   font-weight: 700;
   text-align: center;
 }
@@ -144,57 +111,67 @@
   text-decoration: none;
 }
 
+.register-text a:hover {
+  text-decoration: underline;
+}
+
 /* ==========================================
-   COLUNA 2: MASCOTE (SOBREPONDO PARCIALMENTE A MARCA)
-   ========================================== */
-.login-mascot {
-  grid-column: 2;
-  position: relative;
-  z-index: 500; /* Fica na frente da Marca */
+   COLUNA 2: MASCOTE (AJUSTE FINAL NO TOPO)
+   ========================================== 
+.login-mascote2 {
+
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
 
-.login-mascot img {
+  align-items: flex-start; 
+
+  justify-content: center;
+
   height: 100vh;
-  width: auto;
-  position: absolute;
-  right: 80px; /* Posicionado para a mão sobrepor o texto */
-  bottom: 0;
-  pointer-events: none;
-  /* Pequeno ajuste de escala para garantir que a mão alcance o texto */
-  transform: scale(1.05); 
-  transform-origin: bottom right;
+
+  position: relative;
+
 }
 
+
+
+.login-mascote2 img {
+
+  position: fixed;
+  top: 0px;
+  left: 45vw;
+  width: auto;
+  height: 100vh;
+  max-height: 850px;
+  transform: translateX(170px);
+   z-index: 999; 
+
+}
 /* ==========================================
-   LOGOTIPO ORIGINAL
-   ========================================== */
+   LOGOTIPO ABSOLUTO (DIREITA)
+   ========================================== 
 .login-brand {
   position: absolute;
   top: 0;
-  right: 50px;
+  right: 80px; 
   height: 100vh;
   display: flex;
-  align-items: center;
-  pointer-events: none;
-  z-index: 100; /* Atrás do Mascote */
+  align-items: center; 
+  pointer-events: none; 
 }
 
 .login-brand h1 {
-  writing-mode: vertical-rl;        
-  font-size: 5.5rem;
+  writing-mode: vertical-rl; 
+  font-size: 7rem;
   font-weight: 900;
   margin: 0;
   line-height: 1;
   letter-spacing: -2px;
-  text-transform: uppercase;        
-  white-space: nowrap;
-
+  text-transform: uppercase;
+  white-space: nowrap; 
+  
   background: linear-gradient(180deg, #026044 0%, #4f8b6e 65%, #9fc7b1 100%);
   background-clip: text;
-  -webkit-background-clip: text;    
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
-}
+}*/

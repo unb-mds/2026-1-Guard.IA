@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 import mascot from "../assets/mascot.png";
@@ -53,6 +53,7 @@ export default function Login({ setUser }) {
           <p className="login-subtitle">Entre para continuar</p>
 
           {error && <p className="error-message" style={{ color: "#ff4d4d", marginBottom: "1rem", fontSize: "14px" }}>{error}</p>}
+          {erro && <p className="error-message" style={{ color: "red", marginBottom: "10px" }}>{erro}</p>}
 
           <form onSubmit={handleSubmit}>
             <input 
@@ -65,13 +66,13 @@ export default function Login({ setUser }) {
             <input 
               type="password" 
               placeholder="Senha" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
               required 
             />
 
-            <button type="submit" disabled={loading}>
-              {loading ? "Carregando..." : "Entrar"}
+            <button type="submit" disabled={carregando}>
+              {carregando ? "Entrando..." : "Entrar"}
             </button>
           </form>
 
@@ -84,7 +85,7 @@ export default function Login({ setUser }) {
           <button
             type="button"
             className="visitor-button"
-            onClick={() => navigate("/")}
+            onClick={handleVisitorAccess}
           >
             Acessar como visitante
           </button>
@@ -94,8 +95,8 @@ export default function Login({ setUser }) {
           </p>
         </section>
 
-        <section className="login-mascot">
-          <img src={mascot} alt="Mascote Guard.IA" />
+        <section className="login-mascote2">
+          <img src={mascote2} alt="Mascote Guard.IA" />
         </section>
 
         <section className="login-brand">
@@ -104,4 +105,4 @@ export default function Login({ setUser }) {
       </main>
     </div>
   );
-}
+}*/

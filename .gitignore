@@ -1,35 +1,26 @@
 # Node / Next
 node_modules
 .next
+package-lock.json
 
 # Python
 venv
+.venv
 __pycache__/
 *.pyc
 
 # Env
 .env
+.env.local
 
-# OS
-.DS_Store
-Thumbs.db
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Environments
-.venv/
-venv/
-ENV/
-
-# Streamlit
-.streamlit/config.toml
+# Dados do Pipeline (Mandato GEMINI.md)
+grupo5-guard.ia-backend/data/*.json
 
 # OS e IDE
 .DS_Store
+Thumbs.db
 .vscode/
 .idea/
 
-# Dados (Opcional: ignore se os JSONs ficarem muito grandes)
-# grupo5-guard.ia/data/*.json
+# Streamlit
+.streamlit/config.toml

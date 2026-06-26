@@ -3,8 +3,9 @@ name: Update Productivity Metrics
 on:
   push:
     branches:
-      - dev-projeto
-      - estudos
+      - '**'
+  pull_request:
+    types: [closed]
   workflow_dispatch:
 
 permissions:
@@ -24,6 +25,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -42,4 +44,14 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/productivity/metrics.json
           git diff --cached --quiet || git commit -m "chore: update productivity metrics [skip ci]"
+          git push
+
+      - name: Publicar metrics.json no gh-pages
+        run: |
+          git fetch origin gh-pages
+          git checkout gh-pages
+          mkdir -p productivity
+          cp docs/productivity/metrics.json productivity/metrics.json
+          git add productivity/metrics.json
+          git diff --cached --quiet || git commit -m "chore: update metrics.json no gh-pages [skip ci]"
           git push
