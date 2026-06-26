@@ -1,8 +1,7 @@
 {
-  "generated_at": "2026-06-26T18:20:14.133058+00:00",
+  "generated_at": "2026-06-26T21:09:41.266557+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
-    "chore/remove-cadastro",
     "dev-projeto",
     "estudos",
     "feat/armazenamento-postgres",
@@ -11,7 +10,6 @@
     "feat/home-page",
     "feat/login-redesign",
     "feat/nova-pagina-dashboard",
-    "feat/pag-cadastro",
     "feat/teste-pipeline-unificado",
     "filtragem",
     "filtragem-B",
@@ -24,27 +22,21 @@
   "branches_deletadas": [
     "PajeMurici-dev-patch-1",
     "PajeMurici-dev-patch-2",
+    "chore/remove-cadastro",
     "feat/home-team",
     "feat/login-page",
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 42,
+    "total_commits": 46,
     "open_issues": 0,
     "closed_issues": 33,
     "contributors": 6,
     "open_prs": 1,
-    "branches_ativas": 18,
-    "branches_deletadas": 5
+    "branches_ativas": 16,
+    "branches_deletadas": 6
   },
   "branches_data": {
-    "chore/remove-cadastro": {
-      "branch": "chore/remove-cadastro",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
-    },
     "dev-projeto": {
       "branch": "dev-projeto",
       "total_commits": 9,
@@ -206,17 +198,32 @@
     },
     "feat/nova-pagina-dashboard": {
       "branch": "feat/nova-pagina-dashboard",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
-    },
-    "feat/pag-cadastro": {
-      "branch": "feat/pag-cadastro",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 2,
+      "commits_per_author": {
+        "claranunes22": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "16ae2db",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:00:54+00:00",
+          "message": "chore: comenta de forma correta arquivo obsoleto de usuarios",
+          "char_count": 60
+        },
+        {
+          "sha": "06d08ae",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:03:42+00:00",
+          "message": "chore: remove aspas invalidas e comenta usuarios",
+          "char_count": 48
+        }
+      ]
     },
     "feat/teste-pipeline-unificado": {
       "branch": "feat/teste-pipeline-unificado",
@@ -277,7 +284,7 @@
       "branch": "main",
       "total_commits": 1,
       "commits_per_author": {
-        "gabiiverissimo-dev": 1
+        "claranunes22": 1
       },
       "commit_timeline": [
         {
@@ -287,11 +294,11 @@
       ],
       "recent_commits": [
         {
-          "sha": "84e6ed0",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-26T18:15:16+00:00",
-          "message": "Merge pull request #50 from unb-mds/revert-48-feat/nova-pagina-dashboard",
-          "char_count": 109
+          "sha": "8c1b081",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:06:41+00:00",
+          "message": "Merge pull request #51 from unb-mds/feat/nova-pagina-dashboard",
+          "char_count": 81
         }
       ]
     },
@@ -429,6 +436,41 @@
           "date": "2026-04-26T22:07:08+00:00",
           "message": "Create estudo_storymap.md",
           "char_count": 95
+        }
+      ]
+    },
+    "chore/remove-cadastro": {
+      "branch": "chore/remove-cadastro",
+      "status": "deleted",
+      "merged_into": "feat/classificacao-release-2",
+      "merged_at": "2026-06-25T23:52:49+00:00",
+      "pr_number": 46,
+      "pr_title": "chore(backend): remove rotas e dependências de autenticação",
+      "total_commits": 2,
+      "commits_per_author": {
+        "gabiiverissimo-dev": 1,
+        "PajeMurici-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-25",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "bce6dbd",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-25T23:39:49+00:00",
+          "message": "chore(backend): remove rotas e dependências de autenticação",
+          "char_count": 59
+        },
+        {
+          "sha": "3159cca",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-25T23:52:09+00:00",
+          "message": "Merge branch 'feat/classificacao-release-2' into chore/remove-cadastro",
+          "char_count": 70
         }
       ]
     },
@@ -1131,6 +1173,16 @@
   },
   "pull_requests": [
     {
+      "number": 51,
+      "title": "versão mais atual",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/nova-pagina-dashboard",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-06-26T19:36:07+00:00",
+      "merged_at": "2026-06-26T21:06:41+00:00"
+    },
+    {
       "number": 50,
       "title": "Revert \"Feat/nova pagina dashboard\"",
       "state": "closed",
@@ -1302,9 +1354,9 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 22,
+    "claranunes22": 25,
     "gabiiverissimo-dev": 8,
-    "PajeMurici-dev": 7,
+    "PajeMurici-dev": 8,
     "otaviotex": 2,
     "AlmondHare": 2,
     "LucasNF-Dev": 1
@@ -1313,13 +1365,15 @@
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,
+      "feat/nova-pagina-dashboard": 2,
+      "main": 1,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
-      "main": 1,
+      "chore/remove-cadastro": 1,
       "feat/home-team": 1,
       "feat/login-page": 3
     },
@@ -1334,6 +1388,7 @@
       "release-1-integration": 4,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
+      "chore/remove-cadastro": 1,
       "feat/login-page": 1
     },
     "LucasNF-Dev": {
