@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T15:59:20.120979+00:00",
+  "generated_at": "2026-06-26T18:14:40.492849+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "chore/remove-cadastro",
@@ -28,11 +28,11 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 44,
-    "open_issues": 1,
-    "closed_issues": 32,
+    "total_commits": 42,
+    "open_issues": 0,
+    "closed_issues": 33,
     "contributors": 6,
-    "open_prs": 2,
+    "open_prs": 1,
     "branches_ativas": 17,
     "branches_deletadas": 5
   },
@@ -205,25 +205,10 @@
     },
     "feat/nova-pagina-dashboard": {
       "branch": "feat/nova-pagina-dashboard",
-      "total_commits": 1,
-      "commits_per_author": {
-        "claranunes22": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-26",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "b580578",
-          "author": "claranunes22",
-          "date": "2026-06-26T10:58:10+00:00",
-          "message": "feat(frontend): refatora visual do dashboard, ranking e adiciona mapa politico interativo do brasil",
-          "char_count": 99
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "feat/pag-cadastro": {
       "branch": "feat/pag-cadastro",
@@ -289,31 +274,23 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 2,
+      "total_commits": 1,
       "commits_per_author": {
-        "AlmondHare": 1,
-        "otaviotex": 1
+        "gabiiverissimo-dev": 1
       },
       "commit_timeline": [
         {
           "date": "2026-06-26",
-          "count": 2
+          "count": 1
         }
       ],
       "recent_commits": [
         {
-          "sha": "944d2d2",
-          "author": "AlmondHare",
-          "date": "2026-06-26T02:04:31+00:00",
-          "message": "Merge pull request #47 from unb-mds/feat/classificacao-release-2",
-          "char_count": 99
-        },
-        {
-          "sha": "6f27cc9",
-          "author": "otaviotex",
-          "date": "2026-06-26T15:53:43+00:00",
-          "message": "docs: atualiza documentacao do projeto em relacao a mudanca do acesso e autenticacao dos usuarios",
-          "char_count": 97
+          "sha": "67ec0d8",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-26T18:09:22+00:00",
+          "message": "Merge pull request #48 from unb-mds/feat/nova-pagina-dashboard",
+          "char_count": 90
         }
       ]
     },
@@ -685,8 +662,8 @@
   },
   "issues": {
     "total": 33,
-    "open": 1,
-    "closed": 32,
+    "open": 0,
+    "closed": 33,
     "timeline": [
       {
         "date": "2026-03-25",
@@ -816,16 +793,16 @@
       {
         "date": "2026-06-26",
         "opened": 1,
-        "closed": 1
+        "closed": 2
       }
     ],
     "list": [
       {
         "number": 49,
         "title": "feat(frontend): Implementar interface interativa, gráficos dinâmicos e mapa coroplético para a Release 2",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-06-26T11:04:07+00:00",
-        "closed_at": null,
+        "closed_at": "2026-06-26T18:09:23+00:00",
         "labels": [
           "enhancement",
           "frontend"
@@ -1148,12 +1125,12 @@
     {
       "number": 48,
       "title": "Feat/nova pagina dashboard",
-      "state": "open",
+      "state": "closed",
       "base": "main",
       "head": "feat/nova-pagina-dashboard",
       "author": "claranunes22",
       "created_at": "2026-06-26T11:01:24+00:00",
-      "merged_at": null
+      "merged_at": "2026-06-26T18:09:22+00:00"
     },
     {
       "number": 47,
@@ -1307,35 +1284,33 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 23,
-    "gabiiverissimo-dev": 7,
+    "claranunes22": 22,
+    "gabiiverissimo-dev": 8,
     "PajeMurici-dev": 7,
-    "otaviotex": 3,
-    "AlmondHare": 3,
+    "otaviotex": 2,
+    "AlmondHare": 2,
     "LucasNF-Dev": 1
   },
   "author_por_branch": {
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,
-      "feat/nova-pagina-dashboard": 1,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
+      "main": 1,
       "feat/home-team": 1,
       "feat/login-page": 3
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
-      "filtragem-B": 1,
-      "main": 1
+      "filtragem-B": 1
     },
     "AlmondHare": {
-      "filtragem-B": 2,
-      "main": 1
+      "filtragem-B": 2
     },
     "PajeMurici-dev": {
       "release-1-integration": 4,
