@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T02:09:45.152483+00:00",
+  "generated_at": "2026-06-26T15:59:20.120979+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "chore/remove-cadastro",
@@ -10,6 +10,7 @@
     "feat/crud-usuario",
     "feat/home-page",
     "feat/login-redesign",
+    "feat/nova-pagina-dashboard",
     "feat/pag-cadastro",
     "feat/teste-pipeline-unificado",
     "filtragem",
@@ -29,10 +30,10 @@
   "summary": {
     "total_commits": 44,
     "open_issues": 1,
-    "closed_issues": 31,
+    "closed_issues": 32,
     "contributors": 6,
-    "open_prs": 1,
-    "branches_ativas": 16,
+    "open_prs": 2,
+    "branches_ativas": 17,
     "branches_deletadas": 5
   },
   "branches_data": {
@@ -202,6 +203,28 @@
       "commit_timeline": [],
       "recent_commits": []
     },
+    "feat/nova-pagina-dashboard": {
+      "branch": "feat/nova-pagina-dashboard",
+      "total_commits": 1,
+      "commits_per_author": {
+        "claranunes22": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "b580578",
+          "author": "claranunes22",
+          "date": "2026-06-26T10:58:10+00:00",
+          "message": "feat(frontend): refatora visual do dashboard, ranking e adiciona mapa politico interativo do brasil",
+          "char_count": 99
+        }
+      ]
+    },
     "feat/pag-cadastro": {
       "branch": "feat/pag-cadastro",
       "total_commits": 0,
@@ -211,39 +234,10 @@
     },
     "feat/teste-pipeline-unificado": {
       "branch": "feat/teste-pipeline-unificado",
-      "total_commits": 3,
-      "commits_per_author": {
-        "claranunes22": 3
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-05-24",
-          "count": 3
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "dcdb7b0",
-          "author": "claranunes22",
-          "date": "2026-05-24T17:34:26+00:00",
-          "message": "feat: integra login com api e corrige rolagem da home",
-          "char_count": 53
-        },
-        {
-          "sha": "1ff4f59",
-          "author": "claranunes22",
-          "date": "2026-05-24T17:42:29+00:00",
-          "message": "feat(frontend): instala react-router-dom e migra roteamento manual para rotas oficiais",
-          "char_count": 86
-        },
-        {
-          "sha": "a45eafa",
-          "author": "claranunes22",
-          "date": "2026-05-24T18:03:26+00:00",
-          "message": "feat(login): restaura design de alta fidelidade e integra com rotas",
-          "char_count": 67
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "filtragem": {
       "branch": "filtragem",
@@ -295,14 +289,15 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 1,
+      "total_commits": 2,
       "commits_per_author": {
-        "AlmondHare": 1
+        "AlmondHare": 1,
+        "otaviotex": 1
       },
       "commit_timeline": [
         {
           "date": "2026-06-26",
-          "count": 1
+          "count": 2
         }
       ],
       "recent_commits": [
@@ -312,6 +307,13 @@
           "date": "2026-06-26T02:04:31+00:00",
           "message": "Merge pull request #47 from unb-mds/feat/classificacao-release-2",
           "char_count": 99
+        },
+        {
+          "sha": "6f27cc9",
+          "author": "otaviotex",
+          "date": "2026-06-26T15:53:43+00:00",
+          "message": "docs: atualiza documentacao do projeto em relacao a mudanca do acesso e autenticacao dos usuarios",
+          "char_count": 97
         }
       ]
     },
@@ -324,9 +326,9 @@
     },
     "release-1-integration": {
       "branch": "release-1-integration",
-      "total_commits": 3,
+      "total_commits": 4,
       "commits_per_author": {
-        "PajeMurici-dev": 3
+        "PajeMurici-dev": 4
       },
       "commit_timeline": [
         {
@@ -335,7 +337,7 @@
         },
         {
           "date": "2026-06-26",
-          "count": 2
+          "count": 3
         }
       ],
       "recent_commits": [
@@ -359,6 +361,13 @@
           "date": "2026-06-26T01:58:54+00:00",
           "message": " fix: corrige inconsistencias da pagina de produtividade",
           "char_count": 56
+        },
+        {
+          "sha": "7de32d9",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-26T02:17:07+00:00",
+          "message": "fix: corrige a contagem de branches no collect metrics",
+          "char_count": 54
         }
       ]
     },
@@ -675,9 +684,9 @@
     }
   },
   "issues": {
-    "total": 32,
+    "total": 33,
     "open": 1,
-    "closed": 31,
+    "closed": 32,
     "timeline": [
       {
         "date": "2026-03-25",
@@ -803,9 +812,25 @@
         "date": "2026-05-26",
         "opened": 0,
         "closed": 7
+      },
+      {
+        "date": "2026-06-26",
+        "opened": 1,
+        "closed": 1
       }
     ],
     "list": [
+      {
+        "number": 49,
+        "title": "feat(frontend): Implementar interface interativa, gráficos dinâmicos e mapa coroplético para a Release 2",
+        "state": "open",
+        "created_at": "2026-06-26T11:04:07+00:00",
+        "closed_at": null,
+        "labels": [
+          "enhancement",
+          "frontend"
+        ]
+      },
       {
         "number": 42,
         "title": "feat: home team",
@@ -865,9 +890,9 @@
       {
         "number": 32,
         "title": "Estudo sobre Context Engineering e Desenvolvimento Assistido por IA [SPRINT 06]",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-05-15T19:25:10+00:00",
-        "closed_at": null,
+        "closed_at": "2026-06-26T11:04:51+00:00",
         "labels": []
       },
       {
@@ -1121,6 +1146,16 @@
   },
   "pull_requests": [
     {
+      "number": 48,
+      "title": "Feat/nova pagina dashboard",
+      "state": "open",
+      "base": "main",
+      "head": "feat/nova-pagina-dashboard",
+      "author": "claranunes22",
+      "created_at": "2026-06-26T11:01:24+00:00",
+      "merged_at": null
+    },
+    {
       "number": 47,
       "title": "Versão mais atualizada do projeto",
       "state": "closed",
@@ -1272,18 +1307,18 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 25,
+    "claranunes22": 23,
     "gabiiverissimo-dev": 7,
-    "PajeMurici-dev": 6,
+    "PajeMurici-dev": 7,
+    "otaviotex": 3,
     "AlmondHare": 3,
-    "otaviotex": 2,
     "LucasNF-Dev": 1
   },
   "author_por_branch": {
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,
-      "feat/teste-pipeline-unificado": 3,
+      "feat/nova-pagina-dashboard": 1,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11
@@ -1295,14 +1330,15 @@
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
-      "filtragem-B": 1
+      "filtragem-B": 1,
+      "main": 1
     },
     "AlmondHare": {
       "filtragem-B": 2,
       "main": 1
     },
     "PajeMurici-dev": {
-      "release-1-integration": 3,
+      "release-1-integration": 4,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
       "feat/login-page": 1
