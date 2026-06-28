@@ -1,0 +1,65 @@
+.ranking-page-layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 54px 48px;
+  box-sizing: border-box;
+}
+
+.ranking-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* Mantém o layout de colunas */
+  gap: 30px;
+  align-items: start;
+}
+
+.ranking-card-box {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.ranking-card-box h4 {
+  margin-top: 0;
+  color: #006b4f; /* Verde oficial */
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Tabela (idêntica à original) */
+.ranking-minimal-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.ranking-minimal-table th {
+  padding: 12px;
+  color: #006b4f;
+  border-bottom: 2px solid #d9e9e3;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.ranking-minimal-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.badge-qty {
+  background-color: #006b4f;
+  color: white;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* Container do gráfico dinâmico - Centraliza */
+.pie-chart-responsive-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* O tamanho (height) é definido direto no JSX da Recharts */
+}
