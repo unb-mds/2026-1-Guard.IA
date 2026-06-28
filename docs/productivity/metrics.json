@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T20:02:53.199844+00:00",
+  "generated_at": "2026-06-28T23:40:35.440688+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -30,8 +30,8 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 46,
-    "open_issues": 2,
+    "total_commits": 47,
+    "open_issues": 3,
     "closed_issues": 33,
     "contributors": 6,
     "open_prs": 2,
@@ -236,14 +236,15 @@
     },
     "feat/telas-guardia-recuperadas": {
       "branch": "feat/telas-guardia-recuperadas",
-      "total_commits": 1,
+      "total_commits": 2,
       "commits_per_author": {
-        "claranunes22": 1
+        "claranunes22": 1,
+        "gabiiverissimo-dev": 1
       },
       "commit_timeline": [
         {
           "date": "2026-06-28",
-          "count": 1
+          "count": 2
         }
       ],
       "recent_commits": [
@@ -253,6 +254,13 @@
           "date": "2026-06-28T19:54:51+00:00",
           "message": "feat: recupera layouts originais e integra graficos com recharts",
           "char_count": 64
+        },
+        {
+          "sha": "c680aa8",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-28T23:34:31+00:00",
+          "message": "Merge branch 'main' into feat/telas-guardia-recuperadas",
+          "char_count": 55
         }
       ]
     },
@@ -727,8 +735,8 @@
     }
   },
   "issues": {
-    "total": 35,
-    "open": 2,
+    "total": 36,
+    "open": 3,
     "closed": 33,
     "timeline": [
       {
@@ -865,9 +873,25 @@
         "date": "2026-06-27",
         "opened": 1,
         "closed": 0
+      },
+      {
+        "date": "2026-06-28",
+        "opened": 1,
+        "closed": 0
       }
     ],
     "list": [
+      {
+        "number": 55,
+        "title": "bug/chore: Recuperação e consolidação do layout claro e integração de gráficos (Recharts) no front-end",
+        "state": "open",
+        "created_at": "2026-06-28T20:02:44+00:00",
+        "closed_at": null,
+        "labels": [
+          "bug",
+          "frontend"
+        ]
+      },
       {
         "number": 53,
         "title": "Retirada do CRUD de Usuário e Reorganização do Documento GEMINI.MD",
@@ -1408,7 +1432,7 @@
   "all_authors": {
     "claranunes22": 23,
     "PajeMurici-dev": 10,
-    "gabiiverissimo-dev": 8,
+    "gabiiverissimo-dev": 9,
     "otaviotex": 2,
     "AlmondHare": 2,
     "LucasNF-Dev": 1
@@ -1424,6 +1448,7 @@
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
+      "feat/telas-guardia-recuperadas": 1,
       "chore/remove-cadastro": 1,
       "feat/home-team": 1,
       "feat/login-page": 3
