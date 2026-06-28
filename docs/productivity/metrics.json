@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T21:09:41.266557+00:00",
+  "generated_at": "2026-06-28T20:02:53.199844+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -7,9 +7,11 @@
     "feat/armazenamento-postgres",
     "feat/classificacao-release-2",
     "feat/crud-usuario",
+    "feat/endpoints",
     "feat/home-page",
     "feat/login-redesign",
     "feat/nova-pagina-dashboard",
+    "feat/telas-guardia-recuperadas",
     "feat/teste-pipeline-unificado",
     "filtragem",
     "filtragem-B",
@@ -29,11 +31,11 @@
   ],
   "summary": {
     "total_commits": 46,
-    "open_issues": 0,
+    "open_issues": 2,
     "closed_issues": 33,
     "contributors": 6,
-    "open_prs": 1,
-    "branches_ativas": 16,
+    "open_prs": 2,
+    "branches_ativas": 18,
     "branches_deletadas": 6
   },
   "branches_data": {
@@ -182,6 +184,35 @@
         }
       ]
     },
+    "feat/endpoints": {
+      "branch": "feat/endpoints",
+      "total_commits": 2,
+      "commits_per_author": {
+        "PajeMurici-dev": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "4b79587",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-26T22:59:36+00:00",
+          "message": "feat: adiciona as funções de classificação, busca individual e stats como endpoints na API",
+          "char_count": 90
+        },
+        {
+          "sha": "6f0ab86",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-26T23:15:00+00:00",
+          "message": "fix: ccorrige update metrics",
+          "char_count": 28
+        }
+      ]
+    },
     "feat/home-page": {
       "branch": "feat/home-page",
       "total_commits": 0,
@@ -198,30 +229,30 @@
     },
     "feat/nova-pagina-dashboard": {
       "branch": "feat/nova-pagina-dashboard",
-      "total_commits": 2,
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/telas-guardia-recuperadas": {
+      "branch": "feat/telas-guardia-recuperadas",
+      "total_commits": 1,
       "commits_per_author": {
-        "claranunes22": 2
+        "claranunes22": 1
       },
       "commit_timeline": [
         {
-          "date": "2026-06-26",
-          "count": 2
+          "date": "2026-06-28",
+          "count": 1
         }
       ],
       "recent_commits": [
         {
-          "sha": "16ae2db",
+          "sha": "5334397",
           "author": "claranunes22",
-          "date": "2026-06-26T21:00:54+00:00",
-          "message": "chore: comenta de forma correta arquivo obsoleto de usuarios",
-          "char_count": 60
-        },
-        {
-          "sha": "06d08ae",
-          "author": "claranunes22",
-          "date": "2026-06-26T21:03:42+00:00",
-          "message": "chore: remove aspas invalidas e comenta usuarios",
-          "char_count": 48
+          "date": "2026-06-28T19:54:51+00:00",
+          "message": "feat: recupera layouts originais e integra graficos com recharts",
+          "char_count": 64
         }
       ]
     },
@@ -282,25 +313,10 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 1,
-      "commits_per_author": {
-        "claranunes22": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-26",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "8c1b081",
-          "author": "claranunes22",
-          "date": "2026-06-26T21:06:41+00:00",
-          "message": "Merge pull request #51 from unb-mds/feat/nova-pagina-dashboard",
-          "char_count": 81
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "pages-metricas": {
       "branch": "pages-metricas",
@@ -711,8 +727,8 @@
     }
   },
   "issues": {
-    "total": 33,
-    "open": 0,
+    "total": 35,
+    "open": 2,
     "closed": 33,
     "timeline": [
       {
@@ -842,11 +858,37 @@
       },
       {
         "date": "2026-06-26",
-        "opened": 1,
+        "opened": 2,
         "closed": 2
+      },
+      {
+        "date": "2026-06-27",
+        "opened": 1,
+        "closed": 0
       }
     ],
     "list": [
+      {
+        "number": 53,
+        "title": "Retirada do CRUD de Usuário e Reorganização do Documento GEMINI.MD",
+        "state": "open",
+        "created_at": "2026-06-27T12:10:32+00:00",
+        "closed_at": null,
+        "labels": [
+          "documentation",
+          "chore"
+        ]
+      },
+      {
+        "number": 52,
+        "title": "Correção do update metrics na main",
+        "state": "open",
+        "created_at": "2026-06-26T21:48:05+00:00",
+        "closed_at": null,
+        "labels": [
+          "bug"
+        ]
+      },
       {
         "number": 49,
         "title": "feat(frontend): Implementar interface interativa, gráficos dinâmicos e mapa coroplético para a Release 2",
@@ -1173,6 +1215,16 @@
   },
   "pull_requests": [
     {
+      "number": 54,
+      "title": "Feat/telas guardia recuperadas",
+      "state": "open",
+      "base": "main",
+      "head": "feat/telas-guardia-recuperadas",
+      "author": "claranunes22",
+      "created_at": "2026-06-28T20:00:57+00:00",
+      "merged_at": null
+    },
+    {
       "number": 51,
       "title": "versão mais atual",
       "state": "closed",
@@ -1354,9 +1406,9 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 25,
+    "claranunes22": 23,
+    "PajeMurici-dev": 10,
     "gabiiverissimo-dev": 8,
-    "PajeMurici-dev": 8,
     "otaviotex": 2,
     "AlmondHare": 2,
     "LucasNF-Dev": 1
@@ -1365,8 +1417,7 @@
     "claranunes22": {
       "dev-projeto": 6,
       "estudos": 1,
-      "feat/nova-pagina-dashboard": 2,
-      "main": 1,
+      "feat/telas-guardia-recuperadas": 1,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11
@@ -1381,15 +1432,16 @@
       "feat/crud-usuario": 1,
       "filtragem-B": 1
     },
-    "AlmondHare": {
-      "filtragem-B": 2
-    },
     "PajeMurici-dev": {
+      "feat/endpoints": 2,
       "release-1-integration": 4,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
       "chore/remove-cadastro": 1,
       "feat/login-page": 1
+    },
+    "AlmondHare": {
+      "filtragem-B": 2
     },
     "LucasNF-Dev": {
       "feature/estrutura-inicial": 1
