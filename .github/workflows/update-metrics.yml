@@ -55,4 +55,5 @@ jobs:
           cp /tmp/metrics.json productivity/metrics.json
           git add productivity/metrics.json
           git diff --cached --quiet || git commit -m "chore: update metrics.json no gh-pages [skip ci]"
-          git push
+          git pull --rebase origin main
+          git push origin main
