@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T23:47:47.043604+00:00",
+  "generated_at": "2026-06-29T22:29:03.459964+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -7,10 +7,11 @@
     "feat/armazenamento-postgres",
     "feat/classificacao-release-2",
     "feat/crud-usuario",
+    "feat/design-updates",
     "feat/endpoints",
     "feat/home-page",
-    "feat/login-redesign",
-    "feat/nova-pagina-dashboard",
+    "feat/integracao-dashboard",
+    "feat/integracao-frontend-api",
     "feat/telas-guardia-recuperadas",
     "feat/teste-pipeline-unificado",
     "filtragem",
@@ -18,7 +19,6 @@
     "main",
     "pages-metricas",
     "release-1-integration",
-    "revert-48-feat/nova-pagina-dashboard",
     "sprint-04-dashboard"
   ],
   "branches_deletadas": [
@@ -27,16 +27,19 @@
     "chore/remove-cadastro",
     "feat/home-team",
     "feat/login-page",
-    "feature/estrutura-inicial"
+    "feat/login-redesign",
+    "feat/nova-pagina-dashboard",
+    "feature/estrutura-inicial",
+    "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 46,
-    "open_issues": 3,
+    "total_commits": 71,
+    "open_issues": 5,
     "closed_issues": 33,
     "contributors": 6,
     "open_prs": 1,
     "branches_ativas": 18,
-    "branches_deletadas": 6
+    "branches_deletadas": 9
   },
   "branches_data": {
     "dev-projeto": {
@@ -184,34 +187,42 @@
         }
       ]
     },
-    "feat/endpoints": {
-      "branch": "feat/endpoints",
+    "feat/design-updates": {
+      "branch": "feat/design-updates",
       "total_commits": 2,
       "commits_per_author": {
-        "PajeMurici-dev": 2
+        "gabiiverissimo-dev": 1,
+        "AlmondHare": 1
       },
       "commit_timeline": [
         {
-          "date": "2026-06-26",
+          "date": "2026-06-29",
           "count": 2
         }
       ],
       "recent_commits": [
         {
-          "sha": "4b79587",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-26T22:59:36+00:00",
-          "message": "feat: adiciona as funções de classificação, busca individual e stats como endpoints na API",
-          "char_count": 90
+          "sha": "b5e7ebd",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-29T15:01:19+00:00",
+          "message": "feat: add loading spinner and team section",
+          "char_count": 42
         },
         {
-          "sha": "6f0ab86",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-26T23:15:00+00:00",
-          "message": "fix: ccorrige update metrics",
-          "char_count": 28
+          "sha": "aed005a",
+          "author": "AlmondHare",
+          "date": "2026-06-29T20:41:27+00:00",
+          "message": "feat/adiciona funcionalidade barra de pesquisa nas páginas de proposições em ranking",
+          "char_count": 84
         }
       ]
+    },
+    "feat/endpoints": {
+      "branch": "feat/endpoints",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "feat/home-page": {
       "branch": "feat/home-page",
@@ -220,19 +231,70 @@
       "commit_timeline": [],
       "recent_commits": []
     },
-    "feat/login-redesign": {
-      "branch": "feat/login-redesign",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+    "feat/integracao-dashboard": {
+      "branch": "feat/integracao-dashboard",
+      "total_commits": 2,
+      "commits_per_author": {
+        "otaviotex": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-29",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "af46a21",
+          "author": "otaviotex",
+          "date": "2026-06-29T14:40:08+00:00",
+          "message": "feat(frontend): integrar Dashboard com dados reais da API",
+          "char_count": 57
+        },
+        {
+          "sha": "38a0c98",
+          "author": "otaviotex",
+          "date": "2026-06-29T22:20:49+00:00",
+          "message": "feat(frontend): add getEvolucao() ao serviço de API",
+          "char_count": 51
+        }
+      ]
     },
-    "feat/nova-pagina-dashboard": {
-      "branch": "feat/nova-pagina-dashboard",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+    "feat/integracao-frontend-api": {
+      "branch": "feat/integracao-frontend-api",
+      "total_commits": 3,
+      "commits_per_author": {
+        "otaviotex": 3
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-29",
+          "count": 3
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "e0e914e",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:39:08+00:00",
+          "message": "feat(frontend): add camada de serviço para integração com a API",
+          "char_count": 63
+        },
+        {
+          "sha": "8ab7ea1",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:43:06+00:00",
+          "message": "feat(frontend): integrar página de filtros com a API real",
+          "char_count": 57
+        },
+        {
+          "sha": "dbca0b8",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:47:04+00:00",
+          "message": "chore(frontend): add .env ao .gitignore",
+          "char_count": 39
+        }
+      ]
     },
     "feat/telas-guardia-recuperadas": {
       "branch": "feat/telas-guardia-recuperadas",
@@ -300,21 +362,21 @@
       "branch": "main",
       "total_commits": 1,
       "commits_per_author": {
-        "gabiiverissimo-dev": 1
+        "otaviotex": 1
       },
       "commit_timeline": [
         {
-          "date": "2026-06-28",
+          "date": "2026-06-29",
           "count": 1
         }
       ],
       "recent_commits": [
         {
-          "sha": "d8527b1",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-28T23:41:58+00:00",
-          "message": "Merge pull request #54 from unb-mds/feat/telas-guardia-recuperadas",
-          "char_count": 325
+          "sha": "c9a8a7b",
+          "author": "otaviotex",
+          "date": "2026-06-29T14:29:29+00:00",
+          "message": "Merge pull request #58 from unb-mds/feat/endpoints",
+          "char_count": 90
         }
       ]
     },
@@ -371,13 +433,6 @@
           "char_count": 54
         }
       ]
-    },
-    "revert-48-feat/nova-pagina-dashboard": {
-      "branch": "revert-48-feat/nova-pagina-dashboard",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
     },
     "sprint-04-dashboard": {
       "branch": "sprint-04-dashboard",
@@ -698,6 +753,213 @@
         }
       ]
     },
+    "feat/login-redesign": {
+      "branch": "feat/login-redesign",
+      "status": "deleted",
+      "merged_into": "dev-projeto",
+      "merged_at": "2026-05-21T13:47:51+00:00",
+      "pr_number": 39,
+      "pr_title": "Feat: login redesign",
+      "total_commits": 17,
+      "commits_per_author": {
+        "PajeMurici-dev": 1,
+        "gabiiverissimo-dev": 2,
+        "claranunes22": 14
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-04-25",
+          "count": 1
+        },
+        {
+          "date": "2026-04-29",
+          "count": 1
+        },
+        {
+          "date": "2026-04-30",
+          "count": 1
+        },
+        {
+          "date": "2026-05-03",
+          "count": 3
+        },
+        {
+          "date": "2026-05-04",
+          "count": 6
+        },
+        {
+          "date": "2026-05-14",
+          "count": 1
+        },
+        {
+          "date": "2026-05-16",
+          "count": 1
+        },
+        {
+          "date": "2026-05-17",
+          "count": 1
+        },
+        {
+          "date": "2026-05-20",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "8781479",
+          "author": "PajeMurici-dev",
+          "date": "2026-04-25T00:30:56+00:00",
+          "message": "Create estudo-storymap.md",
+          "char_count": 65
+        },
+        {
+          "sha": "099b065",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-04-29T16:45:58+00:00",
+          "message": "Merge pull request #23 from unb-mds/PajeMurici-dev-patch-1",
+          "char_count": 85
+        },
+        {
+          "sha": "b649df5",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-04-30T13:27:54+00:00",
+          "message": "docs: detalhamento das funcionalidades e fluxo do protótipo Guard.IA",
+          "char_count": 271
+        },
+        {
+          "sha": "0395337",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:15:27+00:00",
+          "message": "docs: adiciona user flow",
+          "char_count": 24
+        },
+        {
+          "sha": "ca19638",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:16:29+00:00",
+          "message": "Merge branch 'estudos' of https://github.com/unb-mds/2026-1-Guard.IA into estudos",
+          "char_count": 81
+        },
+        {
+          "sha": "8e43de0",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:19:24+00:00",
+          "message": "Merge pull request #25 from unb-mds/estudos",
+          "char_count": 52
+        },
+        {
+          "sha": "d75b0fd",
+          "author": "claranunes22",
+          "date": "2026-05-04T13:54:00+00:00",
+          "message": "feat: melhorias no dashboard",
+          "char_count": 28
+        },
+        {
+          "sha": "51677ef",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:14:04+00:00",
+          "message": "docs: adiciona documentação do dashboard closes #27",
+          "char_count": 51
+        },
+        {
+          "sha": "d5f2273",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:16:16+00:00",
+          "message": "Merge pull request #26 from unb-mds/sprint-04-dashboard",
+          "char_count": 93
+        },
+        {
+          "sha": "bf07d1b",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:41:14+00:00",
+          "message": "docs: adiciona página inicial do GitHub Pages",
+          "char_count": 45
+        },
+        {
+          "sha": "22a9906",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:54:54+00:00",
+          "message": "docs: melhora página inicial do GitHub Pages",
+          "char_count": 44
+        },
+        {
+          "sha": "a91e19d",
+          "author": "claranunes22",
+          "date": "2026-05-04T15:03:48+00:00",
+          "message": "docs: remove markdown para usar HTML",
+          "char_count": 36
+        },
+        {
+          "sha": "e157443",
+          "author": "claranunes22",
+          "date": "2026-05-14T16:10:49+00:00",
+          "message": "docs: atualiza README do projeto",
+          "char_count": 32
+        },
+        {
+          "sha": "98561a1",
+          "author": "claranunes22",
+          "date": "2026-05-16T21:04:41+00:00",
+          "message": "feat: adiciona página de login",
+          "char_count": 30
+        },
+        {
+          "sha": "5443826",
+          "author": "claranunes22",
+          "date": "2026-05-17T17:29:42+00:00",
+          "message": "feat: adiciona página inicial",
+          "char_count": 29
+        },
+        {
+          "sha": "3ff4dee",
+          "author": "claranunes22",
+          "date": "2026-05-20T16:05:06+00:00",
+          "message": "docs: adicionar especificação do frontend e refatorar interface de login",
+          "char_count": 72
+        },
+        {
+          "sha": "fd41f84",
+          "author": "claranunes22",
+          "date": "2026-05-20T16:13:05+00:00",
+          "message": "chore: mover especificação do frontend para a pasta correta",
+          "char_count": 59
+        }
+      ]
+    },
+    "feat/nova-pagina-dashboard": {
+      "branch": "feat/nova-pagina-dashboard",
+      "status": "deleted",
+      "merged_into": "main",
+      "merged_at": "2026-06-26T21:06:41+00:00",
+      "pr_number": 51,
+      "pr_title": "versão mais atual",
+      "total_commits": 2,
+      "commits_per_author": {
+        "claranunes22": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "16ae2db",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:00:54+00:00",
+          "message": "chore: comenta de forma correta arquivo obsoleto de usuarios",
+          "char_count": 60
+        },
+        {
+          "sha": "06d08ae",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:03:42+00:00",
+          "message": "chore: remove aspas invalidas e comenta usuarios",
+          "char_count": 48
+        }
+      ]
+    },
     "feature/estrutura-inicial": {
       "branch": "feature/estrutura-inicial",
       "status": "deleted",
@@ -724,11 +986,38 @@
           "char_count": 58
         }
       ]
+    },
+    "revert-48-feat/nova-pagina-dashboard": {
+      "branch": "revert-48-feat/nova-pagina-dashboard",
+      "status": "deleted",
+      "merged_into": "main",
+      "merged_at": "2026-06-26T18:15:17+00:00",
+      "pr_number": 50,
+      "pr_title": "Revert \"Feat/nova pagina dashboard\"",
+      "total_commits": 1,
+      "commits_per_author": {
+        "gabiiverissimo-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "341c314",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-26T18:14:57+00:00",
+          "message": "Revert \"Feat/nova pagina dashboard\"",
+          "char_count": 35
+        }
+      ]
     }
   },
   "issues": {
-    "total": 36,
-    "open": 3,
+    "total": 38,
+    "open": 5,
     "closed": 33,
     "timeline": [
       {
@@ -870,9 +1159,30 @@
         "date": "2026-06-28",
         "opened": 1,
         "closed": 0
+      },
+      {
+        "date": "2026-06-29",
+        "opened": 2,
+        "closed": 0
       }
     ],
     "list": [
+      {
+        "number": 59,
+        "title": "Implementação da etapa de classificação semântica das proposições",
+        "state": "open",
+        "created_at": "2026-06-29T15:37:15+00:00",
+        "closed_at": null,
+        "labels": []
+      },
+      {
+        "number": 57,
+        "title": "feat: integração do Dashboard com a API real",
+        "state": "open",
+        "created_at": "2026-06-29T14:03:56+00:00",
+        "closed_at": null,
+        "labels": []
+      },
       {
         "number": 55,
         "title": "bug/chore: Recuperação e consolidação do layout claro e integração de gráficos (Recharts) no front-end",
@@ -1231,6 +1541,26 @@
   },
   "pull_requests": [
     {
+      "number": 58,
+      "title": "Integração dos novos endpoints na main",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/endpoints",
+      "author": "PajeMurici-dev",
+      "created_at": "2026-06-29T14:22:41+00:00",
+      "merged_at": "2026-06-29T14:29:30+00:00"
+    },
+    {
+      "number": 56,
+      "title": "Feat/integracao frontend api",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/integracao-frontend-api",
+      "author": "otaviotex",
+      "created_at": "2026-06-29T00:55:43+00:00",
+      "merged_at": null
+    },
+    {
       "number": 54,
       "title": "Feat/telas guardia recuperadas",
       "state": "closed",
@@ -1422,11 +1752,11 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 22,
-    "PajeMurici-dev": 10,
-    "gabiiverissimo-dev": 9,
-    "otaviotex": 2,
-    "AlmondHare": 2,
+    "claranunes22": 38,
+    "gabiiverissimo-dev": 12,
+    "PajeMurici-dev": 9,
+    "otaviotex": 8,
+    "AlmondHare": 3,
     "LucasNF-Dev": 1
   },
   "author_por_branch": {
@@ -1435,29 +1765,37 @@
       "estudos": 1,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
-      "feat/login-page": 11
+      "feat/login-page": 11,
+      "feat/login-redesign": 14,
+      "feat/nova-pagina-dashboard": 2
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
-      "main": 1,
+      "feat/design-updates": 1,
       "chore/remove-cadastro": 1,
       "feat/home-team": 1,
-      "feat/login-page": 3
+      "feat/login-page": 3,
+      "feat/login-redesign": 2,
+      "revert-48-feat/nova-pagina-dashboard": 1
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
-      "filtragem-B": 1
+      "feat/integracao-dashboard": 2,
+      "feat/integracao-frontend-api": 3,
+      "filtragem-B": 1,
+      "main": 1
+    },
+    "AlmondHare": {
+      "feat/design-updates": 1,
+      "filtragem-B": 2
     },
     "PajeMurici-dev": {
-      "feat/endpoints": 2,
       "release-1-integration": 4,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
       "chore/remove-cadastro": 1,
-      "feat/login-page": 1
-    },
-    "AlmondHare": {
-      "filtragem-B": 2
+      "feat/login-page": 1,
+      "feat/login-redesign": 1
     },
     "LucasNF-Dev": {
       "feature/estrutura-inicial": 1
