@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T23:04:55.857447+00:00",
+  "generated_at": "2026-06-29T23:37:25.266570+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -33,7 +33,7 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 67,
+    "total_commits": 66,
     "open_issues": 5,
     "closed_issues": 33,
     "contributors": 6,
@@ -267,26 +267,14 @@
     },
     "filtragem": {
       "branch": "filtragem",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
-    },
-    "filtragem-B": {
-      "branch": "filtragem-B",
-      "total_commits": 3,
+      "total_commits": 1,
       "commits_per_author": {
-        "otaviotex": 1,
-        "AlmondHare": 2
+        "otaviotex": 1
       },
       "commit_timeline": [
         {
           "date": "2026-05-15",
           "count": 1
-        },
-        {
-          "date": "2026-05-17",
-          "count": 2
         }
       ],
       "recent_commits": [
@@ -296,7 +284,22 @@
           "date": "2026-05-15T18:32:42+00:00",
           "message": "feat: implementa modulo de filtro de proposicoes legislativas",
           "char_count": 61
-        },
+        }
+      ]
+    },
+    "filtragem-B": {
+      "branch": "filtragem-B",
+      "total_commits": 2,
+      "commits_per_author": {
+        "AlmondHare": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-05-17",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
         {
           "sha": "eb96625",
           "author": "AlmondHare",
@@ -315,25 +318,10 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 1,
-      "commits_per_author": {
-        "AlmondHare": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-29",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "7b643cb",
-          "author": "AlmondHare",
-          "date": "2026-06-29T22:59:41+00:00",
-          "message": "Merge pull request #61 from unb-mds/feat/integracao-dashboard",
-          "char_count": 88
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "pages-metricas": {
       "branch": "pages-metricas",
@@ -1731,7 +1719,7 @@
     "gabiiverissimo-dev": 11,
     "PajeMurici-dev": 9,
     "otaviotex": 5,
-    "AlmondHare": 3,
+    "AlmondHare": 2,
     "LucasNF-Dev": 1
   },
   "author_por_branch": {
@@ -1755,11 +1743,10 @@
     "otaviotex": {
       "feat/crud-usuario": 1,
       "feat/integracao-frontend-api": 3,
-      "filtragem-B": 1
+      "filtragem": 1
     },
     "AlmondHare": {
-      "filtragem-B": 2,
-      "main": 1
+      "filtragem-B": 2
     },
     "PajeMurici-dev": {
       "release-1-integration": 4,
