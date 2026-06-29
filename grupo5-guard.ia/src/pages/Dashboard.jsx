@@ -40,6 +40,13 @@ export default function Dashboard() {
     setFiltros(prev => ({ ...prev, [name]: checked }));
   };
 
+  if (loading)
+    return (
+      <div className="ranking-page-layout loading-container">
+        <div className="spinner"></div>
+      </div>
+    );
+
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', minHeight: 'calc(100vh - 68px)' }}>
       
