@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import './Ranking.css';
+import './BarraPesquisa.css';
 
 // Definição de cores padronizadas para os principais partidos (Release 2)
 const CORES_PARTIDOS = {
@@ -22,6 +23,7 @@ const COR_PADRAO = '#8884d8';
 export default function Ranking() {
   const [rankingAutores, setRankingAutores] = useState([]);
   const [distribuicaoPartidaria, setDistribuicaoPartidaria] = useState([]);
+  const [termoBusca, setTermoBusca] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -47,7 +49,10 @@ export default function Ranking() {
         setLoading(false);
       });
   }, []);
-
+  const rankingFiltrado = rankingAutores.filter((auth) =>
+    auth.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
+    (auth.partido && auth.partido.toLowerCase().includes(termoBusca.toLowerCase()))
+  );
   // Dados fictícios estruturados idênticos à API para visualização imediata se a API estiver offline
   const distribuicaoExibicao = distribuicaoPartidaria.length > 0 ? distribuicaoPartidaria : [
     { partido: "PT", total: 2 },
@@ -74,7 +79,19 @@ export default function Ranking() {
       <div className="ranking-grid">
 
         <div className="ranking-card-box">
-          <h4>Ranking por parlamentar</h4>
+            {/* Header com flex para alinhar título e busca */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+              <h4 style={{ margin: 0 }}>Ranking por parlamentar</h4>
+
+              <div className="search-container" style={{ width: '250px', marginBottom: 0 }}>
+                <input
+                  type="text"
+                  placeholder="Buscar nome ou partido..."
+                  value={termoBusca}
+                  onChange={(e) => setTermoBusca(e.target.value)}
+                />
+              </div>
+            </div>
           <table className="ranking-minimal-table">
             <thead>
               <tr>
@@ -84,7 +101,7 @@ export default function Ranking() {
               </tr>
             </thead>
             <tbody>
-              {rankingAutores.map((auth, idx) => (
+              {rankingFiltrado.map((auth, idx) => (
                 <tr key={idx}>
                   <td style={{ fontWeight: idx < 3 ? 'bold' : 'normal', color: idx < 3 ? '#006b4f' : '#555' }}>#{idx + 1}</td>
                   <td style={{ fontWeight: '500' }}>{auth.nome}</td>

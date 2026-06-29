@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './BarraPesquisa.css';
 
 // Coordenadas geopolíticas oficiais simplificadas do IBGE para o contorno de cada estado
 const MAPA_BRASIL_PATHS = {
@@ -34,6 +35,8 @@ const MAPA_BRASIL_PATHS = {
 export default function Proposicoes() {
   const [estadoSelecionado, setEstadoSelecionado] = useState(null);
   const [estadoFiltroAtivo, setEstadoFiltroAtivo] = useState(null);
+  const [pesquisa, setPesquisa] = useState("");
+  const estadoExibicao = estadoSelecionado || estadoFiltroAtivo;
 
   // Banco de dados oficial de proposições por estado para a Release 2
   const dadosEstados = {
@@ -56,20 +59,30 @@ export default function Proposicoes() {
 
   const getCorEstado = (sigla) => {
     const info = dadosEstados[sigla];
-    if (!info) return '#e2e8f0'; 
-    if (info.qtd >= 2) return '#006b4f'; 
-    return '#4db6ac'; 
+    if (!info) return '#e2e8f0';
+    if (info.qtd >= 2) return '#006b4f';
+    return '#4db6ac';
   };
 
-  const proposicoesFiltradas = estadoFiltroAtivo
-    ? listaProposicoes.filter(p => p.estado === estadoFiltroAtivo)
-    : listaProposicoes;
+  const proposicoesFiltradas = listaProposicoes.filter((p) => {
+    const correspondeEstado =
+      !estadoFiltroAtivo || p.estado === estadoFiltroAtivo;
 
-  const estadoExibicao = estadoSelecionado || estadoFiltroAtivo;
+    const termo = pesquisa.toLowerCase();
 
+    const correspondePesquisa =
+      p.autor.toLowerCase().includes(termo) ||
+      p.partido.toLowerCase().includes(termo) ||
+      p.casa.toLowerCase().includes(termo) ||
+      p.id.toLowerCase().includes(termo) ||
+      p.estado.toLowerCase().includes(termo) ||
+      p.categoria.toLowerCase().includes(termo);
+
+    return correspondeEstado && correspondePesquisa;
+  });
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 24px' }}>
-      
+
       <header style={{ marginBottom: '32px' }}>
         <h2 style={{ fontSize: '28px', fontWeight: '800', margin: '0 0 6px 0', letterSpacing: '-0.5px', color: '#1e293b' }}>Distribuição Geográfica</h2>
         <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '15px' }}>Passe o mouse para inspecionar ou clique em um estado para filtrar as auditorias.</p>
@@ -77,7 +90,7 @@ export default function Proposicoes() {
 
       {/* Grid do Painel de Mapas */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '32px', marginBottom: '40px' }}>
-        
+
         {/* Lado Esquerdo: O Mapa Político Real do Brasil */}
         <div style={{ background: 'var(--surface)', padding: '24px', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow)', border: '1px solid var(--border)', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '480px' }}>
           <svg viewBox="0 0 450 550" style={{ width: '100%', maxHeight: '440px' }}>
@@ -90,8 +103,8 @@ export default function Proposicoes() {
                   fill={getCorEstado(sigla)}
                   stroke="#ffffff"
                   strokeWidth={isActiveFilter ? 2.5 : 1.2}
-                  style={{ 
-                    cursor: 'pointer', 
+                  style={{
+                    cursor: 'pointer',
                     transition: 'all 0.15s ease',
                     filter: isActiveFilter ? 'drop-shadow(0px 4px 8px rgba(0,0,0,0.25))' : 'none',
                     opacity: estadoFiltroAtivo && !isActiveFilter ? 0.4 : 1
@@ -122,7 +135,7 @@ export default function Proposicoes() {
                 </span>
               </div>
               {estadoFiltroAtivo && (
-                <button 
+                <button
                   onClick={() => setEstadoFiltroAtivo(null)}
                   style={{ marginTop: '20px', background: '#fee2e2', border: 'none', color: '#ef4444', padding: '8px 16px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', width: '100%' }}
                 >
@@ -140,8 +153,24 @@ export default function Proposicoes() {
         </div>
       </div>
 
+
+
       {/* Tabela de Dados */}
-      <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '16px', color: '#1e293b' }}>Proposições Coletadas</h3>
+      {/* Título e Barra de Pesquisa na mesma linha */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#1e293b', margin: 0 }}>
+          Proposições Coletadas
+        </h3>
+
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Pesquisar por autor, partido, categoria..."
+            value={pesquisa}
+            onChange={(e) => setPesquisa(e.target.value)}
+          />
+        </div>
+      </div>
       <div style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow)', border: '1px solid var(--border)', overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
