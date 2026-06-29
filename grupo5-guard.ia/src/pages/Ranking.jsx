@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import './Ranking.css';
+import './BarraPesquisa.css';
 
 // Definição de cores padronizadas para os principais partidos (Release 2)
 const CORES_PARTIDOS = {
@@ -22,11 +23,12 @@ const COR_PADRAO = '#8884d8';
 export default function Ranking() {
   const [rankingAutores, setRankingAutores] = useState([]);
   const [distribuicaoPartidaria, setDistribuicaoPartidaria] = useState([]);
+  const [termoBusca, setTermoBusca] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    
+
     // Rota da API da Release 2: Ranking de Autores
     fetch('http://localhost:8000/api/metrics/ranking-parlamentares')
       .then(res => res.json())
@@ -47,7 +49,10 @@ export default function Ranking() {
         setLoading(false);
       });
   }, []);
-
+  const rankingFiltrado = rankingAutores.filter((auth) =>
+    auth.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
+    (auth.partido && auth.partido.toLowerCase().includes(termoBusca.toLowerCase()))
+  );
   // Dados fictícios estruturados idênticos à API para visualização imediata se a API estiver offline
   const distribuicaoExibicao = distribuicaoPartidaria.length > 0 ? distribuicaoPartidaria : [
     { partido: "PT", total: 2 },
@@ -63,15 +68,30 @@ export default function Ranking() {
     color: CORES_PARTIDOS[entry.partido.toUpperCase()] || COR_PADRAO
   }));
 
-  if (loading) return <div className="ranking-page-layout"><p>Carregando métricas da Release 2...</p></div>;
-
+  if (loading)
+    return (
+      <div className="ranking-page-layout loading-container">
+        <div className="spinner"></div>
+      </div>
+    );
   return (
     <div className="ranking-page-layout">
       <div className="ranking-grid">
-        
-        {/* Lado Esquerdo: Tabela do Ranking (Inalterado) */}
+
         <div className="ranking-card-box">
-          <h4>Ranking por parlamentar</h4>
+            {/* Header com flex para alinhar título e busca */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+              <h4 style={{ margin: 0 }}>Ranking por parlamentar</h4>
+
+              <div className="search-container" style={{ width: '250px', marginBottom: 0 }}>
+                <input
+                  type="text"
+                  placeholder="Buscar nome ou partido..."
+                  value={termoBusca}
+                  onChange={(e) => setTermoBusca(e.target.value)}
+                />
+              </div>
+            </div>
           <table className="ranking-minimal-table">
             <thead>
               <tr>
@@ -81,7 +101,7 @@ export default function Ranking() {
               </tr>
             </thead>
             <tbody>
-              {rankingAutores.map((auth, idx) => (
+              {rankingFiltrado.map((auth, idx) => (
                 <tr key={idx}>
                   <td style={{ fontWeight: idx < 3 ? 'bold' : 'normal', color: idx < 3 ? '#006b4f' : '#555' }}>#{idx + 1}</td>
                   <td style={{ fontWeight: '500' }}>{auth.nome}</td>
@@ -95,7 +115,7 @@ export default function Ranking() {
         {/* Lado Direito: Gráfico de Pizza Dinâmico (MELHORADO) */}
         <div className="ranking-card-box center-content">
           <h4>Distribuição partidária das proposições</h4>
-          
+
           <div className="pie-chart-responsive-container" style={{ width: '100%', height: '350px' }}>
             <ResponsiveContainer>
               <PieChart>
@@ -115,18 +135,18 @@ export default function Ranking() {
                     <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
                   ))}
                 </Pie>
-                
+
                 {/* Legenda automática e interativa na lateral */}
-                <Legend 
-                  layout="vertical" 
-                  align="right" 
-                  verticalAlign="middle" 
+                <Legend
+                  layout="vertical"
+                  align="right"
+                  verticalAlign="middle"
                   iconType="circle"
                   wrapperStyle={{ fontSize: '13px', paddingLeft: '20px' }}
                 />
-                
+
                 {/* Tooltip ao passar o mouse sobre a fatia */}
-                <Tooltip 
+                <Tooltip
                   contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
                   formatter={(value, name) => [`${value} proposições`, `Partido: ${name.toUpperCase()}`]}
                 />

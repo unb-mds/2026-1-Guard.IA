@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T22:29:03.459964+00:00",
+  "generated_at": "2026-06-29T22:40:29.606941+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -1540,6 +1540,16 @@
     ]
   },
   "pull_requests": [
+    {
+      "number": 60,
+      "title": "Feat/design updates",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/design-updates",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-06-29T22:29:10+00:00",
+      "merged_at": "2026-06-29T22:35:09+00:00"
+    },
     {
       "number": 58,
       "title": "Integração dos novos endpoints na main",
