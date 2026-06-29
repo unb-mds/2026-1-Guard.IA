@@ -33,7 +33,7 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 69,
+    "total_commits": 71,
     "open_issues": 5,
     "closed_issues": 33,
     "contributors": 6,
@@ -189,10 +189,33 @@
     },
     "feat/design-updates": {
       "branch": "feat/design-updates",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 2,
+      "commits_per_author": {
+        "gabiiverissimo-dev": 1,
+        "AlmondHare": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-29",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "b5e7ebd",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-29T15:01:19+00:00",
+          "message": "feat: add loading spinner and team section",
+          "char_count": 42
+        },
+        {
+          "sha": "aed005a",
+          "author": "AlmondHare",
+          "date": "2026-06-29T20:41:27+00:00",
+          "message": "feat/adiciona funcionalidade barra de pesquisa nas páginas de proposições em ranking",
+          "char_count": 84
+        }
+      ]
     },
     "feat/endpoints": {
       "branch": "feat/endpoints",
@@ -349,11 +372,11 @@
       ],
       "recent_commits": [
         {
-          "sha": "99e5958",
+          "sha": "c9a8a7b",
           "author": "otaviotex",
-          "date": "2026-06-29T22:35:09+00:00",
-          "message": "Merge pull request #60 from unb-mds/feat/design-updates",
-          "char_count": 76
+          "date": "2026-06-29T14:29:29+00:00",
+          "message": "Merge pull request #58 from unb-mds/feat/endpoints",
+          "char_count": 90
         }
       ]
     },
@@ -1740,10 +1763,10 @@
   ],
   "all_authors": {
     "claranunes22": 38,
-    "gabiiverissimo-dev": 11,
+    "gabiiverissimo-dev": 12,
     "PajeMurici-dev": 9,
     "otaviotex": 8,
-    "AlmondHare": 2,
+    "AlmondHare": 3,
     "LucasNF-Dev": 1
   },
   "author_por_branch": {
@@ -1758,6 +1781,7 @@
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
+      "feat/design-updates": 1,
       "chore/remove-cadastro": 1,
       "feat/home-team": 1,
       "feat/login-page": 3,
@@ -1772,6 +1796,7 @@
       "main": 1
     },
     "AlmondHare": {
+      "feat/design-updates": 1,
       "filtragem-B": 2
     },
     "PajeMurici-dev": {
