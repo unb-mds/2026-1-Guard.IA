@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T23:47:47.043604+00:00",
+  "generated_at": "2026-06-29T00:53:49.725366+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -9,8 +9,8 @@
     "feat/crud-usuario",
     "feat/endpoints",
     "feat/home-page",
+    "feat/integracao-frontend-api",
     "feat/login-redesign",
-    "feat/nova-pagina-dashboard",
     "feat/telas-guardia-recuperadas",
     "feat/teste-pipeline-unificado",
     "filtragem",
@@ -18,7 +18,6 @@
     "main",
     "pages-metricas",
     "release-1-integration",
-    "revert-48-feat/nova-pagina-dashboard",
     "sprint-04-dashboard"
   ],
   "branches_deletadas": [
@@ -27,16 +26,18 @@
     "chore/remove-cadastro",
     "feat/home-team",
     "feat/login-page",
-    "feature/estrutura-inicial"
+    "feat/nova-pagina-dashboard",
+    "feature/estrutura-inicial",
+    "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 46,
+    "total_commits": 51,
     "open_issues": 3,
     "closed_issues": 33,
     "contributors": 6,
     "open_prs": 1,
-    "branches_ativas": 18,
-    "branches_deletadas": 6
+    "branches_ativas": 17,
+    "branches_deletadas": 8
   },
   "branches_data": {
     "dev-projeto": {
@@ -220,15 +221,44 @@
       "commit_timeline": [],
       "recent_commits": []
     },
+    "feat/integracao-frontend-api": {
+      "branch": "feat/integracao-frontend-api",
+      "total_commits": 3,
+      "commits_per_author": {
+        "otaviotex": 3
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-29",
+          "count": 3
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "e0e914e",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:39:08+00:00",
+          "message": "feat(frontend): add camada de serviço para integração com a API",
+          "char_count": 63
+        },
+        {
+          "sha": "8ab7ea1",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:43:06+00:00",
+          "message": "feat(frontend): integrar página de filtros com a API real",
+          "char_count": 57
+        },
+        {
+          "sha": "dbca0b8",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:47:04+00:00",
+          "message": "chore(frontend): add .env ao .gitignore",
+          "char_count": 39
+        }
+      ]
+    },
     "feat/login-redesign": {
       "branch": "feat/login-redesign",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
-    },
-    "feat/nova-pagina-dashboard": {
-      "branch": "feat/nova-pagina-dashboard",
       "total_commits": 0,
       "commits_per_author": {},
       "commit_timeline": [],
@@ -298,25 +328,10 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 1,
-      "commits_per_author": {
-        "gabiiverissimo-dev": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-28",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "d8527b1",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-28T23:41:58+00:00",
-          "message": "Merge pull request #54 from unb-mds/feat/telas-guardia-recuperadas",
-          "char_count": 325
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "pages-metricas": {
       "branch": "pages-metricas",
@@ -371,13 +386,6 @@
           "char_count": 54
         }
       ]
-    },
-    "revert-48-feat/nova-pagina-dashboard": {
-      "branch": "revert-48-feat/nova-pagina-dashboard",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
     },
     "sprint-04-dashboard": {
       "branch": "sprint-04-dashboard",
@@ -698,6 +706,40 @@
         }
       ]
     },
+    "feat/nova-pagina-dashboard": {
+      "branch": "feat/nova-pagina-dashboard",
+      "status": "deleted",
+      "merged_into": "main",
+      "merged_at": "2026-06-26T21:06:41+00:00",
+      "pr_number": 51,
+      "pr_title": "versão mais atual",
+      "total_commits": 2,
+      "commits_per_author": {
+        "claranunes22": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "16ae2db",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:00:54+00:00",
+          "message": "chore: comenta de forma correta arquivo obsoleto de usuarios",
+          "char_count": 60
+        },
+        {
+          "sha": "06d08ae",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:03:42+00:00",
+          "message": "chore: remove aspas invalidas e comenta usuarios",
+          "char_count": 48
+        }
+      ]
+    },
     "feature/estrutura-inicial": {
       "branch": "feature/estrutura-inicial",
       "status": "deleted",
@@ -722,6 +764,33 @@
           "date": "2026-04-18T18:38:10+00:00",
           "message": "Docs: Adicionando PDF de arquitetura e estruturando pastas",
           "char_count": 58
+        }
+      ]
+    },
+    "revert-48-feat/nova-pagina-dashboard": {
+      "branch": "revert-48-feat/nova-pagina-dashboard",
+      "status": "deleted",
+      "merged_into": "main",
+      "merged_at": "2026-06-26T18:15:17+00:00",
+      "pr_number": 50,
+      "pr_title": "Revert \"Feat/nova pagina dashboard\"",
+      "total_commits": 1,
+      "commits_per_author": {
+        "gabiiverissimo-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "341c314",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-26T18:14:57+00:00",
+          "message": "Revert \"Feat/nova pagina dashboard\"",
+          "char_count": 35
         }
       ]
     }
@@ -1422,10 +1491,10 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 22,
+    "claranunes22": 24,
     "PajeMurici-dev": 10,
     "gabiiverissimo-dev": 9,
-    "otaviotex": 2,
+    "otaviotex": 5,
     "AlmondHare": 2,
     "LucasNF-Dev": 1
   },
@@ -1435,17 +1504,19 @@
       "estudos": 1,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
-      "feat/login-page": 11
+      "feat/login-page": 11,
+      "feat/nova-pagina-dashboard": 2
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
-      "main": 1,
       "chore/remove-cadastro": 1,
       "feat/home-team": 1,
-      "feat/login-page": 3
+      "feat/login-page": 3,
+      "revert-48-feat/nova-pagina-dashboard": 1
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
+      "feat/integracao-frontend-api": 3,
       "filtragem-B": 1
     },
     "PajeMurici-dev": {
