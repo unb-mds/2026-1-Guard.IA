@@ -34,18 +34,15 @@ def descobrir_branches(repo):
 
 def _commits_exclusivos(repo, branch_name):
     try:
-        branch_obj = repo.get_branch(branch_name)
-        head_sha   = branch_obj.commit.sha
+        if branch_name == "main":
+            commits_raw = list(repo.get_commits(sha="main"))
+            return commits_raw
 
-        try:
-            comp     = repo.compare("main", branch_name)
-            base_sha = comp.merge_base_commit.sha
-            commits_raw = list(repo.compare(base_sha, head_sha).commits)
-        except Exception:
-            commits_raw = list(repo.get_commits(sha=branch_name))
+        comp = repo.compare("main", branch_name)
+        commits_raw = list(comp.commits)
 
     except Exception as e:
-        print(f"  Erro ao coletar commits exclusivos de '{branch_name}': {e}")
+        print(f"  Erro ao coletar commits de '{branch_name}': {e}")
         commits_raw = []
 
     return commits_raw
