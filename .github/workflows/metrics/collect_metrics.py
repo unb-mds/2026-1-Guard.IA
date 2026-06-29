@@ -37,25 +37,11 @@ def _commits_exclusivos(repo, branch_name):
         branch_obj = repo.get_branch(branch_name)
         head_sha   = branch_obj.commit.sha
 
-        all_branches = [b.name for b in repo.get_branches()
-                        if b.name != branch_name and b.name not in BRANCHES_IGNORADAS]
-        best_base_sha = None
-        best_ahead    = None
-
-        for other in all_branches:
-            try:
-                comp = repo.compare(other, branch_name)
-                ahead = comp.ahead_by
-                if best_ahead is None or ahead < best_ahead:
-                    best_ahead    = ahead
-                    best_base_sha = comp.merge_base_commit.sha
-            except Exception:
-                continue
-
-        if best_base_sha:
-            comp = repo.compare(best_base_sha, head_sha)
-            commits_raw = list(comp.commits)
-        else:
+        try:
+            comp     = repo.compare("main", branch_name)
+            base_sha = comp.merge_base_commit.sha
+            commits_raw = list(repo.compare(base_sha, head_sha).commits)
+        except Exception:
             commits_raw = list(repo.get_commits(sha=branch_name))
 
     except Exception as e:
@@ -64,15 +50,19 @@ def _commits_exclusivos(repo, branch_name):
 
     return commits_raw
 
-
-def _processar_commits(commits_raw):
+def _processar_commits(commits_raw, shas_vistos=None):
+    if shas_vistos is None:
+        shas_vistos = set()
     commits            = []
     commits_per_author = {}
     commits_per_day    = {}
 
     for c in commits_raw:
-        login = (c.author.login if c.author else None) or c.commit.author.name or "unknown"
+        if c.sha in shas_vistos:
+            continue
+        shas_vistos.add(c.sha)
 
+        login = (c.author.login if c.author else None) or c.commit.author.name or "unknown"
         if login in AUTORES_IGNORADOS:
             continue
 
@@ -96,10 +86,9 @@ def _processar_commits(commits_raw):
     ]
     return commits, commits_per_author, commit_timeline
 
-
-def collect_branch(repo, branch_name):
+def collect_branch(repo, branch_name, shas_vistos=None):
     commits_raw = _commits_exclusivos(repo, branch_name)
-    commits, commits_per_author, commit_timeline = _processar_commits(commits_raw)
+    commits, commits_per_author, commit_timeline = _processar_commits(commits_raw, shas_vistos)
 
     return {
         "branch":             branch_name,
@@ -221,9 +210,10 @@ def main():
     branches_ativas, branches_deletadas_set = descobrir_branches(repo)
     branches_data = {}
 
+    shas_vistos = set()
     for branch_name in sorted(branches_ativas):
         print(f" Coletando branch ativa '{branch_name}'…")
-        branches_data[branch_name] = collect_branch(repo, branch_name)
+        branches_data[branch_name] = collect_branch(repo, branch_name, shas_vistos)
 
     prs_merged = {}
     for pr in repo.get_pulls(state="closed"):
