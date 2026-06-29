@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T22:40:29.606941+00:00",
+  "generated_at": "2026-06-29T23:04:19.915597+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -33,7 +33,7 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 71,
+    "total_commits": 67,
     "open_issues": 5,
     "closed_issues": 33,
     "contributors": 6,
@@ -189,33 +189,10 @@
     },
     "feat/design-updates": {
       "branch": "feat/design-updates",
-      "total_commits": 2,
-      "commits_per_author": {
-        "gabiiverissimo-dev": 1,
-        "AlmondHare": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-29",
-          "count": 2
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "b5e7ebd",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-29T15:01:19+00:00",
-          "message": "feat: add loading spinner and team section",
-          "char_count": 42
-        },
-        {
-          "sha": "aed005a",
-          "author": "AlmondHare",
-          "date": "2026-06-29T20:41:27+00:00",
-          "message": "feat/adiciona funcionalidade barra de pesquisa nas páginas de proposições em ranking",
-          "char_count": 84
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "feat/endpoints": {
       "branch": "feat/endpoints",
@@ -233,32 +210,10 @@
     },
     "feat/integracao-dashboard": {
       "branch": "feat/integracao-dashboard",
-      "total_commits": 2,
-      "commits_per_author": {
-        "otaviotex": 2
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-29",
-          "count": 2
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "af46a21",
-          "author": "otaviotex",
-          "date": "2026-06-29T14:40:08+00:00",
-          "message": "feat(frontend): integrar Dashboard com dados reais da API",
-          "char_count": 57
-        },
-        {
-          "sha": "38a0c98",
-          "author": "otaviotex",
-          "date": "2026-06-29T22:20:49+00:00",
-          "message": "feat(frontend): add getEvolucao() ao serviço de API",
-          "char_count": 51
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "feat/integracao-frontend-api": {
       "branch": "feat/integracao-frontend-api",
@@ -362,7 +317,7 @@
       "branch": "main",
       "total_commits": 1,
       "commits_per_author": {
-        "otaviotex": 1
+        "AlmondHare": 1
       },
       "commit_timeline": [
         {
@@ -372,11 +327,11 @@
       ],
       "recent_commits": [
         {
-          "sha": "c9a8a7b",
-          "author": "otaviotex",
-          "date": "2026-06-29T14:29:29+00:00",
-          "message": "Merge pull request #58 from unb-mds/feat/endpoints",
-          "char_count": 90
+          "sha": "7b643cb",
+          "author": "AlmondHare",
+          "date": "2026-06-29T22:59:41+00:00",
+          "message": "Merge pull request #61 from unb-mds/feat/integracao-dashboard",
+          "char_count": 88
         }
       ]
     },
@@ -1541,6 +1496,16 @@
   },
   "pull_requests": [
     {
+      "number": 61,
+      "title": "Feat/integracao dashboard",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/integracao-dashboard",
+      "author": "otaviotex",
+      "created_at": "2026-06-29T22:41:52+00:00",
+      "merged_at": "2026-06-29T22:59:41+00:00"
+    },
+    {
       "number": 60,
       "title": "Feat/design updates",
       "state": "closed",
@@ -1763,9 +1728,9 @@
   ],
   "all_authors": {
     "claranunes22": 38,
-    "gabiiverissimo-dev": 12,
+    "gabiiverissimo-dev": 11,
     "PajeMurici-dev": 9,
-    "otaviotex": 8,
+    "otaviotex": 5,
     "AlmondHare": 3,
     "LucasNF-Dev": 1
   },
@@ -1781,7 +1746,6 @@
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
-      "feat/design-updates": 1,
       "chore/remove-cadastro": 1,
       "feat/home-team": 1,
       "feat/login-page": 3,
@@ -1790,14 +1754,12 @@
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
-      "feat/integracao-dashboard": 2,
       "feat/integracao-frontend-api": 3,
-      "filtragem-B": 1,
-      "main": 1
+      "filtragem-B": 1
     },
     "AlmondHare": {
-      "feat/design-updates": 1,
-      "filtragem-B": 2
+      "filtragem-B": 2,
+      "main": 1
     },
     "PajeMurici-dev": {
       "release-1-integration": 4,
