@@ -26,7 +26,7 @@ export default function Ranking() {
 
   useEffect(() => {
     setLoading(true);
-    
+
     // Rota da API da Release 2: Ranking de Autores
     fetch('http://localhost:8000/api/metrics/ranking-parlamentares')
       .then(res => res.json())
@@ -63,13 +63,16 @@ export default function Ranking() {
     color: CORES_PARTIDOS[entry.partido.toUpperCase()] || COR_PADRAO
   }));
 
-  if (loading) return <div className="ranking-page-layout"><p>Carregando métricas da Release 2...</p></div>;
-
+  if (loading)
+    return (
+      <div className="ranking-page-layout loading-container">
+        <div className="spinner"></div>
+      </div>
+    );
   return (
     <div className="ranking-page-layout">
       <div className="ranking-grid">
-        
-        {/* Lado Esquerdo: Tabela do Ranking (Inalterado) */}
+
         <div className="ranking-card-box">
           <h4>Ranking por parlamentar</h4>
           <table className="ranking-minimal-table">
@@ -95,7 +98,7 @@ export default function Ranking() {
         {/* Lado Direito: Gráfico de Pizza Dinâmico (MELHORADO) */}
         <div className="ranking-card-box center-content">
           <h4>Distribuição partidária das proposições</h4>
-          
+
           <div className="pie-chart-responsive-container" style={{ width: '100%', height: '350px' }}>
             <ResponsiveContainer>
               <PieChart>
@@ -115,18 +118,18 @@ export default function Ranking() {
                     <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
                   ))}
                 </Pie>
-                
+
                 {/* Legenda automática e interativa na lateral */}
-                <Legend 
-                  layout="vertical" 
-                  align="right" 
-                  verticalAlign="middle" 
+                <Legend
+                  layout="vertical"
+                  align="right"
+                  verticalAlign="middle"
                   iconType="circle"
                   wrapperStyle={{ fontSize: '13px', paddingLeft: '20px' }}
                 />
-                
+
                 {/* Tooltip ao passar o mouse sobre a fatia */}
-                <Tooltip 
+                <Tooltip
                   contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
                   formatter={(value, name) => [`${value} proposições`, `Partido: ${name.toUpperCase()}`]}
                 />
