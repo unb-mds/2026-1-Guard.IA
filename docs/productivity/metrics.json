@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T23:20:21.915310+00:00",
+  "generated_at": "2026-06-28T23:47:47.043604+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -11,6 +11,7 @@
     "feat/home-page",
     "feat/login-redesign",
     "feat/nova-pagina-dashboard",
+    "feat/telas-guardia-recuperadas",
     "feat/teste-pipeline-unificado",
     "filtragem",
     "filtragem-B",
@@ -29,12 +30,12 @@
     "feature/estrutura-inicial"
   ],
   "summary": {
-    "total_commits": 45,
-    "open_issues": 1,
+    "total_commits": 46,
+    "open_issues": 3,
     "closed_issues": 33,
     "contributors": 6,
     "open_prs": 1,
-    "branches_ativas": 17,
+    "branches_ativas": 18,
     "branches_deletadas": 6
   },
   "branches_data": {
@@ -233,6 +234,13 @@
       "commit_timeline": [],
       "recent_commits": []
     },
+    "feat/telas-guardia-recuperadas": {
+      "branch": "feat/telas-guardia-recuperadas",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
     "feat/teste-pipeline-unificado": {
       "branch": "feat/teste-pipeline-unificado",
       "total_commits": 0,
@@ -290,10 +298,25 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 1,
+      "commits_per_author": {
+        "gabiiverissimo-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-28",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "d8527b1",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-28T23:41:58+00:00",
+          "message": "Merge pull request #54 from unb-mds/feat/telas-guardia-recuperadas",
+          "char_count": 325
+        }
+      ]
     },
     "pages-metricas": {
       "branch": "pages-metricas",
@@ -704,8 +727,8 @@
     }
   },
   "issues": {
-    "total": 34,
-    "open": 1,
+    "total": 36,
+    "open": 3,
     "closed": 33,
     "timeline": [
       {
@@ -837,9 +860,41 @@
         "date": "2026-06-26",
         "opened": 2,
         "closed": 2
+      },
+      {
+        "date": "2026-06-27",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-06-28",
+        "opened": 1,
+        "closed": 0
       }
     ],
     "list": [
+      {
+        "number": 55,
+        "title": "bug/chore: Recuperação e consolidação do layout claro e integração de gráficos (Recharts) no front-end",
+        "state": "open",
+        "created_at": "2026-06-28T20:02:44+00:00",
+        "closed_at": null,
+        "labels": [
+          "bug",
+          "frontend"
+        ]
+      },
+      {
+        "number": 53,
+        "title": "Retirada do CRUD de Usuário e Reorganização do Documento GEMINI.MD",
+        "state": "open",
+        "created_at": "2026-06-27T12:10:32+00:00",
+        "closed_at": null,
+        "labels": [
+          "documentation",
+          "chore"
+        ]
+      },
       {
         "number": 52,
         "title": "Correção do update metrics na main",
@@ -1176,6 +1231,16 @@
   },
   "pull_requests": [
     {
+      "number": 54,
+      "title": "Feat/telas guardia recuperadas",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/telas-guardia-recuperadas",
+      "author": "claranunes22",
+      "created_at": "2026-06-28T20:00:57+00:00",
+      "merged_at": "2026-06-28T23:41:58+00:00"
+    },
+    {
       "number": 51,
       "title": "versão mais atual",
       "state": "closed",
@@ -1359,7 +1424,7 @@
   "all_authors": {
     "claranunes22": 22,
     "PajeMurici-dev": 10,
-    "gabiiverissimo-dev": 8,
+    "gabiiverissimo-dev": 9,
     "otaviotex": 2,
     "AlmondHare": 2,
     "LucasNF-Dev": 1
@@ -1374,6 +1439,7 @@
     },
     "gabiiverissimo-dev": {
       "dev-projeto": 3,
+      "main": 1,
       "chore/remove-cadastro": 1,
       "feat/home-team": 1,
       "feat/login-page": 3
