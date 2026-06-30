@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T00:28:21.752450+00:00",
+  "generated_at": "2026-06-30T01:27:20.579080+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -34,11 +34,11 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 347,
+    "total_commits": 349,
     "open_issues": 5,
     "closed_issues": 33,
     "contributors": 8,
-    "open_prs": 2,
+    "open_prs": 1,
     "branches_ativas": 19,
     "branches_deletadas": 9
   },
@@ -153,25 +153,10 @@
     },
     "feat/integracao-dashboard-2": {
       "branch": "feat/integracao-dashboard-2",
-      "total_commits": 1,
-      "commits_per_author": {
-        "otaviotex": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-29",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "3f71ac6",
-          "author": "otaviotex",
-          "date": "2026-06-29T23:51:36+00:00",
-          "message": "feat(frontend): Correcao de arquivo 'Dashboard.jsx'.",
-          "char_count": 52
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "feat/integracao-frontend-api": {
       "branch": "feat/integracao-frontend-api",
@@ -276,11 +261,11 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 288,
+      "total_commits": 291,
       "commits_per_author": {
-        "PajeMurici-dev": 55,
+        "PajeMurici-dev": 57,
+        "otaviotex": 18,
         "AlmondHare": 11,
-        "otaviotex": 17,
         "gabiiverissimo-dev": 36,
         "claranunes22": 118,
         "lucasnferreiradev-lang": 30,
@@ -438,20 +423,41 @@
         },
         {
           "date": "2026-06-29",
-          "count": 12
+          "count": 13
         },
         {
           "date": "2026-06-30",
-          "count": 1
+          "count": 3
         }
       ],
       "recent_commits": [
+        {
+          "sha": "d1a1fb1",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-30T01:26:24+00:00",
+          "message": "Merge pull request #62 from unb-mds/feat/integracao-dashboard-2",
+          "char_count": 117
+        },
+        {
+          "sha": "2ca3b7e",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-30T00:41:01+00:00",
+          "message": "Merge branch 'main' into feat/integracao-dashboard-2",
+          "char_count": 52
+        },
         {
           "sha": "f37c98c",
           "author": "PajeMurici-dev",
           "date": "2026-06-30T00:26:59+00:00",
           "message": "Fix: corrige o update metrics",
           "char_count": 29
+        },
+        {
+          "sha": "3f71ac6",
+          "author": "otaviotex",
+          "date": "2026-06-29T23:51:36+00:00",
+          "message": "feat(frontend): Correcao de arquivo 'Dashboard.jsx'.",
+          "char_count": 52
         },
         {
           "sha": "8be06cc",
@@ -704,27 +710,6 @@
           "date": "2026-06-17T15:59:49+00:00",
           "message": "Merge branch 'main' into release-1-integration",
           "char_count": 46
-        },
-        {
-          "sha": "77386f4",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-10T01:58:59+00:00",
-          "message": "Merge branch 'release-1-integration' of https://github.com/unb-mds/2026-1-Guard.IA into release-1-integration",
-          "char_count": 109
-        },
-        {
-          "sha": "15449b0",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-10T01:58:20+00:00",
-          "message": "fix: atualiza o clllect metrics para ignorar o bot na pagina de produtividade",
-          "char_count": 77
-        },
-        {
-          "sha": "d2604a4",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-10T00:24:48+00:00",
-          "message": "fix: corrige o update-metrics para atualizar o json",
-          "char_count": 51
         }
       ]
     },
@@ -1891,12 +1876,12 @@
     {
       "number": 62,
       "title": "feat(frontend): Correcao de arquivo 'Dashboard.jsx'.",
-      "state": "open",
+      "state": "closed",
       "base": "main",
       "head": "feat/integracao-dashboard-2",
       "author": "otaviotex",
       "created_at": "2026-06-29T23:52:53+00:00",
-      "merged_at": null
+      "merged_at": "2026-06-30T01:26:24+00:00"
     },
     {
       "number": 61,
@@ -2131,7 +2116,7 @@
   ],
   "all_authors": {
     "claranunes22": 151,
-    "PajeMurici-dev": 64,
+    "PajeMurici-dev": 66,
     "gabiiverissimo-dev": 44,
     "lucasnferreiradev-lang": 30,
     "otaviotex": 23,
@@ -2152,17 +2137,16 @@
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
-      "feat/integracao-dashboard-2": 1,
       "feat/integracao-frontend-api": 3,
       "filtragem": 1,
-      "main": 17
+      "main": 18
     },
     "AlmondHare": {
       "filtragem-B": 2,
       "main": 11
     },
     "PajeMurici-dev": {
-      "main": 55,
+      "main": 57,
       "release-1-integration": 4,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
