@@ -3,6 +3,10 @@ import json
 import time
 from pathlib import Path
 
+
+DETAILS_URL = "https://dadosabertos.camara.leg.br/api/v2/proposicoes/{id}/autores"
+DEPUTADO_URL = "https://dadosabertos.camara.leg.br/api/v2/deputados/{id}"
+
 # Configurações e Caminhos
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = BASE_DIR / "data"
@@ -74,6 +78,60 @@ def format_proposicao(prop, detalhes):
         "data_apresentacao": prop.get("dataApresentacao", "")
     }
 
+
+def buscar_detalhes_proposicao(proposicao_id):
+    detalhes_placeholder = {
+        "autor": "A pesquisar",
+        "partido": "A pesquisar",
+        "estado": "A pesquisar"
+    }
+
+    try:
+        response = requests.get(
+            DETAILS_URL.format(id=proposicao_id),
+            headers=HEADERS,
+            timeout=30,
+        )
+        response.raise_for_status()
+        dados = response.json().get("dados", [])
+        if not dados:
+            return detalhes_placeholder
+
+        autor = dados[0]
+        nome_autor = autor.get("nome") or autor.get("nomeAutor")
+        partido = autor.get("siglaPartido")
+        estado = autor.get("siglaUf")
+
+        if not partido and not estado and autor.get("uri"):
+            uri = autor.get("uri") or ""
+            if "/deputados/" in uri:
+                deputado_id = uri.rstrip("/").split("/")[-1]
+                try:
+                    dep_response = requests.get(
+                        DEPUTADO_URL.format(id=deputado_id),
+                        headers=HEADERS,
+                        timeout=30,
+                    )
+                    dep_response.raise_for_status()
+                    dep_data = dep_response.json().get("dados", {})
+                    ultimo_status = dep_data.get("ultimoStatus", {})
+                    partido = ultimo_status.get("siglaPartido") or partido
+                    estado = ultimo_status.get("siglaUf") or estado
+                    if not nome_autor:
+                        nome_autor = ultimo_status.get("nome") or dep_data.get("nomeCivil")
+                except Exception:
+                    pass
+
+        return {
+            "autor": nome_autor or "A pesquisar",
+            "partido": partido or "A pesquisar",
+            "estado": estado or "A pesquisar",
+        }
+    except Exception as e:
+        print(f"⚠️ Não foi possível buscar detalhes da proposição {proposicao_id}: {e}")
+        return detalhes_placeholder
+
+
 def coletar():
     checkpoint = load_checkpoint()
     data_inicio = checkpoint["last_date"]
@@ -118,13 +176,8 @@ def coletar():
                 if id_ext in ids_existentes:
                     continue
 
-                detalhes_placeholder = {
-                    "autor": "A pesquisar",
-                    "partido": "A pesquisar",
-                    "estado": "A pesquisar"
-                }
-
-                proposicao_formatada = format_proposicao(prop, detalhes_placeholder)
+                detalhes = buscar_detalhes_proposicao(id_prop)
+                proposicao_formatada = format_proposicao(prop, detalhes)
                 proposicoes_do_lote.append(proposicao_formatada)
                 ids_existentes.add(id_ext)
 
