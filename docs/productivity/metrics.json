@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T18:50:33.133589+00:00",
+  "generated_at": "2026-06-30T21:15:34.127283+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -19,7 +19,9 @@
     "filtragem",
     "filtragem-B",
     "fix/camara-proposicoes-data",
+    "fix/dashboard",
     "fix/main",
+    "fixmain",
     "main",
     "pages-metricas",
     "release-1-integration",
@@ -37,12 +39,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 357,
-    "open_issues": 3,
+    "total_commits": 359,
+    "open_issues": 4,
     "closed_issues": 36,
     "contributors": 8,
-    "open_prs": 1,
-    "branches_ativas": 22,
+    "open_prs": 2,
+    "branches_ativas": 24,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -298,8 +300,45 @@
         }
       ]
     },
+    "fix/dashboard": {
+      "branch": "fix/dashboard",
+      "total_commits": 2,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1,
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "7586c91",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T18:49:19+00:00",
+          "message": "Remove user schema/auth helpers and keep pipeline-focused classification changes",
+          "char_count": 80
+        },
+        {
+          "sha": "506fd30",
+          "author": "otaviotex",
+          "date": "2026-06-30T20:03:27+00:00",
+          "message": "fix(frontend): formatar nomes de categorias no Dashboard removendo underscores",
+          "char_count": 78
+        }
+      ]
+    },
     "fix/main": {
       "branch": "fix/main",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "fixmain": {
+      "branch": "fixmain",
       "total_commits": 1,
       "commits_per_author": {
         "lucasnferreiradev-lang": 1
@@ -312,11 +351,11 @@
       ],
       "recent_commits": [
         {
-          "sha": "7586c91",
+          "sha": "348e412",
           "author": "lucasnferreiradev-lang",
-          "date": "2026-06-30T18:49:19+00:00",
-          "message": "Remove user schema/auth helpers and keep pipeline-focused classification changes",
-          "char_count": 80
+          "date": "2026-06-30T21:14:18+00:00",
+          "message": "Corrige importacao do pipeline para execucao local",
+          "char_count": 50
         }
       ]
     },
@@ -1410,8 +1449,8 @@
     }
   },
   "issues": {
-    "total": 39,
-    "open": 3,
+    "total": 40,
+    "open": 4,
     "closed": 36,
     "timeline": [
       {
@@ -1561,11 +1600,19 @@
       },
       {
         "date": "2026-06-30",
-        "opened": 1,
+        "opened": 2,
         "closed": 3
       }
     ],
     "list": [
+      {
+        "number": 66,
+        "title": "fix(dashboard): formatar nomes de categorias removendo underscores",
+        "state": "open",
+        "created_at": "2026-06-30T19:56:47+00:00",
+        "closed_at": null,
+        "labels": []
+      },
       {
         "number": 64,
         "title": "fix(coleta): buscar detalhes reais de autor, partido e estado na Câmara",
@@ -1948,6 +1995,16 @@
   },
   "pull_requests": [
     {
+      "number": 67,
+      "title": "Fix/dashboard",
+      "state": "open",
+      "base": "fix/main",
+      "head": "fix/dashboard",
+      "author": "otaviotex",
+      "created_at": "2026-06-30T20:10:26+00:00",
+      "merged_at": null
+    },
+    {
       "number": 65,
       "title": "Fix: integrar dados da Câmara nas proposições",
       "state": "closed",
@@ -2212,8 +2269,8 @@
     "claranunes22": 152,
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
-    "lucasnferreiradev-lang": 34,
-    "otaviotex": 24,
+    "lucasnferreiradev-lang": 35,
+    "otaviotex": 25,
     "LucasNF-Dev": 20,
     "AlmondHare": 14,
     "RochaCarla": 2
@@ -2233,6 +2290,7 @@
       "feat/crud-usuario": 1,
       "feat/integracao-frontend-api": 3,
       "filtragem": 1,
+      "fix/dashboard": 1,
       "main": 19
     },
     "AlmondHare": {
@@ -2241,7 +2299,8 @@
     },
     "lucasnferreiradev-lang": {
       "fix/camara-proposicoes-data": 2,
-      "fix/main": 1,
+      "fix/dashboard": 1,
+      "fixmain": 1,
       "main": 31
     },
     "PajeMurici-dev": {
