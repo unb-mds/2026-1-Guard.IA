@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T01:51:36.962303+00:00",
+  "generated_at": "2026-06-30T02:25:20.097868+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -35,8 +35,8 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 350,
-    "open_issues": 2,
+    "total_commits": 351,
+    "open_issues": 3,
     "closed_issues": 36,
     "contributors": 8,
     "open_prs": 1,
@@ -197,25 +197,10 @@
     },
     "feat/integracao-proposicoes-": {
       "branch": "feat/integracao-proposicoes-",
-      "total_commits": 1,
-      "commits_per_author": {
-        "otaviotex": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-30",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "c6fbce2",
-          "author": "otaviotex",
-          "date": "2026-06-30T01:39:56+00:00",
-          "message": "feat(frontend): integrar página de Proposições com mapa e tabela de dados reais",
-          "char_count": 79
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "feat/telas-guardia-recuperadas": {
       "branch": "feat/telas-guardia-recuperadas",
@@ -284,11 +269,11 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 291,
+      "total_commits": 293,
       "commits_per_author": {
+        "AlmondHare": 12,
+        "otaviotex": 19,
         "PajeMurici-dev": 57,
-        "otaviotex": 18,
-        "AlmondHare": 11,
         "gabiiverissimo-dev": 36,
         "claranunes22": 118,
         "lucasnferreiradev-lang": 30,
@@ -450,10 +435,24 @@
         },
         {
           "date": "2026-06-30",
-          "count": 3
+          "count": 5
         }
       ],
       "recent_commits": [
+        {
+          "sha": "09c4b60",
+          "author": "AlmondHare",
+          "date": "2026-06-30T02:24:23+00:00",
+          "message": "Merge pull request #63 from unb-mds/feat/integracao-proposicoes-",
+          "char_count": 93
+        },
+        {
+          "sha": "c6fbce2",
+          "author": "otaviotex",
+          "date": "2026-06-30T01:39:56+00:00",
+          "message": "feat(frontend): integrar página de Proposições com mapa e tabela de dados reais",
+          "char_count": 79
+        },
         {
           "sha": "d1a1fb1",
           "author": "PajeMurici-dev",
@@ -719,20 +718,6 @@
           "date": "2026-06-24T01:38:50+00:00",
           "message": "feat: implementa classificador de IA por embeddings semanticos (Release 2)",
           "char_count": 800
-        },
-        {
-          "sha": "20b5733",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-17T16:22:25+00:00",
-          "message": "Merge pull request #45 from unb-mds/release-1-integration",
-          "char_count": 116
-        },
-        {
-          "sha": "12734a4",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-17T15:59:49+00:00",
-          "message": "Merge branch 'main' into release-1-integration",
-          "char_count": 46
         }
       ]
     },
@@ -1372,8 +1357,8 @@
     }
   },
   "issues": {
-    "total": 38,
-    "open": 2,
+    "total": 39,
+    "open": 3,
     "closed": 36,
     "timeline": [
       {
@@ -1523,11 +1508,19 @@
       },
       {
         "date": "2026-06-30",
-        "opened": 0,
+        "opened": 1,
         "closed": 3
       }
     ],
     "list": [
+      {
+        "number": 64,
+        "title": "fix(coleta): buscar detalhes reais de autor, partido e estado na Câmara",
+        "state": "open",
+        "created_at": "2026-06-30T01:58:55+00:00",
+        "closed_at": null,
+        "labels": []
+      },
       {
         "number": 59,
         "title": "Implementação da etapa de classificação semântica das proposições",
@@ -1902,6 +1895,16 @@
   },
   "pull_requests": [
     {
+      "number": 63,
+      "title": "Feat/integracao proposicoes ",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/integracao-proposicoes-",
+      "author": "otaviotex",
+      "created_at": "2026-06-30T01:53:34+00:00",
+      "merged_at": "2026-06-30T02:24:23+00:00"
+    },
+    {
       "number": 62,
       "title": "feat(frontend): Correcao de arquivo 'Dashboard.jsx'.",
       "state": "closed",
@@ -2149,7 +2152,7 @@
     "lucasnferreiradev-lang": 30,
     "otaviotex": 24,
     "LucasNF-Dev": 20,
-    "AlmondHare": 13,
+    "AlmondHare": 14,
     "RochaCarla": 2
   },
   "author_por_branch": {
@@ -2166,13 +2169,12 @@
     "otaviotex": {
       "feat/crud-usuario": 1,
       "feat/integracao-frontend-api": 3,
-      "feat/integracao-proposicoes-": 1,
       "filtragem": 1,
-      "main": 18
+      "main": 19
     },
     "AlmondHare": {
       "filtragem-B": 2,
-      "main": 11
+      "main": 12
     },
     "PajeMurici-dev": {
       "main": 57,
