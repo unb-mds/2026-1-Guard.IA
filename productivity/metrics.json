@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T02:25:20.097868+00:00",
+  "generated_at": "2026-06-30T03:12:20.572230+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -35,7 +35,7 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 351,
+    "total_commits": 352,
     "open_issues": 3,
     "closed_issues": 36,
     "contributors": 8,
@@ -269,11 +269,11 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 293,
+      "total_commits": 294,
       "commits_per_author": {
+        "PajeMurici-dev": 58,
         "AlmondHare": 12,
         "otaviotex": 19,
-        "PajeMurici-dev": 57,
         "gabiiverissimo-dev": 36,
         "claranunes22": 118,
         "lucasnferreiradev-lang": 30,
@@ -435,10 +435,17 @@
         },
         {
           "date": "2026-06-30",
-          "count": 5
+          "count": 6
         }
       ],
       "recent_commits": [
+        {
+          "sha": "1f51017",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-30T03:11:07+00:00",
+          "message": "docs: atualiza versao do pasycopg no README",
+          "char_count": 43
+        },
         {
           "sha": "09c4b60",
           "author": "AlmondHare",
@@ -711,13 +718,6 @@
           "date": "2026-06-25T23:25:03+00:00",
           "message": "chore(ui): simplify landing page and remove user authentication",
           "char_count": 63
-        },
-        {
-          "sha": "3e16a73",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-06-24T01:38:50+00:00",
-          "message": "feat: implementa classificador de IA por embeddings semanticos (Release 2)",
-          "char_count": 800
         }
       ]
     },
@@ -2147,7 +2147,7 @@
   ],
   "all_authors": {
     "claranunes22": 151,
-    "PajeMurici-dev": 66,
+    "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
     "lucasnferreiradev-lang": 30,
     "otaviotex": 24,
@@ -2177,7 +2177,7 @@
       "main": 12
     },
     "PajeMurici-dev": {
-      "main": 57,
+      "main": 58,
       "release-1-integration": 4,
       "PajeMurici-dev-patch-1": 1,
       "PajeMurici-dev-patch-2": 1,
