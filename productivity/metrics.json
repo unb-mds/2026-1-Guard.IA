@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T15:25:14.858193+00:00",
+  "generated_at": "2026-06-30T15:56:57.401598+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -37,11 +37,11 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 353,
+    "total_commits": 354,
     "open_issues": 3,
     "closed_issues": 36,
     "contributors": 8,
-    "open_prs": 2,
+    "open_prs": 1,
     "branches_ativas": 22,
     "branches_deletadas": 9
   },
@@ -271,25 +271,10 @@
     },
     "fix/camara-proposicoes-data": {
       "branch": "fix/camara-proposicoes-data",
-      "total_commits": 1,
-      "commits_per_author": {
-        "lucasnferreiradev-lang": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-30",
-          "count": 1
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "9ffa764",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-06-30T15:23:49+00:00",
-          "message": "Fix: fill Câmara proposal state data",
-          "char_count": 36
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "fix/main": {
       "branch": "fix/main",
@@ -300,14 +285,14 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 294,
+      "total_commits": 296,
       "commits_per_author": {
+        "claranunes22": 119,
+        "lucasnferreiradev-lang": 31,
         "PajeMurici-dev": 58,
         "AlmondHare": 12,
         "otaviotex": 19,
         "gabiiverissimo-dev": 36,
-        "claranunes22": 118,
-        "lucasnferreiradev-lang": 30,
         "LucasNF-Dev": 19,
         "RochaCarla": 2
       },
@@ -466,10 +451,24 @@
         },
         {
           "date": "2026-06-30",
-          "count": 6
+          "count": 8
         }
       ],
       "recent_commits": [
+        {
+          "sha": "36aa811",
+          "author": "claranunes22",
+          "date": "2026-06-30T15:55:53+00:00",
+          "message": "Merge pull request #65 from unb-mds/fix/camara-proposicoes-data",
+          "char_count": 110
+        },
+        {
+          "sha": "9ffa764",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T15:23:49+00:00",
+          "message": "Fix: fill Câmara proposal state data",
+          "char_count": 36
+        },
         {
           "sha": "1f51017",
           "author": "PajeMurici-dev",
@@ -735,20 +734,6 @@
           "date": "2026-06-25T23:52:09+00:00",
           "message": "Merge branch 'feat/classificacao-release-2' into chore/remove-cadastro",
           "char_count": 70
-        },
-        {
-          "sha": "bce6dbd",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-25T23:39:49+00:00",
-          "message": "chore(backend): remove rotas e dependências de autenticação",
-          "char_count": 59
-        },
-        {
-          "sha": "0ee7483",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-25T23:25:03+00:00",
-          "message": "chore(ui): simplify landing page and remove user authentication",
-          "char_count": 63
         }
       ]
     },
@@ -1928,12 +1913,12 @@
     {
       "number": 65,
       "title": "Fix: integrar dados da Câmara nas proposições",
-      "state": "open",
+      "state": "closed",
       "base": "main",
       "head": "fix/camara-proposicoes-data",
       "author": "LucasNF-Dev",
       "created_at": "2026-06-30T15:24:02+00:00",
-      "merged_at": null
+      "merged_at": "2026-06-30T15:55:53+00:00"
     },
     {
       "number": 63,
@@ -2187,7 +2172,7 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 151,
+    "claranunes22": 152,
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
     "lucasnferreiradev-lang": 31,
@@ -2200,7 +2185,7 @@
     "claranunes22": {
       "dev-projeto": 1,
       "estudos": 1,
-      "main": 118,
+      "main": 119,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11,
@@ -2218,8 +2203,7 @@
       "main": 12
     },
     "lucasnferreiradev-lang": {
-      "fix/camara-proposicoes-data": 1,
-      "main": 30
+      "main": 31
     },
     "PajeMurici-dev": {
       "main": 58,
