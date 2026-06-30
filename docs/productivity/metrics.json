@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T03:12:20.572230+00:00",
+  "generated_at": "2026-06-30T15:25:14.858193+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -18,6 +18,8 @@
     "feat/teste-pipeline-unificado",
     "filtragem",
     "filtragem-B",
+    "fix/camara-proposicoes-data",
+    "fix/main",
     "main",
     "pages-metricas",
     "release-1-integration",
@@ -35,12 +37,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 352,
+    "total_commits": 353,
     "open_issues": 3,
     "closed_issues": 36,
     "contributors": 8,
-    "open_prs": 1,
-    "branches_ativas": 20,
+    "open_prs": 2,
+    "branches_ativas": 22,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -266,6 +268,35 @@
           "char_count": 16
         }
       ]
+    },
+    "fix/camara-proposicoes-data": {
+      "branch": "fix/camara-proposicoes-data",
+      "total_commits": 1,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "9ffa764",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T15:23:49+00:00",
+          "message": "Fix: fill Câmara proposal state data",
+          "char_count": 36
+        }
+      ]
+    },
+    "fix/main": {
+      "branch": "fix/main",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "main": {
       "branch": "main",
@@ -1895,6 +1926,16 @@
   },
   "pull_requests": [
     {
+      "number": 65,
+      "title": "Fix: integrar dados da Câmara nas proposições",
+      "state": "open",
+      "base": "main",
+      "head": "fix/camara-proposicoes-data",
+      "author": "LucasNF-Dev",
+      "created_at": "2026-06-30T15:24:02+00:00",
+      "merged_at": null
+    },
+    {
       "number": 63,
       "title": "Feat/integracao proposicoes ",
       "state": "closed",
@@ -2149,7 +2190,7 @@
     "claranunes22": 151,
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
-    "lucasnferreiradev-lang": 30,
+    "lucasnferreiradev-lang": 31,
     "otaviotex": 24,
     "LucasNF-Dev": 20,
     "AlmondHare": 14,
@@ -2176,6 +2217,10 @@
       "filtragem-B": 2,
       "main": 12
     },
+    "lucasnferreiradev-lang": {
+      "fix/camara-proposicoes-data": 1,
+      "main": 30
+    },
     "PajeMurici-dev": {
       "main": 58,
       "release-1-integration": 4,
@@ -2192,9 +2237,6 @@
       "feat/login-page": 3,
       "feat/login-redesign": 2,
       "revert-48-feat/nova-pagina-dashboard": 1
-    },
-    "lucasnferreiradev-lang": {
-      "main": 30
     },
     "LucasNF-Dev": {
       "main": 19,
