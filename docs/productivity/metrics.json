@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T15:56:57.401598+00:00",
+  "generated_at": "2026-06-30T23:23:32.990851+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -19,7 +19,9 @@
     "filtragem",
     "filtragem-B",
     "fix/camara-proposicoes-data",
+    "fix/dashboard",
     "fix/main",
+    "fixmain",
     "main",
     "pages-metricas",
     "release-1-integration",
@@ -37,12 +39,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 354,
-    "open_issues": 3,
+    "total_commits": 361,
+    "open_issues": 5,
     "closed_issues": 36,
     "contributors": 8,
-    "open_prs": 1,
-    "branches_ativas": 22,
+    "open_prs": 2,
+    "branches_ativas": 24,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -271,10 +273,62 @@
     },
     "fix/camara-proposicoes-data": {
       "branch": "fix/camara-proposicoes-data",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 2,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "fb1eea6",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T17:32:26+00:00",
+          "message": "Add cleaned dataset backup",
+          "char_count": 26
+        },
+        {
+          "sha": "2bd8e71",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T17:53:25+00:00",
+          "message": "Add frontend-ready filtered dataset (records with estado)",
+          "char_count": 57
+        }
+      ]
+    },
+    "fix/dashboard": {
+      "branch": "fix/dashboard",
+      "total_commits": 2,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1,
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "7586c91",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T18:49:19+00:00",
+          "message": "Remove user schema/auth helpers and keep pipeline-focused classification changes",
+          "char_count": 80
+        },
+        {
+          "sha": "506fd30",
+          "author": "otaviotex",
+          "date": "2026-06-30T20:03:27+00:00",
+          "message": "fix(frontend): formatar nomes de categorias no Dashboard removendo underscores",
+          "char_count": 78
+        }
+      ]
     },
     "fix/main": {
       "branch": "fix/main",
@@ -283,11 +337,33 @@
       "commit_timeline": [],
       "recent_commits": []
     },
+    "fixmain": {
+      "branch": "fixmain",
+      "total_commits": 1,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "348e412",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T21:14:18+00:00",
+          "message": "Corrige importacao do pipeline para execucao local",
+          "char_count": 50
+        }
+      ]
+    },
     "main": {
       "branch": "main",
-      "total_commits": 296,
+      "total_commits": 298,
       "commits_per_author": {
-        "claranunes22": 119,
+        "claranunes22": 121,
         "lucasnferreiradev-lang": 31,
         "PajeMurici-dev": 58,
         "AlmondHare": 12,
@@ -451,10 +527,24 @@
         },
         {
           "date": "2026-06-30",
-          "count": 8
+          "count": 10
         }
       ],
       "recent_commits": [
+        {
+          "sha": "c31754d",
+          "author": "claranunes22",
+          "date": "2026-06-30T23:22:30+00:00",
+          "message": "Merge pull request #68 from unb-mds/feat/telas-guardia-recuperadas",
+          "char_count": 124
+        },
+        {
+          "sha": "a6985bf",
+          "author": "claranunes22",
+          "date": "2026-06-30T23:08:34+00:00",
+          "message": "chore: adiciona configuracao do sonarcloud e pipeline ci",
+          "char_count": 56
+        },
         {
           "sha": "36aa811",
           "author": "claranunes22",
@@ -720,20 +810,6 @@
           "date": "2026-06-26T01:59:41+00:00",
           "message": "Merge branch 'main' into feat/classificacao-release-2",
           "char_count": 53
-        },
-        {
-          "sha": "89ca99e",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-25T23:52:48+00:00",
-          "message": "Merge pull request #46 from unb-mds/chore/remove-cadastro",
-          "char_count": 118
-        },
-        {
-          "sha": "3159cca",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-25T23:52:09+00:00",
-          "message": "Merge branch 'feat/classificacao-release-2' into chore/remove-cadastro",
-          "char_count": 70
         }
       ]
     },
@@ -1373,8 +1449,8 @@
     }
   },
   "issues": {
-    "total": 39,
-    "open": 3,
+    "total": 41,
+    "open": 5,
     "closed": 36,
     "timeline": [
       {
@@ -1524,11 +1600,27 @@
       },
       {
         "date": "2026-06-30",
-        "opened": 1,
+        "opened": 3,
         "closed": 3
       }
     ],
     "list": [
+      {
+        "number": 69,
+        "title": "chore: Configuração inicial e integração do SonarCloud via GitHub Actions",
+        "state": "open",
+        "created_at": "2026-06-30T23:20:49+00:00",
+        "closed_at": null,
+        "labels": []
+      },
+      {
+        "number": 66,
+        "title": "fix(dashboard): formatar nomes de categorias removendo underscores",
+        "state": "open",
+        "created_at": "2026-06-30T19:56:47+00:00",
+        "closed_at": null,
+        "labels": []
+      },
       {
         "number": 64,
         "title": "fix(coleta): buscar detalhes reais de autor, partido e estado na Câmara",
@@ -1911,6 +2003,26 @@
   },
   "pull_requests": [
     {
+      "number": 68,
+      "title": "chore: adiciona configuracao do sonarcloud e pipeline ci",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/telas-guardia-recuperadas",
+      "author": "claranunes22",
+      "created_at": "2026-06-30T23:18:52+00:00",
+      "merged_at": "2026-06-30T23:22:30+00:00"
+    },
+    {
+      "number": 67,
+      "title": "Fix/dashboard",
+      "state": "open",
+      "base": "fix/main",
+      "head": "fix/dashboard",
+      "author": "otaviotex",
+      "created_at": "2026-06-30T20:10:26+00:00",
+      "merged_at": null
+    },
+    {
       "number": 65,
       "title": "Fix: integrar dados da Câmara nas proposições",
       "state": "closed",
@@ -2172,11 +2284,11 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 152,
+    "claranunes22": 154,
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
-    "lucasnferreiradev-lang": 31,
-    "otaviotex": 24,
+    "lucasnferreiradev-lang": 35,
+    "otaviotex": 25,
     "LucasNF-Dev": 20,
     "AlmondHare": 14,
     "RochaCarla": 2
@@ -2185,7 +2297,7 @@
     "claranunes22": {
       "dev-projeto": 1,
       "estudos": 1,
-      "main": 119,
+      "main": 121,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11,
@@ -2196,6 +2308,7 @@
       "feat/crud-usuario": 1,
       "feat/integracao-frontend-api": 3,
       "filtragem": 1,
+      "fix/dashboard": 1,
       "main": 19
     },
     "AlmondHare": {
@@ -2203,6 +2316,9 @@
       "main": 12
     },
     "lucasnferreiradev-lang": {
+      "fix/camara-proposicoes-data": 2,
+      "fix/dashboard": 1,
+      "fixmain": 1,
       "main": 31
     },
     "PajeMurici-dev": {
