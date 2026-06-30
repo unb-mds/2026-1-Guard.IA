@@ -21,18 +21,8 @@ CREATE TABLE IF NOT EXISTS proposicoes (
     coletado_em        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
 
--- Criação da tabela de usuários
-CREATE TABLE IF NOT EXISTS usuarios (
-    id                SERIAL PRIMARY KEY,
-    nome              VARCHAR(100) NOT NULL,
-    email             VARCHAR(150) UNIQUE NOT NULL,
-    senha_hash        VARCHAR(255) NOT NULL,
-    criado_em         TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
-);
-
 -- Índices para acelerar as consultas do Dashboard
 CREATE INDEX IF NOT EXISTS idx_categoria       ON proposicoes (categoria);
 CREATE INDEX IF NOT EXISTS idx_casa            ON proposicoes (casa);
 CREATE INDEX IF NOT EXISTS idx_data            ON proposicoes (data_apresentacao);
 CREATE INDEX IF NOT EXISTS idx_confianca       ON proposicoes (confianca);
-CREATE INDEX IF NOT EXISTS idx_email_usuario   ON usuarios (email);

@@ -1,5 +1,11 @@
-from sentence_transformers import SentenceTransformer, util
-from armazenamento.database import get_connection, release_connection
+try:
+    from sentence_transformers import SentenceTransformer, util
+    HAS_TRANSFORMERS = True
+except Exception as e:
+    print(f"⚠️ AVISO: sentence_transformers indisponível, usando fallback de palavras-chave: {e}")
+    HAS_TRANSFORMERS = False
+
+from ..armazenamento.database import get_connection, release_connection
 
 # GEMINI.md Regra 19: classificações são estimativas, nunca fatos absolutos.
 # GEMINI.md Regra 20: confianca deve sempre acompanhar categoria na visualização.
@@ -96,45 +102,62 @@ def iniciar_classificacao() -> bool:
     total = len(proposicoes)
     print(f"  {total} proposições para classificar...")
 
-    # Download automático na primeira execução (~90 MB), cache local após isso.
-    modelo = SentenceTransformer(MODELO_ID)
-
     nomes_categorias = list(CATEGORIAS.keys())
     descricoes_categorias = list(CATEGORIAS.values())
-
-    # Embeddings fixos das 5 categorias (operação única, independente do volume)
-    emb_categorias = modelo.encode(
-        descricoes_categorias,
-        convert_to_tensor=True,
-        show_progress_bar=False,
-    )
-
-    # Batch encode de todas as ementas de uma só vez
-    ementas = [row[1] for row in proposicoes]
-    emb_ementas = modelo.encode(
-        ementas,
-        convert_to_tensor=True,
-        show_progress_bar=True,
-        batch_size=64,
-    )
-
-    # Matriz de similaridade cosseno: shape (N_proposicoes, N_categorias)
-    similaridades = util.cos_sim(emb_ementas, emb_categorias)
-
     resultados = []
     incertas = 0
 
-    for i, (id_prop, _) in enumerate(proposicoes):
-        sims = similaridades[i]
-        idx_melhor = int(sims.argmax())
-        # Clamp [0, 1] para satisfazer CHECK do schema.sql
-        confianca = round(max(0.0, min(1.0, float(sims[idx_melhor]))), 4)
-        categoria = nomes_categorias[idx_melhor]
+    if HAS_TRANSFORMERS:
+        modelo = SentenceTransformer(MODELO_ID)
 
-        if confianca < LIMIAR_INCERTEZA:
-            incertas += 1
+        # Embeddings fixos das 5 categorias (operação única, independente do volume)
+        emb_categorias = modelo.encode(
+            descricoes_categorias,
+            convert_to_tensor=True,
+            show_progress_bar=False,
+        )
 
-        resultados.append((id_prop, categoria, confianca))
+        # Batch encode de todas as ementas de uma só vez
+        ementas = [row[1] for row in proposicoes]
+        emb_ementas = modelo.encode(
+            ementas,
+            convert_to_tensor=True,
+            show_progress_bar=True,
+            batch_size=64,
+        )
+
+        # Matriz de similaridade cosseno: shape (N_proposicoes, N_categorias)
+        similaridades = util.cos_sim(emb_ementas, emb_categorias)
+
+        for i, (id_prop, _) in enumerate(proposicoes):
+            sims = similaridades[i]
+            idx_melhor = int(sims.argmax())
+            # Clamp [0, 1] para satisfazer CHECK do schema.sql
+            confianca = round(max(0.0, min(1.0, float(sims[idx_melhor]))), 4)
+            categoria = nomes_categorias[idx_melhor]
+
+            if confianca < LIMIAR_INCERTEZA:
+                incertas += 1
+
+            resultados.append((id_prop, categoria, confianca))
+    else:
+        # Fallback simples baseado em presença de palavras-chave nas ementas.
+        print('⚠️ Executando classificação fallback sem embeddings.')
+        for id_prop, ementa in proposicoes:
+            ementa_norm = ementa.lower() if ementa else ''
+            melhor_categoria = 'educacao_digital'
+            melhor_score = 0.0
+
+            for idx, descricao in enumerate(descricoes_categorias):
+                score = sum(1 for termo in descricao.split() if termo in ementa_norm)
+                if score > melhor_score:
+                    melhor_score = score
+                    melhor_categoria = nomes_categorias[idx]
+
+            confianca = round(min(1.0, 0.4 + 0.1 * melhor_score), 4)
+            if confianca < LIMIAR_INCERTEZA:
+                incertas += 1
+            resultados.append((id_prop, melhor_categoria, confianca))
 
     _salvar_resultados(resultados)
 
