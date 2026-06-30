@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T15:56:57.401598+00:00",
+  "generated_at": "2026-06-30T18:50:33.133589+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -37,7 +37,7 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 354,
+    "total_commits": 357,
     "open_issues": 3,
     "closed_issues": 36,
     "contributors": 8,
@@ -271,17 +271,54 @@
     },
     "fix/camara-proposicoes-data": {
       "branch": "fix/camara-proposicoes-data",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 2,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "fb1eea6",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T17:32:26+00:00",
+          "message": "Add cleaned dataset backup",
+          "char_count": 26
+        },
+        {
+          "sha": "2bd8e71",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T17:53:25+00:00",
+          "message": "Add frontend-ready filtered dataset (records with estado)",
+          "char_count": 57
+        }
+      ]
     },
     "fix/main": {
       "branch": "fix/main",
-      "total_commits": 0,
-      "commits_per_author": {},
-      "commit_timeline": [],
-      "recent_commits": []
+      "total_commits": 1,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "7586c91",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T18:49:19+00:00",
+          "message": "Remove user schema/auth helpers and keep pipeline-focused classification changes",
+          "char_count": 80
+        }
+      ]
     },
     "main": {
       "branch": "main",
@@ -2175,7 +2212,7 @@
     "claranunes22": 152,
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
-    "lucasnferreiradev-lang": 31,
+    "lucasnferreiradev-lang": 34,
     "otaviotex": 24,
     "LucasNF-Dev": 20,
     "AlmondHare": 14,
@@ -2203,6 +2240,8 @@
       "main": 12
     },
     "lucasnferreiradev-lang": {
+      "fix/camara-proposicoes-data": 2,
+      "fix/main": 1,
       "main": 31
     },
     "PajeMurici-dev": {
