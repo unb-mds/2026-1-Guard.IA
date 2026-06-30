@@ -1,6 +1,10 @@
 import json
 from pathlib import Path
-from .database import execute_batch
+
+try:
+    from app.armazenamento.database import execute_batch
+except ImportError:
+    from .database import execute_batch
 
 # Configuração de caminhos dinâmicos
 BASE_DIR = Path(__file__).resolve().parent.parent.parent

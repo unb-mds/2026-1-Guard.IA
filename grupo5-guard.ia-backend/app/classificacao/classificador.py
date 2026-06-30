@@ -5,7 +5,10 @@ except Exception as e:
     print(f"⚠️ AVISO: sentence_transformers indisponível, usando fallback de palavras-chave: {e}")
     HAS_TRANSFORMERS = False
 
-from ..armazenamento.database import get_connection, release_connection
+try:
+    from app.armazenamento.database import get_connection, release_connection
+except ImportError:
+    from ..armazenamento.database import get_connection, release_connection
 
 # GEMINI.md Regra 19: classificações são estimativas, nunca fatos absolutos.
 # GEMINI.md Regra 20: confianca deve sempre acompanhar categoria na visualização.

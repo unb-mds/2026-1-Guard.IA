@@ -8,15 +8,22 @@ if str(BASE_DIR) not in sys.path:
     sys.path.append(str(BASE_DIR))
 
 try:
-    from coleta.coletor_camara import coletar as coletar_camara
-    from coleta.coletor_senado import coletar as coletar_senado
-    from filtro.filtragem import iniciar_filtragem
-    from armazenamento.armazenamento import iniciar_armazenamento
-    from classificacao.classificador import iniciar_classificacao
-except ImportError as e:
-    print(f" Erro de importacao: {e}")
-    print("Certifique-se de que está rodando o script a partir da raiz do backend.")
-    sys.exit(1)
+    from app.coleta.coletor_camara import coletar as coletar_camara
+    from app.coleta.coletor_senado import coletar as coletar_senado
+    from app.filtro.filtragem import iniciar_filtragem
+    from app.armazenamento.armazenamento import iniciar_armazenamento
+    from app.classificacao.classificador import iniciar_classificacao
+except ImportError:
+    try:
+        from coleta.coletor_camara import coletar as coletar_camara
+        from coleta.coletor_senado import coletar as coletar_senado
+        from filtro.filtragem import iniciar_filtragem
+        from armazenamento.armazenamento import iniciar_armazenamento
+        from classificacao.classificador import iniciar_classificacao
+    except ImportError as e:
+        print(f" Erro de importacao: {e}")
+        print("Certifique-se de que está rodando o script a partir da raiz do backend.")
+        sys.exit(1)
 
 def run_stage(name, func):
     print(f"\n{'='*10} 🚀 ESTÁGIO: {name} {'='*10}")
