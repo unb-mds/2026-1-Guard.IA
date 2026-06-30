@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T20:06:00.351750+00:00",
+  "generated_at": "2026-06-30T21:15:34.127283+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -21,6 +21,7 @@
     "fix/camara-proposicoes-data",
     "fix/dashboard",
     "fix/main",
+    "fixmain",
     "main",
     "pages-metricas",
     "release-1-integration",
@@ -38,12 +39,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 358,
+    "total_commits": 359,
     "open_issues": 4,
     "closed_issues": 36,
     "contributors": 8,
-    "open_prs": 1,
-    "branches_ativas": 23,
+    "open_prs": 2,
+    "branches_ativas": 24,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -335,6 +336,28 @@
       "commits_per_author": {},
       "commit_timeline": [],
       "recent_commits": []
+    },
+    "fixmain": {
+      "branch": "fixmain",
+      "total_commits": 1,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "348e412",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T21:14:18+00:00",
+          "message": "Corrige importacao do pipeline para execucao local",
+          "char_count": 50
+        }
+      ]
     },
     "main": {
       "branch": "main",
@@ -1972,6 +1995,16 @@
   },
   "pull_requests": [
     {
+      "number": 67,
+      "title": "Fix/dashboard",
+      "state": "open",
+      "base": "fix/main",
+      "head": "fix/dashboard",
+      "author": "otaviotex",
+      "created_at": "2026-06-30T20:10:26+00:00",
+      "merged_at": null
+    },
+    {
       "number": 65,
       "title": "Fix: integrar dados da Câmara nas proposições",
       "state": "closed",
@@ -2236,7 +2269,7 @@
     "claranunes22": 152,
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
-    "lucasnferreiradev-lang": 34,
+    "lucasnferreiradev-lang": 35,
     "otaviotex": 25,
     "LucasNF-Dev": 20,
     "AlmondHare": 14,
@@ -2267,6 +2300,7 @@
     "lucasnferreiradev-lang": {
       "fix/camara-proposicoes-data": 2,
       "fix/dashboard": 1,
+      "fixmain": 1,
       "main": 31
     },
     "PajeMurici-dev": {
