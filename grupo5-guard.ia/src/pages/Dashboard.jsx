@@ -110,7 +110,7 @@ export default function Dashboard() {
                 const max = metrics.porCategoria[0]?.qtd || 1;
                 return (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: '14px', gap: '16px' }}>
-                    <span style={{ width: '130px', fontSize: '13px', fontWeight: '500', color: 'var(--text-main)' }}>{cat.nome}</span>
+                    <span style={{ width: '130px', fontSize: '13px', fontWeight: '500', color: 'var(--text-main)' }}>{cat.nome.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
                     <div style={{ flex: 1, backgroundColor: '#f1f5f9', height: '12px', borderRadius: '9999px', overflow: 'hidden' }}>
                       <div style={{ backgroundColor: 'var(--primary)', height: '100%', borderRadius: '9999px', width: `${(cat.qtd / max) * 100}%`, transition: 'width 1s ease' }}></div>
                     </div>
