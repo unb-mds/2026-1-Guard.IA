@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T01:27:20.579080+00:00",
+  "generated_at": "2026-06-30T01:51:36.962303+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -13,6 +13,7 @@
     "feat/integracao-dashboard",
     "feat/integracao-dashboard-2",
     "feat/integracao-frontend-api",
+    "feat/integracao-proposicoes-",
     "feat/telas-guardia-recuperadas",
     "feat/teste-pipeline-unificado",
     "filtragem",
@@ -34,12 +35,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 349,
-    "open_issues": 5,
-    "closed_issues": 33,
+    "total_commits": 350,
+    "open_issues": 2,
+    "closed_issues": 36,
     "contributors": 8,
     "open_prs": 1,
-    "branches_ativas": 19,
+    "branches_ativas": 20,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -191,6 +192,28 @@
           "date": "2026-06-29T00:47:04+00:00",
           "message": "chore(frontend): add .env ao .gitignore",
           "char_count": 39
+        }
+      ]
+    },
+    "feat/integracao-proposicoes-": {
+      "branch": "feat/integracao-proposicoes-",
+      "total_commits": 1,
+      "commits_per_author": {
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "c6fbce2",
+          "author": "otaviotex",
+          "date": "2026-06-30T01:39:56+00:00",
+          "message": "feat(frontend): integrar página de Proposições com mapa e tabela de dados reais",
+          "char_count": 79
         }
       ]
     },
@@ -1350,8 +1373,8 @@
   },
   "issues": {
     "total": 38,
-    "open": 5,
-    "closed": 33,
+    "open": 2,
+    "closed": 36,
     "timeline": [
       {
         "date": "2026-03-25",
@@ -1497,6 +1520,11 @@
         "date": "2026-06-29",
         "opened": 2,
         "closed": 0
+      },
+      {
+        "date": "2026-06-30",
+        "opened": 0,
+        "closed": 3
       }
     ],
     "list": [
@@ -1519,9 +1547,9 @@
       {
         "number": 55,
         "title": "bug/chore: Recuperação e consolidação do layout claro e integração de gráficos (Recharts) no front-end",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-06-28T20:02:44+00:00",
-        "closed_at": null,
+        "closed_at": "2026-06-30T01:27:37+00:00",
         "labels": [
           "bug",
           "frontend"
@@ -1530,9 +1558,9 @@
       {
         "number": 53,
         "title": "Retirada do CRUD de Usuário e Reorganização do Documento GEMINI.MD",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-06-27T12:10:32+00:00",
-        "closed_at": null,
+        "closed_at": "2026-06-30T01:27:37+00:00",
         "labels": [
           "documentation",
           "chore"
@@ -1541,9 +1569,9 @@
       {
         "number": 52,
         "title": "Correção do update metrics na main",
-        "state": "open",
+        "state": "closed",
         "created_at": "2026-06-26T21:48:05+00:00",
-        "closed_at": null,
+        "closed_at": "2026-06-30T01:27:36+00:00",
         "labels": [
           "bug"
         ]
@@ -2119,7 +2147,7 @@
     "PajeMurici-dev": 66,
     "gabiiverissimo-dev": 44,
     "lucasnferreiradev-lang": 30,
-    "otaviotex": 23,
+    "otaviotex": 24,
     "LucasNF-Dev": 20,
     "AlmondHare": 13,
     "RochaCarla": 2
@@ -2138,6 +2166,7 @@
     "otaviotex": {
       "feat/crud-usuario": 1,
       "feat/integracao-frontend-api": 3,
+      "feat/integracao-proposicoes-": 1,
       "filtragem": 1,
       "main": 18
     },

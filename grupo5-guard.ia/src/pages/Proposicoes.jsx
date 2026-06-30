@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import './BarraPesquisa.css';
+import React, { useState, useEffect, useMemo } from 'react';
+import { getProposicoes } from '../services/api';
 
-// Coordenadas geopolíticas oficiais simplificadas do IBGE para o contorno de cada estado
 const MAPA_BRASIL_PATHS = {
   AP: "M195,65 L215,60 L230,85 L205,105 L190,90 Z",
   MA: "M285,120 L320,110 L335,160 L310,195 L275,150 Z",
@@ -32,93 +31,107 @@ const MAPA_BRASIL_PATHS = {
   TO: "M255,160 L285,120 L305,195 L290,215 L235,245 Z"
 };
 
+const NOMES_ESTADOS = {
+  AC: "Acre", AL: "Alagoas", AP: "Amapá", AM: "Amazonas", BA: "Bahia",
+  CE: "Ceará", DF: "Distrito Federal", ES: "Espírito Santo", GO: "Goiás",
+  MA: "Maranhão", MT: "Mato Grosso", MS: "Mato Grosso do Sul", MG: "Minas Gerais",
+  PA: "Pará", PB: "Paraíba", PR: "Paraná", PE: "Pernambuco", PI: "Piauí",
+  RJ: "Rio de Janeiro", RN: "Rio Grande do Norte", RS: "Rio Grande do Sul",
+  RO: "Rondônia", RR: "Roraima", SC: "Santa Catarina", SP: "São Paulo",
+  SE: "Sergipe", TO: "Tocantins"
+};
+
 export default function Proposicoes() {
+  const [proposicoes, setProposicoes] = useState([]);
+  const [loading, setLoading]         = useState(true);
+  const [erro, setErro]               = useState(null);
   const [estadoSelecionado, setEstadoSelecionado] = useState(null);
   const [estadoFiltroAtivo, setEstadoFiltroAtivo] = useState(null);
-  const [pesquisa, setPesquisa] = useState("");
-  const estadoExibicao = estadoSelecionado || estadoFiltroAtivo;
 
-  // Banco de dados oficial de proposições por estado para a Release 2
-  const dadosEstados = {
-    SP: { nome: "São Paulo", qtd: 2 },
-    RJ: { nome: "Rio de Janeiro", qtd: 2 },
-    MG: { nome: "Minas Gerais", qtd: 1 },
-    RS: { nome: "Rio Grande do Sul", qtd: 1 },
-    AP: { nome: "Amapá", qtd: 1 },
-    MA: { nome: "Maranhão", qtd: 1 },
-    SE: { nome: "Sergipe", qtd: 1 },
-    AL: { nome: "Alagoas", qtd: 1 }
-  };
+  useEffect(() => {
+    getProposicoes()
+      .then(setProposicoes)
+      .catch((e) => setErro(e.message))
+      .finally(() => setLoading(false));
+  }, []);
 
-  const listaProposicoes = [
-    { id: "PL 524/2023", autor: "Alex Manente", partido: "CIDADANIA", estado: "SP", casa: "Câmara", data: "15/02/2023", categoria: "Proteção Digital" },
-    { id: "PL 840/2023", autor: "Silvia Waiãpi", partido: "PL", estado: "AP", casa: "Câmara", data: "24/02/2023", categoria: "Educação Digital" },
-    { id: "PL 1020/2026", autor: "Maria do Rosário", partido: "MDB", estado: "RS", casa: "Câmara", data: "10/03/2026", categoria: "Proteção Digital" },
-    { id: "PL 1410/2026", autor: "Eliziane Gama", partido: "PDT", estado: "MA", casa: "Senado", data: "05/04/2026", categoria: "Privacidade" }
-  ];
+  // Agrupa proposições por estado para o mapa
+  const dadosEstados = useMemo(() => {
+    const counts = {};
+    proposicoes.forEach((p) => {
+      if (!p.estado || p.estado === 'A pesquisar') return;
+      counts[p.estado] = (counts[p.estado] || 0) + 1;
+    });
+    return counts;
+  }, [proposicoes]);
+
+  const maxQtd = useMemo(() => Math.max(...Object.values(dadosEstados), 1), [dadosEstados]);
 
   const getCorEstado = (sigla) => {
-    const info = dadosEstados[sigla];
-    if (!info) return '#e2e8f0';
-    if (info.qtd >= 2) return '#006b4f';
+    const qtd = dadosEstados[sigla];
+    if (!qtd) return '#e2e8f0';
+    if (qtd >= maxQtd * 0.6) return '#006b4f';
     return '#4db6ac';
   };
 
-  const proposicoesFiltradas = listaProposicoes.filter((p) => {
-    const correspondeEstado =
-      !estadoFiltroAtivo || p.estado === estadoFiltroAtivo;
+  // Filtra proposições pela sigla do estado clicado
+  const proposicoesFiltradas = useMemo(() => {
+    if (!estadoFiltroAtivo) return proposicoes;
+    return proposicoes.filter((p) => p.estado === estadoFiltroAtivo);
+  }, [proposicoes, estadoFiltroAtivo]);
 
-    const termo = pesquisa.toLowerCase();
+  const estadoExibicao = estadoSelecionado || estadoFiltroAtivo;
 
-    const correspondePesquisa =
-      p.autor.toLowerCase().includes(termo) ||
-      p.partido.toLowerCase().includes(termo) ||
-      p.casa.toLowerCase().includes(termo) ||
-      p.id.toLowerCase().includes(termo) ||
-      p.estado.toLowerCase().includes(termo) ||
-      p.categoria.toLowerCase().includes(termo);
+  if (erro) return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh', flexDirection: 'column', gap: 12 }}>
+      <strong style={{ color: '#c0392b', fontSize: 18 }}>Erro ao conectar com a API</strong>
+      <span style={{ color: '#666' }}>{erro}</span>
+      <span style={{ color: '#999', fontSize: 13 }}>Verifique se o backend está rodando em http://localhost:8000</span>
+    </div>
+  );
 
-    return correspondeEstado && correspondePesquisa;
-  });
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 24px' }}>
 
       <header style={{ marginBottom: '32px' }}>
         <h2 style={{ fontSize: '28px', fontWeight: '800', margin: '0 0 6px 0', letterSpacing: '-0.5px', color: '#1e293b' }}>Distribuição Geográfica</h2>
-        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '15px' }}>Passe o mouse para inspecionar ou clique em um estado para filtrar as auditorias.</p>
+        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '15px' }}>Passe o mouse para inspecionar ou clique em um estado para filtrar as proposições.</p>
       </header>
 
-      {/* Grid do Painel de Mapas */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '32px', marginBottom: '40px' }}>
 
-        {/* Lado Esquerdo: O Mapa Político Real do Brasil */}
+        {/* Mapa */}
         <div style={{ background: 'var(--surface)', padding: '24px', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow)', border: '1px solid var(--border)', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '480px' }}>
-          <svg viewBox="0 0 450 550" style={{ width: '100%', maxHeight: '440px' }}>
-            {Object.keys(MAPA_BRASIL_PATHS).map((sigla) => {
-              const isActiveFilter = estadoFiltroAtivo === sigla;
-              return (
-                <path
-                  key={sigla}
-                  d={MAPA_BRASIL_PATHS[sigla]}
-                  fill={getCorEstado(sigla)}
-                  stroke="#ffffff"
-                  strokeWidth={isActiveFilter ? 2.5 : 1.2}
-                  style={{
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                    filter: isActiveFilter ? 'drop-shadow(0px 4px 8px rgba(0,0,0,0.25))' : 'none',
-                    opacity: estadoFiltroAtivo && !isActiveFilter ? 0.4 : 1
-                  }}
-                  onMouseEnter={() => setEstadoSelecionado(sigla)}
-                  onMouseLeave={() => setEstadoSelecionado(null)}
-                  onClick={() => setEstadoFiltroAtivo(isActiveFilter ? null : sigla)}
-                />
-              );
-            })}
-          </svg>
+          {loading ? (
+            <div style={{ color: '#006b4f', fontSize: 16 }}>Carregando mapa...</div>
+          ) : (
+            <svg viewBox="0 0 450 550" style={{ width: '100%', maxHeight: '440px' }}>
+              {Object.keys(MAPA_BRASIL_PATHS).map((sigla) => {
+                const isActiveFilter = estadoFiltroAtivo === sigla;
+                return (
+                  <path
+                    key={sigla}
+                    d={MAPA_BRASIL_PATHS[sigla]}
+                    fill={getCorEstado(sigla)}
+                    stroke="#ffffff"
+                    strokeWidth={isActiveFilter ? 2.5 : 1.2}
+                    style={{
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease',
+                      filter: isActiveFilter ? 'drop-shadow(0px 4px 8px rgba(0,0,0,0.25))' : 'none',
+                      opacity: estadoFiltroAtivo && !isActiveFilter ? 0.4 : 1
+                    }}
+                    onMouseEnter={() => setEstadoSelecionado(sigla)}
+                    onMouseLeave={() => setEstadoSelecionado(null)}
+                    onClick={() => setEstadoFiltroAtivo(isActiveFilter ? null : sigla)}
+                  />
+                );
+              })}
+            </svg>
+          )}
         </div>
 
-        {/* Lado Direito: Painel de Métricas do Estado */}
+        {/* Painel lateral do estado */}
         <div style={{ background: 'var(--surface)', padding: '32px', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           {estadoExibicao ? (
             <div>
@@ -126,12 +139,12 @@ export default function Proposicoes() {
                 {estadoFiltroAtivo ? 'Filtro Geográfico Ativo' : 'Inspeção Rápida'}
               </span>
               <h4 style={{ fontSize: '28px', margin: '4px 0 16px 0', fontWeight: '800', color: '#1e293b' }}>
-                {dadosEstados[estadoExibicao]?.nome || `Estado do ${estadoExibicao}`}
+                {NOMES_ESTADOS[estadoExibicao] || estadoExibicao}
               </h4>
               <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', borderLeft: `4px solid ${getCorEstado(estadoExibicao)}` }}>
                 <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '500' }}>Proposições registradas:</span>
                 <span style={{ display: 'block', fontSize: '36px', fontWeight: '800', color: getCorEstado(estadoExibicao) }}>
-                  {dadosEstados[estadoExibicao]?.qtd || 0}
+                  {dadosEstados[estadoExibicao] || 0}
                 </span>
               </div>
               {estadoFiltroAtivo && (
@@ -145,7 +158,6 @@ export default function Proposicoes() {
             </div>
           ) : (
             <div style={{ textAlign: 'center', padding: '20px' }}>
-              {/* O emoji de mapa foi removido daqui para deixar o visual mais corporativo */}
               <h4 style={{ fontSize: '16px', fontWeight: '700', color: '#1e293b', margin: '0 0 8px 0' }}>Mapa Interativo Ativo</h4>
               <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0, lineHeight: '1.4' }}>Explore o território nacional. Passe o cursor para inspecionar ou clique em um estado para filtrar as linhas da tabela.</p>
             </div>
@@ -153,53 +165,51 @@ export default function Proposicoes() {
         </div>
       </div>
 
-
-
-      {/* Tabela de Dados */}
-      {/* Título e Barra de Pesquisa na mesma linha */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-        <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#1e293b', margin: 0 }}>
-          Proposições Coletadas
-        </h3>
-
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Pesquisar por autor, partido, categoria..."
-            value={pesquisa}
-            onChange={(e) => setPesquisa(e.target.value)}
-          />
-        </div>
-      </div>
+      {/* Tabela */}
+      <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '16px', color: '#1e293b' }}>
+        Proposições Coletadas {estadoFiltroAtivo ? `— ${NOMES_ESTADOS[estadoFiltroAtivo] || estadoFiltroAtivo}` : `(${proposicoes.length})`}
+      </h3>
       <div style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow)', border: '1px solid var(--border)', overflow: 'hidden' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-          <thead>
-            <tr style={{ background: '#f8fafc', borderBottom: '1px solid var(--border)' }}>
-              {['ID', 'AUTOR', 'PARTIDO', 'ESTADO', 'CASA', 'DATA', 'CATEGORIA'].map(head => (
-                <th key={head} style={{ padding: '16px 20px', fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>{head}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {proposicoesFiltradas.map((p, idx) => (
-              <tr key={idx} style={{ borderBottom: '1px solid var(--border)' }}>
-                <td style={{ padding: '16px 20px', fontSize: '14px', fontWeight: '700', color: 'var(--primary)' }}>{p.id}</td>
-                <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-main)', fontWeight: '500' }}>{p.autor}</td>
-                <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-muted)' }}>{p.partido}</td>
-                <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-muted)', fontWeight: '600' }}>{p.estado}</td>
-                <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-main)' }}>{p.casa}</td>
-                <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-muted)' }}>{p.data}</td>
-                <td style={{ padding: '16px 20px' }}>
-                  <span style={{ backgroundColor: 'var(--primary-light)', color: 'var(--primary)', padding: '6px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700' }}>
-                    {p.categoria}
-                  </span>
-                </td>
+        {loading ? (
+          <div style={{ padding: 32, color: '#006b4f', fontSize: 16 }}>Carregando proposições...</div>
+        ) : (
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+            <thead>
+              <tr style={{ background: '#f8fafc', borderBottom: '1px solid var(--border)' }}>
+                {['ID', 'AUTOR', 'PARTIDO', 'ESTADO', 'CASA', 'DATA', 'CATEGORIA'].map(head => (
+                  <th key={head} style={{ padding: '16px 20px', fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>{head}</th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {proposicoesFiltradas.map((p, idx) => (
+                <tr key={idx} style={{ borderBottom: '1px solid var(--border)' }}>
+                  <td style={{ padding: '16px 20px', fontSize: '14px', fontWeight: '700', color: 'var(--primary)' }}>{p.id_externo}</td>
+                  <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-main)', fontWeight: '500' }}>{p.autor}</td>
+                  <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-muted)' }}>{p.partido}</td>
+                  <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-muted)', fontWeight: '600' }}>{p.estado}</td>
+                  <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-main)' }}>{p.casa}</td>
+                  <td style={{ padding: '16px 20px', fontSize: '14px', color: 'var(--text-muted)' }}>
+                    {p.data_apresentacao ? new Date(p.data_apresentacao).toLocaleDateString('pt-BR') : '—'}
+                  </td>
+                  <td style={{ padding: '16px 20px' }}>
+                    <span style={{ backgroundColor: 'var(--primary-light)', color: 'var(--primary)', padding: '6px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700' }}>
+                      {p.categoria || '—'}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+              {proposicoesFiltradas.length === 0 && (
+                <tr>
+                  <td colSpan={7} style={{ padding: 32, textAlign: 'center', color: '#aaa' }}>
+                    Nenhuma proposição encontrada para este estado.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        )}
       </div>
-
     </div>
   );
 }
