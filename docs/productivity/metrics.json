@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-07-01T03:13:07.367340+00:00",
+  "generated_at": "2026-07-01T03:24:36.231735+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
+    "docs/remove-CRUD",
     "estudos",
     "feat/armazenamento-postgres",
     "feat/classificacao-release-2",
@@ -40,12 +41,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 375,
+    "total_commits": 378,
     "open_issues": 5,
     "closed_issues": 36,
     "contributors": 8,
     "open_prs": 1,
-    "branches_ativas": 25,
+    "branches_ativas": 26,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -68,6 +69,28 @@
           "date": "2026-05-24T15:33:01+00:00",
           "message": "Merge pull request #43 from unb-mds/feat/teste-pipeline-unificado",
           "char_count": 96
+        }
+      ]
+    },
+    "docs/remove-CRUD": {
+      "branch": "docs/remove-CRUD",
+      "total_commits": 1,
+      "commits_per_author": {
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-07-01",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "b5fd2cb",
+          "author": "otaviotex",
+          "date": "2026-07-01T03:22:53+00:00",
+          "message": "docs: add documentação sobre remoção do módulo de autenticação",
+          "char_count": 62
         }
       ]
     },
@@ -361,9 +384,9 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 313,
+      "total_commits": 315,
       "commits_per_author": {
-        "AlmondHare": 24,
+        "AlmondHare": 26,
         "gabiiverissimo-dev": 37,
         "claranunes22": 121,
         "otaviotex": 20,
@@ -531,10 +554,24 @@
         },
         {
           "date": "2026-07-01",
-          "count": 13
+          "count": 15
         }
       ],
       "recent_commits": [
+        {
+          "sha": "4e8ee1f",
+          "author": "AlmondHare",
+          "date": "2026-07-01T03:23:16+00:00",
+          "message": "Merge branch 'main' of https://github.com/unb-mds/2026-1-Guard.IA",
+          "char_count": 65
+        },
+        {
+          "sha": "69865e2",
+          "author": "AlmondHare",
+          "date": "2026-07-01T03:22:48+00:00",
+          "message": "fix/Remoção de conteúdos para deploy",
+          "char_count": 36
+        },
         {
           "sha": "b077087",
           "author": "AlmondHare",
@@ -800,20 +837,6 @@
           "date": "2026-06-29T14:28:59+00:00",
           "message": "Merge branch 'main' into feat/endpoints",
           "char_count": 39
-        },
-        {
-          "sha": "d8527b1",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-28T23:41:58+00:00",
-          "message": "Merge pull request #54 from unb-mds/feat/telas-guardia-recuperadas",
-          "char_count": 325
-        },
-        {
-          "sha": "c680aa8",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-28T23:34:31+00:00",
-          "message": "Merge branch 'main' into feat/telas-guardia-recuperadas",
-          "char_count": 55
         }
       ]
     },
@@ -2305,8 +2328,8 @@
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 45,
     "lucasnferreiradev-lang": 35,
-    "otaviotex": 26,
-    "AlmondHare": 26,
+    "AlmondHare": 28,
+    "otaviotex": 27,
     "LucasNF-Dev": 20,
     "RochaCarla": 2
   },
@@ -2322,6 +2345,7 @@
       "feat/nova-pagina-dashboard": 2
     },
     "otaviotex": {
+      "docs/remove-CRUD": 1,
       "feat/crud-usuario": 1,
       "feat/documentacao": 1,
       "feat/integracao-frontend-api": 3,
@@ -2330,7 +2354,7 @@
     },
     "AlmondHare": {
       "filtragem-B": 2,
-      "main": 24
+      "main": 26
     },
     "lucasnferreiradev-lang": {
       "fix/camara-proposicoes-data": 2,
