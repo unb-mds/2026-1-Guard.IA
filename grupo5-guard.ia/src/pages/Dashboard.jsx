@@ -90,7 +90,7 @@ export default function Dashboard() {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh', flexDirection: 'column', gap: 12 }}>
       <strong style={{ color: '#c0392b', fontSize: 18 }}>Erro ao conectar com a API</strong>
       <span style={{ color: '#666' }}>{erro}</span>
-      <span style={{ color: '#999', fontSize: 13 }}>Verifique se o backend está rodando em http://localhost:8000</span>
+      <span style={{ color: '#999', fontSize: 13 }}>Não foi possível conectar à api.</span>
     </div>
   );
 

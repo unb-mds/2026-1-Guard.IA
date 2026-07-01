@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import mascot from "../assets/mascot.png";
+import { getStats } from "../services/api";
 
 import claraImg from "../assets/clara.jpeg";
 import lucasImg from "../assets/lucas.jpeg";
@@ -13,11 +14,10 @@ import edvaldoImg from "../assets/edvaldo.jpeg";
 export default function Home() {
   const [total, setTotal] = useState(128); // Começa com 128 (fallback igual à imagem)
 
-  useEffect(() => {
+ useEffect(() => {
     // Busca a contagem real de proposições no seu backend FastAPI
-    fetch('http://localhost:8000/api/proposicoes/count')
-      .then(res => res.json())
-      .then(data => setTotal(data.total || 128))
+    getStats()
+      .then(data => setTotal(data.total_proposicoes || 128))
       .catch(err => console.error("Erro ao buscar contagem da API, mantendo estático:", err));
   }, []);
 
