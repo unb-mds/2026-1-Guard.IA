@@ -4,6 +4,7 @@ import time
 try:
     from app.coleta.coletor_camara import coletar as coletar_camara
     from app.coleta.coletor_senado import coletar as coletar_senado
+    from app.backfill_autoria_senado import backfill as backfill_autoria_senado
     from app.filtro.filtragem import iniciar_filtragem
     from app.armazenamento.armazenamento import iniciar_armazenamento
     from app.classificacao.classificador import iniciar_classificacao
@@ -32,9 +33,15 @@ def main():
     start_total = time.time()
 
     # 1. COLETA
-    print("\n[1/4] Iniciando Coleta de Dados Brutos...")
+    print("\n[1/5] Iniciando Coleta de Dados Brutos...")
     run_stage("Coleta Camara", coletar_camara)
     run_stage("Coleta Senado", coletar_senado)
+
+    # 1.5 BACKFILL AUTOMÁTICO
+    # Corrige no banco qualquer proposição do Senado que ficou com "A pesquisar"
+    # de execuções anteriores (antes da correção do coletor).
+    print("\n[1.5/5] Corrigindo autorias pendentes do Senado...")
+    run_stage("Backfill Autoria Senado", backfill_autoria_senado)
 
     # 2. FILTRO
     success_filtro = run_stage("Filtragem de Relevancia", iniciar_filtragem)
