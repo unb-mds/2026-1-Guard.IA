@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import './Ranking.css';
 import './BarraPesquisa.css';
+import { getProposicoes } from '../services/api';
 
 // Definição de cores padronizadas para os principais partidos (Release 2)
 const CORES_PARTIDOS = {
@@ -17,8 +18,17 @@ const CORES_PARTIDOS = {
   'PP': '#009a49'   // Verde Bandeira
 };
 
-// Cor padrão para partidos não listados acima
-const COR_PADRAO = '#8884d8';
+// Gera uma cor HSL única para partidos que não têm cor fixa definida,
+// espaçando o matiz (hue) igualmente para evitar cores repetidas
+function gerarCoresAutomaticas(partidos) {
+  const cores = {};
+  const total = partidos.length;
+  partidos.forEach((partido, index) => {
+    const hue = Math.round((360 / total) * index);
+    cores[partido] = `hsl(${hue}, 60%, 50%)`;
+  });
+  return cores;
+}
 
 export default function Ranking() {
   const [rankingAutores, setRankingAutores] = useState([]);
@@ -27,28 +37,62 @@ export default function Ranking() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+  async function carregarDados() {
+    try {
+      setLoading(true);
 
-    // Rota da API da Release 2: Ranking de Autores
-    fetch('http://localhost:8000/api/metrics/ranking-parlamentares')
-      .then(res => res.json())
-      .then(data => setRankingAutores(data))
-      .catch(err => console.error("Erro ao carregar ranking:", err));
+      const proposicoes = await getProposicoes(500, 0);
 
-    // Rota da API da Release 2: Distribuição por Partido
-    fetch('http://localhost:8000/api/metrics/distribution-partidos')
-      .then(res => res.json())
-      .then(data => {
-        // Formata os dados para o formato que a Recharts espera
-        // O backend deve retornar: [{ partido: "PT", total: 2 }, ...]
-        setDistribuicaoPartidaria(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Erro ao carregar distribuição:", err);
-        setLoading(false);
+      // Ranking por parlamentar
+      const autores = {};
+
+      proposicoes.forEach((p) => {
+        if (!p.autor) return;
+
+        if (!autores[p.autor]) {
+          autores[p.autor] = {
+            nome: p.autor,
+            partido: p.partido || "",
+            total_proposicoes: 0,
+          };
+        }
+
+        autores[p.autor].total_proposicoes++;
       });
-  }, []);
+
+      const ranking = Object.values(autores).sort(
+        (a, b) => b.total_proposicoes - a.total_proposicoes
+      );
+
+      setRankingAutores(ranking);
+
+      // Distribuição por partido
+      const partidos = {};
+
+      proposicoes.forEach((p) => {
+        if (!p.partido) return;
+
+        partidos[p.partido] = (partidos[p.partido] || 0) + 1;
+      });
+
+      const distribuicao = Object.entries(partidos).map(
+        ([partido, total]) => ({
+          partido,
+          total,
+        })
+      );
+
+      setDistribuicaoPartidaria(distribuicao);
+
+    } catch (err) {
+      console.error("Erro ao carregar dados:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  carregarDados();
+}, []);
   const rankingFiltrado = rankingAutores.filter((auth) =>
     auth.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
     (auth.partido && auth.partido.toLowerCase().includes(termoBusca.toLowerCase()))
@@ -62,11 +106,20 @@ export default function Ranking() {
     { partido: "MDB", total: 1 }
   ];
 
-  // Atribui a cor correta a cada segmento do gráfico
-  const dadosComCores = distribuicaoExibicao.map(entry => ({
-    ...entry,
-    color: CORES_PARTIDOS[entry.partido.toUpperCase()] || COR_PADRAO
-  }));
+  // Identifica partidos sem cor fixa e gera cores únicas só pra eles
+  const partidosSemCorFixa = distribuicaoExibicao
+    .map(entry => entry.partido.toUpperCase())
+    .filter(partido => !CORES_PARTIDOS[partido]);
+  const coresAutomaticas = gerarCoresAutomaticas(partidosSemCorFixa);
+
+  // Atribui a cor correta a cada segmento do gráfico (fixa ou gerada)
+  const dadosComCores = distribuicaoExibicao.map(entry => {
+    const partidoUpper = entry.partido.toUpperCase();
+    return {
+      ...entry,
+      color: CORES_PARTIDOS[partidoUpper] || coresAutomaticas[partidoUpper]
+    };
+  });
 
   if (loading)
     return (
@@ -116,33 +169,65 @@ export default function Ranking() {
         <div className="ranking-card-box center-content">
           <h4>Distribuição partidária das proposições</h4>
 
-          <div className="pie-chart-responsive-container" style={{ width: '100%', height: '350px' }}>
+          <div className="pie-chart-responsive-container" style={{ width: '100%', height: '560px' }}>
             <ResponsiveContainer>
-              <PieChart>
+              <PieChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
                 <Pie
                   data={dadosComCores}
                   dataKey="total"
                   nameKey="partido"
                   cx="50%"
-                  cy="50%"
-                  innerRadius={70}  // Transforma em gráfico de rosca (donut chart)
-                  outerRadius={100}
-                  paddingAngle={5}  // Espaçamento entre as fatias
-                  label={({ partido, total }) => `${partido} (${total})`} // Adiciona label na fatia
-                  style={{ fontSize: '12px', fontWeight: 'bold' }}
+                  cy="42%"
+                  innerRadius={90}  // Transforma em gráfico de rosca (donut chart)
+                  outerRadius={130}
+                  paddingAngle={4}  // Espaçamento entre as fatias
                 >
                   {dadosComCores.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
                   ))}
                 </Pie>
 
-                {/* Legenda automática e interativa na lateral */}
+                {/* Legenda customizada abaixo do gráfico, em grid compacto */}
                 <Legend
-                  layout="vertical"
-                  align="right"
-                  verticalAlign="middle"
-                  iconType="circle"
-                  wrapperStyle={{ fontSize: '13px', paddingLeft: '20px' }}
+                  layout="horizontal"
+                  align="center"
+                  verticalAlign="bottom"
+                  content={({ payload }) => (
+                    <div
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))',
+                        gap: '4px 10px',
+                        maxHeight: '150px',
+                        overflowY: 'auto',
+                        padding: '8px 4px 0',
+                        fontSize: '11px',
+                      }}
+                    >
+                      {payload
+                        .slice()
+                        .sort((a, b) => b.payload.total - a.payload.total)
+                        .map((entry, index) => (
+                          <div
+                            key={`legend-${index}`}
+                            style={{ display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}
+                          >
+                            <span
+                              style={{
+                                width: '8px',
+                                height: '8px',
+                                borderRadius: '50%',
+                                backgroundColor: entry.color,
+                                flexShrink: 0,
+                              }}
+                            />
+                            <span style={{ color: '#333', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                              {entry.value} ({entry.payload.total})
+                            </span>
+                          </div>
+                        ))}
+                    </div>
+                  )}
                 />
 
                 {/* Tooltip ao passar o mouse sobre a fatia */}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T23:23:32.990851+00:00",
+  "generated_at": "2026-06-30T20:06:00.351750+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -39,12 +39,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 361,
-    "open_issues": 5,
+    "total_commits": 358,
+    "open_issues": 4,
     "closed_issues": 36,
     "contributors": 8,
-    "open_prs": 2,
-    "branches_ativas": 24,
+    "open_prs": 1,
+    "branches_ativas": 23,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -1449,8 +1449,8 @@
     }
   },
   "issues": {
-    "total": 41,
-    "open": 5,
+    "total": 40,
+    "open": 4,
     "closed": 36,
     "timeline": [
       {
@@ -1600,19 +1600,11 @@
       },
       {
         "date": "2026-06-30",
-        "opened": 3,
+        "opened": 2,
         "closed": 3
       }
     ],
     "list": [
-      {
-        "number": 69,
-        "title": "chore: Configuração inicial e integração do SonarCloud via GitHub Actions",
-        "state": "open",
-        "created_at": "2026-06-30T23:20:49+00:00",
-        "closed_at": null,
-        "labels": []
-      },
       {
         "number": 66,
         "title": "fix(dashboard): formatar nomes de categorias removendo underscores",
@@ -2287,7 +2279,7 @@
     "claranunes22": 154,
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
-    "lucasnferreiradev-lang": 35,
+    "lucasnferreiradev-lang": 34,
     "otaviotex": 25,
     "LucasNF-Dev": 20,
     "AlmondHare": 14,
@@ -2318,7 +2310,6 @@
     "lucasnferreiradev-lang": {
       "fix/camara-proposicoes-data": 2,
       "fix/dashboard": 1,
-      "fixmain": 1,
       "main": 31
     },
     "PajeMurici-dev": {

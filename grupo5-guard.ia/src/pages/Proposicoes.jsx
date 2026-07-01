@@ -41,12 +41,106 @@ const NOMES_ESTADOS = {
   SE: "Sergipe", TO: "Tocantins"
 };
 
+// Formata "protecao_digital" -> "Protecao Digital"
+function formatCategoryName(nome) {
+  if (!nome) return nome;
+  return nome
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (l) => l.toUpperCase());
+}
+
+// CSS da barra de busca (fornecido pelo usuário, sem os ícones)
+const SEARCH_CSS = `
+  .search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 0;
+    background: #fff;
+    border: 2px solid #006b4f;
+    border-radius: 14px;
+    padding: 10px 14px;
+  }
+
+  .search-container:hover {
+    box-shadow: 0 6px 18px rgba(0, 107, 79, 0.18);
+  }
+
+  .search-container:focus-within {
+    border-color: #008f6b;
+    box-shadow: 0 0 0 4px rgba(0, 107, 79, 0.15);
+  }
+
+  .search-container input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    color: #333;
+  }
+
+  .search-container input::placeholder {
+    color: #999;
+  }
+
+  .casa-select {
+    border: 2px solid #006b4f;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 15px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .casa-select:hover {
+    box-shadow: 0 6px 18px rgba(0, 107, 79, 0.18);
+  }
+
+  .casa-select:focus {
+    border-color: #008f6b;
+    box-shadow: 0 0 0 4px rgba(0, 107, 79, 0.15);
+  }
+
+  .clear-filters-btn {
+    border: none;
+    background: #fee2e2;
+    color: #ef4444;
+    padding: 10px 16px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .clear-filters-btn:hover {
+    background: #fecaca;
+  }
+
+  @media (max-width: 768px) {
+    .search-container {
+      max-width: 100%;
+      padding: 10px 15px;
+    }
+
+    .search-container input {
+      font-size: 15px;
+    }
+  }
+`;
+
 export default function Proposicoes() {
   const [proposicoes, setProposicoes] = useState([]);
   const [loading, setLoading]         = useState(true);
   const [erro, setErro]               = useState(null);
   const [estadoSelecionado, setEstadoSelecionado] = useState(null);
   const [estadoFiltroAtivo, setEstadoFiltroAtivo] = useState(null);
+  const [busca, setBusca] = useState('');
+  const [casaFiltro, setCasaFiltro] = useState('');
 
   useEffect(() => {
     getProposicoes()
@@ -74,11 +168,35 @@ export default function Proposicoes() {
     return '#4db6ac';
   };
 
-  // Filtra proposições pela sigla do estado clicado
+  // Filtra proposições pela sigla do estado clicado, pela casa selecionada e pelo texto da busca
   const proposicoesFiltradas = useMemo(() => {
-    if (!estadoFiltroAtivo) return proposicoes;
-    return proposicoes.filter((p) => p.estado === estadoFiltroAtivo);
-  }, [proposicoes, estadoFiltroAtivo]);
+    let lista = proposicoes;
+
+    if (estadoFiltroAtivo) {
+      lista = lista.filter((p) => p.estado === estadoFiltroAtivo);
+    }
+
+    if (casaFiltro) {
+      lista = lista.filter((p) => p.casa === casaFiltro);
+    }
+
+    const termo = busca.trim().toLowerCase();
+    if (termo) {
+      lista = lista.filter((p) => {
+        const categoriaFormatada = formatCategoryName(p.categoria || '');
+        return (
+          (p.id_externo || '').toString().toLowerCase().includes(termo) ||
+          (p.autor || '').toLowerCase().includes(termo) ||
+          (p.partido || '').toLowerCase().includes(termo) ||
+          (p.estado || '').toLowerCase().includes(termo) ||
+          (p.casa || '').toLowerCase().includes(termo) ||
+          categoriaFormatada.toLowerCase().includes(termo)
+        );
+      });
+    }
+
+    return lista;
+  }, [proposicoes, estadoFiltroAtivo, casaFiltro, busca]);
 
   const estadoExibicao = estadoSelecionado || estadoFiltroAtivo;
 
@@ -92,6 +210,7 @@ export default function Proposicoes() {
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 24px' }}>
+      <style>{SEARCH_CSS}</style>
 
       <header style={{ marginBottom: '32px' }}>
         <h2 style={{ fontSize: '28px', fontWeight: '800', margin: '0 0 6px 0', letterSpacing: '-0.5px', color: '#1e293b' }}>Distribuição Geográfica</h2>
@@ -165,10 +284,48 @@ export default function Proposicoes() {
         </div>
       </div>
 
+      {/* Cabeçalho da tabela + filtros + busca */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '16px', flexWrap: 'wrap' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: '800', margin: 0, color: '#1e293b' }}>
+          Proposições Coletadas {estadoFiltroAtivo ? `— ${NOMES_ESTADOS[estadoFiltroAtivo] || estadoFiltroAtivo}` : `(${proposicoesFiltradas.length})`}
+        </h3>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', flex: '1 1 auto', justifyContent: 'flex-end' }}>
+          <select
+            className="casa-select"
+            value={casaFiltro}
+            onChange={(e) => setCasaFiltro(e.target.value)}
+          >
+            <option value="">Todas as Casas</option>
+            <option value="Senado">Senado Federal</option>
+            <option value="Câmara">Câmara dos Deputados</option>
+          </select>
+
+          {(casaFiltro || estadoFiltroAtivo || busca) && (
+            <button
+              className="clear-filters-btn"
+              onClick={() => {
+                setCasaFiltro('');
+                setEstadoFiltroAtivo(null);
+                setBusca('');
+              }}
+            >
+              Remover Filtros ×
+            </button>
+          )}
+
+          <div className="search-container" style={{ flex: '1 1 280px', maxWidth: 320 }}>
+            <input
+              type="text"
+              value={busca}
+              onChange={(e) => setBusca(e.target.value)}
+              placeholder="Buscar por autor, partido, categoria, estado..."
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Tabela */}
-      <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '16px', color: '#1e293b' }}>
-        Proposições Coletadas {estadoFiltroAtivo ? `— ${NOMES_ESTADOS[estadoFiltroAtivo] || estadoFiltroAtivo}` : `(${proposicoes.length})`}
-      </h3>
       <div style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow)', border: '1px solid var(--border)', overflow: 'hidden' }}>
         {loading ? (
           <div style={{ padding: 32, color: '#006b4f', fontSize: 16 }}>Carregando proposições...</div>
@@ -194,7 +351,7 @@ export default function Proposicoes() {
                   </td>
                   <td style={{ padding: '16px 20px' }}>
                     <span style={{ backgroundColor: 'var(--primary-light)', color: 'var(--primary)', padding: '6px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700' }}>
-                      {p.categoria || '—'}
+                      {formatCategoryName(p.categoria) || '—'}
                     </span>
                   </td>
                 </tr>
@@ -202,7 +359,7 @@ export default function Proposicoes() {
               {proposicoesFiltradas.length === 0 && (
                 <tr>
                   <td colSpan={7} style={{ padding: 32, textAlign: 'center', color: '#aaa' }}>
-                    Nenhuma proposição encontrada para este estado.
+                    Nenhuma proposição encontrada para este filtro.
                   </td>
                 </tr>
               )}

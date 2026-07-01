@@ -3,20 +3,18 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-# Configurações e Caminhos
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = BASE_DIR / "data"
 DATA_FILE = DATA_DIR / "dados_brutos.json"
 CHECKPOINT_FILE = DATA_DIR / "checkpoint_senado.json"
 
-# Endpoint do Senado para pesquisa de matérias
 API_URL = "https://legis.senado.leg.br/dadosabertos/materia/pesquisa/lista"
-START_DATE = "20230101" # Formato YYYYMMDD exigido pela API
+AUTORIA_URL = "https://legis.senado.leg.br/dadosabertos/materia/autoria/{codigo}"
+START_DATE = "20230101"
 HEADERS = {"Accept": "application/json"}
 TIMEOUT = 30
 
 def load_checkpoint():
-    """Carrega o progresso da última execução."""
     if CHECKPOINT_FILE.exists():
         try:
             with open(CHECKPOINT_FILE, "r", encoding="utf-8") as f:
@@ -26,7 +24,6 @@ def load_checkpoint():
     return {"last_date": START_DATE}
 
 def save_checkpoint(date):
-    """Salva o progresso atual."""
     checkpoint = {"last_date": date}
     try:
         DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -36,7 +33,6 @@ def save_checkpoint(date):
         print(f"❌ Erro ao salvar checkpoint: {e}")
 
 def load_existing_ids():
-    """Carrega apenas os IDs existentes para economizar memória."""
     if not DATA_FILE.exists() or DATA_FILE.stat().st_size == 0:
         return set()
     try:
@@ -48,7 +44,6 @@ def load_existing_ids():
     return set()
 
 def save_data(novas_proposicoes):
-    """Lê o arquivo, adiciona os novos dados e salva tudo (Merge)."""
     dados_completos = []
     if DATA_FILE.exists() and DATA_FILE.stat().st_size > 0:
         try:
@@ -56,9 +51,9 @@ def save_data(novas_proposicoes):
                 dados_completos = json.load(f)
         except Exception:
             dados_completos = []
-    
+
     dados_completos.extend(novas_proposicoes)
-    
+
     try:
         DATA_DIR.mkdir(parents=True, exist_ok=True)
         with open(DATA_FILE, "w", encoding="utf-8") as f:
@@ -66,42 +61,69 @@ def save_data(novas_proposicoes):
     except Exception as e:
         print(f"❌ Erro ao salvar dados brutos: {e}")
 
-def format_materia(materia):
-    """Padroniza o objeto da matéria conforme o contrato de dados Guard.IA."""
+def buscar_autoria_senado(codigo):
+    placeholder = {"autor": "A pesquisar", "partido": "A pesquisar", "estado": "A pesquisar"}
+    try:
+        response = requests.get(
+            AUTORIA_URL.format(codigo=codigo),
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        )
+        response.raise_for_status()
+        data = response.json()
+
+        materia = data.get("AutoriaMateria", {}).get("Materia", {})
+        autores = materia.get("Autoria", {}).get("Autor", [])
+        if isinstance(autores, dict):
+            autores = [autores]
+        if not autores:
+            return placeholder
+
+        primeiro = autores[0]
+        ident = primeiro.get("IdentificacaoParlamentar", {})
+
+        nome = primeiro.get("NomeAutor")
+        partido = ident.get("SiglaPartidoParlamentar")
+        estado = primeiro.get("UfAutor") or ident.get("UfParlamentar")
+
+        return {
+            "autor": nome or "A pesquisar",
+            "partido": partido or "A pesquisar",
+            "estado": estado or "A pesquisar",
+        }
+    except Exception as e:
+        print(f"⚠️ Não foi possível buscar autoria da matéria {codigo}: {e}")
+        return placeholder
+
+def format_materia(materia, detalhes):
     return {
         "id_externo": f"SENADO-{materia.get('Codigo')}",
         "ementa": (materia.get("Ementa") or "").strip(),
-        "autor": "A pesquisar",
-        "partido": "A pesquisar",
-        "estado": "A pesquisar",
+        "autor": detalhes.get("autor", "A pesquisar"),
+        "partido": detalhes.get("partido", "A pesquisar"),
+        "estado": detalhes.get("estado", "A pesquisar"),
         "casa": "Senado",
         "data_apresentacao": materia.get("Data", "")
     }
 
 def coletar():
-    """Executa o pipeline de coleta do Senado com loop de paginação por data."""
     checkpoint = load_checkpoint()
     data_cursor = checkpoint["last_date"]
-    
-    # Sênior: Carregamos apenas os IDs para o set de deduplicação (economiza RAM)
     ids_existentes = load_existing_ids()
-    
+
     print(f"🚀 Iniciando coleta Senado a partir de {data_cursor}...")
     print(f"📊 Registros já conhecidos: {len(ids_existentes)}")
-    
+
     try:
         while True:
-            params = {
-                "dataInicioApresentacao": data_cursor
-            }
-            
+            params = {"dataInicioApresentacao": data_cursor}
             response = requests.get(API_URL, headers=HEADERS, params=params, timeout=TIMEOUT)
             response.raise_for_status()
-            
+
             data = response.json()
             pesquisa = data.get("PesquisaBasicaMateria", {})
             materias_wrapper = pesquisa.get("Materias", {})
-            
+
             if not materias_wrapper:
                 print("🏁 Fim da coleta. Nenhuma matéria nova encontrada no Senado.")
                 break
@@ -117,16 +139,16 @@ def coletar():
                 id_mat = mat.get("Codigo")
                 if not id_mat:
                     continue
-                    
+
                 id_ext = f"SENADO-{id_mat}"
                 if id_ext in ids_existentes:
                     continue
-                
-                proposicao_formatada = format_materia(mat)
+
+                detalhes = buscar_autoria_senado(id_mat)
+                proposicao_formatada = format_materia(mat, detalhes)
                 proposicoes_do_lote.append(proposicao_formatada)
                 ids_existentes.add(id_ext)
-                
-                # Atualiza a data para o cursor (formato YYYYMMDD)
+
                 data_ap = mat.get("Data", "")
                 if data_ap:
                     ultima_data_lote = data_ap.replace("-", "")
@@ -143,12 +165,10 @@ def coletar():
                 except:
                     break
 
-            # Batch Saving: Salva apenas os novos registros do lote
             save_data(proposicoes_do_lote)
             save_checkpoint(ultima_data_lote)
             print(f"✅ Lote processado: {len(proposicoes_do_lote)} novas matérias. Próximo cursor: {ultima_data_lote}")
-            
-            # Prevenção de loop infinito na mesma data
+
             if ultima_data_lote == data_cursor:
                 try:
                     dt = datetime.strptime(data_cursor, "%Y%m%d")
