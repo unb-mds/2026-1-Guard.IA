@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guard.IA</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    header {
+      background: #006b4f;
+      color: white;
+      padding: 22px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+    }
+
+    .hero {
+      padding: 80px 60px;
+      background: #eeeeee;
+    }
+
+    .hero h2 {
+      font-size: 64px;
+      line-height: 1.05;
+      margin: 0 0 20px;
+      font-weight: 900;
+    }
+
+    .hero p {
+      font-size: 22px;
+      max-width: 850px;
+    }
+
+    section {
+      padding: 50px 60px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      color: #006b4f;
+      margin-top: 0;
+    }
+
+    footer {
+      background: #006b4f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>GUARD.IA</h1>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#sprints">Sprints</a>
+      <a href="#equipe">Equipe</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>MONITORAMENTO<br>LEGISLATIVO</h2>
+    <p>
+      Acompanhe proposições relacionadas à proteção de crianças e adolescentes
+      no ambiente digital.
+    </p>
+  </div>
+
+  <section id="sobre">
+    <h2>Sobre o projeto</h2>
+    <p>
+      O Guard.IA é um sistema de monitoramento legislativo voltado à análise de
+      proposições relacionadas à segurança, privacidade, educação digital e
+      proteção de crianças e adolescentes na internet.
+    </p>
+  </section>
+
+  <section id="funcionalidades">
+    <h2>Funcionalidades</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Coleta</h3>
+        <p>Busca de proposições legislativas em fontes oficiais.</p>
+      </div>
+      <div class="card">
+        <h3>Filtro</h3>
+        <p>Seleção de dados relevantes por palavras-chave.</p>
+      </div>
+      <div class="card">
+        <h3>Classificação</h3>
+        <p>Organização das proposições por temas do projeto.</p>
+      </div>
+      <div class="card">
+        <h3>Dashboard</h3>
+        <p>Visualização dos dados por gráficos, rankings e tabelas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sprints">
+    <h2>Sprints</h2>
+    <ul>
+      <li>Sprint 00 — Organização inicial</li>
+      <li>Sprint 01 — Estudos técnicos</li>
+      <li>Sprint 02 — Requisitos e protótipo</li>
+      <li>Sprint 03 — Desenvolvimento inicial</li>
+      <li>Sprint 04 — Melhorias no dashboard</li>
+    </ul>
+  </section>
+
+  <section id="equipe">
+    <h2>Equipe</h2>
+    <p>Clara, Lucas, João Paulo, Otávio, Gabriella e Edvaldo.</p>
+  </section>
+
+  <footer>
+    Guard.IA — Projeto MDS 2026.1
+  </footer>
+</body>
+</html>

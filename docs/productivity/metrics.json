@@ -1,0 +1,2389 @@
+{
+  "generated_at": "2026-07-01T03:24:36.231735+00:00",
+  "repo": "unb-mds/2026-1-Guard.IA",
+  "branches": [
+    "dev-projeto",
+    "docs/remove-CRUD",
+    "estudos",
+    "feat/armazenamento-postgres",
+    "feat/classificacao-release-2",
+    "feat/crud-usuario",
+    "feat/design-updates",
+    "feat/documentacao",
+    "feat/endpoints",
+    "feat/home-page",
+    "feat/integracao-dashboard",
+    "feat/integracao-dashboard-2",
+    "feat/integracao-frontend-api",
+    "feat/integracao-proposicoes-",
+    "feat/telas-guardia-recuperadas",
+    "feat/teste-pipeline-unificado",
+    "filtragem",
+    "filtragem-B",
+    "fix/camara-proposicoes-data",
+    "fix/dashboard",
+    "fix/main",
+    "fixmain",
+    "main",
+    "pages-metricas",
+    "release-1-integration",
+    "sprint-04-dashboard"
+  ],
+  "branches_deletadas": [
+    "PajeMurici-dev-patch-1",
+    "PajeMurici-dev-patch-2",
+    "chore/remove-cadastro",
+    "feat/home-team",
+    "feat/login-page",
+    "feat/login-redesign",
+    "feat/nova-pagina-dashboard",
+    "feature/estrutura-inicial",
+    "revert-48-feat/nova-pagina-dashboard"
+  ],
+  "summary": {
+    "total_commits": 378,
+    "open_issues": 5,
+    "closed_issues": 36,
+    "contributors": 8,
+    "open_prs": 1,
+    "branches_ativas": 26,
+    "branches_deletadas": 9
+  },
+  "branches_data": {
+    "dev-projeto": {
+      "branch": "dev-projeto",
+      "total_commits": 1,
+      "commits_per_author": {
+        "claranunes22": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-05-24",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "8ed5c99",
+          "author": "claranunes22",
+          "date": "2026-05-24T15:33:01+00:00",
+          "message": "Merge pull request #43 from unb-mds/feat/teste-pipeline-unificado",
+          "char_count": 96
+        }
+      ]
+    },
+    "docs/remove-CRUD": {
+      "branch": "docs/remove-CRUD",
+      "total_commits": 1,
+      "commits_per_author": {
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-07-01",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "b5fd2cb",
+          "author": "otaviotex",
+          "date": "2026-07-01T03:22:53+00:00",
+          "message": "docs: add documentação sobre remoção do módulo de autenticação",
+          "char_count": 62
+        }
+      ]
+    },
+    "estudos": {
+      "branch": "estudos",
+      "total_commits": 1,
+      "commits_per_author": {
+        "claranunes22": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-05-14",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "27ed429",
+          "author": "claranunes22",
+          "date": "2026-05-14T16:38:04+00:00",
+          "message": "atualiza sprint planning ",
+          "char_count": 99
+        }
+      ]
+    },
+    "feat/armazenamento-postgres": {
+      "branch": "feat/armazenamento-postgres",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/classificacao-release-2": {
+      "branch": "feat/classificacao-release-2",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/crud-usuario": {
+      "branch": "feat/crud-usuario",
+      "total_commits": 1,
+      "commits_per_author": {
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-05-17",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "abccbab",
+          "author": "otaviotex",
+          "date": "2026-05-17T04:35:49+00:00",
+          "message": "feat: implementa CRUD de usuarios com FastAPI e SQLite",
+          "char_count": 54
+        }
+      ]
+    },
+    "feat/design-updates": {
+      "branch": "feat/design-updates",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/documentacao": {
+      "branch": "feat/documentacao",
+      "total_commits": 1,
+      "commits_per_author": {
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-07-01",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "946e4e3",
+          "author": "otaviotex",
+          "date": "2026-07-01T03:05:29+00:00",
+          "message": "docs: add relatório de teste de usabilidade com familiares",
+          "char_count": 58
+        }
+      ]
+    },
+    "feat/endpoints": {
+      "branch": "feat/endpoints",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/home-page": {
+      "branch": "feat/home-page",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/integracao-dashboard": {
+      "branch": "feat/integracao-dashboard",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/integracao-dashboard-2": {
+      "branch": "feat/integracao-dashboard-2",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/integracao-frontend-api": {
+      "branch": "feat/integracao-frontend-api",
+      "total_commits": 3,
+      "commits_per_author": {
+        "otaviotex": 3
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-29",
+          "count": 3
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "e0e914e",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:39:08+00:00",
+          "message": "feat(frontend): add camada de serviço para integração com a API",
+          "char_count": 63
+        },
+        {
+          "sha": "8ab7ea1",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:43:06+00:00",
+          "message": "feat(frontend): integrar página de filtros com a API real",
+          "char_count": 57
+        },
+        {
+          "sha": "dbca0b8",
+          "author": "otaviotex",
+          "date": "2026-06-29T00:47:04+00:00",
+          "message": "chore(frontend): add .env ao .gitignore",
+          "char_count": 39
+        }
+      ]
+    },
+    "feat/integracao-proposicoes-": {
+      "branch": "feat/integracao-proposicoes-",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/telas-guardia-recuperadas": {
+      "branch": "feat/telas-guardia-recuperadas",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "feat/teste-pipeline-unificado": {
+      "branch": "feat/teste-pipeline-unificado",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "filtragem": {
+      "branch": "filtragem",
+      "total_commits": 1,
+      "commits_per_author": {
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-05-15",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "b259f87",
+          "author": "otaviotex",
+          "date": "2026-05-15T18:32:42+00:00",
+          "message": "feat: implementa modulo de filtro de proposicoes legislativas",
+          "char_count": 61
+        }
+      ]
+    },
+    "filtragem-B": {
+      "branch": "filtragem-B",
+      "total_commits": 2,
+      "commits_per_author": {
+        "AlmondHare": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-05-17",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "eb96625",
+          "author": "AlmondHare",
+          "date": "2026-05-17T04:19:01+00:00",
+          "message": "Merge branch 'dev-projeto' of https://github.com/unb-mds/2026-1-Guard.IA into filtragem-B",
+          "char_count": 89
+        },
+        {
+          "sha": "99e4f84",
+          "author": "AlmondHare",
+          "date": "2026-05-17T04:57:57+00:00",
+          "message": "feat/init-filtro",
+          "char_count": 16
+        }
+      ]
+    },
+    "fix/camara-proposicoes-data": {
+      "branch": "fix/camara-proposicoes-data",
+      "total_commits": 2,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "fb1eea6",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T17:32:26+00:00",
+          "message": "Add cleaned dataset backup",
+          "char_count": 26
+        },
+        {
+          "sha": "2bd8e71",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T17:53:25+00:00",
+          "message": "Add frontend-ready filtered dataset (records with estado)",
+          "char_count": 57
+        }
+      ]
+    },
+    "fix/dashboard": {
+      "branch": "fix/dashboard",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "fix/main": {
+      "branch": "fix/main",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "fixmain": {
+      "branch": "fixmain",
+      "total_commits": 1,
+      "commits_per_author": {
+        "lucasnferreiradev-lang": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-30",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "348e412",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T21:14:18+00:00",
+          "message": "Corrige importacao do pipeline para execucao local",
+          "char_count": 50
+        }
+      ]
+    },
+    "main": {
+      "branch": "main",
+      "total_commits": 315,
+      "commits_per_author": {
+        "AlmondHare": 26,
+        "gabiiverissimo-dev": 37,
+        "claranunes22": 121,
+        "otaviotex": 20,
+        "lucasnferreiradev-lang": 32,
+        "PajeMurici-dev": 58,
+        "LucasNF-Dev": 19,
+        "RochaCarla": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-03-18",
+          "count": 2
+        },
+        {
+          "date": "2026-04-15",
+          "count": 20
+        },
+        {
+          "date": "2026-04-18",
+          "count": 2
+        },
+        {
+          "date": "2026-04-19",
+          "count": 6
+        },
+        {
+          "date": "2026-04-20",
+          "count": 12
+        },
+        {
+          "date": "2026-04-21",
+          "count": 40
+        },
+        {
+          "date": "2026-04-22",
+          "count": 2
+        },
+        {
+          "date": "2026-04-25",
+          "count": 2
+        },
+        {
+          "date": "2026-04-26",
+          "count": 24
+        },
+        {
+          "date": "2026-04-27",
+          "count": 8
+        },
+        {
+          "date": "2026-04-28",
+          "count": 2
+        },
+        {
+          "date": "2026-04-29",
+          "count": 10
+        },
+        {
+          "date": "2026-04-30",
+          "count": 2
+        },
+        {
+          "date": "2026-05-03",
+          "count": 8
+        },
+        {
+          "date": "2026-05-04",
+          "count": 12
+        },
+        {
+          "date": "2026-05-05",
+          "count": 12
+        },
+        {
+          "date": "2026-05-13",
+          "count": 2
+        },
+        {
+          "date": "2026-05-14",
+          "count": 9
+        },
+        {
+          "date": "2026-05-15",
+          "count": 14
+        },
+        {
+          "date": "2026-05-16",
+          "count": 2
+        },
+        {
+          "date": "2026-05-17",
+          "count": 2
+        },
+        {
+          "date": "2026-05-18",
+          "count": 1
+        },
+        {
+          "date": "2026-05-20",
+          "count": 3
+        },
+        {
+          "date": "2026-05-21",
+          "count": 24
+        },
+        {
+          "date": "2026-05-23",
+          "count": 2
+        },
+        {
+          "date": "2026-05-24",
+          "count": 7
+        },
+        {
+          "date": "2026-05-25",
+          "count": 3
+        },
+        {
+          "date": "2026-05-26",
+          "count": 4
+        },
+        {
+          "date": "2026-05-27",
+          "count": 3
+        },
+        {
+          "date": "2026-06-01",
+          "count": 2
+        },
+        {
+          "date": "2026-06-02",
+          "count": 6
+        },
+        {
+          "date": "2026-06-10",
+          "count": 3
+        },
+        {
+          "date": "2026-06-17",
+          "count": 2
+        },
+        {
+          "date": "2026-06-24",
+          "count": 1
+        },
+        {
+          "date": "2026-06-25",
+          "count": 4
+        },
+        {
+          "date": "2026-06-26",
+          "count": 14
+        },
+        {
+          "date": "2026-06-28",
+          "count": 3
+        },
+        {
+          "date": "2026-06-29",
+          "count": 13
+        },
+        {
+          "date": "2026-06-30",
+          "count": 12
+        },
+        {
+          "date": "2026-07-01",
+          "count": 15
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "4e8ee1f",
+          "author": "AlmondHare",
+          "date": "2026-07-01T03:23:16+00:00",
+          "message": "Merge branch 'main' of https://github.com/unb-mds/2026-1-Guard.IA",
+          "char_count": 65
+        },
+        {
+          "sha": "69865e2",
+          "author": "AlmondHare",
+          "date": "2026-07-01T03:22:48+00:00",
+          "message": "fix/Remoção de conteúdos para deploy",
+          "char_count": 36
+        },
+        {
+          "sha": "b077087",
+          "author": "AlmondHare",
+          "date": "2026-07-01T03:11:22+00:00",
+          "message": "Merge branch 'main' of https://github.com/unb-mds/2026-1-Guard.IA",
+          "char_count": 65
+        },
+        {
+          "sha": "aee5eca",
+          "author": "AlmondHare",
+          "date": "2026-07-01T03:10:19+00:00",
+          "message": "fix: update error messages for API connection failure in Dashboard and Proposicoes components for deploy",
+          "char_count": 104
+        },
+        {
+          "sha": "6322831",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:43:21+00:00",
+          "message": "Merge branch 'main' of https://github.com/unb-mds/2026-1-Guard.IA",
+          "char_count": 65
+        },
+        {
+          "sha": "cdf8e27",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:42:36+00:00",
+          "message": "refactor: remove unused frontend files and components for deploy",
+          "char_count": 64
+        },
+        {
+          "sha": "f2859de",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:23:34+00:00",
+          "message": "Merge pull request #70 from unb-mds/fix/main",
+          "char_count": 54
+        },
+        {
+          "sha": "0ef45b8",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:21:39+00:00",
+          "message": "Merge branch 'main' into fix/main",
+          "char_count": 33
+        },
+        {
+          "sha": "53a520c",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:07:13+00:00",
+          "message": "feat: enhance Proposicoes component with search functionality and improved filtering options",
+          "char_count": 92
+        },
+        {
+          "sha": "b6e8a33",
+          "author": "AlmondHare",
+          "date": "2026-07-01T01:47:31+00:00",
+          "message": "feat: refactor Dashboard component to enhance filter functionality and improve category display",
+          "char_count": 95
+        },
+        {
+          "sha": "104b584",
+          "author": "AlmondHare",
+          "date": "2026-07-01T01:32:47+00:00",
+          "message": "Merge branch 'fix/main' of https://github.com/unb-mds/2026-1-Guard.IA into fix/main",
+          "char_count": 83
+        },
+        {
+          "sha": "0ab392b",
+          "author": "AlmondHare",
+          "date": "2026-07-01T01:32:15+00:00",
+          "message": "feat: add backfill functionality for Senate authorship data in main pipeline",
+          "char_count": 76
+        },
+        {
+          "sha": "72b0f9e",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-07-01T01:00:58+00:00",
+          "message": "Merge pull request #67 from unb-mds/fix/dashboard",
+          "char_count": 64
+        },
+        {
+          "sha": "fd6e419",
+          "author": "AlmondHare",
+          "date": "2026-07-01T00:36:14+00:00",
+          "message": "feat: enhance Ranking component with dynamic color generation and improved data fetching",
+          "char_count": 88
+        },
+        {
+          "sha": "af6ac14",
+          "author": "AlmondHare",
+          "date": "2026-07-01T00:18:31+00:00",
+          "message": "feat: implement backfill functionality for Senate authorship data",
+          "char_count": 65
+        },
+        {
+          "sha": "c31754d",
+          "author": "claranunes22",
+          "date": "2026-06-30T23:22:30+00:00",
+          "message": "Merge pull request #68 from unb-mds/feat/telas-guardia-recuperadas",
+          "char_count": 124
+        },
+        {
+          "sha": "a6985bf",
+          "author": "claranunes22",
+          "date": "2026-06-30T23:08:34+00:00",
+          "message": "chore: adiciona configuracao do sonarcloud e pipeline ci",
+          "char_count": 56
+        },
+        {
+          "sha": "506fd30",
+          "author": "otaviotex",
+          "date": "2026-06-30T20:03:27+00:00",
+          "message": "fix(frontend): formatar nomes de categorias no Dashboard removendo underscores",
+          "char_count": 78
+        },
+        {
+          "sha": "7586c91",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T18:49:19+00:00",
+          "message": "Remove user schema/auth helpers and keep pipeline-focused classification changes",
+          "char_count": 80
+        },
+        {
+          "sha": "36aa811",
+          "author": "claranunes22",
+          "date": "2026-06-30T15:55:53+00:00",
+          "message": "Merge pull request #65 from unb-mds/fix/camara-proposicoes-data",
+          "char_count": 110
+        },
+        {
+          "sha": "9ffa764",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T15:23:49+00:00",
+          "message": "Fix: fill Câmara proposal state data",
+          "char_count": 36
+        },
+        {
+          "sha": "1f51017",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-30T03:11:07+00:00",
+          "message": "docs: atualiza versao do pasycopg no README",
+          "char_count": 43
+        },
+        {
+          "sha": "09c4b60",
+          "author": "AlmondHare",
+          "date": "2026-06-30T02:24:23+00:00",
+          "message": "Merge pull request #63 from unb-mds/feat/integracao-proposicoes-",
+          "char_count": 93
+        },
+        {
+          "sha": "c6fbce2",
+          "author": "otaviotex",
+          "date": "2026-06-30T01:39:56+00:00",
+          "message": "feat(frontend): integrar página de Proposições com mapa e tabela de dados reais",
+          "char_count": 79
+        },
+        {
+          "sha": "d1a1fb1",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-30T01:26:24+00:00",
+          "message": "Merge pull request #62 from unb-mds/feat/integracao-dashboard-2",
+          "char_count": 117
+        },
+        {
+          "sha": "2ca3b7e",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-30T00:41:01+00:00",
+          "message": "Merge branch 'main' into feat/integracao-dashboard-2",
+          "char_count": 52
+        },
+        {
+          "sha": "f37c98c",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-30T00:26:59+00:00",
+          "message": "Fix: corrige o update metrics",
+          "char_count": 29
+        },
+        {
+          "sha": "3f71ac6",
+          "author": "otaviotex",
+          "date": "2026-06-29T23:51:36+00:00",
+          "message": "feat(frontend): Correcao de arquivo 'Dashboard.jsx'.",
+          "char_count": 52
+        },
+        {
+          "sha": "8be06cc",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-29T23:43:08+00:00",
+          "message": "fix: corrige o problema de monnits exclusivos na pagina de produtividade",
+          "char_count": 72
+        },
+        {
+          "sha": "3064f90",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-29T23:36:15+00:00",
+          "message": "fix: corrige o collect metrics que foi alterado pos merge",
+          "char_count": 57
+        },
+        {
+          "sha": "7b643cb",
+          "author": "AlmondHare",
+          "date": "2026-06-29T22:59:41+00:00",
+          "message": "Merge pull request #61 from unb-mds/feat/integracao-dashboard",
+          "char_count": 88
+        },
+        {
+          "sha": "37401f9",
+          "author": "AlmondHare",
+          "date": "2026-06-29T22:59:18+00:00",
+          "message": "Merge branch 'main' into feat/integracao-dashboard",
+          "char_count": 50
+        },
+        {
+          "sha": "99e5958",
+          "author": "otaviotex",
+          "date": "2026-06-29T22:35:09+00:00",
+          "message": "Merge pull request #60 from unb-mds/feat/design-updates",
+          "char_count": 76
+        },
+        {
+          "sha": "bb6bbb5",
+          "author": "otaviotex",
+          "date": "2026-06-29T22:34:49+00:00",
+          "message": "Merge branch 'main' into feat/design-updates",
+          "char_count": 44
+        },
+        {
+          "sha": "38a0c98",
+          "author": "otaviotex",
+          "date": "2026-06-29T22:20:49+00:00",
+          "message": "feat(frontend): add getEvolucao() ao serviço de API",
+          "char_count": 51
+        },
+        {
+          "sha": "aed005a",
+          "author": "AlmondHare",
+          "date": "2026-06-29T20:41:27+00:00",
+          "message": "feat/adiciona funcionalidade barra de pesquisa nas páginas de proposições em ranking",
+          "char_count": 84
+        },
+        {
+          "sha": "b5e7ebd",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-29T15:01:19+00:00",
+          "message": "feat: add loading spinner and team section",
+          "char_count": 42
+        },
+        {
+          "sha": "af46a21",
+          "author": "otaviotex",
+          "date": "2026-06-29T14:40:08+00:00",
+          "message": "feat(frontend): integrar Dashboard com dados reais da API",
+          "char_count": 57
+        },
+        {
+          "sha": "c9a8a7b",
+          "author": "otaviotex",
+          "date": "2026-06-29T14:29:29+00:00",
+          "message": "Merge pull request #58 from unb-mds/feat/endpoints",
+          "char_count": 90
+        },
+        {
+          "sha": "7884e7f",
+          "author": "otaviotex",
+          "date": "2026-06-29T14:28:59+00:00",
+          "message": "Merge branch 'main' into feat/endpoints",
+          "char_count": 39
+        }
+      ]
+    },
+    "pages-metricas": {
+      "branch": "pages-metricas",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
+    "release-1-integration": {
+      "branch": "release-1-integration",
+      "total_commits": 4,
+      "commits_per_author": {
+        "PajeMurici-dev": 4
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-24",
+          "count": 1
+        },
+        {
+          "date": "2026-06-26",
+          "count": 3
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "ef4bbfe",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-24T16:59:18+00:00",
+          "message": "fix atualiza na branch release 1 a pagina de produtividade",
+          "char_count": 58
+        },
+        {
+          "sha": "0ffff1d",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-26T01:35:20+00:00",
+          "message": "fix: corrige a pagina no estilo mkdocs para ler o collect metrics",
+          "char_count": 65
+        },
+        {
+          "sha": "96326b7",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-26T01:58:54+00:00",
+          "message": " fix: corrige inconsistencias da pagina de produtividade",
+          "char_count": 56
+        },
+        {
+          "sha": "7de32d9",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-26T02:17:07+00:00",
+          "message": "fix: corrige a contagem de branches no collect metrics",
+          "char_count": 54
+        }
+      ]
+    },
+    "sprint-04-dashboard": {
+      "branch": "sprint-04-dashboard",
+      "total_commits": 1,
+      "commits_per_author": {
+        "claranunes22": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-05-04",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "7de708f",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:26:11+00:00",
+          "message": "docs: adiciona página inicial do projeto",
+          "char_count": 40
+        }
+      ]
+    },
+    "PajeMurici-dev-patch-1": {
+      "branch": "PajeMurici-dev-patch-1",
+      "status": "deleted",
+      "merged_into": "estudos",
+      "merged_at": "2026-04-29T16:45:58+00:00",
+      "pr_number": 23,
+      "pr_title": "Create estudo-storymap.md",
+      "total_commits": 1,
+      "commits_per_author": {
+        "PajeMurici-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-04-25",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "8781479",
+          "author": "PajeMurici-dev",
+          "date": "2026-04-25T00:30:56+00:00",
+          "message": "Create estudo-storymap.md",
+          "char_count": 65
+        }
+      ]
+    },
+    "PajeMurici-dev-patch-2": {
+      "branch": "PajeMurici-dev-patch-2",
+      "status": "deleted",
+      "merged_into": "main",
+      "merged_at": "2026-04-26T22:07:38+00:00",
+      "pr_number": 21,
+      "pr_title": "Create estudo_storymap.md",
+      "total_commits": 1,
+      "commits_per_author": {
+        "PajeMurici-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-04-26",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "09cf186",
+          "author": "PajeMurici-dev",
+          "date": "2026-04-26T22:07:08+00:00",
+          "message": "Create estudo_storymap.md",
+          "char_count": 95
+        }
+      ]
+    },
+    "chore/remove-cadastro": {
+      "branch": "chore/remove-cadastro",
+      "status": "deleted",
+      "merged_into": "feat/classificacao-release-2",
+      "merged_at": "2026-06-25T23:52:49+00:00",
+      "pr_number": 46,
+      "pr_title": "chore(backend): remove rotas e dependências de autenticação",
+      "total_commits": 2,
+      "commits_per_author": {
+        "gabiiverissimo-dev": 1,
+        "PajeMurici-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-25",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "bce6dbd",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-25T23:39:49+00:00",
+          "message": "chore(backend): remove rotas e dependências de autenticação",
+          "char_count": 59
+        },
+        {
+          "sha": "3159cca",
+          "author": "PajeMurici-dev",
+          "date": "2026-06-25T23:52:09+00:00",
+          "message": "Merge branch 'feat/classificacao-release-2' into chore/remove-cadastro",
+          "char_count": 70
+        }
+      ]
+    },
+    "feat/home-team": {
+      "branch": "feat/home-team",
+      "status": "deleted",
+      "merged_into": "dev-projeto",
+      "merged_at": "2026-05-21T13:50:06+00:00",
+      "pr_number": 41,
+      "pr_title": "Feat: home team",
+      "total_commits": 4,
+      "commits_per_author": {
+        "claranunes22": 3,
+        "gabiiverissimo-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-05-20",
+          "count": 1
+        },
+        {
+          "date": "2026-05-21",
+          "count": 3
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "64cff3b",
+          "author": "claranunes22",
+          "date": "2026-05-20T18:42:32+00:00",
+          "message": "feat: adicionar seção da equipe com ícones e links do GitHub",
+          "char_count": 60
+        },
+        {
+          "sha": "d1c59c0",
+          "author": "claranunes22",
+          "date": "2026-05-21T13:22:21+00:00",
+          "message": "feat: adiciona documentação técnica e fotos da equipe",
+          "char_count": 53
+        },
+        {
+          "sha": "def1611",
+          "author": "claranunes22",
+          "date": "2026-05-21T13:24:18+00:00",
+          "message": "chore: adiciona .gitignore na raiz",
+          "char_count": 34
+        },
+        {
+          "sha": "276acb5",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-05-21T13:49:32+00:00",
+          "message": "Merge branch 'dev-projeto' into feat/home-team",
+          "char_count": 46
+        }
+      ]
+    },
+    "feat/login-page": {
+      "branch": "feat/login-page",
+      "status": "deleted",
+      "merged_into": "dev-projeto",
+      "merged_at": "2026-05-21T13:44:40+00:00",
+      "pr_number": 33,
+      "pr_title": "feat: adiciona página de login",
+      "total_commits": 15,
+      "commits_per_author": {
+        "PajeMurici-dev": 1,
+        "gabiiverissimo-dev": 3,
+        "claranunes22": 11
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-04-25",
+          "count": 1
+        },
+        {
+          "date": "2026-04-29",
+          "count": 1
+        },
+        {
+          "date": "2026-04-30",
+          "count": 1
+        },
+        {
+          "date": "2026-05-03",
+          "count": 3
+        },
+        {
+          "date": "2026-05-04",
+          "count": 6
+        },
+        {
+          "date": "2026-05-14",
+          "count": 1
+        },
+        {
+          "date": "2026-05-16",
+          "count": 1
+        },
+        {
+          "date": "2026-05-21",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "8781479",
+          "author": "PajeMurici-dev",
+          "date": "2026-04-25T00:30:56+00:00",
+          "message": "Create estudo-storymap.md",
+          "char_count": 65
+        },
+        {
+          "sha": "099b065",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-04-29T16:45:58+00:00",
+          "message": "Merge pull request #23 from unb-mds/PajeMurici-dev-patch-1",
+          "char_count": 85
+        },
+        {
+          "sha": "b649df5",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-04-30T13:27:54+00:00",
+          "message": "docs: detalhamento das funcionalidades e fluxo do protótipo Guard.IA",
+          "char_count": 271
+        },
+        {
+          "sha": "0395337",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:15:27+00:00",
+          "message": "docs: adiciona user flow",
+          "char_count": 24
+        },
+        {
+          "sha": "ca19638",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:16:29+00:00",
+          "message": "Merge branch 'estudos' of https://github.com/unb-mds/2026-1-Guard.IA into estudos",
+          "char_count": 81
+        },
+        {
+          "sha": "8e43de0",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:19:24+00:00",
+          "message": "Merge pull request #25 from unb-mds/estudos",
+          "char_count": 52
+        },
+        {
+          "sha": "d75b0fd",
+          "author": "claranunes22",
+          "date": "2026-05-04T13:54:00+00:00",
+          "message": "feat: melhorias no dashboard",
+          "char_count": 28
+        },
+        {
+          "sha": "51677ef",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:14:04+00:00",
+          "message": "docs: adiciona documentação do dashboard closes #27",
+          "char_count": 51
+        },
+        {
+          "sha": "d5f2273",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:16:16+00:00",
+          "message": "Merge pull request #26 from unb-mds/sprint-04-dashboard",
+          "char_count": 93
+        },
+        {
+          "sha": "bf07d1b",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:41:14+00:00",
+          "message": "docs: adiciona página inicial do GitHub Pages",
+          "char_count": 45
+        },
+        {
+          "sha": "22a9906",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:54:54+00:00",
+          "message": "docs: melhora página inicial do GitHub Pages",
+          "char_count": 44
+        },
+        {
+          "sha": "a91e19d",
+          "author": "claranunes22",
+          "date": "2026-05-04T15:03:48+00:00",
+          "message": "docs: remove markdown para usar HTML",
+          "char_count": 36
+        },
+        {
+          "sha": "e157443",
+          "author": "claranunes22",
+          "date": "2026-05-14T16:10:49+00:00",
+          "message": "docs: atualiza README do projeto",
+          "char_count": 32
+        },
+        {
+          "sha": "98561a1",
+          "author": "claranunes22",
+          "date": "2026-05-16T21:04:41+00:00",
+          "message": "feat: adiciona página de login",
+          "char_count": 30
+        },
+        {
+          "sha": "715957d",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-05-21T13:44:18+00:00",
+          "message": "Merge branch 'dev-projeto' into feat/login-page",
+          "char_count": 47
+        }
+      ]
+    },
+    "feat/login-redesign": {
+      "branch": "feat/login-redesign",
+      "status": "deleted",
+      "merged_into": "dev-projeto",
+      "merged_at": "2026-05-21T13:47:51+00:00",
+      "pr_number": 39,
+      "pr_title": "Feat: login redesign",
+      "total_commits": 17,
+      "commits_per_author": {
+        "PajeMurici-dev": 1,
+        "gabiiverissimo-dev": 2,
+        "claranunes22": 14
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-04-25",
+          "count": 1
+        },
+        {
+          "date": "2026-04-29",
+          "count": 1
+        },
+        {
+          "date": "2026-04-30",
+          "count": 1
+        },
+        {
+          "date": "2026-05-03",
+          "count": 3
+        },
+        {
+          "date": "2026-05-04",
+          "count": 6
+        },
+        {
+          "date": "2026-05-14",
+          "count": 1
+        },
+        {
+          "date": "2026-05-16",
+          "count": 1
+        },
+        {
+          "date": "2026-05-17",
+          "count": 1
+        },
+        {
+          "date": "2026-05-20",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "8781479",
+          "author": "PajeMurici-dev",
+          "date": "2026-04-25T00:30:56+00:00",
+          "message": "Create estudo-storymap.md",
+          "char_count": 65
+        },
+        {
+          "sha": "099b065",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-04-29T16:45:58+00:00",
+          "message": "Merge pull request #23 from unb-mds/PajeMurici-dev-patch-1",
+          "char_count": 85
+        },
+        {
+          "sha": "b649df5",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-04-30T13:27:54+00:00",
+          "message": "docs: detalhamento das funcionalidades e fluxo do protótipo Guard.IA",
+          "char_count": 271
+        },
+        {
+          "sha": "0395337",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:15:27+00:00",
+          "message": "docs: adiciona user flow",
+          "char_count": 24
+        },
+        {
+          "sha": "ca19638",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:16:29+00:00",
+          "message": "Merge branch 'estudos' of https://github.com/unb-mds/2026-1-Guard.IA into estudos",
+          "char_count": 81
+        },
+        {
+          "sha": "8e43de0",
+          "author": "claranunes22",
+          "date": "2026-05-03T03:19:24+00:00",
+          "message": "Merge pull request #25 from unb-mds/estudos",
+          "char_count": 52
+        },
+        {
+          "sha": "d75b0fd",
+          "author": "claranunes22",
+          "date": "2026-05-04T13:54:00+00:00",
+          "message": "feat: melhorias no dashboard",
+          "char_count": 28
+        },
+        {
+          "sha": "51677ef",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:14:04+00:00",
+          "message": "docs: adiciona documentação do dashboard closes #27",
+          "char_count": 51
+        },
+        {
+          "sha": "d5f2273",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:16:16+00:00",
+          "message": "Merge pull request #26 from unb-mds/sprint-04-dashboard",
+          "char_count": 93
+        },
+        {
+          "sha": "bf07d1b",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:41:14+00:00",
+          "message": "docs: adiciona página inicial do GitHub Pages",
+          "char_count": 45
+        },
+        {
+          "sha": "22a9906",
+          "author": "claranunes22",
+          "date": "2026-05-04T14:54:54+00:00",
+          "message": "docs: melhora página inicial do GitHub Pages",
+          "char_count": 44
+        },
+        {
+          "sha": "a91e19d",
+          "author": "claranunes22",
+          "date": "2026-05-04T15:03:48+00:00",
+          "message": "docs: remove markdown para usar HTML",
+          "char_count": 36
+        },
+        {
+          "sha": "e157443",
+          "author": "claranunes22",
+          "date": "2026-05-14T16:10:49+00:00",
+          "message": "docs: atualiza README do projeto",
+          "char_count": 32
+        },
+        {
+          "sha": "98561a1",
+          "author": "claranunes22",
+          "date": "2026-05-16T21:04:41+00:00",
+          "message": "feat: adiciona página de login",
+          "char_count": 30
+        },
+        {
+          "sha": "5443826",
+          "author": "claranunes22",
+          "date": "2026-05-17T17:29:42+00:00",
+          "message": "feat: adiciona página inicial",
+          "char_count": 29
+        },
+        {
+          "sha": "3ff4dee",
+          "author": "claranunes22",
+          "date": "2026-05-20T16:05:06+00:00",
+          "message": "docs: adicionar especificação do frontend e refatorar interface de login",
+          "char_count": 72
+        },
+        {
+          "sha": "fd41f84",
+          "author": "claranunes22",
+          "date": "2026-05-20T16:13:05+00:00",
+          "message": "chore: mover especificação do frontend para a pasta correta",
+          "char_count": 59
+        }
+      ]
+    },
+    "feat/nova-pagina-dashboard": {
+      "branch": "feat/nova-pagina-dashboard",
+      "status": "deleted",
+      "merged_into": "main",
+      "merged_at": "2026-06-26T21:06:41+00:00",
+      "pr_number": 51,
+      "pr_title": "versão mais atual",
+      "total_commits": 2,
+      "commits_per_author": {
+        "claranunes22": 2
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 2
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "16ae2db",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:00:54+00:00",
+          "message": "chore: comenta de forma correta arquivo obsoleto de usuarios",
+          "char_count": 60
+        },
+        {
+          "sha": "06d08ae",
+          "author": "claranunes22",
+          "date": "2026-06-26T21:03:42+00:00",
+          "message": "chore: remove aspas invalidas e comenta usuarios",
+          "char_count": 48
+        }
+      ]
+    },
+    "feature/estrutura-inicial": {
+      "branch": "feature/estrutura-inicial",
+      "status": "deleted",
+      "merged_into": "main",
+      "merged_at": "2026-04-21T22:01:33+00:00",
+      "pr_number": 13,
+      "pr_title": "feat: estrutura inicial do projeto",
+      "total_commits": 1,
+      "commits_per_author": {
+        "LucasNF-Dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-04-18",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "2271872",
+          "author": "LucasNF-Dev",
+          "date": "2026-04-18T18:38:10+00:00",
+          "message": "Docs: Adicionando PDF de arquitetura e estruturando pastas",
+          "char_count": 58
+        }
+      ]
+    },
+    "revert-48-feat/nova-pagina-dashboard": {
+      "branch": "revert-48-feat/nova-pagina-dashboard",
+      "status": "deleted",
+      "merged_into": "main",
+      "merged_at": "2026-06-26T18:15:17+00:00",
+      "pr_number": 50,
+      "pr_title": "Revert \"Feat/nova pagina dashboard\"",
+      "total_commits": 1,
+      "commits_per_author": {
+        "gabiiverissimo-dev": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-06-26",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "341c314",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-06-26T18:14:57+00:00",
+          "message": "Revert \"Feat/nova pagina dashboard\"",
+          "char_count": 35
+        }
+      ]
+    }
+  },
+  "issues": {
+    "total": 41,
+    "open": 5,
+    "closed": 36,
+    "timeline": [
+      {
+        "date": "2026-03-25",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-03-26",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-03-27",
+        "opened": 2,
+        "closed": 0
+      },
+      {
+        "date": "2026-03-28",
+        "opened": 2,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-01",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-02",
+        "opened": 2,
+        "closed": 6
+      },
+      {
+        "date": "2026-04-05",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-06",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-07",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-15",
+        "opened": 0,
+        "closed": 5
+      },
+      {
+        "date": "2026-04-20",
+        "opened": 0,
+        "closed": 1
+      },
+      {
+        "date": "2026-04-21",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-22",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-25",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-26",
+        "opened": 4,
+        "closed": 0
+      },
+      {
+        "date": "2026-04-27",
+        "opened": 0,
+        "closed": 3
+      },
+      {
+        "date": "2026-05-03",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-05-04",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-05-14",
+        "opened": 0,
+        "closed": 1
+      },
+      {
+        "date": "2026-05-15",
+        "opened": 5,
+        "closed": 0
+      },
+      {
+        "date": "2026-05-16",
+        "opened": 1,
+        "closed": 8
+      },
+      {
+        "date": "2026-05-17",
+        "opened": 3,
+        "closed": 0
+      },
+      {
+        "date": "2026-05-18",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-05-21",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-05-26",
+        "opened": 0,
+        "closed": 7
+      },
+      {
+        "date": "2026-06-26",
+        "opened": 2,
+        "closed": 2
+      },
+      {
+        "date": "2026-06-27",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-06-28",
+        "opened": 1,
+        "closed": 0
+      },
+      {
+        "date": "2026-06-29",
+        "opened": 2,
+        "closed": 0
+      },
+      {
+        "date": "2026-06-30",
+        "opened": 3,
+        "closed": 3
+      }
+    ],
+    "list": [
+      {
+        "number": 69,
+        "title": "chore: Configuração inicial e integração do SonarCloud via GitHub Actions",
+        "state": "open",
+        "created_at": "2026-06-30T23:20:49+00:00",
+        "closed_at": null,
+        "labels": [
+          "enhancement",
+          "chore"
+        ]
+      },
+      {
+        "number": 66,
+        "title": "fix(dashboard): formatar nomes de categorias removendo underscores",
+        "state": "open",
+        "created_at": "2026-06-30T19:56:47+00:00",
+        "closed_at": null,
+        "labels": []
+      },
+      {
+        "number": 64,
+        "title": "fix(coleta): buscar detalhes reais de autor, partido e estado na Câmara",
+        "state": "open",
+        "created_at": "2026-06-30T01:58:55+00:00",
+        "closed_at": null,
+        "labels": []
+      },
+      {
+        "number": 59,
+        "title": "Implementação da etapa de classificação semântica das proposições",
+        "state": "open",
+        "created_at": "2026-06-29T15:37:15+00:00",
+        "closed_at": null,
+        "labels": []
+      },
+      {
+        "number": 57,
+        "title": "feat: integração do Dashboard com a API real",
+        "state": "open",
+        "created_at": "2026-06-29T14:03:56+00:00",
+        "closed_at": null,
+        "labels": []
+      },
+      {
+        "number": 55,
+        "title": "bug/chore: Recuperação e consolidação do layout claro e integração de gráficos (Recharts) no front-end",
+        "state": "closed",
+        "created_at": "2026-06-28T20:02:44+00:00",
+        "closed_at": "2026-06-30T01:27:37+00:00",
+        "labels": [
+          "bug",
+          "frontend"
+        ]
+      },
+      {
+        "number": 53,
+        "title": "Retirada do CRUD de Usuário e Reorganização do Documento GEMINI.MD",
+        "state": "closed",
+        "created_at": "2026-06-27T12:10:32+00:00",
+        "closed_at": "2026-06-30T01:27:37+00:00",
+        "labels": [
+          "documentation",
+          "chore"
+        ]
+      },
+      {
+        "number": 52,
+        "title": "Correção do update metrics na main",
+        "state": "closed",
+        "created_at": "2026-06-26T21:48:05+00:00",
+        "closed_at": "2026-06-30T01:27:36+00:00",
+        "labels": [
+          "bug"
+        ]
+      },
+      {
+        "number": 49,
+        "title": "feat(frontend): Implementar interface interativa, gráficos dinâmicos e mapa coroplético para a Release 2",
+        "state": "closed",
+        "created_at": "2026-06-26T11:04:07+00:00",
+        "closed_at": "2026-06-26T18:09:23+00:00",
+        "labels": [
+          "enhancement",
+          "frontend"
+        ]
+      },
+      {
+        "number": 42,
+        "title": "feat: home team",
+        "state": "closed",
+        "created_at": "2026-05-21T13:30:53+00:00",
+        "closed_at": "2026-05-26T20:29:26+00:00",
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 40,
+        "title": "Redesign da Tela de Login",
+        "state": "closed",
+        "created_at": "2026-05-18T03:16:43+00:00",
+        "closed_at": "2026-05-26T20:29:23+00:00",
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 38,
+        "title": "feat: home page",
+        "state": "closed",
+        "created_at": "2026-05-17T17:33:23+00:00",
+        "closed_at": "2026-05-26T20:29:21+00:00",
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 36,
+        "title": "feat: implementação do __init__.py do módulo de filtragem",
+        "state": "closed",
+        "created_at": "2026-05-17T05:13:26+00:00",
+        "closed_at": "2026-05-26T20:29:19+00:00",
+        "labels": []
+      },
+      {
+        "number": 35,
+        "title": "Feat: Criar CRUD",
+        "state": "closed",
+        "created_at": "2026-05-17T04:40:19+00:00",
+        "closed_at": "2026-05-26T20:29:16+00:00",
+        "labels": []
+      },
+      {
+        "number": 34,
+        "title": "feat: criar página de login",
+        "state": "closed",
+        "created_at": "2026-05-16T21:08:14+00:00",
+        "closed_at": "2026-05-26T20:29:14+00:00",
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 32,
+        "title": "Estudo sobre Context Engineering e Desenvolvimento Assistido por IA [SPRINT 06]",
+        "state": "closed",
+        "created_at": "2026-05-15T19:25:10+00:00",
+        "closed_at": "2026-06-26T11:04:51+00:00",
+        "labels": []
+      },
+      {
+        "number": 31,
+        "title": "LLM [SPRINT 05]",
+        "state": "closed",
+        "created_at": "2026-05-15T19:21:31+00:00",
+        "closed_at": "2026-05-26T20:29:12+00:00",
+        "labels": []
+      },
+      {
+        "number": 30,
+        "title": "DevOps [SPRINT 04]",
+        "state": "closed",
+        "created_at": "2026-05-15T19:17:56+00:00",
+        "closed_at": "2026-05-16T21:11:45+00:00",
+        "labels": []
+      },
+      {
+        "number": 29,
+        "title": "Implementação de Módulo de Filtragem",
+        "state": "closed",
+        "created_at": "2026-05-15T18:43:42+00:00",
+        "closed_at": "2026-05-16T21:11:45+00:00",
+        "labels": [
+          "documentation"
+        ]
+      },
+      {
+        "number": 28,
+        "title": "Implementação do workflow de produtividade",
+        "state": "closed",
+        "created_at": "2026-05-15T11:28:21+00:00",
+        "closed_at": "2026-05-16T21:11:44+00:00",
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 27,
+        "title": "Melhorias no dashboard",
+        "state": "closed",
+        "created_at": "2026-05-04T14:04:54+00:00",
+        "closed_at": "2026-05-14T01:05:17+00:00",
+        "labels": [
+          "dashboard"
+        ]
+      },
+      {
+        "number": 24,
+        "title": "Criação do user flow do sistema",
+        "state": "closed",
+        "created_at": "2026-05-03T02:50:31+00:00",
+        "closed_at": "2026-05-16T21:11:44+00:00",
+        "labels": [
+          "documentation"
+        ]
+      },
+      {
+        "number": 22,
+        "title": "Classificação Temática de Proposições com IA (Objetivo e Funcionalidades)",
+        "state": "closed",
+        "created_at": "2026-04-26T22:49:38+00:00",
+        "closed_at": "2026-05-16T21:10:34+00:00",
+        "labels": [
+          "enhancement"
+        ]
+      },
+      {
+        "number": 20,
+        "title": "Coleta de Dados - Monitoramento Legislativo",
+        "state": "closed",
+        "created_at": "2026-04-26T15:17:32+00:00",
+        "closed_at": "2026-05-16T21:10:33+00:00",
+        "labels": []
+      },
+      {
+        "number": 19,
+        "title": "Definição de Scrum Master e Product Owner",
+        "state": "closed",
+        "created_at": "2026-04-26T15:14:30+00:00",
+        "closed_at": "2026-04-27T00:25:58+00:00",
+        "labels": [
+          "chore"
+        ]
+      },
+      {
+        "number": 17,
+        "title": "[Sprint 3] Estabelecimento do schema para o banco de dados",
+        "state": "closed",
+        "created_at": "2026-04-26T02:07:51+00:00",
+        "closed_at": "2026-05-16T21:10:33+00:00",
+        "labels": []
+      },
+      {
+        "number": 16,
+        "title": "[SPRINT 02] Estudo de story map",
+        "state": "closed",
+        "created_at": "2026-04-25T00:25:55+00:00",
+        "closed_at": "2026-04-27T00:25:57+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 15,
+        "title": "Levantamento de Requisitos",
+        "state": "closed",
+        "created_at": "2026-04-22T00:05:00+00:00",
+        "closed_at": "2026-04-27T00:25:57+00:00",
+        "labels": [
+          "documentation",
+          "Requisitos"
+        ]
+      },
+      {
+        "number": 14,
+        "title": "Criar dashboard inicial com dados simulados",
+        "state": "closed",
+        "created_at": "2026-04-21T22:24:36+00:00",
+        "closed_at": "2026-05-16T21:10:32+00:00",
+        "labels": [
+          "enhancement",
+          "dashboard"
+        ]
+      },
+      {
+        "number": 12,
+        "title": "ESTUDO SOBRE PROJECT OWNER [SPRINT 01]",
+        "state": "closed",
+        "created_at": "2026-04-07T13:09:59+00:00",
+        "closed_at": "2026-04-15T03:28:32+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 11,
+        "title": "ESTUDOS SOBRE APIs [SPRINT 01]",
+        "state": "closed",
+        "created_at": "2026-04-06T01:01:38+00:00",
+        "closed_at": "2026-04-15T03:28:31+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 10,
+        "title": "Estudo sobre sites e fontes para mineração de dados",
+        "state": "closed",
+        "created_at": "2026-04-05T18:06:21+00:00",
+        "closed_at": "2026-04-15T03:28:31+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 9,
+        "title": "Estudo Sobre Scrum",
+        "state": "closed",
+        "created_at": "2026-04-02T14:20:00+00:00",
+        "closed_at": "2026-04-15T03:28:31+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 8,
+        "title": "Estudos sobre Docker",
+        "state": "closed",
+        "created_at": "2026-04-02T13:46:26+00:00",
+        "closed_at": "2026-04-20T14:38:35+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 7,
+        "title": "Estudo sobre Figma",
+        "state": "closed",
+        "created_at": "2026-04-01T15:09:12+00:00",
+        "closed_at": "2026-04-15T03:28:30+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 6,
+        "title": "[Sprint 00] Estudo sobre tecnologias de back-end",
+        "state": "closed",
+        "created_at": "2026-03-28T19:05:40+00:00",
+        "closed_at": "2026-04-02T19:59:56+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 5,
+        "title": "[Sprint 0] Estudo - Arquitetura de Software",
+        "state": "closed",
+        "created_at": "2026-03-28T02:14:49+00:00",
+        "closed_at": "2026-04-02T19:59:55+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Estudos sobre Metodologias Ágeis",
+        "state": "closed",
+        "created_at": "2026-03-27T21:00:15+00:00",
+        "closed_at": "2026-04-02T19:59:55+00:00",
+        "labels": [
+          "estudo"
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Estudo sobre tecnologias de Front-End",
+        "state": "closed",
+        "created_at": "2026-03-27T19:51:28+00:00",
+        "closed_at": "2026-04-02T19:59:54+00:00",
+        "labels": [
+          "estudo",
+          "tecnologias"
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Estudo sobre Git e GitHub",
+        "state": "closed",
+        "created_at": "2026-03-26T13:34:45+00:00",
+        "closed_at": "2026-04-02T19:59:54+00:00",
+        "labels": [
+          "documentation",
+          "estudo"
+        ]
+      },
+      {
+        "number": 1,
+        "title": "Estudo sobre requisitos",
+        "state": "closed",
+        "created_at": "2026-03-25T18:23:56+00:00",
+        "closed_at": "2026-04-02T19:59:53+00:00",
+        "labels": [
+          "estudo",
+          "Requisitos"
+        ]
+      }
+    ]
+  },
+  "pull_requests": [
+    {
+      "number": 70,
+      "title": "Fix/main",
+      "state": "closed",
+      "base": "main",
+      "head": "fix/main",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-07-01T02:19:41+00:00",
+      "merged_at": "2026-07-01T02:23:34+00:00"
+    },
+    {
+      "number": 68,
+      "title": "chore: adiciona configuracao do sonarcloud e pipeline ci",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/telas-guardia-recuperadas",
+      "author": "claranunes22",
+      "created_at": "2026-06-30T23:18:52+00:00",
+      "merged_at": "2026-06-30T23:22:30+00:00"
+    },
+    {
+      "number": 67,
+      "title": "Fix/dashboard",
+      "state": "closed",
+      "base": "fix/main",
+      "head": "fix/dashboard",
+      "author": "otaviotex",
+      "created_at": "2026-06-30T20:10:26+00:00",
+      "merged_at": "2026-07-01T01:00:58+00:00"
+    },
+    {
+      "number": 65,
+      "title": "Fix: integrar dados da Câmara nas proposições",
+      "state": "closed",
+      "base": "main",
+      "head": "fix/camara-proposicoes-data",
+      "author": "LucasNF-Dev",
+      "created_at": "2026-06-30T15:24:02+00:00",
+      "merged_at": "2026-06-30T15:55:53+00:00"
+    },
+    {
+      "number": 63,
+      "title": "Feat/integracao proposicoes ",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/integracao-proposicoes-",
+      "author": "otaviotex",
+      "created_at": "2026-06-30T01:53:34+00:00",
+      "merged_at": "2026-06-30T02:24:23+00:00"
+    },
+    {
+      "number": 62,
+      "title": "feat(frontend): Correcao de arquivo 'Dashboard.jsx'.",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/integracao-dashboard-2",
+      "author": "otaviotex",
+      "created_at": "2026-06-29T23:52:53+00:00",
+      "merged_at": "2026-06-30T01:26:24+00:00"
+    },
+    {
+      "number": 61,
+      "title": "Feat/integracao dashboard",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/integracao-dashboard",
+      "author": "otaviotex",
+      "created_at": "2026-06-29T22:41:52+00:00",
+      "merged_at": "2026-06-29T22:59:41+00:00"
+    },
+    {
+      "number": 60,
+      "title": "Feat/design updates",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/design-updates",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-06-29T22:29:10+00:00",
+      "merged_at": "2026-06-29T22:35:09+00:00"
+    },
+    {
+      "number": 58,
+      "title": "Integração dos novos endpoints na main",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/endpoints",
+      "author": "PajeMurici-dev",
+      "created_at": "2026-06-29T14:22:41+00:00",
+      "merged_at": "2026-06-29T14:29:30+00:00"
+    },
+    {
+      "number": 56,
+      "title": "Feat/integracao frontend api",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/integracao-frontend-api",
+      "author": "otaviotex",
+      "created_at": "2026-06-29T00:55:43+00:00",
+      "merged_at": null
+    },
+    {
+      "number": 54,
+      "title": "Feat/telas guardia recuperadas",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/telas-guardia-recuperadas",
+      "author": "claranunes22",
+      "created_at": "2026-06-28T20:00:57+00:00",
+      "merged_at": "2026-06-28T23:41:58+00:00"
+    },
+    {
+      "number": 51,
+      "title": "versão mais atual",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/nova-pagina-dashboard",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-06-26T19:36:07+00:00",
+      "merged_at": "2026-06-26T21:06:41+00:00"
+    },
+    {
+      "number": 50,
+      "title": "Revert \"Feat/nova pagina dashboard\"",
+      "state": "closed",
+      "base": "main",
+      "head": "revert-48-feat/nova-pagina-dashboard",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-06-26T18:15:06+00:00",
+      "merged_at": "2026-06-26T18:15:17+00:00"
+    },
+    {
+      "number": 48,
+      "title": "Feat/nova pagina dashboard",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/nova-pagina-dashboard",
+      "author": "claranunes22",
+      "created_at": "2026-06-26T11:01:24+00:00",
+      "merged_at": "2026-06-26T18:09:22+00:00"
+    },
+    {
+      "number": 47,
+      "title": "Versão mais atualizada do projeto",
+      "state": "closed",
+      "base": "main",
+      "head": "feat/classificacao-release-2",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-06-26T01:56:21+00:00",
+      "merged_at": "2026-06-26T02:04:31+00:00"
+    },
+    {
+      "number": 46,
+      "title": "chore(backend): remove rotas e dependências de autenticação",
+      "state": "closed",
+      "base": "feat/classificacao-release-2",
+      "head": "chore/remove-cadastro",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-06-25T23:40:47+00:00",
+      "merged_at": "2026-06-25T23:52:49+00:00"
+    },
+    {
+      "number": 45,
+      "title": "feat(frontend): Integração completa do Frontend Release 1",
+      "state": "closed",
+      "base": "main",
+      "head": "release-1-integration",
+      "author": "LucasNF-Dev",
+      "created_at": "2026-05-24T22:48:21+00:00",
+      "merged_at": "2026-06-17T16:22:26+00:00"
+    },
+    {
+      "number": 44,
+      "title": "feat: integra login com api e corrige rolagem da home",
+      "state": "open",
+      "base": "dev-projeto",
+      "head": "feat/teste-pipeline-unificado",
+      "author": "claranunes22",
+      "created_at": "2026-05-24T17:38:01+00:00",
+      "merged_at": null
+    },
+    {
+      "number": 43,
+      "title": "Feat/teste pipeline unificado",
+      "state": "closed",
+      "base": "dev-projeto",
+      "head": "feat/teste-pipeline-unificado",
+      "author": "LucasNF-Dev",
+      "created_at": "2026-05-21T18:29:05+00:00",
+      "merged_at": "2026-05-24T15:33:01+00:00"
+    },
+    {
+      "number": 41,
+      "title": "Feat: home team",
+      "state": "closed",
+      "base": "dev-projeto",
+      "head": "feat/home-team",
+      "author": "claranunes22",
+      "created_at": "2026-05-21T13:29:24+00:00",
+      "merged_at": "2026-05-21T13:50:06+00:00"
+    },
+    {
+      "number": 39,
+      "title": "Feat: login redesign",
+      "state": "closed",
+      "base": "dev-projeto",
+      "head": "feat/login-redesign",
+      "author": "claranunes22",
+      "created_at": "2026-05-18T03:14:56+00:00",
+      "merged_at": "2026-05-21T13:47:51+00:00"
+    },
+    {
+      "number": 37,
+      "title": "feat: adiciona página inicial",
+      "state": "closed",
+      "base": "dev-projeto",
+      "head": "feat/home-page",
+      "author": "claranunes22",
+      "created_at": "2026-05-17T17:31:51+00:00",
+      "merged_at": "2026-05-21T13:45:22+00:00"
+    },
+    {
+      "number": 33,
+      "title": "feat: adiciona página de login",
+      "state": "closed",
+      "base": "dev-projeto",
+      "head": "feat/login-page",
+      "author": "claranunes22",
+      "created_at": "2026-05-16T21:06:00+00:00",
+      "merged_at": "2026-05-21T13:44:40+00:00"
+    },
+    {
+      "number": 26,
+      "title": "Sprint 04 - Dashboard (Visualização)",
+      "state": "closed",
+      "base": "main",
+      "head": "sprint-04-dashboard",
+      "author": "claranunes22",
+      "created_at": "2026-05-04T13:55:29+00:00",
+      "merged_at": "2026-05-04T14:16:16+00:00"
+    },
+    {
+      "number": 25,
+      "title": "Estudos",
+      "state": "closed",
+      "base": "main",
+      "head": "estudos",
+      "author": "claranunes22",
+      "created_at": "2026-05-03T03:19:11+00:00",
+      "merged_at": "2026-05-03T03:19:24+00:00"
+    },
+    {
+      "number": 23,
+      "title": "Create estudo-storymap.md",
+      "state": "closed",
+      "base": "estudos",
+      "head": "PajeMurici-dev-patch-1",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-04-29T16:44:57+00:00",
+      "merged_at": "2026-04-29T16:45:58+00:00"
+    },
+    {
+      "number": 21,
+      "title": "Create estudo_storymap.md",
+      "state": "closed",
+      "base": "main",
+      "head": "PajeMurici-dev-patch-2",
+      "author": "PajeMurici-dev",
+      "created_at": "2026-04-26T22:07:26+00:00",
+      "merged_at": "2026-04-26T22:07:38+00:00"
+    },
+    {
+      "number": 18,
+      "title": "feat:(armazenamento) adiciona schema inicial do banco de dados refs #17",
+      "state": "closed",
+      "base": "main",
+      "head": "PajeMurici-dev-patch-2",
+      "author": "PajeMurici-dev",
+      "created_at": "2026-04-26T02:17:47+00:00",
+      "merged_at": "2026-04-26T02:18:31+00:00"
+    },
+    {
+      "number": 13,
+      "title": "feat: estrutura inicial do projeto",
+      "state": "closed",
+      "base": "main",
+      "head": "feature/estrutura-inicial",
+      "author": "claranunes22",
+      "created_at": "2026-04-21T22:01:20+00:00",
+      "merged_at": "2026-04-21T22:01:33+00:00"
+    }
+  ],
+  "all_authors": {
+    "claranunes22": 154,
+    "PajeMurici-dev": 67,
+    "gabiiverissimo-dev": 45,
+    "lucasnferreiradev-lang": 35,
+    "AlmondHare": 28,
+    "otaviotex": 27,
+    "LucasNF-Dev": 20,
+    "RochaCarla": 2
+  },
+  "author_por_branch": {
+    "claranunes22": {
+      "dev-projeto": 1,
+      "estudos": 1,
+      "main": 121,
+      "sprint-04-dashboard": 1,
+      "feat/home-team": 3,
+      "feat/login-page": 11,
+      "feat/login-redesign": 14,
+      "feat/nova-pagina-dashboard": 2
+    },
+    "otaviotex": {
+      "docs/remove-CRUD": 1,
+      "feat/crud-usuario": 1,
+      "feat/documentacao": 1,
+      "feat/integracao-frontend-api": 3,
+      "filtragem": 1,
+      "main": 20
+    },
+    "AlmondHare": {
+      "filtragem-B": 2,
+      "main": 26
+    },
+    "lucasnferreiradev-lang": {
+      "fix/camara-proposicoes-data": 2,
+      "fixmain": 1,
+      "main": 32
+    },
+    "gabiiverissimo-dev": {
+      "main": 37,
+      "chore/remove-cadastro": 1,
+      "feat/home-team": 1,
+      "feat/login-page": 3,
+      "feat/login-redesign": 2,
+      "revert-48-feat/nova-pagina-dashboard": 1
+    },
+    "PajeMurici-dev": {
+      "main": 58,
+      "release-1-integration": 4,
+      "PajeMurici-dev-patch-1": 1,
+      "PajeMurici-dev-patch-2": 1,
+      "chore/remove-cadastro": 1,
+      "feat/login-page": 1,
+      "feat/login-redesign": 1
+    },
+    "LucasNF-Dev": {
+      "main": 19,
+      "feature/estrutura-inicial": 1
+    },
+    "RochaCarla": {
+      "main": 2
+    }
+  }
+}

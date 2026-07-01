@@ -1,0 +1,155 @@
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 64px);
+  background-color: #f6f5f0;
+}
+
+/* Sidebar Verde Escuro das imagens */
+.sidebar-filters {
+  background-color: #005a3e;
+  color: white;
+  padding: 30px 20px;
+}
+
+.sidebar-filters h3 {
+  margin-top: 0;
+  font-size: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 10px;
+}
+
+.filter-group {
+  margin-bottom: 25px;
+}
+
+.filter-group h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #a3d9c9;
+  margin-bottom: 10px;
+}
+
+.filter-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+/* Layout do Conteúdo */
+.dashboard-content {
+  padding: 40px;
+}
+
+.content-header h2 {
+  font-size: 32px;
+  font-weight: 900;
+  color: #222;
+  margin: 0 0 8px 0;
+}
+
+.metrics-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+}
+
+/* Cards brancos arredondados com números grandes e limpos */
+.metric-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.card-title {
+  display: block;
+  font-size: 11px;
+  color: #777;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.card-number {
+  font-size: 36px;
+  font-weight: 300;
+  color: #005a3e;
+}
+
+/* Gráficos de barras horizontais */
+.analytics-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.chart-box {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.chart-bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 15px;
+}
+
+.bar-label {
+  width: 130px;
+  font-size: 13px;
+  color: #333;
+}
+
+.bar-wrapper {
+  flex: 1;
+  background-color: #f0f0f0;
+  height: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-filled {
+  background-color: #008f68;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.bar-value {
+  font-weight: 700;
+  color: #005a3e;
+  width: 20px;
+  text-align: right;
+}
+
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.spinner {
+  width: 55px;
+  height: 55px;
+  border: 6px solid #e0e0e0;
+  border-top: 6px solid #006b4f;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
