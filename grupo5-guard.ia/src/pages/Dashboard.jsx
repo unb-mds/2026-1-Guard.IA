@@ -2,29 +2,52 @@ import React, { useState, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { getStats, getEvolucao } from '../services/api';
 
+const PARTIDO_KEYS = ['cidadania', 'mdb', 'pdt', 'pl'];
+
+// Formata "conteudo_inapropriado" / "Conteudo Inapropriado" -> "Conteudo Inapropriado"
+function formatDisplayName(nome) {
+  return nome
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (l) => l.toUpperCase());
+}
+
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [erro, setErro]       = useState(null);
   const [metrics, setMetrics] = useState(null);
   const [evolucao, setEvolucao] = useState([]);
 
-  const [filtros, setFiltros] = useState({
-    cyberbullying: true, direitosDigitais: true, educacaoDigital: true,
-    privacidade: true, protecaoDigital: true, publicidade: true,
-    cidadania: true, mdb: true, pdt: true, pl: true
-  });
+  // Filtros que o usuário está ajustando nos checkboxes (ainda não confirmados)
+  const [filtros, setFiltros] = useState(
+    PARTIDO_KEYS.reduce((acc, key) => ({ ...acc, [key]: false }), {})
+  );
+
+  // Filtros que realmente estão em vigor no dashboard (após clicar em "Aplicar Filtros")
+  const [filtrosAplicados, setFiltrosAplicados] = useState(
+    PARTIDO_KEYS.reduce((acc, key) => ({ ...acc, [key]: false }), {})
+  );
 
   useEffect(() => {
     Promise.all([getStats(), getEvolucao()])
       .then(([stats, evo]) => {
+        const porCategoria = Object.entries(stats.por_categoria)
+          .map(([nome, qtd]) => ({ nome, qtd }))
+          .sort((a, b) => b.qtd - a.qtd);
+
         setMetrics({
           totalProposicoes: stats.total_proposicoes,
           totalCategorias: Object.keys(stats.por_categoria).length,
-          porCategoria: Object.entries(stats.por_categoria)
-            .map(([nome, qtd]) => ({ nome, qtd }))
-            .sort((a, b) => b.qtd - a.qtd),
+          porCategoria,
         });
         setEvolucao(evo);
+
+        // Cria uma entrada de filtro (desmarcada) para CADA categoria que a API realmente retornou
+        const categoriasIniciais = porCategoria.reduce(
+          (acc, cat) => ({ ...acc, [cat.nome]: false }),
+          {}
+        );
+        setFiltros(prev => ({ ...prev, ...categoriasIniciais }));
+        setFiltrosAplicados(prev => ({ ...prev, ...categoriasIniciais }));
       })
       .catch((e) => setErro(e.message))
       .finally(() => setLoading(false));
@@ -34,6 +57,34 @@ export default function Dashboard() {
     const { name, checked } = e.target;
     setFiltros(prev => ({ ...prev, [name]: checked }));
   };
+
+  // Confirma a seleção atual dos checkboxes, aplicando-a ao dashboard
+  const handleAplicarFiltros = () => {
+    setFiltrosAplicados(filtros);
+  };
+
+  // Desmarca tudo e aplica na hora — volta a mostrar todos os dados
+  const handleRemoverTodos = () => {
+    const todosDesmarcados = Object.keys(filtros).reduce(
+      (acc, key) => ({ ...acc, [key]: false }),
+      {}
+    );
+    setFiltros(todosDesmarcados);
+    setFiltrosAplicados(todosDesmarcados);
+  };
+
+  // Há mudanças nos checkboxes que ainda não foram confirmadas?
+  const filtrosPendentes = JSON.stringify(filtros) !== JSON.stringify(filtrosAplicados);
+
+  const categoriaKeys = (metrics?.porCategoria ?? []).map((cat) => cat.nome);
+
+  // Se nenhuma categoria estiver marcada, não filtra nada (mostra tudo).
+  // Assim que pelo menos uma for marcada, só essas aparecem.
+  const nenhumaCategoriaSelecionada = categoriaKeys.every((key) => !filtrosAplicados[key]);
+
+  const categoriasFiltradas = (metrics?.porCategoria ?? []).filter((cat) =>
+    nenhumaCategoriaSelecionada ? true : filtrosAplicados[cat.nome]
+  );
 
   if (erro) return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh', flexDirection: 'column', gap: 12 }}>
@@ -52,22 +103,55 @@ export default function Dashboard() {
 
         <div style={{ marginBottom: '28px' }}>
           <h4 style={{ fontSize: '11px', textTransform: 'uppercase', color: '#a3d9c9', letterSpacing: '1px', marginBottom: '12px' }}>Categoria</h4>
-          {['cyberbullying', 'direitosDigitais', 'educacaoDigital', 'privacidade', 'protecaoDigital', 'publicidade'].map((cat) => (
-            <label key={cat} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', marginBottom: '10px', cursor: 'pointer', opacity: filtros[cat] ? 1 : 0.6 }}>
-              <input type="checkbox" name={cat} checked={filtros[cat]} onChange={handleCheckboxChange} style={{ accentColor: '#00bfa5' }} />
-              {cat.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-            </label>
-          ))}
+          {loading ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[1, 2, 3, 4, 5].map(n => (
+                <div key={n} className="skeleton" style={{ height: '16px', width: '100%', background: 'rgba(255,255,255,0.15)' }}></div>
+              ))}
+            </div>
+          ) : (
+            (metrics?.porCategoria ?? []).map((cat) => (
+              <label key={cat.nome} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', marginBottom: '10px', cursor: 'pointer', opacity: filtros[cat.nome] ? 1 : 0.6 }}>
+                <input type="checkbox" name={cat.nome} checked={!!filtros[cat.nome]} onChange={handleCheckboxChange} style={{ accentColor: '#00bfa5' }} />
+                {formatDisplayName(cat.nome)}
+              </label>
+            ))
+          )}
         </div>
 
-        <div>
-          <h4 style={{ fontSize: '11px', textTransform: 'uppercase', color: '#a3d9c9', letterSpacing: '1px', marginBottom: '12px' }}>Partido</h4>
-          {['cidadania', 'mdb', 'pdt', 'pl'].map((part) => (
-            <label key={part} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', marginBottom: '10px', cursor: 'pointer', opacity: filtros[part] ? 1 : 0.6 }}>
-              <input type="checkbox" name={part} checked={filtros[part]} onChange={handleCheckboxChange} style={{ accentColor: '#00bfa5' }} />
-              {part.toUpperCase()}
-            </label>
-          ))}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+          <button
+            onClick={handleAplicarFiltros}
+            disabled={!filtrosPendentes}
+            style={{
+              background: filtrosPendentes ? '#00bfa5' : 'rgba(255,255,255,0.15)',
+              color: filtrosPendentes ? '#00312a' : 'rgba(255,255,255,0.5)',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '10px 16px',
+              fontSize: '13px',
+              fontWeight: '700',
+              cursor: filtrosPendentes ? 'pointer' : 'not-allowed',
+              transition: 'background 0.2s ease',
+            }}
+          >
+            {filtrosPendentes ? 'Aplicar Filtros' : 'Filtros Aplicados'}
+          </button>
+          <button
+            onClick={handleRemoverTodos}
+            style={{
+              background: 'transparent',
+              color: '#a3d9c9',
+              border: '1px solid rgba(255,255,255,0.25)',
+              borderRadius: '8px',
+              padding: '10px 16px',
+              fontSize: '13px',
+              fontWeight: '600',
+              cursor: 'pointer',
+            }}
+          >
+            Remover Todos
+          </button>
         </div>
       </aside>
 
@@ -105,12 +189,14 @@ export default function Dashboard() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {[1, 2, 3, 4].map(n => <div key={n} className="skeleton" style={{ height: '24px', width: '100%' }}></div>)}
               </div>
+            ) : categoriasFiltradas.length === 0 ? (
+              <p style={{ color: 'var(--text-muted)', fontSize: '13px' }}>Nenhuma categoria selecionada.</p>
             ) : (
-              metrics?.porCategoria.map((cat, idx) => {
-                const max = metrics.porCategoria[0]?.qtd || 1;
+              categoriasFiltradas.map((cat, idx) => {
+                const max = categoriasFiltradas[0]?.qtd || 1;
                 return (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: '14px', gap: '16px' }}>
-                    <span style={{ width: '130px', fontSize: '13px', fontWeight: '500', color: 'var(--text-main)' }}>{cat.nome.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
+                    <span style={{ width: '130px', fontSize: '13px', fontWeight: '500', color: 'var(--text-main)' }}>{formatDisplayName(cat.nome)}</span>
                     <div style={{ flex: 1, backgroundColor: '#f1f5f9', height: '12px', borderRadius: '9999px', overflow: 'hidden' }}>
                       <div style={{ backgroundColor: 'var(--primary)', height: '100%', borderRadius: '9999px', width: `${(cat.qtd / max) * 100}%`, transition: 'width 1s ease' }}></div>
                     </div>
