@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -6,14 +7,18 @@ from .armazenamento.database import execute_query
 
 app = FastAPI(title="Guard.IA API", version="1.0.0")
 
+# CORS_ORIGINS vem de variável de ambiente, separada por vírgula.
+# Ex: "https://guardia.vercel.app,http://localhost:5173"
+origins_env = os.getenv("CORS_ORIGINS", "http://localhost:5173")
+origins = [o.strip() for o in origins_env.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
-
 class ProposicaoResponse(BaseModel):
     id: int
     id_externo: str

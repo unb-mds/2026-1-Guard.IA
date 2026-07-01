@@ -2,23 +2,30 @@ import os
 import psycopg2
 from psycopg2 import pool
 from dotenv import load_dotenv
-
+from urllib.parse import urlparse
 
 # Carrega variáveis do arquivo .env
 load_dotenv()
 
-# Configurações do banco via variáveis de ambiente
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_PORT = os.getenv("DB_PORT", "5432")
-DB_NAME = os.getenv("DB_NAME", "monitoramento_legislativo")
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "postgres")
+# Se DATABASE_URL existir (padrão do Neon/Render/Railway), usa ela.
+# Senão, cai nas variáveis separadas (padrão de dev local).
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-print("HOST:", repr(DB_HOST))
-print("PORT:", repr(DB_PORT))
-print("NAME:", repr(DB_NAME))
-print("USER:", repr(DB_USER))
-print("PASSWORD:", repr(DB_PASSWORD))
+if DATABASE_URL:
+    parsed = urlparse(DATABASE_URL)
+    DB_HOST = parsed.hostname
+    DB_PORT = str(parsed.port or 5432)
+    DB_NAME = parsed.path.lstrip("/")
+    DB_USER = parsed.username
+    DB_PASSWORD = parsed.password
+else:
+    DB_HOST = os.getenv("DB_HOST", "localhost")
+    DB_PORT = os.getenv("DB_PORT", "5432")
+    DB_NAME = os.getenv("DB_NAME", "monitoramento_legislativo")
+    DB_USER = os.getenv("DB_USER", "postgres")
+    DB_PASSWORD = os.getenv("DB_PASSWORD", "postgres")
+
+print(f"Conectando ao banco: host={DB_HOST}, db={DB_NAME}, user={DB_USER}")
 
 # Pool de conexões para eficiência
 try:
