@@ -1,0 +1,1 @@
+Com a deleção do crud e dos usuários o update metrics ficou obsoleto, vamos aproveitar e corrigir o problema do update-metrics e apagar o update metrics duplicado
