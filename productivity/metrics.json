@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T23:23:32.990851+00:00",
+  "generated_at": "2026-07-01T02:24:36.190636+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -39,11 +39,11 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 361,
+    "total_commits": 370,
     "open_issues": 5,
     "closed_issues": 36,
     "contributors": 8,
-    "open_prs": 2,
+    "open_prs": 1,
     "branches_ativas": 24,
     "branches_deletadas": 9
   },
@@ -302,33 +302,10 @@
     },
     "fix/dashboard": {
       "branch": "fix/dashboard",
-      "total_commits": 2,
-      "commits_per_author": {
-        "lucasnferreiradev-lang": 1,
-        "otaviotex": 1
-      },
-      "commit_timeline": [
-        {
-          "date": "2026-06-30",
-          "count": 2
-        }
-      ],
-      "recent_commits": [
-        {
-          "sha": "7586c91",
-          "author": "lucasnferreiradev-lang",
-          "date": "2026-06-30T18:49:19+00:00",
-          "message": "Remove user schema/auth helpers and keep pipeline-focused classification changes",
-          "char_count": 80
-        },
-        {
-          "sha": "506fd30",
-          "author": "otaviotex",
-          "date": "2026-06-30T20:03:27+00:00",
-          "message": "fix(frontend): formatar nomes de categorias no Dashboard removendo underscores",
-          "char_count": 78
-        }
-      ]
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "fix/main": {
       "branch": "fix/main",
@@ -361,14 +338,14 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 298,
+      "total_commits": 309,
       "commits_per_author": {
+        "AlmondHare": 20,
+        "gabiiverissimo-dev": 37,
         "claranunes22": 121,
-        "lucasnferreiradev-lang": 31,
+        "otaviotex": 20,
+        "lucasnferreiradev-lang": 32,
         "PajeMurici-dev": 58,
-        "AlmondHare": 12,
-        "otaviotex": 19,
-        "gabiiverissimo-dev": 36,
         "LucasNF-Dev": 19,
         "RochaCarla": 2
       },
@@ -527,10 +504,77 @@
         },
         {
           "date": "2026-06-30",
-          "count": 10
+          "count": 12
+        },
+        {
+          "date": "2026-07-01",
+          "count": 9
         }
       ],
       "recent_commits": [
+        {
+          "sha": "f2859de",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:23:34+00:00",
+          "message": "Merge pull request #70 from unb-mds/fix/main",
+          "char_count": 54
+        },
+        {
+          "sha": "0ef45b8",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:21:39+00:00",
+          "message": "Merge branch 'main' into fix/main",
+          "char_count": 33
+        },
+        {
+          "sha": "53a520c",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:07:13+00:00",
+          "message": "feat: enhance Proposicoes component with search functionality and improved filtering options",
+          "char_count": 92
+        },
+        {
+          "sha": "b6e8a33",
+          "author": "AlmondHare",
+          "date": "2026-07-01T01:47:31+00:00",
+          "message": "feat: refactor Dashboard component to enhance filter functionality and improve category display",
+          "char_count": 95
+        },
+        {
+          "sha": "104b584",
+          "author": "AlmondHare",
+          "date": "2026-07-01T01:32:47+00:00",
+          "message": "Merge branch 'fix/main' of https://github.com/unb-mds/2026-1-Guard.IA into fix/main",
+          "char_count": 83
+        },
+        {
+          "sha": "0ab392b",
+          "author": "AlmondHare",
+          "date": "2026-07-01T01:32:15+00:00",
+          "message": "feat: add backfill functionality for Senate authorship data in main pipeline",
+          "char_count": 76
+        },
+        {
+          "sha": "72b0f9e",
+          "author": "gabiiverissimo-dev",
+          "date": "2026-07-01T01:00:58+00:00",
+          "message": "Merge pull request #67 from unb-mds/fix/dashboard",
+          "char_count": 64
+        },
+        {
+          "sha": "fd6e419",
+          "author": "AlmondHare",
+          "date": "2026-07-01T00:36:14+00:00",
+          "message": "feat: enhance Ranking component with dynamic color generation and improved data fetching",
+          "char_count": 88
+        },
+        {
+          "sha": "af6ac14",
+          "author": "AlmondHare",
+          "date": "2026-07-01T00:18:31+00:00",
+          "message": "feat: implement backfill functionality for Senate authorship data",
+          "char_count": 65
+        },
         {
           "sha": "c31754d",
           "author": "claranunes22",
@@ -544,6 +588,20 @@
           "date": "2026-06-30T23:08:34+00:00",
           "message": "chore: adiciona configuracao do sonarcloud e pipeline ci",
           "char_count": 56
+        },
+        {
+          "sha": "506fd30",
+          "author": "otaviotex",
+          "date": "2026-06-30T20:03:27+00:00",
+          "message": "fix(frontend): formatar nomes de categorias no Dashboard removendo underscores",
+          "char_count": 78
+        },
+        {
+          "sha": "7586c91",
+          "author": "lucasnferreiradev-lang",
+          "date": "2026-06-30T18:49:19+00:00",
+          "message": "Remove user schema/auth helpers and keep pipeline-focused classification changes",
+          "char_count": 80
         },
         {
           "sha": "36aa811",
@@ -733,83 +791,6 @@
           "date": "2026-06-26T21:51:20+00:00",
           "message": "fix: corrige o arquivo duplicado do update metrics e atualiza o novo",
           "char_count": 68
-        },
-        {
-          "sha": "8c1b081",
-          "author": "claranunes22",
-          "date": "2026-06-26T21:06:41+00:00",
-          "message": "Merge pull request #51 from unb-mds/feat/nova-pagina-dashboard",
-          "char_count": 81
-        },
-        {
-          "sha": "06d08ae",
-          "author": "claranunes22",
-          "date": "2026-06-26T21:03:42+00:00",
-          "message": "chore: remove aspas invalidas e comenta usuarios",
-          "char_count": 48
-        },
-        {
-          "sha": "16ae2db",
-          "author": "claranunes22",
-          "date": "2026-06-26T21:00:54+00:00",
-          "message": "chore: comenta de forma correta arquivo obsoleto de usuarios",
-          "char_count": 60
-        },
-        {
-          "sha": "84e6ed0",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-26T18:15:16+00:00",
-          "message": "Merge pull request #50 from unb-mds/revert-48-feat/nova-pagina-dashboard",
-          "char_count": 109
-        },
-        {
-          "sha": "341c314",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-26T18:14:57+00:00",
-          "message": "Revert \"Feat/nova pagina dashboard\"",
-          "char_count": 35
-        },
-        {
-          "sha": "67ec0d8",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-26T18:09:22+00:00",
-          "message": "Merge pull request #48 from unb-mds/feat/nova-pagina-dashboard",
-          "char_count": 90
-        },
-        {
-          "sha": "01b3f77",
-          "author": "gabiiverissimo-dev",
-          "date": "2026-06-26T18:09:06+00:00",
-          "message": "Merge branch 'main' into feat/nova-pagina-dashboard",
-          "char_count": 51
-        },
-        {
-          "sha": "6f27cc9",
-          "author": "otaviotex",
-          "date": "2026-06-26T15:53:43+00:00",
-          "message": "docs: atualiza documentacao do projeto em relacao a mudanca do acesso e autenticacao dos usuarios",
-          "char_count": 97
-        },
-        {
-          "sha": "b580578",
-          "author": "claranunes22",
-          "date": "2026-06-26T10:58:10+00:00",
-          "message": "feat(frontend): refatora visual do dashboard, ranking e adiciona mapa politico interativo do brasil",
-          "char_count": 99
-        },
-        {
-          "sha": "944d2d2",
-          "author": "AlmondHare",
-          "date": "2026-06-26T02:04:31+00:00",
-          "message": "Merge pull request #47 from unb-mds/feat/classificacao-release-2",
-          "char_count": 99
-        },
-        {
-          "sha": "b865cda",
-          "author": "AlmondHare",
-          "date": "2026-06-26T01:59:41+00:00",
-          "message": "Merge branch 'main' into feat/classificacao-release-2",
-          "char_count": 53
         }
       ]
     },
@@ -1611,7 +1592,10 @@
         "state": "open",
         "created_at": "2026-06-30T23:20:49+00:00",
         "closed_at": null,
-        "labels": []
+        "labels": [
+          "enhancement",
+          "chore"
+        ]
       },
       {
         "number": 66,
@@ -2003,6 +1987,16 @@
   },
   "pull_requests": [
     {
+      "number": 70,
+      "title": "Fix/main",
+      "state": "closed",
+      "base": "main",
+      "head": "fix/main",
+      "author": "gabiiverissimo-dev",
+      "created_at": "2026-07-01T02:19:41+00:00",
+      "merged_at": "2026-07-01T02:23:34+00:00"
+    },
+    {
       "number": 68,
       "title": "chore: adiciona configuracao do sonarcloud e pipeline ci",
       "state": "closed",
@@ -2015,12 +2009,12 @@
     {
       "number": 67,
       "title": "Fix/dashboard",
-      "state": "open",
+      "state": "closed",
       "base": "fix/main",
       "head": "fix/dashboard",
       "author": "otaviotex",
       "created_at": "2026-06-30T20:10:26+00:00",
-      "merged_at": null
+      "merged_at": "2026-07-01T01:00:58+00:00"
     },
     {
       "number": 65,
@@ -2286,11 +2280,11 @@
   "all_authors": {
     "claranunes22": 154,
     "PajeMurici-dev": 67,
-    "gabiiverissimo-dev": 44,
+    "gabiiverissimo-dev": 45,
     "lucasnferreiradev-lang": 35,
     "otaviotex": 25,
+    "AlmondHare": 22,
     "LucasNF-Dev": 20,
-    "AlmondHare": 14,
     "RochaCarla": 2
   },
   "author_por_branch": {
@@ -2308,18 +2302,24 @@
       "feat/crud-usuario": 1,
       "feat/integracao-frontend-api": 3,
       "filtragem": 1,
-      "fix/dashboard": 1,
-      "main": 19
+      "main": 20
     },
     "AlmondHare": {
       "filtragem-B": 2,
-      "main": 12
+      "main": 20
     },
     "lucasnferreiradev-lang": {
       "fix/camara-proposicoes-data": 2,
-      "fix/dashboard": 1,
       "fixmain": 1,
-      "main": 31
+      "main": 32
+    },
+    "gabiiverissimo-dev": {
+      "main": 37,
+      "chore/remove-cadastro": 1,
+      "feat/home-team": 1,
+      "feat/login-page": 3,
+      "feat/login-redesign": 2,
+      "revert-48-feat/nova-pagina-dashboard": 1
     },
     "PajeMurici-dev": {
       "main": 58,
@@ -2329,14 +2329,6 @@
       "chore/remove-cadastro": 1,
       "feat/login-page": 1,
       "feat/login-redesign": 1
-    },
-    "gabiiverissimo-dev": {
-      "main": 36,
-      "chore/remove-cadastro": 1,
-      "feat/home-team": 1,
-      "feat/login-page": 3,
-      "feat/login-redesign": 2,
-      "revert-48-feat/nova-pagina-dashboard": 1
     },
     "LucasNF-Dev": {
       "main": 19,
