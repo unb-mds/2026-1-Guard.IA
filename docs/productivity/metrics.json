@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T02:24:36.190636+00:00",
+  "generated_at": "2026-07-01T02:44:56.011334+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -39,7 +39,7 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 370,
+    "total_commits": 372,
     "open_issues": 5,
     "closed_issues": 36,
     "contributors": 8,
@@ -338,9 +338,9 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 309,
+      "total_commits": 311,
       "commits_per_author": {
-        "AlmondHare": 20,
+        "AlmondHare": 22,
         "gabiiverissimo-dev": 37,
         "claranunes22": 121,
         "otaviotex": 20,
@@ -508,10 +508,24 @@
         },
         {
           "date": "2026-07-01",
-          "count": 9
+          "count": 11
         }
       ],
       "recent_commits": [
+        {
+          "sha": "6322831",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:43:21+00:00",
+          "message": "Merge branch 'main' of https://github.com/unb-mds/2026-1-Guard.IA",
+          "char_count": 65
+        },
+        {
+          "sha": "cdf8e27",
+          "author": "AlmondHare",
+          "date": "2026-07-01T02:42:36+00:00",
+          "message": "refactor: remove unused frontend files and components for deploy",
+          "char_count": 64
+        },
         {
           "sha": "f2859de",
           "author": "AlmondHare",
@@ -777,20 +791,6 @@
           "date": "2026-06-26T23:15:00+00:00",
           "message": "fix: ccorrige update metrics",
           "char_count": 28
-        },
-        {
-          "sha": "4b79587",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-26T22:59:36+00:00",
-          "message": "feat: adiciona as funções de classificação, busca individual e stats como endpoints na API",
-          "char_count": 90
-        },
-        {
-          "sha": "2126518",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-26T21:51:20+00:00",
-          "message": "fix: corrige o arquivo duplicado do update metrics e atualiza o novo",
-          "char_count": 68
         }
       ]
     },
@@ -2283,7 +2283,7 @@
     "gabiiverissimo-dev": 45,
     "lucasnferreiradev-lang": 35,
     "otaviotex": 25,
-    "AlmondHare": 22,
+    "AlmondHare": 24,
     "LucasNF-Dev": 20,
     "RochaCarla": 2
   },
@@ -2306,7 +2306,7 @@
     },
     "AlmondHare": {
       "filtragem-B": 2,
-      "main": 20
+      "main": 22
     },
     "lucasnferreiradev-lang": {
       "fix/camara-proposicoes-data": 2,
