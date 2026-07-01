@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T02:44:56.011334+00:00",
+  "generated_at": "2026-07-01T03:13:07.367340+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -8,6 +8,7 @@
     "feat/classificacao-release-2",
     "feat/crud-usuario",
     "feat/design-updates",
+    "feat/documentacao",
     "feat/endpoints",
     "feat/home-page",
     "feat/integracao-dashboard",
@@ -39,12 +40,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 372,
+    "total_commits": 375,
     "open_issues": 5,
     "closed_issues": 36,
     "contributors": 8,
     "open_prs": 1,
-    "branches_ativas": 24,
+    "branches_ativas": 25,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -134,6 +135,28 @@
       "commits_per_author": {},
       "commit_timeline": [],
       "recent_commits": []
+    },
+    "feat/documentacao": {
+      "branch": "feat/documentacao",
+      "total_commits": 1,
+      "commits_per_author": {
+        "otaviotex": 1
+      },
+      "commit_timeline": [
+        {
+          "date": "2026-07-01",
+          "count": 1
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "946e4e3",
+          "author": "otaviotex",
+          "date": "2026-07-01T03:05:29+00:00",
+          "message": "docs: add relatório de teste de usabilidade com familiares",
+          "char_count": 58
+        }
+      ]
     },
     "feat/endpoints": {
       "branch": "feat/endpoints",
@@ -338,9 +361,9 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 311,
+      "total_commits": 313,
       "commits_per_author": {
-        "AlmondHare": 22,
+        "AlmondHare": 24,
         "gabiiverissimo-dev": 37,
         "claranunes22": 121,
         "otaviotex": 20,
@@ -508,10 +531,24 @@
         },
         {
           "date": "2026-07-01",
-          "count": 11
+          "count": 13
         }
       ],
       "recent_commits": [
+        {
+          "sha": "b077087",
+          "author": "AlmondHare",
+          "date": "2026-07-01T03:11:22+00:00",
+          "message": "Merge branch 'main' of https://github.com/unb-mds/2026-1-Guard.IA",
+          "char_count": 65
+        },
+        {
+          "sha": "aee5eca",
+          "author": "AlmondHare",
+          "date": "2026-07-01T03:10:19+00:00",
+          "message": "fix: update error messages for API connection failure in Dashboard and Proposicoes components for deploy",
+          "char_count": 104
+        },
         {
           "sha": "6322831",
           "author": "AlmondHare",
@@ -777,20 +814,6 @@
           "date": "2026-06-28T23:34:31+00:00",
           "message": "Merge branch 'main' into feat/telas-guardia-recuperadas",
           "char_count": 55
-        },
-        {
-          "sha": "5334397",
-          "author": "claranunes22",
-          "date": "2026-06-28T19:54:51+00:00",
-          "message": "feat: recupera layouts originais e integra graficos com recharts",
-          "char_count": 64
-        },
-        {
-          "sha": "6f0ab86",
-          "author": "PajeMurici-dev",
-          "date": "2026-06-26T23:15:00+00:00",
-          "message": "fix: ccorrige update metrics",
-          "char_count": 28
         }
       ]
     },
@@ -2282,8 +2305,8 @@
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 45,
     "lucasnferreiradev-lang": 35,
-    "otaviotex": 25,
-    "AlmondHare": 24,
+    "otaviotex": 26,
+    "AlmondHare": 26,
     "LucasNF-Dev": 20,
     "RochaCarla": 2
   },
@@ -2300,13 +2323,14 @@
     },
     "otaviotex": {
       "feat/crud-usuario": 1,
+      "feat/documentacao": 1,
       "feat/integracao-frontend-api": 3,
       "filtragem": 1,
       "main": 20
     },
     "AlmondHare": {
       "filtragem-B": 2,
-      "main": 22
+      "main": 24
     },
     "lucasnferreiradev-lang": {
       "fix/camara-proposicoes-data": 2,
