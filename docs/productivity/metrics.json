@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-07-01T03:24:36.231735+00:00",
+  "generated_at": "2026-07-01T13:45:13.322394+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
+    "docs/historico-sprints-guardia",
     "docs/remove-CRUD",
     "estudos",
     "feat/armazenamento-postgres",
@@ -41,12 +42,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 378,
+    "total_commits": 381,
     "open_issues": 5,
     "closed_issues": 36,
     "contributors": 8,
     "open_prs": 1,
-    "branches_ativas": 26,
+    "branches_ativas": 27,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -72,6 +73,13 @@
         }
       ]
     },
+    "docs/historico-sprints-guardia": {
+      "branch": "docs/historico-sprints-guardia",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
+    },
     "docs/remove-CRUD": {
       "branch": "docs/remove-CRUD",
       "total_commits": 1,
@@ -96,13 +104,17 @@
     },
     "estudos": {
       "branch": "estudos",
-      "total_commits": 1,
+      "total_commits": 2,
       "commits_per_author": {
-        "claranunes22": 1
+        "claranunes22": 2
       },
       "commit_timeline": [
         {
           "date": "2026-05-14",
+          "count": 1
+        },
+        {
+          "date": "2026-07-01",
           "count": 1
         }
       ],
@@ -113,6 +125,13 @@
           "date": "2026-05-14T16:38:04+00:00",
           "message": "atualiza sprint planning ",
           "char_count": 99
+        },
+        {
+          "sha": "ce320c5",
+          "author": "claranunes22",
+          "date": "2026-07-01T12:59:38+00:00",
+          "message": "merge: resolve conflito com a main na sprint 04",
+          "char_count": 47
         }
       ]
     },
@@ -384,11 +403,11 @@
     },
     "main": {
       "branch": "main",
-      "total_commits": 315,
+      "total_commits": 317,
       "commits_per_author": {
+        "claranunes22": 123,
         "AlmondHare": 26,
         "gabiiverissimo-dev": 37,
-        "claranunes22": 121,
         "otaviotex": 20,
         "lucasnferreiradev-lang": 32,
         "PajeMurici-dev": 58,
@@ -554,10 +573,24 @@
         },
         {
           "date": "2026-07-01",
-          "count": 15
+          "count": 17
         }
       ],
       "recent_commits": [
+        {
+          "sha": "93686d3",
+          "author": "claranunes22",
+          "date": "2026-07-01T13:43:50+00:00",
+          "message": "Merge pull request #71 from unb-mds/docs/historico-sprints-guardia",
+          "char_count": 135
+        },
+        {
+          "sha": "1769c59",
+          "author": "claranunes22",
+          "date": "2026-07-01T13:38:48+00:00",
+          "message": "docs: consolida historico de plannings e pastas das sprints 00 a 08",
+          "char_count": 67
+        },
         {
           "sha": "4e8ee1f",
           "author": "AlmondHare",
@@ -823,20 +856,6 @@
           "date": "2026-06-29T14:40:08+00:00",
           "message": "feat(frontend): integrar Dashboard com dados reais da API",
           "char_count": 57
-        },
-        {
-          "sha": "c9a8a7b",
-          "author": "otaviotex",
-          "date": "2026-06-29T14:29:29+00:00",
-          "message": "Merge pull request #58 from unb-mds/feat/endpoints",
-          "char_count": 90
-        },
-        {
-          "sha": "7884e7f",
-          "author": "otaviotex",
-          "date": "2026-06-29T14:28:59+00:00",
-          "message": "Merge branch 'main' into feat/endpoints",
-          "char_count": 39
         }
       ]
     },
@@ -2033,6 +2052,16 @@
   },
   "pull_requests": [
     {
+      "number": 71,
+      "title": "docs: consolida historico de plannings e pastas das sprints 00 a 08",
+      "state": "closed",
+      "base": "main",
+      "head": "docs/historico-sprints-guardia",
+      "author": "claranunes22",
+      "created_at": "2026-07-01T13:42:09+00:00",
+      "merged_at": "2026-07-01T13:43:51+00:00"
+    },
+    {
       "number": 70,
       "title": "Fix/main",
       "state": "closed",
@@ -2324,7 +2353,7 @@
     }
   ],
   "all_authors": {
-    "claranunes22": 154,
+    "claranunes22": 157,
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 45,
     "lucasnferreiradev-lang": 35,
@@ -2336,8 +2365,8 @@
   "author_por_branch": {
     "claranunes22": {
       "dev-projeto": 1,
-      "estudos": 1,
-      "main": 121,
+      "estudos": 2,
+      "main": 123,
       "sprint-04-dashboard": 1,
       "feat/home-team": 3,
       "feat/login-page": 11,
