@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T18:50:33.133589+00:00",
+  "generated_at": "2026-06-30T20:06:00.351750+00:00",
   "repo": "unb-mds/2026-1-Guard.IA",
   "branches": [
     "dev-projeto",
@@ -19,6 +19,7 @@
     "filtragem",
     "filtragem-B",
     "fix/camara-proposicoes-data",
+    "fix/dashboard",
     "fix/main",
     "main",
     "pages-metricas",
@@ -37,12 +38,12 @@
     "revert-48-feat/nova-pagina-dashboard"
   ],
   "summary": {
-    "total_commits": 357,
-    "open_issues": 3,
+    "total_commits": 358,
+    "open_issues": 4,
     "closed_issues": 36,
     "contributors": 8,
     "open_prs": 1,
-    "branches_ativas": 22,
+    "branches_ativas": 23,
     "branches_deletadas": 9
   },
   "branches_data": {
@@ -298,16 +299,17 @@
         }
       ]
     },
-    "fix/main": {
-      "branch": "fix/main",
-      "total_commits": 1,
+    "fix/dashboard": {
+      "branch": "fix/dashboard",
+      "total_commits": 2,
       "commits_per_author": {
-        "lucasnferreiradev-lang": 1
+        "lucasnferreiradev-lang": 1,
+        "otaviotex": 1
       },
       "commit_timeline": [
         {
           "date": "2026-06-30",
-          "count": 1
+          "count": 2
         }
       ],
       "recent_commits": [
@@ -317,8 +319,22 @@
           "date": "2026-06-30T18:49:19+00:00",
           "message": "Remove user schema/auth helpers and keep pipeline-focused classification changes",
           "char_count": 80
+        },
+        {
+          "sha": "506fd30",
+          "author": "otaviotex",
+          "date": "2026-06-30T20:03:27+00:00",
+          "message": "fix(frontend): formatar nomes de categorias no Dashboard removendo underscores",
+          "char_count": 78
         }
       ]
+    },
+    "fix/main": {
+      "branch": "fix/main",
+      "total_commits": 0,
+      "commits_per_author": {},
+      "commit_timeline": [],
+      "recent_commits": []
     },
     "main": {
       "branch": "main",
@@ -1410,8 +1426,8 @@
     }
   },
   "issues": {
-    "total": 39,
-    "open": 3,
+    "total": 40,
+    "open": 4,
     "closed": 36,
     "timeline": [
       {
@@ -1561,11 +1577,19 @@
       },
       {
         "date": "2026-06-30",
-        "opened": 1,
+        "opened": 2,
         "closed": 3
       }
     ],
     "list": [
+      {
+        "number": 66,
+        "title": "fix(dashboard): formatar nomes de categorias removendo underscores",
+        "state": "open",
+        "created_at": "2026-06-30T19:56:47+00:00",
+        "closed_at": null,
+        "labels": []
+      },
       {
         "number": 64,
         "title": "fix(coleta): buscar detalhes reais de autor, partido e estado na Câmara",
@@ -2213,7 +2237,7 @@
     "PajeMurici-dev": 67,
     "gabiiverissimo-dev": 44,
     "lucasnferreiradev-lang": 34,
-    "otaviotex": 24,
+    "otaviotex": 25,
     "LucasNF-Dev": 20,
     "AlmondHare": 14,
     "RochaCarla": 2
@@ -2233,6 +2257,7 @@
       "feat/crud-usuario": 1,
       "feat/integracao-frontend-api": 3,
       "filtragem": 1,
+      "fix/dashboard": 1,
       "main": 19
     },
     "AlmondHare": {
@@ -2241,7 +2266,7 @@
     },
     "lucasnferreiradev-lang": {
       "fix/camara-proposicoes-data": 2,
-      "fix/main": 1,
+      "fix/dashboard": 1,
       "main": 31
     },
     "PajeMurici-dev": {
